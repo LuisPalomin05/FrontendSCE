@@ -1,0 +1,83 @@
+.boxCotizador{
+    border-radius: 15px;
+    padding: 8px;
+    height: 94%;
+    box-shadow: 0 0 2px 2px rgba(143, 142, 142, 0.242);
+}
+
+
+
+.page{
+display: flex;
+padding: 4px;
+flex-direction: column;
+}
+
+.topPage{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.topPage img{
+    width: 60px;
+    height: 60px;
+}
+
+.tittlePage{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.clientInfo{
+    display: flex;
+    margin-bottom: 8px;
+    align-items: center;
+    /* padding: 0 4px; */
+    gap: 2px;
+}
+
+.txtInfo{
+    height: 20px;
+    display: flex;
+    margin: 2px;
+    justify-content: space-between;
+}
+
+.logoEmpresa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.numItem{
+    text-align: center;
+}
+#btnagregar{
+    padding: 8px;
+    margin: 2px;
+    color: white;
+    font-weight: bold;
+    width: 10%;
+    background: #192bee;
+}
+
+#btnagregar:hover{
+    background: #1c2ce2;
+    
+}
+
+.itemstable{
+    width: 100%;
+
+}
+.itemstable thead{
+    color: white;
+    height: 30px;
+    background: #2f3dde;
+}
+.totalBox strong{
+    color: #1c2ce2;
+}
