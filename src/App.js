@@ -18,14 +18,18 @@ import Dashboard from "./components/DashBoard";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Navigation from "./components/Navigation";
-import Profile from "./components/Profile"
-import Torque from "./components/TorqueCotizador"
-import Irontools from "./components/IrontoolsCotizador"
+// import Profile from "./components/Profile"
+// import Torque from "./components/TorqueCotizador"
+// import Irontools from "./components/IrontoolsCotizador"
 import Configuracion from "./components/Configuracion"
+import SolesIrontools from "./components/SolesIrontools";
+import SolesTorque from "./components/SolesTorque";
+import DollarIrontool from "./components/DollarIrontool";
+import DollarTorque from "./components/DollarTorque";
 // import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Estado de autenticación
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // Estado de autenticación
 
   return (
     <Router>
@@ -43,11 +47,13 @@ const App = () => {
               <div className="body">
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
-                  <Route path="/Torque/soles" element={<Torque moneda="Soles (PEN)"/>}/>
-                  <Route path="/Torque/dolares" element={<Torque moneda="Dolares (USD)"/>}/>
 
-                  <Route path="/Irontools/soles" element={<Irontools moneda="Soles (PEN)"/>}/>
-                  <Route path="/Irontools/Dolares" element={<Irontools moneda="Dolares (USD)"/>}/>
+                  <Route path="/Irontools/soles" element={<SolesIrontools/>}/>
+                  <Route path="/Torque/soles" element={<SolesTorque/>}/>
+
+                  <Route path="/Irontools/Dolares" element={<DollarIrontool/>}/>
+                  <Route path="/Torque/Dolares" element={<DollarTorque/>}/>
+
 
                   <Route path="/sce/Configuracion" element={<Configuracion/>} />
 
@@ -55,9 +61,9 @@ const App = () => {
                   <Route path="*" element={<Navigate to="/" />} /> {/* Redirigir rutas desconocidas */}
                 </Routes>
               </div>
-              <div className="profileCard">
+              {/* <div className="profileCard">
                 <Profile/>
-              </div>
+              </div> */}
             </section>
           </div>
         </div>

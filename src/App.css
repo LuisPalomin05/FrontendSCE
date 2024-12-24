@@ -1,4 +1,17 @@
+::-webkit-scrollbar {
+  width: 12px;
+}
 
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #3b849c; 
+  border-radius: 10px;
+  border: 1px solid white; 
+}
 
 .layer {
   width: 100%;
@@ -99,4 +112,9 @@
 
 .activeted{
   display: none;
+}
+
+.imgSizesvg{
+  height: 30px;
+  padding: 5px;
 }
