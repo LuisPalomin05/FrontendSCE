@@ -84,7 +84,7 @@ const SignIn = ({ setAuth }) => {
       </div>
       <div className="diseñologin">
         <div className="tittleApp">
-          <img className="imglogo" src="../sce_tuerca.png" alt="" />
+          <img className="imglogo" src="https://raw.githubusercontent.com/li2524/FrontendSCE/refs/heads/main/src/sce_tuerca.png" alt="" />
           <p>SCE</p>
         </div>
         <div className="forminputs">
