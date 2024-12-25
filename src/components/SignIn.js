@@ -1,37 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../content/css/SignIn.css";
 
 const SignIn = ({ setAuth }) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [mostrarDiv, setMostrarDiv] = useState(true); // Estado para controlar la visibilidad del div
+  const [mostrarDiv, setMostrarDiv] = useState(true); 
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Aquí deberías hacer una petición a tu backend para validar al usuario.
-    // Simulamos una autenticación exitosa:
+  
     if (
       credentials.email === "pmpalominomedina@gmail.com" &&
       credentials.password === "password"
     ) {
-      setAuth(true); // Autenticar al usuario
-      navigate("/Dashboard"); // Redirigir al Dashboard
+      setAuth(true); 
+      navigate("/Dashboard"); 
     } else {
       alert("Credenciales inválidas");
     }
   };
 
   useEffect(() => {
-    // Establecer el temporizador para que el div se oculte después de 3 segundos
     const timer = setTimeout(() => {
-      setMostrarDiv(false); // Cambiar el estado para ocultar el div
-    }, 3000); // 3000 milisegundos = 3 segundos
+      setMostrarDiv(false); 
+    }, 3000); 
 
-    // Limpiar el temporizador si el componente se desmonta
+    
     return () => clearTimeout(timer);
   }, []);
 
-  // bg 
   // https://images.pexels.com/photos/418831/pexels-photo-418831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
   return (
     <form id="FormSignIn" onSubmit={handleLogin}>

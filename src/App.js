@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import "./App.css";
 import "@ionic/react/css/core.css";
 import "./content/css/LeftSide.css";
-import "./content/css/SignIn.css";
+
 import "./content/css/SignUp.css";
 import "./content/css/Dashboard.css";
 import "./content/css/Navigation.css";

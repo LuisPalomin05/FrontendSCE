@@ -1,0 +1,254 @@
+.redcolor {
+    background-color: #bb2532;
+}
+
+.bluecolor,
+.blue {
+    background-color: #157be8;
+}
+
+
+.heightinput{
+    height: 25px;
+}
+
+
+.bluecolor,
+.redcolor {
+    color: white;
+    padding: 4px;
+    width: 35px;
+    margin: 2px;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blue:hover,
+.bluecolor:hover,
+.redcolor:hover {
+    cursor: pointer;
+    opacity: 0.8;
+
+}
+
+.blue {
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    width: 120px;
+    height: 35px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(98, 97, 97);
+    margin-right: 2px;
+
+}
+
+.contentTitle {
+    margin: 5px 0;
+    
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.tituloCotizacion {
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(98, 97, 97);
+    margin-right: 2px;
+}
+
+.titleBox {
+    display: flex;
+    flex: 1;
+    font-size: 24px;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.playTittle {
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    height: 30px;
+    font-size: 24px;
+    color: rgb(98, 97, 97);
+    border-radius: 4px;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.MonedaTittle {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(98, 97, 97);
+    margin-right: 2px;
+}
+
+.columnaItem {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    padding: 2px;
+}
+
+.clientebox,
+.boxinfo,
+.productoBox,
+.contentTable {
+    display: flex;
+}
+
+.contentTable {
+    flex-direction: row;
+    padding: 5px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 8px;
+
+}
+
+.borderBox {
+    margin: 5px 0px;
+    border-radius: 8px;
+    padding: 5px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 8px;
+
+
+}
+
+.clientebox {
+    height: 60px;
+    align-items: center;
+}
+
+.winput {
+    width: 150px;
+}
+
+.butonsProducto {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputswidth {
+    max-width: 100px;
+}
+
+.contentCotizacion {
+    width: 990px;
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1),
+        0px 1px 3px rgba(0, 0, 0, 0.06);
+    padding: 10px;
+}
+
+.flexitm {
+    display: flex;
+}
+
+
+
+.playTittle:hover {
+    cursor: pointer;
+    display: flex;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1),
+        0px 1px 3px rgba(0, 0, 0, 0.06);
+
+}
+
+.textItem {
+    flex: 1;
+}
+
+.marg1 {
+    margin: 2px 1px;
+}
+.flexitmlist {
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    padding: 2px;
+    flex: 1;
+}
+
+.listLabel{
+    width: 100%;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.tableItem{
+    color: #157be8;
+}
+
+.columnaTable table{
+    width: 100%;
+
+}
+
+.utilitysBox{
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    margin-bottom: 10px;
+    padding: 4px;
+    flex: 1;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 4px;
+}
+
+.listUtility ul {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.listUtility ul li{
+color: rgb(85, 85, 85);
+padding: 2px 10px;
+margin: 2px;
+border: 1px solid rgb(200, 200, 200);
+border-top-left-radius: 6px;
+border-top-right-radius: 6px;
+
+}
+
+.listUtility ul li:hover{
+    cursor: pointer;
+    background-color: #f0f0f0;
+    color: #157be8 !important;
+}
+
+.listActive{
+    background-color: #156cd0;
+    color: #f0f0f0 !important;
+
+}
+
+.borderLine{
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 6px;
+    padding: 4px;
+}
+
+
+
+
