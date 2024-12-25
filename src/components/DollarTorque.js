@@ -162,9 +162,9 @@ export default class SolesIrontools extends Component {
                 <p className="bluecolor" id="agregarItem">
                   <ion-icon name="add-outline"></ion-icon>
                 </p>
-                <p className="redcolor">
+                {/* <p className="redcolor">
                   <ion-icon name="trash-outline"></ion-icon>
-                </p>
+                </p> */}
               </p>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default class SolesIrontools extends Component {
                     <th className="tableItem">Producto</th>
                     <th className="tableItem">Cantidad</th>
                     <th className="tableItem">Precio Unitario</th>
-                    <th className="tableItem">Total</th>
+                    <th className="tableItem">SubTotal</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -207,7 +207,7 @@ export default class SolesIrontools extends Component {
                     <td>Producto 1</td>
                     <td>2</td>
                     <td>50</td>
-                    <td>100</td>
+                    <td id="subtotalTable">100</td>
                     <td>
                         <p className="bluecolor" id="EditarItem">
                             <ion-icon name="create-outline"></ion-icon>
@@ -230,15 +230,15 @@ export default class SolesIrontools extends Component {
           <div className="borderLine">
             <label for="">Precio final:</label>
             <p className="flexitm marg1">
-              <p className="textItem">Subtotal:</p>
+              <p className="textItem" id="SubTotalview">Subtotal:</p>
               <input type="text" name="" id="" value={0.00} disabled />
             </p>
             <p className="flexitm marg1">
-              <p className="textItem">IGV:</p>
+              <p className="textItem" id="igvImpuesto">IGV 18%:</p>
               <input type="text" name="" id="" value={0.00} disabled />
             </p>
             <p className="flexitm marg1">
-              <p className="textItem">Total :</p>
+              <p className="textItem" id="totalFinal">Total :</p>
               <input type="text" name="" id="" value={0.00} disabled />
             </p>
           </div>
