@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "sce-apps-98c9e"
-  }
+    "default": "sce-apps-98c9e",
+    "sce": "sce-apps-98c9e"
+  },
+  "targets": {},
+  "etags": {}
 }
