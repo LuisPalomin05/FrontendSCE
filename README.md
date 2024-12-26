@@ -17,3 +17,30 @@ Usar el comando 'npm install'. esto hara que se descargen los todas las herramie
 se debe usar el comando 'npm start' meidante la consola.
 se rendirazara la aplicacion mediante el navegador predeterminado.
 
+              <p className="columnaItem winput">
+                <label for="">Total(sin igv 18%)</label>
+                <input  className="heightinput" type="number" name="" id="precioSinCat" />
+              </p>
+
+
+Agrega una funcionalidad que permita añadir elementos a la tabla al presionar el botón con el id: agregarItem tomando los datos desde los inputs: NombreProdCat, cantProdCat, PrecioProdCat. Además, habilita la opción de editar los campos o eliminar los elementos al hacer clic en el botón eliminarItem dentro de la tabla, al eliminarse un elemento los numeroidItem deben siempre ser correlativo. Luego, calcula la suma de todos los valores en la columna subtotalTable y muestra el total en el campo SubTotalview. A continuación, calcula el 18% del total de subtotalTable y asigna ese valor al campo igvImpuesto. Finalmente, suma el total de subtotalTable con el valor de igvImpuesto y muestra el resultado final en totalFinal. adjunto el codigo base de mi componente: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
