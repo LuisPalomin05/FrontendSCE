@@ -108,16 +108,13 @@ label {
 
 .clientebox,
 .boxinfo,
-.productoBox,
-.contentTable {
+.productoBox {
     display: flex;
 }
 
 .contentTable {
     flex-direction: row;
-    padding: 5px;
-    border: 1px solid rgb(200, 200, 200);
-    border-radius: 8px;
+
 
 }
 
@@ -272,3 +269,8 @@ label {
 #observaciones{
     resize:vertical;
 }
+
+
+
+
+

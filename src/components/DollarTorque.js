@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../content/css/Cotizacioncss.css";
+import axios from "axios";
 
 export default class SolesIrontools extends Component {
   constructor(props) {
     super(props);
     // Inicializar el estado con la fecha actual
+    const empresa = "TORQUE-G46";
+    const usuario = "Usuario";
+    const [activeTab, setActiveTab] = useState(1);
+
     const hoy = new Date();
     const fechaActual =
       hoy.getFullYear() +
@@ -15,14 +20,65 @@ export default class SolesIrontools extends Component {
       String(hoy.getDate()).padStart(2, "0");
 
     this.state = {
+      numeroCotizacion: "F001-0001",
+      nombrecliente: "nombreEmpresa",
+      rucCliente: "nombreEmpresa",
+      usuarioCreador: "luis",
+      tipoCotizacion: "Venta",
       fechaEmision: fechaActual,
       productos: [],
+      metodoPago: "Contado",
+      module: "Soles",
       total: 0,
       igv: 0,
-      totalFinal: 0,
+      totalFinal: 0, // Total + IGV en el backend es total el unico que se sube
+      estado: "Pendiente",
       observaciones: "",
+      razonSocial: empresa,
+    };
+
+    const handleTabClick = (tabIndex) => {
+      setActiveTab(tabIndex);
     };
   }
+
+
+
+  onSubmit = async (e) => {
+    e.preventDefault();
+    const newCotizacion = {
+      numeroCotizacion: this.state.numeroCotizacion,
+      nombrecliente: this.state.nombrecliente,
+      rucCliente: this.state.rucCliente,
+      usuarioCreador: this.state.usuarioCreador,
+      tipoCotizacion: this.state.tipoCotizacion,
+      fecha: this.state.fechaEmision,
+      productos: this.state.productos,
+      metodoPago: this.state.metodoPago,
+      moneda: this.state.module,
+      total: this.state.totalFinal,
+      estado: this.state.estado,
+      observaciones: this.state.observaciones,
+      razonSocial: this.state.razonSocial,
+    };
+    const res = await axios.post(
+      "http://localhost:5000/api/cotizacion",
+      newCotizacion
+    );
+    console.log(res);
+  };
+
+  // handleNumeroCotizacionChange = (event) => {
+  //   this.setState({ numeroCotizacion: event.target.value });
+  // };
+
+  // handleNombreClienteChange = (event) => {
+  //   this.setState({ nombrecliente: event.target.value });
+  // };
+
+  // handleRucClienteChange = (event) => {
+  //   this.setState({ rucCliente: event.target.value });
+  // };
 
   handleFechaChange = (event) => {
     this.setState({ fechaEmision: event.target.value });
@@ -117,7 +173,7 @@ export default class SolesIrontools extends Component {
           <div className="flexitm">
             <label for="" disabled></label>
 
-            <p className="playTittle">
+            <p className="playTittle" onClick={this.onSubmit}>
               <ion-icon name="save-outline"></ion-icon>
             </p>
             <p className="playTittle">
@@ -276,6 +332,7 @@ export default class SolesIrontools extends Component {
         <div className="utilitysBox">
           <p>Utilidad</p>
           <div className="listUtility">
+            {/* añadir funcionalidad para que se usen como pestañas */}
             <ul>
               <li className="listActive">Facturacion</li>
               <li>Notas</li>
@@ -285,104 +342,130 @@ export default class SolesIrontools extends Component {
           </div>
         </div>
 
-        <div className="contentTable">
-          <div className="flexitmlist">
-            <div className="columnaTable">
-              <label for="" className="listLabel">
-                Lista de Productos
-              </label>
-              <table className="tableBx">
-  <thead className="">
-    <tr className="">
-      <th className="">Item</th>
-      <th className="">Descripcion</th>
-      <th className="">Cantidad</th>
-      <th className="">Precio Unitario</th>
-      <th className="">SubTotal</th>
-      <th className="">Acciones</th>
-    </tr>
-  </thead>
-  <tbody className="tablebxWid">
-    
-    {this.state.productos.map((producto, index) => (
-      <tr className="" key={producto.id}>
-        <td className=" ">{index + 1}</td> {/* Muestra el índice + 1 como el item */}
-        <td className=" ">{producto.nombre}</td>
-        <td className=" ">{producto.cantidad}</td>
-        <td className=" ">{producto.precio}</td>
-        <td className=" ">{producto.subtotal}</td>
-        <td className="flexitm">
-          <p
-            className="bluecolor"
-            onClick={() => this.editarProducto(producto.id)}
-          >
-            <ion-icon name="create-outline"></ion-icon>
-          </p>
-          <p
-            className="redcolor"
-            onClick={() => this.eliminarProducto(producto.id)}
-          >
-            <ion-icon name="trash-outline"></ion-icon>
-          </p>
-        </td>
-      </tr>
-    ))}
-    
-  </tbody>
+        <div className="DisplayBox">
+          <div className="contentTable ">
+            <div className="flexitmlist">
+              <div className="columnaTable">
+                <label for="" className="listLabel">
+                  Lista de Productos
+                </label>
+                <table className="tableBx">
+                  <thead className="">
+                    <tr className="">
+                      <th className="">Item</th>
+                      <th className="">Descripcion</th>
+                      <th className="">Cantidad</th>
+                      <th className="">Precio Unitario</th>
+                      <th className="">SubTotal</th>
+                      <th className="">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody className="tablebxWid">
+                    {this.state.productos.map((producto, index) => (
+                      <tr className="" key={producto.id}>
+                        <td className=" ">{index + 1}</td>{" "}
+                        {/* Muestra el índice + 1 como el item */}
+                        <td className=" ">{producto.nombre}</td>
+                        <td className=" ">{producto.cantidad}</td>
+                        <td className=" ">{producto.precio}</td>
+                        <td className=" ">{producto.subtotal}</td>
+                        <td className="flexitm">
+                          <p
+                            className="bluecolor"
+                            onClick={() => this.editarProducto(producto.id)}
+                          >
+                            <ion-icon name="create-outline"></ion-icon>
+                          </p>
+                          <p
+                            className="redcolor"
+                            onClick={() => this.eliminarProducto(producto.id)}
+                          >
+                            <ion-icon name="trash-outline"></ion-icon>
+                          </p>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                {this.renderMensaje()}
+              </div>
 
-</table>
-{this.renderMensaje()}
-
+              <div className="columnaItem">
+                <label for="">Observaciones</label>
+                <textarea
+                  name="observaciones"
+                  id="observaciones"
+                  value={this.state.observaciones}
+                  onChange={this.handleObservacionesChange}
+                ></textarea>
+              </div>
             </div>
 
-            <div className="columnaItem">
-              <label for="">Observaciones</label>
-              <textarea
-                name="observaciones"
-                id="observaciones"
-                value={this.state.observaciones}
-                onChange={this.handleObservacionesChange}
-              ></textarea>
+            <div className="borderLine">
+              <label for="">Precio final:</label>
+              <p className="flexitm marg1">
+                <p className="textItem" id="SubTotalview">
+                  Subtotal:
+                </p>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  value={this.state.total}
+                  disabled
+                />
+              </p>
+              <p className="flexitm marg1">
+                <p className="textItem" id="igvImpuesto">
+                  IGV 18%:
+                </p>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  value={this.state.igv}
+                  disabled
+                />
+              </p>
+              <p className="flexitm marg1">
+                <p className="textItem" id="totalFinal">
+                  Total :
+                </p>
+                <input
+                  type="text"
+                  name=""
+                  id=""
+                  value={this.state.totalFinal}
+                  disabled
+                />
+              </p>
             </div>
           </div>
 
-          <div className="borderLine">
-            <label for="">Precio final:</label>
-            <p className="flexitm marg1">
-              <p className="textItem" id="SubTotalview">
-                Subtotal:
-              </p>
-              <input
-                type="text"
-                name=""
-                id=""
-                value={this.state.total}
-                disabled
-              />
+          <div className="isDisplayActive">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora
+              quos fuga rerum laboriosam repudiandae quo. Amet neque accusantium
+              cumque corporis earum vitae laudantium provident vel? Ea dolores
+              architecto natus minima.
             </p>
-            <p className="flexitm marg1">
-              <p className="textItem" id="igvImpuesto">
-                IGV 18%:
-              </p>
-              <input
-                type="text"
-                name=""
-                id=""
-                value={this.state.igv}
-                disabled
-              />
+          </div>
+          <div className="isNoActiveDisplay">
+            {" "}
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora
+              quos fuga rerum laboriosam repudiandae quo. Amet neque accusantium
+              cumque corporis earum vitae laudantium provident vel? Ea dolores
+              architecto natus minima.
             </p>
-            <p className="flexitm marg1">
-              <p className="textItem" id="totalFinal">
-                Total :
-              </p>
-              <input
-                type="text"
-                name=""
-                id=""
-                value={this.state.totalFinal}
-                disabled
-              />
+          </div>
+          <div className="isNoActiveDisplay">
+            {" "}
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora
+              quos fuga rerum laboriosam repudiandae quo. Amet neque accusantium
+              cumque corporis earum vitae laudantium provident vel? Ea dolores
+              architecto natus minima.
             </p>
           </div>
         </div>

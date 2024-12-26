@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../content/css/SignIn.css";
+// import axios from "axios";
 
 const SignIn = ({ setAuth }) => {
+
+ 
+
+
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [mostrarDiv, setMostrarDiv] = useState(true); 
   const navigate = useNavigate();
@@ -19,8 +24,11 @@ const SignIn = ({ setAuth }) => {
     } else {
       alert("Credenciales inválidas");
     }
+    
   };
 
+
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setMostrarDiv(false); 
