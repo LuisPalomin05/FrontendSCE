@@ -35,7 +35,7 @@ const SignIn = ({ setAuth }) => {
     <form id="FormSignIn" onSubmit={handleLogin}>
       <div className="version">
         <ion-icon name="cloudy"></ion-icon>
-        <p>v.2.11.30</p>
+        <p>v.2.12.25</p>
       </div>
 
       <div className={`frame ${!mostrarDiv ? "fade-out" : ""}`}>

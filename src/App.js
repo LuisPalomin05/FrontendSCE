@@ -29,7 +29,7 @@ import DollarTorque from "./components/DollarTorque";
 // import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // Estado de autenticación
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Estado de autenticación
 
   return (
     <Router>
