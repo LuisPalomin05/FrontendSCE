@@ -1,35 +1,20 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
 
-
-import "./App.css";
-import "@ionic/react/css/core.css";
+// importar estilos css
+import "./content/css/App.css";
 import "./content/css/LeftSide.css";
-
+import "./content/css/SignIn.css";
 import "./content/css/SignUp.css";
 import "./content/css/Dashboard.css";
 import "./content/css/Navigation.css";
-import "./content/css/Cotizador.css"
+import "./content/css/Cotizador.css";
 
-
-import LeftSide from "./components/LeftSide";
-import Dashboard from "./components/DashBoard";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
-import Navigation from "./components/Navigation";
-// import Profile from "./components/Profile"
-// import Torque from "./components/TorqueCotizador"
-// import Irontools from "./components/IrontoolsCotizador"
-import Configuracion from "./components/Configuracion"
-import SolesIrontools from "./components/SolesIrontools";
-import SolesTorque from "./components/SolesTorque";
-import DollarIrontool from "./components/DollarIrontool";
-import DollarTorque from "./components/DollarTorque";
-// import ProtectedRoute from "./components/ProtectedRoute";
+//importar los componentes
+import { LeftSide, Dashboard, SignIn, SignUp, Navigation, Configuracion, SolesIrontools, SolesTorque, DollarIrontool, DollarTorque } from "./components/Componentes";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Estado de autenticación
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
 
   return (
     <Router>
@@ -68,7 +53,7 @@ const App = () => {
           </div>
         </div>
       ) : (
-        // Solo rutas públicas (sin layout) para usuarios no autenticados
+        // rutas publicas y accesos a enlaces de sitio redireccionado
         <Routes>
           <Route
             path="/signin"
@@ -78,7 +63,8 @@ const App = () => {
             path="/signup"
             element={<SignUp setAuth={setIsAuthenticated} />}
           />
-          <Route path="*" element={<Navigate to="/signin" />} /> {/* Redirigir rutas desconocidas */}
+          {/* Redirigir rutas desconocidas */}
+          <Route path="*" element={<Navigate to="/signin" />} /> 
         </Routes>
       )}
     </Router>

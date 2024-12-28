@@ -1,10 +1,10 @@
 .redcolor {
-    background-color: #bb2532;
+    background-color: var(--danger)
 }
 
 .bluecolor,
 .blue {
-    background-color: #157be8;
+    background-color: var(--success)
 }
 
 

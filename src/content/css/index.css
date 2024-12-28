@@ -1,0 +1,54 @@
+:root{
+    /* paleta de colores */
+    --primary-color-black: #212121;
+    --primary-color-onix: #393E41;
+    --secondary-color-timberwolf: #D3D0CB;
+    --accent-color-platinum: #E7E5DF;
+    --accent-color-Keppel: #8BD8BD;
+    --accent-color-dark-keppel: #44BBA4;
+    --alternative-color-onix: #E94F37;
+    --alternative-color-safron: #E7BB41;
+    --alternative-color-pear: #1B676B;
+    --alternative-color-torqueblue: #6449B7;
+    --color-white-blumine: #FFF3FE;
+
+    /* estilizado de elementos */
+    --danger: #bb2532;
+    --alert: #e2ef29;
+    --success: #157be8;
+}
+
+/* revisado */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--secondary-color-timberwolf); 
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color-onix);
+    border-radius: 10px;
+    border: 1px solid white; 
+  }
+  
+
+*{
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+html, body{
+    width: 100%;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+

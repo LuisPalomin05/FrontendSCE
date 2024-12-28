@@ -1,29 +1,21 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "../content/css/Cotizacioncss.css";
 import axios from "axios";
 
 export default class SolesIrontools extends Component {
   constructor(props) {
     super(props);
-    // Inicializar el estado con la fecha actual
     const empresa = "TORQUE-G46";
     const usuario = "Usuario";
-    const [activeTab, setActiveTab] = useState(1);
 
     const hoy = new Date();
-    const fechaActual =
-      hoy.getFullYear() +
-      "-" +
-      String(hoy.getMonth() + 1).padStart(2, "0") +
-      "-" +
-      String(hoy.getDate()).padStart(2, "0");
+    const fechaActual = `${hoy.getFullYear()}-${String(hoy.getMonth() + 1).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
 
     this.state = {
       numeroCotizacion: "F001-0001",
       nombrecliente: "nombreEmpresa",
       rucCliente: "nombreEmpresa",
-      usuarioCreador: "luis",
+      usuarioCreador: usuario,
       tipoCotizacion: "Venta",
       fechaEmision: fechaActual,
       productos: [],
@@ -31,18 +23,17 @@ export default class SolesIrontools extends Component {
       module: "Soles",
       total: 0,
       igv: 0,
-      totalFinal: 0, // Total + IGV en el backend es total el unico que se sube
+      totalFinal: 0,
       estado: "Pendiente",
       observaciones: "",
       razonSocial: empresa,
-    };
-
-    const handleTabClick = (tabIndex) => {
-      setActiveTab(tabIndex);
+      activeTab: 1, // Declarar activeTab aquí
     };
   }
 
-
+  handleTabClick = (tabIndex) => {
+    this.setState({ activeTab: tabIndex });
+  };
 
   onSubmit = async (e) => {
     e.preventDefault();
@@ -163,6 +154,7 @@ export default class SolesIrontools extends Component {
   }
 
   render() {
+    const { activeTab } = this.state;
     return (
       <div className="contentCotizacion">
         <div className="contentTitle">
@@ -334,16 +326,20 @@ export default class SolesIrontools extends Component {
           <div className="listUtility">
             {/* añadir funcionalidad para que se usen como pestañas */}
             <ul>
-              <li className="listActive">Facturacion</li>
-              <li>Notas</li>
-              <li>Archivos</li>
-              <li>Estados</li>
+              <li className={activeTab === 1 ? "active" : ""}
+            onClick={() => this.handleTabClick(1)}>Facturacion</li>
+              <li className={activeTab === 2 ? "active" : ""}
+            onClick={() => this.handleTabClick(2)}>Notas</li>
+              <li className={activeTab === 3 ? "active" : ""}
+            onClick={() => this.handleTabClick(3)}>Archivos</li>
+              <li className={activeTab === 4 ? "active" : ""}
+            onClick={() => this.handleTabClick(4)}>Estados</li>
             </ul>
           </div>
         </div>
 
         <div className="DisplayBox">
-          <div className="contentTable ">
+        {activeTab === 1 && <div className="contentTable ">
             <div className="flexitmlist">
               <div className="columnaTable">
                 <label for="" className="listLabel">
@@ -440,8 +436,8 @@ export default class SolesIrontools extends Component {
                 />
               </p>
             </div>
-          </div>
-
+          </div> }
+          {activeTab === 2 &&
           <div className="isDisplayActive">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora
@@ -449,7 +445,8 @@ export default class SolesIrontools extends Component {
               cumque corporis earum vitae laudantium provident vel? Ea dolores
               architecto natus minima.
             </p>
-          </div>
+          </div> }
+          {activeTab === 3 &&
           <div className="isNoActiveDisplay">
             {" "}
             <p>
@@ -458,7 +455,8 @@ export default class SolesIrontools extends Component {
               cumque corporis earum vitae laudantium provident vel? Ea dolores
               architecto natus minima.
             </p>
-          </div>
+          </div>}
+          {activeTab === 4 &&
           <div className="isNoActiveDisplay">
             {" "}
             <p>
@@ -467,7 +465,7 @@ export default class SolesIrontools extends Component {
               cumque corporis earum vitae laudantium provident vel? Ea dolores
               architecto natus minima.
             </p>
-          </div>
+          </div>}
         </div>
       </div>
     );

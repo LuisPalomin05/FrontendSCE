@@ -1,94 +1,88 @@
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #3b849c; 
-  border-radius: 10px;
-  border: 1px solid white; 
-}
-
-.layer {
+/* General Layout */
+.layer, .layout {
   width: 100%;
   height: 100vh;
   display: flex;
+}
+
+.layer {
   flex-direction: column;
 }
 
 .layout {
-  width: 100%;
-  height: 100vh;
-  display: flex;
   flex-direction: row;
-
 }
 
+/* Header and Main Sections */
 .header {
-  height: 6%;
   width: 100%;
+  height: 6%;
   background: #0077b6;
 }
+
 .main {
-  height: 94%;
   width: 100%;
+  height: 94%;
 }
 
+/* Sidebar and Body */
 .sidebar {
   height: 100%;
 }
+
 .body {
   flex: 1;
   height: 100%;
   padding: 8px;
 }
 
-/* .leftmenu{
-  transition: width 1s ease;
-
-} */
-
-.Nav-menu,
-.leftmenu {
+/* Navigation Menus */
+.Nav-menu, .leftmenu {
   height: 100%;
-
   padding: 0;
   display: flex;
   flex-direction: row;
   gap: 1px;
 }
 
-.menuIcons,
-.leftIcons {
+.menuIcons, .leftIcons {
   height: 100%;
   width: 20%;
   display: flex;
   flex-direction: row;
 }
 
-.menuPaleta{
+.menuPaleta {
   width: 80%;
   height: 100%;
   padding: 5px;
   display: flex;
 }
 
-.cWhite {
-  color: white;
+/* Color and Hover Styles */
+.cWhite, .cGray {
   padding: 2px;
   border-radius: 15px;
+}
+
+.cWhite {
+  color: white;
 }
 
 .cGray {
   color: rgb(165, 164, 164);
-  padding: 2px;
-  border-radius: 15px;
 }
 
+.cWhite:hover, .cGray:hover {
+  cursor: pointer;
+  background: rgba(245, 245, 245, 0.374);
+}
+
+.cGray:hover {
+  color: #828282;
+}
+
+/* Icons */
 .icon {
   font-size: 20px;
 }
@@ -97,24 +91,13 @@
   font-size: 30px;
 }
 
-.cGray:hover,
-.cWhite:hover {
-  cursor: pointer;
-  background: rgba(245, 245, 245, 0.374);
-}
-
-.cGray:hover {
-  color: #828282;
-}
-.leftPaleta.active {
+/* Active States */
+.leftPaleta.active, .activeted {
   display: none;
 }
 
-.activeted{
-  display: none;
-}
-
-.imgSizesvg{
+/* Image Styles */
+.imgSizesvg {
   height: 30px;
   padding: 5px;
 }

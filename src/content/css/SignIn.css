@@ -1,16 +1,18 @@
+/* css revisado */
+
 #FormSignIn {
   height: 100vh;
   width: 100%;
   position: relative;
   background-image: url('https://images.pexels.com/photos/9754/mountains-clouds-forest-fog.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-  background-size: cover; /* Hace que la imagen cubra todo el contenedor */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
 }
 
 .frame {
-  /* opacity: 1; */
+
   transition: opacity 1s ease-out;
   background: rgba(64, 64, 235);
   display: flex;
@@ -26,105 +28,107 @@
   display: none;
 }
 
-.version{
-    display: flex;
-    position: fixed;
-    align-items: center;
-    bottom: 20px;
-    right: 20px;
-    height: 45px;
-    width: 100px;
-    gap: 5px;
-    padding: 5px;
+.version {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  bottom: 20px;
+  right: 20px;
+  height: 45px;
+  width: 100px;
+  gap: 5px;
+  padding: 5px;
   border-radius: 8px;
-    z-index: 2;
-    background: white;
-    border: 2px solid rgb(15, 49, 198);
-    color: gray;
-  }
-  
-  .version:hover{
-    cursor: pointer;
-    background: #c3bcbc63;
-  }
-
-  .diseñologin{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(to top right, black, transparent);
+  z-index: 2;
+  background: white;
+  border: 2px solid rgb(15, 49, 198);
+  color: gray;
 }
 
-  .imglogo{
-    height: 65px;
-    width: 65px;
-  }
+.version:hover {
+  cursor: pointer;
+  background: #c3bcbc63;
+}
 
-  label{
-    color: whitesmoke;
-    width: 300px;
-    margin-bottom: 4px;
-  }
-  #FormSignIn input{
-    height: 35px;
-    width: 300px;
-    padding: 5px;
-    margin: 2px;
-    border: none ;
-    border-radius: 8px;
-    background: #9f9b9b92;
-    
-  }
-  #FormSignIn input::placeholder{
-    color: rgba(205, 199, 199, 0.742);
+.diseñologin {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to top right, black, transparent);
+}
 
-  }
+.imglogo {
+  height: 65px;
+  width: 65px;
+}
 
-  input:focus{
-    outline: none;
+label {
+  color: whitesmoke;
+  width: 300px;
+  margin-bottom: 4px;
+}
 
-    box-shadow: 0px 0px 15px rgb(13, 80, 134);
+#FormSignIn input {
+  height: 35px;
+  width: 300px;
+  padding: 5px;
+  margin: 2px;
+  border: none;
+  border-radius: 8px;
+  background: #9f9b9b92;
 
-  }
+}
 
-  
+#FormSignIn input::placeholder {
+  color: rgba(205, 199, 199, 0.742);
 
-  #FormSignIn button{
-    width: 300px;
-    height: 40px;
-    color: white;
-    font-weight: bold;
-    padding: 5px;
-    margin: 2px;
-    border-radius: 8px;
-    background: rgb(13, 80, 134);
-  }
+}
 
-  #FormSignIn button:hover{
-    background: rgb(12, 65, 108);
+input:focus {
+  outline: none;
 
-  }
+  box-shadow: 0px 0px 15px var(--secondary-color-timberwolf);
 
-  .tittleApp{
-    height: 20%;
-    width: 30%;
-    gap: 10px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+}
 
-  .tittleApp p{
-    font-size: 45px;
-    color: whitesmoke;
-  }
 
-  .forminputs{
-    width: 30%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+
+#FormSignIn button {
+  width: 300px;
+  height: 40px;
+  color: var(--accent-color-platinum);
+  font-weight: bold;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 8px;
+  background: #154c79;
+}
+
+#FormSignIn button:hover {
+  background: #063970;
+
+}
+
+.tittleApp {
+  height: 20%;
+  width: 30%;
+  gap: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tittleApp p {
+  font-size: 45px;
+  color: whitesmoke;
+}
+
+.forminputs {
+  width: 30%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
