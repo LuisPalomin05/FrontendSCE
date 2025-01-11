@@ -51,4 +51,101 @@ html, body{
 
 }
 
+/* estilo icono ion icons */
 
+.IconGray2{
+    color: rgb(165, 164, 164);
+    font-size: 20px;
+    padding: 2px;
+}
+.IconGray2:hover{
+    cursor: pointer;
+    color: var(--accent-color-platinum);
+}
+
+.IconGray{
+    color: rgb(165, 164, 164);
+    font-size: 30px;
+    padding: 2px;
+}
+
+.IconGray:hover{
+    cursor: pointer;
+    color: var(--accent-color-platinum);
+
+}
+
+
+/* clase general para flex */
+
+.flexbox{
+    display: flex;
+}
+
+/* clase general para centrar elementos */
+
+.vCenter{
+    justify-content: center;
+    
+}
+
+.hCenter{
+    align-items: center;
+}
+
+
+
+.flexcenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* clase espaciado flex */
+
+.flex1{
+    flex: 1;
+}
+
+.flex2{
+    flex: 2;
+}
+
+.flex3{
+    flex: 3;
+}
+
+.flex4{
+    flex: 4;
+}
+
+/* clase para la direccion en flex */
+
+.flexRow{
+    display: flex;
+    flex-direction: row;
+}
+.fRow{
+    
+    flex-direction: row;
+}
+.flexColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.fColumn{
+    flex-direction: column;
+}
+
+.flexAlign{
+  display: flex;
+  align-items: center;
+
+}
+
+.columnAlign{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

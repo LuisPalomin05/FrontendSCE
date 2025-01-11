@@ -9,3 +9,4 @@ export { default as SolesIrontools } from './SolesIrontools';
 export { default as SolesTorque } from './SolesTorque';
 export { default as DollarIrontool } from './DollarIrontool';
 export { default as DollarTorque } from './DollarTorque';
+export { default as Cotizador} from './Cotizacion';

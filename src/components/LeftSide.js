@@ -4,7 +4,7 @@ import ItemRecents from "./ItemRecents";
 
 export default class LeftSide extends Component {
   state = {
-    isPaletaOpen: false, // Estado inicial cerrado
+    isPaletaOpen: false, 
   };
   toggleDiv = (selector) => {
     const element = document.querySelector(selector);
@@ -15,62 +15,59 @@ export default class LeftSide extends Component {
 
   toggleDivClass = () => {
     this.setState((prevState) => ({
-      isPaletaOpen: !prevState.isPaletaOpen, // Alterna el estado
+      isPaletaOpen: !prevState.isPaletaOpen, 
     }));
   };
 
   render() {
     const { isPaletaOpen } = this.state;
     return (
-      <div className="leftmenu">
-        <div className="leftIcons">
+      <div className="flexAlign leftmenu">
+        <div className="flexColumn leftIcons ">
           <div className="iMenu" onClick={this.toggleDivClass}>
-            <ion-icon class="cGray iconsize" name="list"></ion-icon>
+            <ion-icon class="IconGray" name="list"></ion-icon>
           </div>
-          <div className="iMenuIcon">
+          <div className="flexColumn flex1 ">
             <div className="iconsMenus">
-              {" "}
+              
               <Link to={"/Dashboard"}>
-              <ion-icon class="cGray iconsize" name="home"></ion-icon>
-
+                <ion-icon class="IconGray" name="home"></ion-icon>
               </Link>
             </div>
 
-<Link to={"/sce/Configuracion"}>
-<ion-icon class="cGray iconsize" name="cog"></ion-icon>
-
-</Link>
+            <Link to={"/sce/Configuracion"}>
+              <ion-icon class="IconGray" name="cog"></ion-icon>
+            </Link>
           </div>
         </div>
-        {/* ----- */}
         <div className={`leftPaleta ${isPaletaOpen ? "active" : ""}`}>
-          <div className="menuCotizacion">
-            <div className="recents">
+          <div className="flexColumn menuCotizacion">
+            <div className="flexAlign">
               <div className="recient">
                 <i>Empresas</i>
               </div>
               <ion-icon
                 onClick={() => this.toggleDiv(".listEnterprice")}
-                class="cGray"
+                class="IconGray2"
                 name="close-circle"
               ></ion-icon>
             </div>
             <div className="listEnterprice">
               {/* empresas */}
               <div className="enterprise">
-                <div className="tTittle">
+                <div className="TagEmpresa">
                   <ion-icon name="pricetags"></ion-icon>
                   <p>TORQUE-G46</p>
                 </div>
-                <ul className="tItem">
+                <ul className="flexColumn">
                   <Link to={"/Torque/soles"}>
-                    <li>
+                    <li className="flexAlign itemlistleft">
                       <p>Soles</p>
                       <ion-icon name="chevron-forward"></ion-icon>
                     </li>
                   </Link>
                   <Link to={"/Torque/dolares"}>
-                    <li>
+                    <li  className="flexAlign itemlistleft">
                       <p>Dólares</p>
                       <ion-icon name="chevron-forward"></ion-icon>
                     </li>
@@ -78,13 +75,13 @@ export default class LeftSide extends Component {
                 </ul>
               </div>
               <div className="enterprise">
-                <div className="tTittle">
+                <div className="TagEmpresa">
                   <ion-icon name="pricetags"></ion-icon>
                   <p>IRONTOOLS</p>
                 </div>
                 <ul className="tItem">
                   <Link to={"/Irontools/soles"}>
-                    <li>
+                    <li className="flexAlign itemlistleft">
                       <p>Soles</p>
                       <ion-icon name="chevron-forward"></ion-icon>
                     </li>
@@ -92,7 +89,7 @@ export default class LeftSide extends Component {
 
                   <Link to={"/Irontools/dolares"}>
                     {" "}
-                    <li>
+                    <li className="flexAlign itemlistleft">
                       <p>Dólares</p>
                       <ion-icon name="chevron-forward"></ion-icon>
                     </li>
@@ -103,17 +100,15 @@ export default class LeftSide extends Component {
 
             <div className="hr"></div>
           </div>
-          {/* recientes */}
           <div className="listrecents">
             <div className="recents">
               <div className="recient">
                 <i>Recientes</i>
               </div>
-              <ion-icon class="cGray" name="refresh"></ion-icon>
-              <ion-icon class="cGray" name="close-circle"></ion-icon>
+              <ion-icon class="IconGray2" name="refresh"></ion-icon>
+              <ion-icon class="IconGray2" name="close-circle"></ion-icon>
             </div>
             <div>
-              {/* aquí va el contenido */}
               <ItemRecents />
             </div>
           </div>

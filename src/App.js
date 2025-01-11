@@ -11,25 +11,25 @@ import "./content/css/Navigation.css";
 import "./content/css/Cotizador.css";
 
 //importar los componentes
-import { LeftSide, Dashboard, SignIn, SignUp, Navigation, Configuracion, SolesIrontools, SolesTorque, DollarIrontool, DollarTorque } from "./components/Componentes";
+import { Cotizador, LeftSide, Dashboard, SignIn, SignUp, Navigation, Configuracion, SolesIrontools, SolesTorque, DollarIrontool, DollarTorque } from "./components/Componentes";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  const [isAuthenticated, setIsAuthenticated] = useState(true); 
 
   return (
     <Router>
       {isAuthenticated ? (
         // Layout completo para usuarios autenticados
-        <div className="layer">
+        <div className="layer flexbox fColumn">
           <div className="header">
             <Navigation />
           </div>
           <div className="main">
-            <section className="layout">
+            <section className="layout flexbox fRow">
               <div className="sidebar">
                 <LeftSide />
               </div>
-              <div className="body">
+              <div className="body flex1">
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
 
@@ -39,7 +39,7 @@ const App = () => {
                   <Route path="/Irontools/Dolares" element={<DollarIrontool/>}/>
                   <Route path="/Torque/Dolares" element={<DollarTorque/>}/>
 
-
+                  <Route path="/Cotizador" element={<Cotizador/>}/>
                   <Route path="/sce/Configuracion" element={<Configuracion/>} />
 
                   <Route path="/dashboard" element={<Dashboard />} />
