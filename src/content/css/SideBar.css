@@ -1,0 +1,15 @@
+.iconMenuBox{
+    padding: 4px;
+}
+
+.MenuTopBox{
+    flex: 1;
+    gap: 2px;
+}
+
+.iconMenuBox{
+    background: #171737;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,40 @@
+.CardboxCash{
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    width: 20%;
+    gap: 4px;
+    border: 1px solid rgba(148, 139, 139, 0.776);
+}
+
+.bordericon{
+    border: 2px solid #23bf55;
+    color: rgba(148, 139, 139, 0.776);
+    padding: 4px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.cotheader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.cotheader p{
+    font-weight: bold;
+}
+
+
+.cotmonto{
+    color: rgb(148, 139, 139);
+    font-size: 18px;
+    padding: 15px 4px;
+    font-weight: bold;
+
+}

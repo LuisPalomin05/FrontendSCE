@@ -1,21 +1,79 @@
-.menuPaleta{
-    justify-content: right;
+.nombreLogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10px;
+}
+
+.navigationBox{
+width: 100%;
+display: flex;
+}
+
+.searchBox{
+    width: 50%;
+    height: 25px;
+    border-radius: 15px;
+    background: white;
+    border: 1px solid #e7e7e7;
+    padding: 4px;
+    display: flex;
+    gap: 5px;
+}
+
+.searchBox:hover{
+    border: 1px solid #cdcccc;
+}
+
+.searchBox input{
+    width: 90%;
+    outline: none;
+    border: none;
+    font-size: 14px;
+}
+
+.tittleboxnav{
+    display: flex;
+    align-items: center;
+    padding: 2px;
+}
+
+.searchBoxnav{
     align-items: center;
     gap: 10px;
+}
+
+.profileboxnav{
+    gap: 8px;
     padding: 0 10px;
-}
-
-.menuIcons{
-    justify-content: center;
+    display: flex;
+    flex: 1;
     align-items: center;
-    padding: 0 20px;
+    justify-content: right;
 }
 
-.itemIcon{
-    width: 100%;
-    height: 25px;
+.profilename{
+    flex-direction: column;
 }
 
-.imgSize{
-    height: 100%;
+.profilename p:nth-child(1){
+    font-size: 12px;
+    font-weight: bold;
+}
+.profilename p:nth-child(2){
+    font-size: 10px;
+}
+
+.profilecard{
+    display: flex;
+    height: 35px;
+    align-items: center;
+    gap: 4px;
+}
+.roudedProfileimg{
+    border-radius: 15px;
+    border: 2px solid rgb(121, 119, 119);
+    width: 30px;
+    height: 30px;
+    background: white;
 }

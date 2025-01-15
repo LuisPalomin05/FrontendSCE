@@ -1,0 +1,60 @@
+/* .CotizadorPanel{
+    height: 100%;
+} */
+
+.CotizacionPanelbox{
+    padding: 2px;
+    margin-top: 2px;
+    display: flex;
+    border-radius: 15px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.EmpresaItembox{
+    /* background-color: #fdfdfd; */
+    background-color: #32337b;
+    /* background-color: #252567; */
+
+    height: 40%;
+    border-radius: 8px;
+
+}
+
+.titleCotizacion p{
+    font-weight: bold;
+}
+
+.tagnamebox{
+    padding: 4px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30%;
+    border-bottom: 1px solid #dedede;
+}
+
+.liItemCashbox{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 2px;
+    height: 65%;
+}
+
+
+.liItemCash{
+    height: 50%;
+    padding: 4px;
+    color: white;
+    border-bottom: 1px solid #dedede45;
+
+    justify-content: space-between;
+}
+
+.liItemCash:hover{
+    background: #dedede45;
+    cursor: pointer;
+}

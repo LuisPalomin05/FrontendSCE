@@ -10,3 +10,7 @@ export { default as SolesTorque } from './SolesTorque';
 export { default as DollarIrontool } from './DollarIrontool';
 export { default as DollarTorque } from './DollarTorque';
 export { default as Cotizador} from './Cotizacion';
+export {default as FormularioCotizacion } from './FormularioCotizacion';
+export {default as SistemaCotizacion } from './SistemaCotizacion';
+export { default as Menulateral} from './Menulateral';
+export { default as CotizadorPanel} from './CotizadorPanel';

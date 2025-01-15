@@ -1,0 +1,57 @@
+.DashBoardBox{
+    padding: 5px;
+    gap: 2px;
+}
+
+.CashDashboardPanel{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding: 5px;
+    background: lightpink;
+}
+
+.CashDashboardPanel:hover{
+cursor: pointer;
+border-color: #4b4b4b;
+}
+
+
+.boxbottontop{
+    border: 1px solid #aaaaaa;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    width: 8%;
+}
+
+.bottonitem{
+    padding: 4px;
+
+    color: #949292;
+}
+
+.bottonitem:hover{
+    color: #4b4b4b;
+    background: #ffffff89;
+    cursor: pointer;
+
+}
+
+.createButtonBox{
+    background: #006635;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+}
+
+.createButtonBox:hover{
+    background: #087440;
+    border-radius: 2px solid #0fa45c;
+    cursor: pointer;
+}
+
+.barTopmenu{
+    gap: 5px;
+    padding: 2px;
+}

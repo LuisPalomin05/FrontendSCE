@@ -1,0 +1,44 @@
+.ConfiguracionBox{
+    padding: 8px;
+}
+
+.paleta1{
+    display: flex;
+    padding: 2px;
+    border-radius: 5px;
+}
+.box20{
+height: 30px;
+width: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+
+}
+
+.verde{
+    background: #087440;
+    color: white;
+font-size: 20px;
+font-weight: bold;
+}
+
+.azul{
+    background: #433c98;
+    color: white;
+font-size: 20px;
+font-weight: bold;
+}
+
+.violeta{
+    background: rgb(210, 5, 210);
+    color: white;
+font-size: 20px;
+font-weight: bold;
+}
+.rojo{
+    background: rgb(218, 2, 2);
+    color: white;
+font-size: 20px;
+font-weight: bold;
+}

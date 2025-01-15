@@ -1,37 +1,95 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 // importar estilos css
 import "./content/css/App.css";
-import "./content/css/LeftSide.css";
 import "./content/css/SignIn.css";
-import "./content/css/SignUp.css";
-import "./content/css/Dashboard.css";
 import "./content/css/Navigation.css";
-import "./content/css/Cotizador.css";
-
+import "./content/css/SideBar.css";
+import "./content/css/CotizadorPanel.css";
+import "./content/css/Dashboard.css"
 //importar los componentes
-import { Cotizador, LeftSide, Dashboard, SignIn, SignUp, Navigation, Configuracion, SolesIrontools, SolesTorque, DollarIrontool, DollarTorque } from "./components/Componentes";
+import {
+  Menulateral,
+  Dashboard,
+  SignIn,
+  SignUp,
+  Navigation,
+  Configuracion,
+  CotizadorPanel,
+} from "./components/Componentes";
+// import Cotizador from "./components/LeftSide";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); 
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   return (
     <Router>
       {isAuthenticated ? (
         // Layout completo para usuarios autenticados
-        <div className="layer flexbox fColumn">
+        <div className="layout">
+          <div className="sidebar">
+            <div className="menuicons">
+            <Menulateral />
+
+            </div>
+            <div className="contentpanel">
+              <CotizadorPanel/>
+            </div>
+          </div>
+          <div className="main">
+            <div className="navigations">
+              <Navigation />
+            </div>
+            <div className="sections">
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/sce/Configuracion" element={<Configuracion/>} />
+
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <Routes>
+          <Route
+            path="/signin"
+            element={<SignIn setAuth={setIsAuthenticated} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUp setAuth={setIsAuthenticated} />}
+          />
+          <Route path="*" element={<Navigate to="/signin" />} />
+        </Routes>
+      )}
+    </Router>
+  );
+};
+
+export default App;
+
+/*
+<div className="main">
           <div className="header">
             <Navigation />
           </div>
-          <div className="main">
-            <section className="layout flexbox fRow">
+            <section className="">
               <div className="sidebar">
-                <LeftSide />
+                <Menulateral />
               </div>
-              <div className="body flex1">
+              <div className="body">
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+
 
                   <Route path="/Irontools/soles" element={<SolesIrontools/>}/>
                   <Route path="/Torque/soles" element={<SolesTorque/>}/>
@@ -42,33 +100,10 @@ const App = () => {
                   <Route path="/Cotizador" element={<Cotizador/>}/>
                   <Route path="/sce/Configuracion" element={<Configuracion/>} />
 
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="*" element={<Navigate to="/" />} /> {/* Redirigir rutas desconocidas */}
+                  <Route path="/sistema" element={<SistemaCotizacion/>}/>
+                  <Route path="*" element={<Navigate to="/" />} /> 
                 </Routes>
               </div>
-              {/* <div className="profileCard">
-                <Profile/>
-              </div> */}
             </section>
           </div>
-        </div>
-      ) : (
-        // rutas publicas y accesos a enlaces de sitio redireccionado
-        <Routes>
-          <Route
-            path="/signin"
-            element={<SignIn setAuth={setIsAuthenticated} />}
-          />
-          <Route
-            path="/signup"
-            element={<SignUp setAuth={setIsAuthenticated} />}
-          />
-          {/* Redirigir rutas desconocidas */}
-          <Route path="*" element={<Navigate to="/signin" />} /> 
-        </Routes>
-      )}
-    </Router>
-  );
-};
-
-export default App;
+*/
