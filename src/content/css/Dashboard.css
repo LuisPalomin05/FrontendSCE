@@ -8,13 +8,8 @@
     flex-direction: row;
     gap: 5px;
     padding: 5px;
-    background: lightpink;
 }
 
-.CashDashboardPanel:hover{
-cursor: pointer;
-border-color: #4b4b4b;
-}
 
 
 .boxbottontop{

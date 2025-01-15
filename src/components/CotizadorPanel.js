@@ -7,7 +7,7 @@ export default class CotizadorPanel extends Component {
       <div className="CotizadorPanel">
         <div className="CotizacionPanelbox">
           <div className="titleCotizacion">
-            <p className="cwhite">Cotizar:</p>
+            <p className="cwhite panelTitle">Cotizar:</p>
           </div>
           <div className="EmpresaItembox">
 

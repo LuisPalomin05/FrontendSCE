@@ -36,6 +36,8 @@ display: flex;
     display: flex;
     align-items: center;
     padding: 2px;
+    font-weight: 600;
+    font-size: 1.4em;
 }
 
 .searchBoxnav{
@@ -76,4 +78,9 @@ display: flex;
     width: 30px;
     height: 30px;
     background: white;
+}
+
+.ionicongray:hover{
+    cursor: pointer;
+    background: lightcoral;
 }

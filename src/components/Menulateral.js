@@ -53,11 +53,21 @@ const Menulateral = () => {
           <div className="hoverback">
             <ion-icon class="ioniconwhite" name="list"></ion-icon>
           </div>
-          <div className="hoverback">
-            <Link to={"/Dashboard"}>
+          
+            <Link to={"/Dashboard"} className="hoverback">
               <ion-icon class="ioniconwhite" name="home"></ion-icon>
             </Link>
-          </div>
+          
+           
+            <Link to={"/Ventas"} className="hoverback">
+            <ion-icon class="ioniconwhite" name="bag-add-outline"></ion-icon>
+            </Link>
+          
+          
+            <Link to={"/Compras"} className="hoverback">
+            <ion-icon class="ioniconwhite" name="bag-remove-outline"></ion-icon>
+            </Link>
+          
         </div>
         <div className="">
           <Link to={"/sce/Configuracion"}>

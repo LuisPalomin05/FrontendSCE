@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CardBoxCash from "./CardBox";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class Dashboard extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class Dashboard extends Component {
       <div className="DashBoardBox">
         <div className="flexbox barTopmenu">
           <div className="flexbox boxbottontop">
-            <div className="flexcenter bottonitem" >
+            <div className="flexcenter bottonitem">
               <ion-icon name="podium-outline"></ion-icon>
             </div>
             <div className="flexcenter bottonitem">
@@ -20,39 +20,60 @@ export default class Dashboard extends Component {
           </div>
           <div>
             <div className="flexcenter createButtonBox">
-              <div className="flexcenter"><ion-icon name="add-outline"></ion-icon></div>
-              <div className="flexcenter"><p>Agregar</p></div>
+              <div className="flexcenter">
+                <ion-icon name="add-outline"></ion-icon>
+              </div>
+              <div className="flexcenter">
+                <p>Agregar</p>
+              </div>
             </div>
           </div>
         </div>
         <div>
+          <section>
           <p>Contabilidad</p>
           <div className="CashDashboardPanel">
-            <CardBoxCash
-              tipo="Venta"
-              icono="cash-outline"
-              monto="S/. 1500"
-              empresa="Torque-G46"
-            />
-            <CardBoxCash
-              tipo="Compras"
-              icono="cash-outline"
-              monto="S/. 1500"
-              empresa="Torque-G46"
-            />
-            <CardBoxCash
-              tipo="Ventas"
-              icono="cash-outline"
-              monto="S/. 1500"
-              empresa="Irontools"
-            />
-            <CardBoxCash
-              tipo="Compras"
-              icono="cash-outline"
-              monto="S/. 1500"
-              empresa="Irontools"
-            />
+            <Link to={"/Ventas"} className="CardboxCash">
+              <CardBoxCash
+                tipo="Ventas"
+                icono="cash-outline"
+                monto="S/. 1500"
+                empresa="Torque-G46"
+              />
+            </Link>
+
+            <Link to={"/Compras"} className="CardboxCash">
+              <CardBoxCash
+                tipo="Compras"
+                icono="cash-outline"
+                monto="S/. 1500"
+                empresa="Torque-G46"
+              />
+            </Link>
+
+            <Link to={"/Ventas"} className="CardboxCash">
+              <CardBoxCash
+                tipo="Ventas"
+                icono="cash-outline"
+                monto="S/. 1500"
+                empresa="Irontools"
+              />
+            </Link>
+
+            <Link to={"/Compras"} className="CardboxCash">
+              <CardBoxCash
+                tipo="Compras"
+                icono="cash-outline"
+                monto="S/. 1500"
+                empresa="Irontools"
+              />
+            </Link>
           </div>
+          </section>
+          <section>
+
+          </section>
+        
         </div>
       </div>
     );

@@ -22,6 +22,8 @@ import {
   Navigation,
   Configuracion,
   CotizadorPanel,
+  Compras,
+  Ventas
 } from "./components/Componentes";
 // import Cotizador from "./components/LeftSide";
 
@@ -51,6 +53,8 @@ const App = () => {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/sce/Configuracion" element={<Configuracion/>} />
+                <Route path="/Compras" element={<Compras/>}/>
+                <Route path="/Ventas" element={<Ventas/>}/>
 
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>

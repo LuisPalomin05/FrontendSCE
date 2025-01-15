@@ -58,3 +58,7 @@
     background: #dedede45;
     cursor: pointer;
 }
+
+.panelTitle{
+    padding: 5px 2px;
+}

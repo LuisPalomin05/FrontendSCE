@@ -14,3 +14,5 @@ export {default as FormularioCotizacion } from './FormularioCotizacion';
 export {default as SistemaCotizacion } from './SistemaCotizacion';
 export { default as Menulateral} from './Menulateral';
 export { default as CotizadorPanel} from './CotizadorPanel';
+export {default as Compras} from './ComprasVista';
+export {default as Ventas} from './VentasVista';
