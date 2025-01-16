@@ -1,0 +1,27 @@
+.ComprasBox{
+    padding: 5px;
+}
+
+.topListCompras{
+    justify-content: space-between;
+}
+
+#empresas{
+    color: #616161;
+    outline: none;
+    border: 1px solid #616161;
+    padding: 2px 30px;
+    border-radius: 5px;
+}
+
+option{
+    height: 35px;
+}
+
+.titleboxCompras{
+    color: #616161;
+}
+
+.optionmenubox{
+    gap: 4px;
+}
