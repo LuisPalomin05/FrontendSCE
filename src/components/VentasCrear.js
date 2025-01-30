@@ -32,6 +32,19 @@ const VentasCrear = () => {
               <input type="text" placeholder="Numero de Serie" />
             </section>
             <section>
+              <div>
+              <label>Empresas</label>
+              <select>
+                <option>TORQUE-G46</option>
+                <option>IRONTOOLS</option>
+              </select>
+              </div>
+<div>
+  <label>20601395801</label>
+</div>
+              
+            </section>
+            <section>
               <label>Moneda</label>
               <select>
                 <option>Soles</option>
