@@ -43,7 +43,7 @@ export default class Ventas extends Component {
 
         <section>
           <Routes>
-            <Route path="/" element={<VentasLista />} />
+            <Route path="/ventas" element={<VentasLista />} />
             <Route path="crear" element={<VentasCrear />} />
           </Routes>
           
