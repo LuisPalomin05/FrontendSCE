@@ -37,6 +37,29 @@ export default class Ventas extends Component {
             </select>
           </div>
         </section>
+
+        <section>
+          <table>
+            <tr>
+              <th> <input type="checkbox" name="" id="itemids"/> </th>
+              <th>EMPRESA</th>
+              <th>RUC</th>
+              <th>RAZON SOCIAL</th>
+              <th>MONTO</th>
+              <th>FECHA</th>
+              <th>OPCIONES</th>
+            </tr>
+            <tr>
+              <td> <input type="checkbox" name="" id="itemids"/> </td>
+              <td>Dato 1</td>
+              <td>Dato 2</td>
+              <td>Dato 3</td>
+              <td>Dato 1</td>
+              <td>Dato 2</td>
+              <td>Dato 3</td>
+            </tr>
+          </table>
+        </section>
       </div>
     );
   }

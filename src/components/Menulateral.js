@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import FormularioCotizacion from "./FormularioCotizacion";
 import { Link } from "react-router-dom";
 
 const Menulateral = () => {
@@ -68,6 +67,11 @@ const Menulateral = () => {
             <ion-icon class="ioniconwhite" name="bag-remove-outline"></ion-icon>
             </Link>
           
+            <Link to={"/Documentos"} className="hoverback">
+            <ion-icon class="ioniconwhite" name="document-text-outline"></ion-icon>
+            </Link>
+
+
         </div>
         <div className="">
           <Link to={"/sce/Configuracion"}>

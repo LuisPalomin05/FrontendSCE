@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CardBoxCash from "./CardBox";
 import { Link } from "react-router-dom";
-import ScrollableTable from "../components/tableComponent"
 
 export default class Dashboard extends Component {
   render() {
@@ -72,8 +71,16 @@ export default class Dashboard extends Component {
           </div>
 
           </section>
-          <section>
-          <ScrollableTable/>
+          <section className="menudashbox">
+              <Link to={"/Ventas"} className="RectboxCash">
+              <p>Ventas</p>
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+              </Link>
+
+              <Link to={"/Compras"} className="RectboxCash">
+              <p>Compras</p>
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+              </Link>
           </section>
         
         </div>

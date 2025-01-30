@@ -19,6 +19,7 @@ export default class CotizadorPanel extends Component {
               <li
                 className="flexbox liItemCash"
               >
+
                 <p>Soles</p>
                 <ion-icon name="chevron-forward"></ion-icon>
               </li>
