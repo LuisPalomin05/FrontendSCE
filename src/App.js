@@ -12,7 +12,7 @@ import "./content/css/SignIn.css";
 import "./content/css/Navigation.css";
 import "./content/css/SideBar.css";
 import "./content/css/CotizadorPanel.css";
-import "./content/css/Dashboard.css"
+import "./content/css/Dashboard.css";
 //importar los componentes
 import {
   Menulateral,
@@ -24,7 +24,7 @@ import {
   CotizadorPanel,
   Compras,
   Ventas,
-  Documentos
+  Documentos,
 } from "./components/Componentes";
 // import Cotizador from "./components/LeftSide";
 
@@ -38,11 +38,10 @@ const App = () => {
         <div className="layout">
           <div className="sidebar">
             <div className="menuicons">
-            <Menulateral />
-
+              <Menulateral />
             </div>
             <div className="contentpanel">
-              <CotizadorPanel/>
+              <CotizadorPanel />
             </div>
           </div>
           <div className="main">
@@ -53,10 +52,15 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/sce/Configuracion" element={<Configuracion/>} />
+                <Route path="/sce/configuracion" element={<Configuracion/>} />
                 <Route path="/compras" element={<Compras/>}/>
                 <Route path="/documentos" element={<Documentos />} />
                 <Route path="/ventas/*" element={<Ventas/>}/>
+                <Route path="/sce/configuracion" element={<Configuracion />} />
+                <Route
+                  path="/sce/configuracion/*"
+                  element={<Configuracion />}
+                />
 
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>

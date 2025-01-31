@@ -116,3 +116,11 @@ grid-area: sections;
 .cwhite{
   color: white;
 }
+
+.cGray{
+  color: #7a7a7a;
+}
+
+.cBlack{
+  color: #383838;
+}
