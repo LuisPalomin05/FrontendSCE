@@ -124,3 +124,11 @@ grid-area: sections;
 .cBlack{
   color: #383838;
 }
+
+.gapp1{
+  gap: 2px;
+}
+
+.gapp2{
+  gap: 2px;
+}

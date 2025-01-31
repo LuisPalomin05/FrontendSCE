@@ -15,7 +15,7 @@ export default class Dashboard extends Component {
               <ion-icon name="list-outline"></ion-icon>
             </div>
             <div className="flexcenter bottonitem">
-              <ion-icon name="refresh-outline"></ion-icon>
+            <ion-icon name="refresh-outline"></ion-icon>
             </div>
           </div>
           <div>
@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
           <section>
           <p>Contabilidad</p>
           <div className="CashDashboardPanel">
-            <Link to={"/Ventas"} className="CardboxCash">
+            <Link to={"/ventas"} className="CardboxCash">
               <CardBoxCash
                 tipo="Ventas"
                 icono="cash-outline"
@@ -42,7 +42,7 @@ export default class Dashboard extends Component {
               />
             </Link>
 
-            <Link to={"/Compras"} className="CardboxCash">
+            <Link to={"/compras"} className="CardboxCash">
               <CardBoxCash
                 tipo="Compras"
                 icono="cash-outline"
@@ -51,7 +51,7 @@ export default class Dashboard extends Component {
               />
             </Link>
 
-            <Link to={"/Ventas"} className="CardboxCash">
+            <Link to={"/ventas"} className="CardboxCash">
               <CardBoxCash
                 tipo="Ventas"
                 icono="cash-outline"
@@ -60,7 +60,7 @@ export default class Dashboard extends Component {
               />
             </Link>
 
-            <Link to={"/Compras"} className="CardboxCash">
+            <Link to={"/compras"} className="CardboxCash">
               <CardBoxCash
                 tipo="Compras"
                 icono="cash-outline"
@@ -72,12 +72,12 @@ export default class Dashboard extends Component {
 
           </section>
           <section className="menudashbox">
-              <Link to={"/Ventas"} className="RectboxCash">
+              <Link to={"/ventas"} className="RectboxCash">
               <p>Ventas</p>
               <ion-icon name="chevron-forward-outline"></ion-icon>
               </Link>
 
-              <Link to={"/Compras"} className="RectboxCash">
+              <Link to={"/compras"} className="RectboxCash">
               <p>Compras</p>
               <ion-icon name="chevron-forward-outline"></ion-icon>
               </Link>
