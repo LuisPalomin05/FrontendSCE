@@ -13,3 +13,5 @@ export {default as Cuenta} from './Cuenta';
 export {default as Personalizacion} from './Personalizacion';
 export {default as Seguridad} from './Seguridad';
 export {default as UnidadesMedida} from './UnidadesMedida';
+export {default as VentasCrear} from './VentasCrear';
+export {default as VentasLista} from './VentasLista';
