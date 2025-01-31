@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Menulateral = () => {
@@ -7,7 +8,7 @@ const Menulateral = () => {
       <div className="flexbox flexRow">
         <div className="MenuTopBox">
           <div className="flexbox hoverback">
-            <Link className="" to={"/Dashboard"}>
+            <Link className="" to={"/dashboard"}>
               <svg
                 className="nombreLogo"
                 version="1.0"
@@ -53,28 +54,28 @@ const Menulateral = () => {
             <ion-icon class="ioniconwhite" name="list"></ion-icon>
           </div>
           
-            <Link to={"/Dashboard"} className="hoverback">
+            <Link to={"/dashboard"} className="hoverback">
               <ion-icon class="ioniconwhite" name="home"></ion-icon>
             </Link>
           
            
-            <Link to={"/Ventas"} className="hoverback">
+            <Link to={"/ventas"} className="hoverback">
             <ion-icon class="ioniconwhite" name="bag-add-outline"></ion-icon>
             </Link>
           
           
-            <Link to={"/Compras"} className="hoverback">
+            <Link to={"/compras"} className="hoverback">
             <ion-icon class="ioniconwhite" name="bag-remove-outline"></ion-icon>
             </Link>
           
-            <Link to={"/Documentos"} className="hoverback">
+            <Link to={"/documentos"} className="hoverback">
             <ion-icon class="ioniconwhite" name="document-text-outline"></ion-icon>
             </Link>
 
 
         </div>
         <div className="">
-          <Link to={"/sce/Configuracion"}>
+          <Link to={"/sce/configuracion"}>
             <div className="hoverback">
               <ion-icon class="ioniconwhite" name="cog"></ion-icon>
             </div>

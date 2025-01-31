@@ -9,3 +9,5 @@ export { default as CotizadorPanel} from './CotizadorPanel';
 export {default as Compras} from './ComprasVista';
 export {default as Ventas} from './VentasVista';
 export {default as Documentos} from './Documentos';
+export {default as VentasCrear} from './VentasCrear';
+export {default as VentasLista} from './VentasLista';
