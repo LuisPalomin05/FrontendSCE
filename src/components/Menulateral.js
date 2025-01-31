@@ -74,7 +74,7 @@ const Menulateral = () => {
 
         </div>
         <div className="">
-          <Link to={"/sce/Configuracion"}>
+          <Link to={"/sce/configuracion"}>
             <div className="hoverback">
               <ion-icon class="ioniconwhite" name="cog"></ion-icon>
             </div>

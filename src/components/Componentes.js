@@ -9,3 +9,7 @@ export { default as CotizadorPanel} from './CotizadorPanel';
 export {default as Compras} from './ComprasVista';
 export {default as Ventas} from './VentasVista';
 export {default as Documentos} from './Documentos';
+export {default as Cuenta} from './Cuenta';
+export {default as Personalizacion} from './Personalizacion';
+export {default as Seguridad} from './Seguridad';
+export {default as UnidadesMedida} from './UnidadesMedida';
