@@ -11,6 +11,13 @@ a, Link{
   color: black;
 }
 
+.margin0{
+  margin: 0;
+}
+
+.margin1{
+  margin: 1px;
+}
 
 
 
@@ -131,4 +138,33 @@ grid-area: sections;
 
 .gapp2{
   gap: 2px;
+}
+
+
+.bgWhite{
+  background: #ffffff;
+}
+
+.flexcolumn{
+  display: flex;
+  flex-direction: column;
+}
+
+.red{
+  background: red;
+}
+
+.btnbox{
+  padding: 5px;
+  border-radius: 5px;
+  background: white;
+  color: #433c98;
+  cursor: pointer;
+  border: 1px solid #4b4b4b8c;
+  transition: 0.3s;
+}
+
+.btnbox:hover{
+  border: 1px solid #4b4b4b8c;
+
 }
