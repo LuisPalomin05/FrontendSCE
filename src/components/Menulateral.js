@@ -72,6 +72,9 @@ const Menulateral = () => {
             <ion-icon class="ioniconwhite" name="document-text-outline"></ion-icon>
             </Link>
 
+            <Link to={"/pedidos"} className="hoverback">
+            <ion-icon class="ioniconwhite" name="ticket-outline"></ion-icon>
+            </Link>
 
         </div>
         <div className="">

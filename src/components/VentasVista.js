@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../content/css/VentasStylo.css";
-import {VentasCrear, VentasLista} from "./Componentes";
-import { Link,Routes, Route,  } from "react-router-dom";
+import { VentasCrear, VentasLista } from "./Componentes";
+import { Link, Routes, Route } from "react-router-dom";
 
 export default class Ventas extends Component {
   render() {
@@ -24,11 +24,12 @@ export default class Ventas extends Component {
             <p className=" titleboxVentas">10 resultados - 50 listados</p>
           </div>
           <div className="flexbox optionmenubox">
-            <div><Link to="/ventas/crear" className="flexcenter createButtonBox">
-              <div className="flexcenter">
-                <ion-icon name="add-outline"></ion-icon>
-              </div>
-              
+            <div >
+              <Link to="/ventas/crear" className="flexcenter createButtonBox">
+                <div className="flexcenter">
+                  <ion-icon name="add-outline"></ion-icon>
+                </div>
+
                 <div className="flexcenter">
                   <p>Nueva Venta</p>
                 </div>
@@ -46,7 +47,6 @@ export default class Ventas extends Component {
             <Route path="/" element={<VentasLista />} />
             <Route path="crear" element={<VentasCrear />} />
           </Routes>
-          
         </section>
       </div>
     );

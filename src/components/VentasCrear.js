@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const VentasCrear = () => {
   return (
@@ -13,52 +14,55 @@ const VentasCrear = () => {
         <section>
           <form>
             <section>
-              <label>Cliente</label>
+              <p>Cliente</p>
               <input type="text" placeholder="Cliente" />
             </section>
             <section>
-              <label>RUC</label>
+              <p>RUC</p>
               <input type="text" placeholder="RUC:20123456789" />
             </section>
             <section>
-              <label>Fecha Emision</label>
+              <p>Fecha Emision</p>
               <input type="date" />
             </section>
             <section>
-              <label>Fecha Vencimiento</label>
+              <p>Fecha Vencimiento</p>
               <input type="date" />
             </section>
             <section>
-              <label>Numero de Serie</label>
+              <p>Numero de Serie</p>
               <input type="text" placeholder="Numero de Serie" />
             </section>
             <section>
               <div>
-                <label>Empresas</label>
-                <select>
-                  <option>TORQUE-G46</option>
-                  <option>IRONTOOLS</option>
-                </select>
+              <p>Empresas</p>
+              <select>
+                <option>TORQUE-G46</option>
+                <option>IRONTOOLS</option>
+              </select>
               </div>
-              <div>
-                <label>20601395801</label>
-              </div>
+<div>
+  <p>20601395801</p>
+</div>
+              
             </section>
             <section>
-              <label>Moneda</label>
+              <p>Moneda</p>
               <select>
                 <option>Soles</option>
                 <option>Dolares</option>
               </select>
             </section>
             <section>
-              <label>Importe total</label>
+              <p>Importe total</p>
               <input type="number" placeholder="Importe total" />
             </section>
-            <button type="submit" className="flexbox padd1 gap1">
-            <ion-icon name="save-outline"></ion-icon>
-              <p>Guardar</p>
-            </button>
+
+            <section className="flexbox gapp2">
+              <button type="submit" className="btnbox">Guardar</button>
+              <button type="reset" className="btnbox">Limpiar</button>
+              <Link to={"/ventas"} className="btnbox">Cancelar</Link>
+            </section>
           </form>
         </section>
         <section>

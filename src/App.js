@@ -25,6 +25,7 @@ import {
   Compras,
   Ventas,
   Documentos,
+  Pedidos
 } from "./components/Componentes";
 // import Cotizador from "./components/LeftSide";
 
@@ -52,6 +53,11 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/sce/configuracion" element={<Configuracion/>} />
+                <Route path="/pedidos/" element={<Pedidos />} />
+                <Route path="/compras/*" element={<Compras/>}/>
+                <Route path="/documentos" element={<Documentos />} />
+                <Route path="/ventas/*" element={<Ventas/>}/>
                 <Route path="/sce/configuracion" element={<Configuracion />} />
                 <Route path="/compras/*" element={<Compras />} />
                 <Route path="/documentos" element={<Documentos />} />
@@ -81,35 +87,3 @@ const App = () => {
 };
 
 export default App;
-
-/*
-<div className="main">
-          <div className="header">
-            <Navigation />
-          </div>
-            <section className="">
-              <div className="sidebar">
-                <Menulateral />
-              </div>
-              <div className="body">
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-
-
-                  <Route path="/Irontools/soles" element={<SolesIrontools/>}/>
-                  <Route path="/Torque/soles" element={<SolesTorque/>}/>
-
-                  <Route path="/Irontools/Dolares" element={<DollarIrontool/>}/>
-                  <Route path="/Torque/Dolares" element={<DollarTorque/>}/>
-
-                  <Route path="/Cotizador" element={<Cotizador/>}/>
-                  <Route path="/sce/Configuracion" element={<Configuracion/>} />
-
-                  <Route path="/sistema" element={<SistemaCotizacion/>}/>
-                  <Route path="*" element={<Navigate to="/" />} /> 
-                </Routes>
-              </div>
-            </section>
-          </div>
-*/
