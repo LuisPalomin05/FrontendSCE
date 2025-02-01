@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { ComprasCrear, ComprasLista } from "./Componentes"
 import "../content/css/ComprasStylo.css";
-
-import { ComprasCrear, ComprasLista } from "./Componentes";
 import { Routes, Route,Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
