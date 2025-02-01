@@ -25,3 +25,14 @@ option{
 .optionmenubox{
     gap: 4px;
 }
+
+.xmldropbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    border: 2px dashed #616161;
+    border-radius: 5px;
+    color: #616161;
+}

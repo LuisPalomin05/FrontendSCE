@@ -24,11 +24,11 @@ export default class Ventas extends Component {
             <p className=" titleboxVentas">10 resultados - 50 listados</p>
           </div>
           <div className="flexbox optionmenubox">
-            <div className="flexcenter createButtonBox">
+            <div><Link to="/ventas/crear" className="flexcenter createButtonBox">
               <div className="flexcenter">
                 <ion-icon name="add-outline"></ion-icon>
               </div>
-              <Link to="/ventas/crear">
+              
                 <div className="flexcenter">
                   <p>Nueva Venta</p>
                 </div>
@@ -43,7 +43,7 @@ export default class Ventas extends Component {
 
         <section>
           <Routes>
-            <Route path="/ventas" element={<VentasLista />} />
+            <Route path="/" element={<VentasLista />} />
             <Route path="crear" element={<VentasCrear />} />
           </Routes>
           

@@ -5,11 +5,12 @@ const VentasCrear = () => {
     <div>
       <section>
         <h1>Registar Nueva Venta</h1>
-        <p className="cGray">ingresa los datos a registrar o arrastra un xml al area indicada</p>
+        <p className="cGray">
+          ingresa los datos a registrar o arrastra un xml al area indicada
+        </p>
       </section>
       <section>
         <section>
-          
           <form>
             <section>
               <label>Cliente</label>
@@ -33,16 +34,15 @@ const VentasCrear = () => {
             </section>
             <section>
               <div>
-              <label>Empresas</label>
-              <select>
-                <option>TORQUE-G46</option>
-                <option>IRONTOOLS</option>
-              </select>
+                <label>Empresas</label>
+                <select>
+                  <option>TORQUE-G46</option>
+                  <option>IRONTOOLS</option>
+                </select>
               </div>
-<div>
-  <label>20601395801</label>
-</div>
-              
+              <div>
+                <label>20601395801</label>
+              </div>
             </section>
             <section>
               <label>Moneda</label>
@@ -55,15 +55,19 @@ const VentasCrear = () => {
               <label>Importe total</label>
               <input type="number" placeholder="Importe total" />
             </section>
+            <button type="submit" className="flexbox padd1 gap1">
+            <ion-icon name="save-outline"></ion-icon>
+              <p>Guardar</p>
+            </button>
           </form>
         </section>
         <section>
-            <p>xml</p>
-            <div>
-                <div>
-                    <p>Arrastra el archivo xml</p>
-                </div>
+          <p>xml</p>
+          <div>
+            <div className="flexbox padd1 xmldropbox">
+              <p>Arrastra el archivo xml</p>
             </div>
+          </div>
         </section>
       </section>
     </div>

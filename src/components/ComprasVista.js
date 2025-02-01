@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { ComprasCrear, ComprasLista } from "./Componentes"
 import "../content/css/ComprasStylo.css";
-// import { Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 export default class Compras extends Component {
   render() {
@@ -36,6 +37,13 @@ export default class Compras extends Component {
             <option value="Irontools">Irontools</option>
           </select>
         </div>
+      </section>
+
+      <section>
+        <Routes>
+          <Route path="/" element={<ComprasLista />} />
+          <Route path="crear" element={<ComprasCrear />} />
+        </Routes>
       </section>
     </div>
     )
