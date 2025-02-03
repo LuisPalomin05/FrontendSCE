@@ -78,9 +78,6 @@ grid-area: sections;
   background-color: #433c98;
 }
 
-/* .footer {
-  grid-area: footer;
-} */
 
 
 .flexbox {
@@ -167,4 +164,8 @@ grid-area: sections;
 .btnbox:hover{
   border: 1px solid #4b4b4b8c;
 
+}
+
+.pleft{
+  padding: 0 5px;
 }
