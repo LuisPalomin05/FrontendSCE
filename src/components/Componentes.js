@@ -17,3 +17,4 @@ export { default as UnidadesMedida } from './UnidadesMedida';
 export { default as Ventas } from './VentasVista';
 export { default as VentasCrear } from './VentasCrear';
 export { default as VentasLista } from './VentasLista';
+export { default as Cotizador } from './CotizadorVista';

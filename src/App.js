@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -26,6 +27,7 @@ import {
   Ventas,
   Documentos,
   Pedidos,
+  Cotizador,
 } from "./components/Componentes";
 // import Cotizador from "./components/LeftSide";
 
@@ -53,18 +55,20 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/sce/configuracion" element={<Configuracion/>} />
+                <Route path="/sce/configuracion" element={<Configuracion />} />
                 <Route path="/pedidos/" element={<Pedidos />} />
-                <Route path="/compras/*" element={<Compras/>}/>
+                <Route path="/compras/*" element={<Compras />} />
                 <Route path="/documentos" element={<Documentos />} />
-                <Route path="/ventas/*" element={<Ventas/>}/>
+                <Route path="/ventas/*" element={<Ventas />} />
                 <Route path="/sce/configuracion" element={<Configuracion />} />
                 <Route path="/compras/*" element={<Compras />} />
                 <Route path="/documentos" element={<Documentos />} />
                 <Route path="/ventas/*" element={<Ventas />} />
-                <Route path="/sce/configuracion/*" element={<Configuracion />}/>
-
-
+                <Route
+                  path="/sce/configuracion/*"
+                  element={<Configuracion />}
+                />
+                <Route path="/cotizador/*" element={<Cotizador />} />
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
