@@ -8,6 +8,7 @@
     flex-direction: row;
     gap: 5px;
     padding: 5px;
+    justify-content: space-evenly;
 }
 
 

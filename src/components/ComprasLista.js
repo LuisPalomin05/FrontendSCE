@@ -4,9 +4,9 @@ const ComprasCrear = () => {
     return (
         <div>
         <section>
-            <h1>Compras</h1>
+            <h1 className="cGray fs16 ptop">Compras</h1>
             <div className="bgWhite">
-              <table className="cGray">
+              <table className="flexcolumn cGray gapp4">
                 <th>
                   <td>
                     <input type="checkbox" name="select" id="selectable" />

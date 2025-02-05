@@ -30,8 +30,8 @@ export default class Dashboard extends Component {
           </div>
         </div>
         <div>
-          <section>
-            <p>Contabilidad</p>
+          <section className="flexcolumn gapp2">
+            <h1 className="cGray fs16 ptop">Contabilidad</h1>
             <div className="CashDashboardPanel">
               <Link to={"/ventas"} className="CardboxCash">
                 <CardBoxCash
@@ -80,20 +80,30 @@ export default class Dashboard extends Component {
               <p>Compras</p>
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </Link>
+            <Link to={"/documentos"} className="RectboxCash">
+              <p>Documentos</p>
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </Link>
+            <Link to={"/pedidos"} className="RectboxCash">
+              <p>Pedidos</p>
+              <ion-icon name="chevron-forward-outline"></ion-icon>
+            </Link>
           </section>
           <section>
-            <h1>Mis Cotizaciones</h1>
+            <h1 className="cGray fs16 ptop">Mis Cotizaciones</h1>
             <div className="bgWhite">
-              <table className="cGray">
-                <th>
+              <table className="cGray flexbox gapp4">
+                <th className="flexbox gapp8">
                   <td>
                     <input type="checkbox" name="select" id="selectable" />
                   </td>
                   <td>Cliente</td>
                   <td>Fecha</td>
                   <td>Estado</td>
+                  <td>Creador</td>
+                  <td>Acciones</td>
                 </th>
-                <tr>
+                <tr className="flexbox gapp4">
                   <td>
                     <input type="checkbox" name="select" id="selectable" />
                   </td>
@@ -101,6 +111,13 @@ export default class Dashboard extends Component {
                   <td>Cliente1</td>
                   <td>12/12/2021</td>
                   <td>Enviado</td>
+                  <td>Admin</td>
+                  <td>
+                    <Link to={"/cotizacion"} className="btnbox">
+                      Ver
+                    </Link>
+                  </td>
+
                 </tr>
               </table>
             </div>

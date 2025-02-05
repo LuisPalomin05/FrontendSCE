@@ -47,7 +47,7 @@ export default class Configuracion extends Component {
           </ul>
         </section>
 
-        <section>
+        <section className="configboxInfo">
           <Routes>
             <Route path="cuenta" element={<Cuenta />} />
             <Route path="personalizacion" element={<Personalizacion />} />

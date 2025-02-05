@@ -4,9 +4,9 @@ const VentasLista = () => {
   return (
     <div>
       <section>
-            <h1>Ventas</h1>
+            <h1 className="cGray fs16 ptop">Ventas</h1>
             <div className="bgWhite">
-              <table className="cGray">
+              <table className="cGray flexcolumn gapp4">
                 <th>
                   <td>
                     <input type="checkbox" name="select" id="selectable" />

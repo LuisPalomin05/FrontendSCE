@@ -51,6 +51,10 @@ font-weight: bold;
     height: 100%;
 }
 
+.configboxInfo{
+    width: 75%;
+}
+
 .listconfig{
     height: 10%;
     width: 100%;

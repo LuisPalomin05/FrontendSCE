@@ -46,16 +46,14 @@ a, Link{
   cursor: pointer;
 }
 
-
+.ptop{
+  padding: 5px 0;
+}
 
 .sections{
 grid-area: sections;
 }
 
-/* .menuicons{
-}
-.contentpanel{
-} */
 
 .ioniconwhite{
   color: #fdfdfd;
@@ -77,11 +75,6 @@ grid-area: sections;
 .hoverback:hover{
   background-color: #433c98;
 }
-
-/* .footer {
-  grid-area: footer;
-} */
-
 
 .flexbox {
   display: flex;
@@ -120,6 +113,10 @@ grid-area: sections;
   padding: 4px;
 }
 
+.padd3{
+  padding: 5px;
+}
+
 .cwhite{
   color: white;
 }
@@ -132,6 +129,10 @@ grid-area: sections;
   color: #383838;
 }
 
+.cGreen{
+  color: #138f53;
+}
+
 .gapp1{
   gap: 2px;
 }
@@ -140,7 +141,37 @@ grid-area: sections;
   gap: 2px;
 }
 
+.gapp4{
+  gap: 4px;
+}
 
+.gapp8{
+  gap: 8px;
+}
+
+.fs10{
+  font-size: 10px;
+}
+
+.fs12{
+  font-size: 12px;
+}
+
+.fs14{
+  font-size: 14px;
+}
+
+.fs16{
+  font-size: 16px;
+}
+
+.fs18{
+  font-size: 18px;
+}
+
+.fs20{
+  font-size: 20px;
+}
 .bgWhite{
   background: #ffffff;
 }
@@ -158,13 +189,131 @@ grid-area: sections;
   padding: 5px;
   border-radius: 5px;
   background: white;
-  color: #433c98;
+  /* color: #433c98; */
   cursor: pointer;
   border: 1px solid #4b4b4b8c;
   transition: 0.3s;
 }
 
+.btnSuccess{
+  background: #138f53;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #138f53;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnSuccess:hover{
+  background: #087440;
+  border: 1px solid #087440;
+}
+
+.btnWarning{
+  background: #f5a623;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #f5a623;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnWarning:hover{
+  background: #d98e1f;
+  border: 1px solid #d98e1f;
+}
+
+.btnDanger{
+  background: #d0021b;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #d0021b;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btnDanger:hover{
+  background: #a0021b;
+  border: 1px solid #a0021b;
+}
+
 .btnbox:hover{
   border: 1px solid #4b4b4b8c;
 
+}
+
+.jcBetween{
+  justify-content: space-between;
+}
+
+.jcAround{
+  justify-content: space-around;
+}
+
+.jcEvenly{
+  justify-content: space-evenly;
+}
+
+.jcCenter{
+  justify-content: center;
+}
+
+.inputbox{
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #4b4b4b8c;
+}
+
+.inputboxitm{
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid #4b4b4b8c;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+.inputboxitm:hover{
+  border: 1px solid #433c98;
+}
+
+.marbot{
+  margin-bottom: 5px;
+}
+
+
+.wd{
+  width: 100%;
+}
+
+.wd1{
+  width: 50%;
+}
+
+.wd2{
+  width: 25%;
+}
+
+.wd3{
+  width: 15%;
+}
+
+.wd10{
+  width: 10%;
+}
+
+input[type="checkbox"] {
+
+  accent-color: #138f53; /* Cambia el color del checkbox */
 }

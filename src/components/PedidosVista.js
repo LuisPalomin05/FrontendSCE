@@ -1,20 +1,30 @@
 import React from "react";
+import "../content/css/PedidosVista.css";
 
 const PedidosVista = () => {
   return (
-    <div>
-      <h1>PedidosVista</h1>
+    <div className="PedidosBox">
+      <h1 className="cGray fs16 ptop">PedidosVista</h1>
 
-      <section>
+      <section className="padd4 wd">
         <div className="flexbox gapp2">
-          <div>
+          <div className="flex1">
             <p>Pedido en curso:</p>
-            <div>datos del pedido en curso</div>
+            <div className="padd2">
+              Pedido en curso
+              <div>
+                <p>Nombre Empresa</p>
+                <p>RUC</p>
+              </div>
+              <div>
+                <p>estado</p>
+              </div>
+            </div>
           </div>
-          <div>Proximo a trabajar</div>
+          <div className="flex1">Proximo a trabajar</div>
         </div>
       </section>
-      <section>
+      <section className="padd2">
         <div>
           <p>Lista Entregados/Pendientes</p>
           <div>datos de pedidos pendientes o entregados</div>
