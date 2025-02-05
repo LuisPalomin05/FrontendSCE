@@ -76,6 +76,11 @@ grid-area: sections;
   background-color: #433c98;
 }
 
+/* .footer {
+  grid-area: footer;
+} */
+
+
 .flexbox {
   display: flex;
 }
@@ -316,4 +321,8 @@ grid-area: sections;
 input[type="checkbox"] {
 
   accent-color: #138f53; /* Cambia el color del checkbox */
+}
+
+.pleft{
+  padding: 0 5px;
 }

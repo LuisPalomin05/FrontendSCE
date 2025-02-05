@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class CotizadorPanel extends Component {
   render() {
@@ -10,29 +10,27 @@ export default class CotizadorPanel extends Component {
             <p className="cwhite panelTitle">Cotizar:</p>
           </div>
           <div className="EmpresaItembox">
-
             <div className="flexbox tagnamebox">
               <ion-icon name="pricetags"></ion-icon>
               <p>TORQUE-G46</p>
             </div>
             <ul className="liItemCashbox">
-              <li
-                className="flexbox liItemCash"
-              >
-
-                <p>Soles</p>
+              <li >
+                <Link to={"/cotizador/Soles"} className="flexbox liItemCash">
+                <div className="flexbox"><p className="pleft">S/.</p>
+                <p>Soles</p></div>
                 <ion-icon name="chevron-forward"></ion-icon>
+                </Link>
               </li>
 
-              <li
-                className="flexbox liItemCash"
-              >
+              <li className="flexbox liItemCash">
+              <div className="flexbox"><p className="pleft">$.</p>
                 <p>Dólares</p>
+                </div>
                 <ion-icon name="chevron-forward"></ion-icon>
               </li>
             </ul>
           </div>
-
 
           <div className="EmpresaItembox">
             <div className="flexbox tagnamebox">
@@ -40,18 +38,16 @@ export default class CotizadorPanel extends Component {
               <p>IRONTOOLS</p>
             </div>
             <ul className=" liItemCashbox">
-              <li
-                className="flexbox liItemCash"
-            
-              >
-                <p>Soles</p>
+              <li className="flexbox liItemCash">
+              <div className="flexbox"><p className="pleft">S/.</p>
+              <p>Soles</p></div>
                 <ion-icon name="chevron-forward"></ion-icon>
               </li>{" "}
-              <li
-                className="flexbox liItemCash"
-                
-              >
+              <li className="flexbox liItemCash">
+
+              <div className="flexbox"><p className="pleft">$.</p>
                 <p>Dólares</p>
+                </div>
                 <ion-icon name="chevron-forward"></ion-icon>
               </li>
             </ul>

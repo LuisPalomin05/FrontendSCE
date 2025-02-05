@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import CardBoxCash from "./CardBox";
 import { Link } from "react-router-dom";
 
+
 export default class Dashboard extends Component {
+
   render() {
     return (
       <div className="DashBoardBox">
@@ -30,9 +32,9 @@ export default class Dashboard extends Component {
           </div>
         </div>
         <div>
-          <section className="flexcolumn gapp2">
-            <h1 className="cGray fs16 ptop">Contabilidad</h1>
-            <div className="CashDashboardPanel">
+          <section>
+            <p>Contabilidad</p>
+            <div className="CashDashboardPanel" id="MiArea">
               <Link to={"/ventas"} className="CardboxCash">
                 <CardBoxCash
                   tipo="Ventas"
