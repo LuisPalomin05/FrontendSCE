@@ -26,14 +26,14 @@ export default class Dashboard extends Component {
                 <ion-icon name="add-outline"></ion-icon>
               </div>
               <div className="flexcenter">
-                <p>Agregar</p>
+                <p >Agregar</p>
               </div>
             </div>
           </div>
         </div>
         <div>
           <section>
-            <p>Contabilidad</p>
+            <h1 className="cGray fs16">Contabilidad</h1>
             <div className="CashDashboardPanel" id="MiArea">
               <Link to={"/ventas"} className="CardboxCash">
                 <CardBoxCash
@@ -94,7 +94,7 @@ export default class Dashboard extends Component {
           <section>
             <h1 className="cGray fs16 ptop">Mis Cotizaciones</h1>
             <div className="bgWhite">
-              <table className="cGray flexbox gapp4">
+              <table className="cGray flexcolumn gapp4">
                 <th className="flexbox gapp8">
                   <td>
                     <input type="checkbox" name="select" id="selectable" />

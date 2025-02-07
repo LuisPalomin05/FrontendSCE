@@ -323,6 +323,16 @@ input[type="checkbox"] {
   accent-color: #138f53; /* Cambia el color del checkbox */
 }
 
+.bgreen{
+  background: #138f53;
+}
+
 .pleft{
   padding: 0 5px;
+}
+
+.selectBox{
+  height: 25px;
+  border: 1px solid #4b4b4b8c;
+  cursor: pointer;
 }
