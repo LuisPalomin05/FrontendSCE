@@ -302,6 +302,9 @@ grid-area: sections;
   width: 100%;
 }
 
+.wdst{
+  width: 75;
+}
 .wd1{
   width: 50%;
 }
@@ -335,4 +338,12 @@ input[type="checkbox"] {
   height: 25px;
   border: 1px solid #4b4b4b8c;
   cursor: pointer;
+}
+
+.bgGray{
+  background: #d2d1d1;
+}
+
+.textcenter{
+  text-align: center;
 }

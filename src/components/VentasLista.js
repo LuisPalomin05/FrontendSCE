@@ -7,7 +7,7 @@ const VentasLista = () => {
             <h1 className="cGray fs16 ptop">Ventas</h1>
             <div className="bgWhite">
               <table className="cGray flexcolumn gapp4">
-                <th>
+                <th className="flexalign padd2 gapp4">
                   <td>
                     <input type="checkbox" name="select" id="selectable" />
                   </td>
@@ -15,7 +15,7 @@ const VentasLista = () => {
                   <td>Fecha</td>
                   <td>Estado</td>
                 </th>
-                <tr>
+                <tr className="flexalign padd2 gapp2">
                   <td>
                     <input type="checkbox" name="select" id="selectable" />
                   </td>
