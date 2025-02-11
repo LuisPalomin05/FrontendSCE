@@ -164,7 +164,9 @@ export default function CotizadorVista() {
         <ion-icon name="caret-forward-outline"></ion-icon>
           <h1>HERRAMIENTAS</h1>
         </div>
+        <section>
         <div>
+
           <h3 className="cBlack">Fecha Emisión</h3>
           <input
             type="date"
@@ -173,7 +175,21 @@ export default function CotizadorVista() {
             value={fechaEmision}
             onChange={handleFechaChange}
           />
+
         </div>
+        <div>
+          <h3>Forma de pago</h3>
+          <select name="forma_pago" id="forma_pago" className="wd">
+            <option value="contado">Contado</option>
+            <option value="credito">Credito</option>
+            <option value="credito">Credito 7 Días</option>
+            <option value="credito">Credito 15 Días</option>
+            <option value="credito">Credito 30 Días</option>
+            <option value="credito">Credito 90 Dias</option>
+          </select>
+        </div>
+        </section>
+
 
         <div>
           <table>
@@ -196,7 +212,7 @@ export default function CotizadorVista() {
 
         <div>
           <h3 className="cBlack">Observaciones</h3>
-          <textarea className="wd" />
+          <textarea className="wd" placeholder="Observaciones..."/>
           <button className="btnSuccess" type="submit">
             GUARDAR DATOS
           </button>
