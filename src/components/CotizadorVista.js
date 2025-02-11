@@ -3,7 +3,9 @@ import "../content/css/cotizadorVista.css";
 
 export default function CotizadorVista() {
   const hoy = new Date();
-  const fechaActual = `${hoy.getFullYear()}-${String(hoy.getMonth() + 1).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
+  const fechaActual = `${hoy.getFullYear()}-${String(
+    hoy.getMonth() + 1
+  ).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
 
   const [ruc, setRuc] = useState("");
   const [moneda, setMoneda] = useState("$.");
@@ -59,7 +61,7 @@ export default function CotizadorVista() {
                 id="moneda"
                 onChange={handlechangeselectmoneda}
                 className="padd2"
-                value={moneda} 
+                value={moneda}
               >
                 <option value="$.">Dolar</option>
                 <option value="S/.">Soles</option>
@@ -83,17 +85,29 @@ export default function CotizadorVista() {
           <div className="flexbox gapp4 padd1">
             <div className="wd2 flexColumn">
               <p>Producto</p>
-              <input type="text" placeholder="Producto" className="inputboxitm wd" />
+              <input
+                type="text"
+                placeholder="Producto"
+                className="inputboxitm wd"
+              />
             </div>
 
             <div>
               <p>Cantidad</p>
-              <input type="number" placeholder="Cantidad" className="inputboxitm" />
+              <input
+                type="number"
+                placeholder="Cantidad"
+                className="inputboxitm"
+              />
             </div>
 
             <div>
               <p>Precio</p>
-              <input type="number" placeholder="Precio" className="inputboxitm" />
+              <input
+                type="number"
+                placeholder="Precio"
+                className="inputboxitm"
+              />
             </div>
           </div>
         </section>
@@ -128,15 +142,15 @@ export default function CotizadorVista() {
               </tbody>
               <tfoot>
                 <tr>
-                  <td colSpan="2">Sub-Total</td>
+                  <td colSpan="4">Sub-Total</td>
                   <td>{moneda} 7.00</td>
                 </tr>
                 <tr>
-                  <td colSpan="2">I.G.V</td>
+                  <td colSpan="4">I.G.V</td>
                   <td>{moneda} 7.00</td>
                 </tr>
                 <tr>
-                  <td colSpan="2">Total</td>
+                  <td colSpan="4">Total</td>
                   <td>{moneda} 7.00</td>
                 </tr>
               </tfoot>
@@ -146,14 +160,49 @@ export default function CotizadorVista() {
       </div>
 
       <div className="flex1">
-        <h3 className="cBlack">Fecha Emisión</h3>
-        <input type="date" name="fecha_emision" id="fecha_emision" value={fechaEmision} onChange={handleFechaChange} />
+        <div>
+        <ion-icon name="caret-forward-outline"></ion-icon>
+          <h1>HERRAMIENTAS</h1>
+        </div>
+        <div>
+          <h3 className="cBlack">Fecha Emisión</h3>
+          <input
+            type="date"
+            name="fecha_emision"
+            id="fecha_emision"
+            value={fechaEmision}
+            onChange={handleFechaChange}
+          />
+        </div>
 
-        <h3 className="cBlack">Observaciones</h3>
-        <textarea className="wd" />
-        <button className="btnSuccess" type="submit">GUARDAR DATOS</button>
+        <div>
+          <table>
+            <tfoot>
+              <tr>
+                <td colSpan="4">Sub-Total</td>
+                <td>{moneda} 7.00</td>
+              </tr>
+              <tr>
+                <td colSpan="4">I.G.V</td>
+                <td>{moneda} 7.00</td>
+              </tr>
+              <tr>
+                <td colSpan="4">Total</td>
+                <td>{moneda} 7.00</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
 
-        <p>aa {empresa}</p>
+        <div>
+          <h3 className="cBlack">Observaciones</h3>
+          <textarea className="wd" />
+          <button className="btnSuccess" type="submit">
+            GUARDAR DATOS
+          </button>
+
+          <p>{empresa}</p>
+        </div>
       </div>
     </div>
   );
