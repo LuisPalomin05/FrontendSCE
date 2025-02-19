@@ -305,9 +305,12 @@ grid-area: sections;
 .wd{
   width: 100%;
 }
-
+.wd85
+{
+  width: 85%;
+}
 .wdst{
-  width: 75;
+  width: 75%;
 }
 .wd1{
   width: 50%;
