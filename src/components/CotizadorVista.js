@@ -7,23 +7,34 @@ export default function CotizadorVista() {
     hoy.getMonth() + 1
   ).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
 
- const optEmpresa = [
-    { empresa: "Torque-G46", src: "" },
-  
-    {  empresa: "Irontools", src: "" },];
+  const optEmpresa = [
+    {
+      empresa: "Torque-G46",
+      src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/bitmapTorque.png",
+    },
+
+    {
+      empresa: "Irontools",
+      src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
+    },
+  ];
 
   const [ruc, setRuc] = useState("");
   const [moneda, setMoneda] = useState("$.");
   const [empresa, setEmpresa] = useState(optEmpresa[0].empresa);
   const [fechaEmision, setFechaEmision] = useState(fechaActual);
-  const [imgEmpresa, setImgEmpresa] = useState("");
+  const [imgEmpresa, setImgEmpresa] = useState(optEmpresa[0].src);
 
   const handlechangeselectmoneda = (event) => {
     setMoneda(event.target.value);
   };
 
   const handlechangeselectempresa = (event) => {
-    setEmpresa(event.target.value);
+    const selEmpresa = optEmpresa.find(
+      (opcion) => opcion.empresa === event.target.value
+    );
+    setImgEmpresa(selEmpresa.src);
+    setEmpresa(selEmpresa.empresa);
   };
 
   const handleFechaChange = (event) => {
@@ -33,53 +44,54 @@ export default function CotizadorVista() {
   return (
     <div className="cotizadorBox">
       <div className="flex2 ">
-
         <section>
           <h1 className="cBlack">Datos Cliente</h1>
           <p>Ingresa los datos del cliente a cotizar:</p>
           <div className="flexbox wd">
-            <section className="wd85"> <div className="flexbox gapp4 padd1">
-              <div className="flexbox">
-                <div>
-                  <p>Ruc</p>
-                  <input
-                    type="text"
-                    id="rucInputData"
-                    placeholder="2012345678X"
-                    value={ruc}
-                    maxLength={12}
-                    onChange={(e) => setRuc(e.target.value)}
-                    className="inputboxitm"
-                  />
-                </div>
-                {ruc.length > 5 && (
+            <section className="wdst">
+              
+              <div className="flexbox gapp4 padd1">
+                <div className="flexbox">
                   <div>
-                    <p>Nombre</p>
+                    <p>Ruc</p>
                     <input
                       type="text"
+                      id="rucInputData"
+                      placeholder="2012345678X"
+                      value={ruc}
+                      maxLength={12}
+                      onChange={(e) => setRuc(e.target.value)}
                       className="inputboxitm"
-                      disabled
-                      placeholder="Nombre del cliente"
                     />
                   </div>
-                )}
-              </div>
-              <div>
-                <p>Moneda</p>
-                <select
-                  name="moneda"
-                  id="moneda"
-                  onChange={handlechangeselectmoneda}
-                  className="padd2"
-                  value={moneda}
-                >
-                  <option value="$.">Dolar</option>
-                  <option value="S/.">Soles</option>
-                </select>
-              </div>
-              <div>
-                <p>Empresa</p>
-                <select
+                  {ruc.length > 5 && (
+                    <div>
+                      <p>Nombre</p>
+                      <input
+                        type="text"
+                        className="inputboxitm"
+                        disabled
+                        placeholder="Nombre del cliente"
+                      />
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <p>Moneda</p>
+                  <select
+                    name="moneda"
+                    id="moneda"
+                    onChange={handlechangeselectmoneda}
+                    className="padd2"
+                    value={moneda}
+                  >
+                    <option value="$.">Dolar</option>
+                    <option value="S/.">Soles</option>
+                  </select>
+                </div>
+                <div>
+                  <p>Empresa</p>
+                  {/* <select
                   name="empresa"
                   id="empresa"
                   onChange={handlechangeselectempresa}
@@ -88,8 +100,21 @@ export default function CotizadorVista() {
                 >
                   <option value="Torque-G46">Torque-G46</option>
                   <option value="Irontools">Irontools</option>
-                </select>
-              </div>
+                </select> */}
+                  <select
+                    className="padd2"
+                    name="empresa"
+                    id="empresa"
+                    value={empresa}
+                    onChange={handlechangeselectempresa}
+                  >
+                    {optEmpresa.map((opcion, index) => (
+                      <option key={index} value={opcion.empresa}>
+                        {opcion.empresa}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
               {/* ---------------- */}
               <div className="flexbox gapp4 padd1">
@@ -121,8 +146,8 @@ export default function CotizadorVista() {
                 </div>
               </div>
             </section>
-            <section className="wd3 padd1">
-              <img className="" src="" alt="" />
+            <section className="wd3 padd1 flexcenter">
+              <img className="pnglogo" src={imgEmpresa} alt="" />
             </section>
           </div>
         </section>
@@ -176,12 +201,12 @@ export default function CotizadorVista() {
         </section>
       </div>
 
-      <div className="flex1">
-        <div className="flexbox padd1">
+      <div className="flex1 toolsboxside">
+        <div className="flexbox padd2 bottombordergray">
           <ion-icon name="caret-forward-outline"></ion-icon>
           <h1>HERRAMIENTAS</h1>
         </div>
-        <section>
+        <section className="padd2">
           <div>
             <h3 className="cBlack">Fecha Emisión</h3>
             <input
