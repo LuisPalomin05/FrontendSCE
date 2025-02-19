@@ -19,7 +19,11 @@ a, Link{
   margin: 1px;
 }
 
+.imgicons{
+  width: 80px;
+  height: 80px;
 
+}
 
 .sidebar {
   grid-area: sidebar;
@@ -328,6 +332,9 @@ input[type="checkbox"] {
 
 .bgreen{
   background: #138f53;
+}
+.borange{
+  background: #efb710;
 }
 
 .pleft{

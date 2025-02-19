@@ -11,6 +11,7 @@ export default function CotizadorVista() {
   const [moneda, setMoneda] = useState("$.");
   const [empresa, setEmpresa] = useState("");
   const [fechaEmision, setFechaEmision] = useState(fechaActual);
+  const [imgEmpresa, setImgEmpresa] = useState("");
 
   const handlechangeselectmoneda = (event) => {
     setMoneda(event.target.value);
@@ -26,10 +27,13 @@ export default function CotizadorVista() {
 
   return (
     <div className="cotizadorBox">
-      <div className="flex2">
+      <div className="flex2 borange">
         <section className="flexColumn gapp8">
-          <div className="flexbox gapp4">
+        <div className="red">
+          <div className="flexbox gapp4 bgreen">
+          
             <div className="flexbox gapp4">
+            
               <div>
                 <p>Ruc</p>
                 <input
@@ -109,8 +113,76 @@ export default function CotizadorVista() {
                 className="inputboxitm"
               />
             </div>
+          </div> </div> 
+          <div>
+            <img src="" alt="" className="imgicons red"/>
           </div>
         </section>
+
+        <section>
+          <p>Ingresa los datos del cliente a cotizar:</p>
+          <div className="flexbox">
+          <section>
+            <div>              <div>
+                <p>Ruc</p>
+                <input
+                  type="text"
+                  id="rucInputData"
+                  placeholder="2012345678X"
+                  value={ruc}
+                  maxLength={12}
+                  onChange={(e) => setRuc(e.target.value)}
+                  className="inputboxitm"
+                />
+              </div>
+              {ruc.length > 5 && (
+                <div>
+                  <p>Nombre</p>
+                  <input
+                    type="text"
+                    className="inputboxitm"
+                    disabled
+                    placeholder="Nombre del cliente"
+                  />
+                </div>
+              )}</div>
+              <div>
+              <p>Moneda</p>
+              <select
+                name="moneda"
+                id="moneda"
+                onChange={handlechangeselectmoneda}
+                className="padd2"
+                value={moneda}
+              >
+                <option value="$.">Dolar</option>
+                <option value="S/.">Soles</option>
+              </select>
+              <div>
+              <p>Empresa</p>
+              <select
+                name="empresa"
+                id="empresa"
+                onChange={handlechangeselectempresa}
+                className="padd2"
+                value={empresa}
+              >
+                <option value="Torque-G46">Torque-G46</option>
+                <option value="Irontools">Irontools</option>
+              </select>
+            </div>
+            </div>
+{/* ---------------- */}
+            <div></div>
+          </section>
+          <section>
+            <img src={""} alt=""/>
+          </section>
+          </div>
+
+        </section>
+
+        {/* ------------------------------ */}
         <section className="ptop bgWhite">
           <button className="btnSuccess padd1">Agregar</button>
         </section>
@@ -160,7 +232,7 @@ export default function CotizadorVista() {
       </div>
 
       <div className="flex1">
-        <div>
+        <div className="flexbox padd1">
         <ion-icon name="caret-forward-outline"></ion-icon>
           <h1>HERRAMIENTAS</h1>
         </div>
