@@ -3,42 +3,69 @@ import "../content/css/cotizadorVista.css";
 
 export default function CotizadorVista() {
   const hoy = new Date();
-  const fechaActual = `${hoy.getFullYear()}-${String(
-    hoy.getMonth() + 1
-  ).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
+  const fechaActual = `${hoy.getFullYear()}-${String(hoy.getMonth() + 1).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
+
+  const [fechaEmision, setFechaEmision] = useState(fechaActual);
+  const [productos, setProductos] = useState([]);
+  const [moneda, setMoneda] = useState("$.");  
+  const [ruc, setRuc] = useState("");
 
   const optEmpresa = [
     {
       empresa: "Torque-G46",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/bitmapTorque.png",
     },
-
     {
       empresa: "Irontools",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
     },
   ];
 
-  const [ruc, setRuc] = useState("");
-  const [moneda, setMoneda] = useState("$.");
   const [empresa, setEmpresa] = useState(optEmpresa[0].empresa);
-  const [fechaEmision, setFechaEmision] = useState(fechaActual);
   const [imgEmpresa, setImgEmpresa] = useState(optEmpresa[0].src);
+
+  const agregarProducto = () => {
+    const nombreProdCat = document.getElementById("NombreProdCat").value;
+    const cantProdCat = parseInt(document.getElementById("cantProdCat").value, 10);
+    const precioProdCat = parseFloat(document.getElementById("PrecioProdCat").value);
+
+    if (!nombreProdCat || isNaN(cantProdCat) || isNaN(precioProdCat)) return;
+
+    const nuevoProducto = {
+      id: productos.length + 1,
+      nombre: nombreProdCat,
+      cantidad: cantProdCat,
+      precio: precioProdCat,
+      subtotal: cantProdCat * precioProdCat,
+    };
+
+    setProductos([...productos, nuevoProducto]);
+
+    document.getElementById("NombreProdCat").value = "";
+    document.getElementById("cantProdCat").value = "";
+    document.getElementById("PrecioProdCat").value = "";
+  };
 
   const handlechangeselectmoneda = (event) => {
     setMoneda(event.target.value);
   };
 
   const handlechangeselectempresa = (event) => {
-    const selEmpresa = optEmpresa.find(
-      (opcion) => opcion.empresa === event.target.value
-    );
+    const selEmpresa = optEmpresa.find((opcion) => opcion.empresa === event.target.value);
     setImgEmpresa(selEmpresa.src);
     setEmpresa(selEmpresa.empresa);
   };
 
   const handleFechaChange = (event) => {
     setFechaEmision(event.target.value);
+  };
+
+  const calcularTotales = () => {
+    const total = this.state.productos.reduce((sum, producto) => sum + producto.subtotal, 0);
+    const igv = total * 0.18;
+    const totalFinal = total + igv;
+
+    this.setState({ total, igv, totalFinal });
   };
 
   return (
@@ -111,6 +138,7 @@ export default function CotizadorVista() {
                   <p>Producto</p>
                   <input
                     type="text"
+                    id="NombreProdCat"
                     placeholder="Producto"
                     className="inputboxitm wd"
                   />
@@ -120,6 +148,7 @@ export default function CotizadorVista() {
                   <p>Cantidad</p>
                   <input
                     type="number"
+                    id="cantProdCat"
                     placeholder="Cantidad"
                     className="inputboxitm"
                   />
@@ -129,6 +158,7 @@ export default function CotizadorVista() {
                   <p>Precio</p>
                   <input
                     type="number"
+                    id="PrecioProdCat"
                     placeholder="Precio"
                     className="inputboxitm"
                   />
@@ -148,7 +178,7 @@ export default function CotizadorVista() {
 
         {/* ------------------------------ */}
         <section className="ptop bgWhite">
-          <button className="btnSuccess padd1 wd3">AGREGAR</button>
+          <button className="btnSuccess padd1 wd3" id="agregarItem" onClick={agregarProducto}>AGREGAR</button>
         </section>
         <section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
@@ -159,35 +189,44 @@ export default function CotizadorVista() {
                   <td className="flexcenter">
                     <input type="checkbox" />
                   </td>
+                  <th>N° ITEM</th>
                   <th>DESCRIPCION</th>
                   <th>CANTIDAD</th>
                   <th>PRECIO</th>
                   <th>SUBTOTAL</th>
+                  <th>ACCIONES</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="bgWhite">
-                  <td className="flexcenter">
-                    <input type="checkbox" />
-                  </td>
-                  <td>Producto 1</td>
-                  <td className="textcenter">5</td>
-                  <td className="textcenter">100</td>
-                  <td className="textcenter">500</td>
+              {productos.map((producto) => (
+                <tr className="bgWhite" key={producto.id}>
+                  <td className="flexcenter"><input type="checkbox" /></td>
+                  <td className="textcenter">{producto.id}</td>
+                  <td>{producto.nombre}</td>
+                  <td className="textcenter">{producto.cantidad}</td>
+                  <td className="textcenter">{producto.precio}</td>
+                  <td className="textcenter">{producto.subtotal}</td>
+                  <td className="flexbox"> <p className="cPointer bluecolor" onClick={() => this.editarProducto(producto.id)}>
+                          <ion-icon name="create-outline"></ion-icon>
+                        </p>
+                        <p className="cPointer redcolor" onClick={() => this.eliminarProducto(producto.id)}>
+                          <ion-icon name="trash-outline"></ion-icon>
+                        </p> </td>
                 </tr>
-              </tbody>
+              ))}
+            </tbody>
               <tfoot>
                 <tr>
                   <td colSpan="4">Sub-Total</td>
-                  <td>{moneda} 7.00</td>
+                  <td id="SubTotalview">{moneda} {total}</td>
                 </tr>
                 <tr>
                   <td colSpan="4">I.G.V</td>
-                  <td>{moneda} 7.00</td>
+                  <td id="igvImpuesto">{moneda} {igv}</td>
                 </tr>
                 <tr>
                   <td colSpan="4">Total</td>
-                  <td>{moneda} 7.00</td>
+                  <td id="totalFinal">{moneda} {totalFinal}</td>
                 </tr>
               </tfoot>
             </table>
@@ -195,16 +234,17 @@ export default function CotizadorVista() {
         </section>
       </div>
       {/* !---- */}
-      <div className="flex1 toolsboxside">
-        <div className="flexbox padd2 bottombordergray">
+      <div className="flex1 toolsboxside bgWhite">
+        <div className="flexbox padd2 bottombordergray ">
           <ion-icon name="caret-forward-outline"></ion-icon>
           <h1>HERRAMIENTAS</h1>
         </div>
-        <section className="padd2">
+        <section className="flexbox padd2 gapp4 jcAround">
           <div>
             <h3 className="cBlack">Fecha Emisión</h3>
             <input
               type="date"
+              className="padd1"
               name="fecha_emision"
               id="fecha_emision"
               value={fechaEmision}
@@ -213,7 +253,7 @@ export default function CotizadorVista() {
           </div>
           <div>
             <h3>Forma de pago</h3>
-            <select name="forma_pago" id="forma_pago" className="wd">
+            <select name="forma_pago" id="forma_pago" className="wd padd2">
               <option value="contado">Contado</option>
               <option value="credito">Credito</option>
               <option value="credito">Credito 7 Días</option>
