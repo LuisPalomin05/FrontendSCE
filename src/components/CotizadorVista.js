@@ -46,6 +46,29 @@ export default function CotizadorVista() {
     document.getElementById("PrecioProdCat").value = "";
   };
 
+  const eliminarProducto = (id) => {
+    setProductos(productos.filter(producto => producto.id !== id));
+  };
+
+  const editarProducto = (id) => {
+    const producto = productos.find(producto => producto.id === id);
+    if (producto) {
+      document.getElementById("NombreProdCat").value = producto.nombre;
+      document.getElementById("cantProdCat").value = producto.cantidad;
+      document.getElementById("PrecioProdCat").value = producto.precio;
+      eliminarProducto(id);
+    }
+  };
+
+  const calcularTotales = () => {
+    const total = productos.reduce((sum, producto) => sum + producto.subtotal, 0);
+    return {
+      total: total.toFixed(2),
+      igv: (total * 0.18).toFixed(2),
+      totalFinal: (total * 1.18).toFixed(2),
+    };
+  };
+
   const handlechangeselectmoneda = (event) => {
     setMoneda(event.target.value);
   };
@@ -60,14 +83,8 @@ export default function CotizadorVista() {
     setFechaEmision(event.target.value);
   };
 
-  const calcularTotales = () => {
-    const total = this.state.productos.reduce((sum, producto) => sum + producto.subtotal, 0);
-    const igv = total * 0.18;
-    const totalFinal = total + igv;
-
-    this.setState({ total, igv, totalFinal });
-  };
-
+  const { total, igv, totalFinal } = calcularTotales();
+  
   return (
     <div className="cotizadorBox">
       <div className="flex2 quotboxdata">
@@ -178,7 +195,7 @@ export default function CotizadorVista() {
 
         {/* ------------------------------ */}
         <section className="ptop bgWhite">
-          <button className="btnSuccess padd1 wd3" id="agregarItem" onClick={agregarProducto}>AGREGAR</button>
+          <button className="btnSuccess padd1 wd3" onClick={agregarProducto}>AGREGAR</button>
         </section>
         <section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
@@ -186,9 +203,9 @@ export default function CotizadorVista() {
             <table className="wd">
               <thead className="bgGray padd3">
                 <tr className="padd3">
-                  <td className="flexcenter">
+                  <th className="flexcenter">
                     <input type="checkbox" />
-                  </td>
+                  </th>
                   <th>N° ITEM</th>
                   <th>DESCRIPCION</th>
                   <th>CANTIDAD</th>
@@ -198,22 +215,20 @@ export default function CotizadorVista() {
                 </tr>
               </thead>
               <tbody>
-              {productos.map((producto) => (
-                <tr className="bgWhite" key={producto.id}>
-                  <td className="flexcenter"><input type="checkbox" /></td>
-                  <td className="textcenter">{producto.id}</td>
-                  <td>{producto.nombre}</td>
-                  <td className="textcenter">{producto.cantidad}</td>
-                  <td className="textcenter">{producto.precio}</td>
-                  <td className="textcenter">{producto.subtotal}</td>
-                  <td className="flexbox"> <p className="cPointer bluecolor" onClick={() => this.editarProducto(producto.id)}>
-                          <ion-icon name="create-outline"></ion-icon>
-                        </p>
-                        <p className="cPointer redcolor" onClick={() => this.eliminarProducto(producto.id)}>
-                          <ion-icon name="trash-outline"></ion-icon>
-                        </p> </td>
-                </tr>
-              ))}
+              {productos.map((producto, index) => (
+              <tr key={index}>
+                <td> <input type="checkbox" name="" id=""/> </td>
+                <td>{index+1}</td>
+                <td>{producto.nombre}</td>
+                <td>{producto.cantidad}</td>
+                <td>{producto.precio}</td>
+                <td>{producto.subtotal}</td>
+                <td className="flexbox">
+                  <button onClick={() => editarProducto(producto.id)}>Editar</button>
+                  <button onClick={() => eliminarProducto(producto.id)}>Eliminar</button>
+                </td>
+              </tr>
+            ))}
             </tbody>
               <tfoot>
                 <tr>
