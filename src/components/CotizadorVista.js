@@ -43,15 +43,14 @@ export default function CotizadorVista() {
 
   return (
     <div className="cotizadorBox">
-      <div className="flex2 ">
-        <section>
-          <h1 className="cBlack">Datos Cliente</h1>
-          <p>Ingresa los datos del cliente a cotizar:</p>
-          <div className="flexbox wd">
-            <section className="wdst">
-              
-              <div className="flexbox gapp4 padd1">
-                <div className="flexbox">
+      <div className="flex2 quotboxdata">
+        <section className="clientDataBox">
+          
+            <section className="wdst ">
+              <h1 className="cBlack">Datos Cliente</h1>
+              <p className="cGray">Ingresa los datos del cliente a cotizar:</p>
+              <div className="flexbox gapp4 padd1 ">
+                <div className="flexbox gapp4">
                   <div>
                     <p>Ruc</p>
                     <input
@@ -91,16 +90,6 @@ export default function CotizadorVista() {
                 </div>
                 <div>
                   <p>Empresa</p>
-                  {/* <select
-                  name="empresa"
-                  id="empresa"
-                  onChange={handlechangeselectempresa}
-                  className="padd2"
-                  value={empresa}
-                >
-                  <option value="Torque-G46">Torque-G46</option>
-                  <option value="Irontools">Irontools</option>
-                </select> */}
                   <select
                     className="padd2"
                     name="empresa"
@@ -146,15 +135,20 @@ export default function CotizadorVista() {
                 </div>
               </div>
             </section>
-            <section className="wd3 padd1 flexcenter">
-              <img className="pnglogo" src={imgEmpresa} alt="" />
+            <section className="imglogobox">
+              <img
+                className="pnglogo"
+                src={imgEmpresa}
+                alt=""
+                draggable="false"
+              />
             </section>
-          </div>
+          
         </section>
 
         {/* ------------------------------ */}
         <section className="ptop bgWhite">
-          <button className="btnSuccess padd1">Agregar</button>
+          <button className="btnSuccess padd1 wd3">AGREGAR</button>
         </section>
         <section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
@@ -200,7 +194,7 @@ export default function CotizadorVista() {
           </div>
         </section>
       </div>
-
+      {/* !---- */}
       <div className="flex1 toolsboxside">
         <div className="flexbox padd2 bottombordergray">
           <ion-icon name="caret-forward-outline"></ion-icon>

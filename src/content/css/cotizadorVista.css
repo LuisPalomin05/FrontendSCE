@@ -4,11 +4,25 @@
     height: 100%;
 }
 
-.pnglogo{
-    width: 100%;
+.imglogobox{
+    width: 20%;
+    height: 100%;
+}
+.quotboxdata{
+    height: 100%;
 }
 
 .toolsboxside{
 
     border-left: 1px solid #dedede;
+}
+
+.clientDataBox{
+    height: 22%;
+    display: flex;
+}
+
+.pnglogo{
+    width: 100%;
+    height: 100%;
 }
