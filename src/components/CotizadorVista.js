@@ -113,7 +113,7 @@ export default function CotizadorVista() {
                       <input
                         type="text"
                         className="inputboxitm"
-                        disabled
+                        
                         placeholder="Nombre del cliente"
                       />
                     </div>
@@ -221,7 +221,7 @@ export default function CotizadorVista() {
                 <td>{index+1}</td>
                 <td>{producto.nombre}</td>
                 <td>{producto.cantidad}</td>
-                <td>{producto.precio}</td>
+                <td>{producto.precio.toFixed(3)}</td>
                 <td>{producto.subtotal}</td>
                 <td className="flexbox">
                   <button onClick={() => editarProducto(producto.id)}>Editar</button>
@@ -271,31 +271,16 @@ export default function CotizadorVista() {
             <select name="forma_pago" id="forma_pago" className="wd padd2">
               <option value="contado">Contado</option>
               <option value="credito">Credito</option>
-              <option value="credito">Credito 7 Días</option>
-              <option value="credito">Credito 15 Días</option>
-              <option value="credito">Credito 30 Días</option>
-              <option value="credito">Credito 90 Dias</option>
+              <option value="credito_7">Credito 7 Días</option>
+              <option value="credito_15">Credito 15 Días</option>
+              <option value="credito_30">Credito 30 Días</option>
+              <option value="credito_90">Credito 90 Dias</option>
             </select>
           </div>
         </section>
 
         <div>
-          <table>
-            <tfoot>
-              <tr>
-                <td colSpan="4">Sub-Total</td>
-                <td>{moneda} 7.00</td>
-              </tr>
-              <tr>
-                <td colSpan="4">I.G.V</td>
-                <td>{moneda} 7.00</td>
-              </tr>
-              <tr>
-                <td colSpan="4">Total</td>
-                <td>{moneda} 7.00</td>
-              </tr>
-            </tfoot>
-          </table>
+{/* LOREM */}
         </div>
 
         <div>
