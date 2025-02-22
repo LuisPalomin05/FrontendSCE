@@ -280,7 +280,7 @@ export default function CotizadorVista() {
         </section>
 
         <div>
-{/* LOREM */}
+
         </div>
 
         <div>
