@@ -3,11 +3,13 @@ import "../content/css/cotizadorVista.css";
 
 export default function CotizadorVista() {
   const hoy = new Date();
-  const fechaActual = `${hoy.getFullYear()}-${String(hoy.getMonth() + 1).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
+  const fechaActual = `${hoy.getFullYear()}-${String(
+    hoy.getMonth() + 1
+  ).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
 
   const [fechaEmision, setFechaEmision] = useState(fechaActual);
   const [productos, setProductos] = useState([]);
-  const [moneda, setMoneda] = useState("S/.");  
+  const [moneda, setMoneda] = useState("S/.");
   const [ruc, setRuc] = useState("");
 
   const optEmpresa = [
@@ -26,8 +28,13 @@ export default function CotizadorVista() {
 
   const agregarProducto = () => {
     const nombreProdCat = document.getElementById("NombreProdCat").value;
-    const cantProdCat = parseInt(document.getElementById("cantProdCat").value, 10);
-    const precioProdCat = parseFloat(document.getElementById("PrecioProdCat").value);
+    const cantProdCat = parseInt(
+      document.getElementById("cantProdCat").value,
+      10
+    );
+    const precioProdCat = parseFloat(
+      document.getElementById("PrecioProdCat").value
+    );
 
     if (!nombreProdCat || isNaN(cantProdCat) || isNaN(precioProdCat)) return;
 
@@ -47,11 +54,11 @@ export default function CotizadorVista() {
   };
 
   const eliminarProducto = (id) => {
-    setProductos(productos.filter(producto => producto.id !== id));
+    setProductos(productos.filter((producto) => producto.id !== id));
   };
 
   const editarProducto = (id) => {
-    const producto = productos.find(producto => producto.id === id);
+    const producto = productos.find((producto) => producto.id === id);
     if (producto) {
       document.getElementById("NombreProdCat").value = producto.nombre;
       document.getElementById("cantProdCat").value = producto.cantidad;
@@ -61,7 +68,10 @@ export default function CotizadorVista() {
   };
 
   const calcularTotales = () => {
-    const total = productos.reduce((sum, producto) => sum + producto.subtotal, 0);
+    const total = productos.reduce(
+      (sum, producto) => sum + producto.subtotal,
+      0
+    );
     return {
       total: total.toFixed(2),
       igv: (total * 0.18).toFixed(2),
@@ -74,7 +84,9 @@ export default function CotizadorVista() {
   };
 
   const handlechangeselectempresa = (event) => {
-    const selEmpresa = optEmpresa.find((opcion) => opcion.empresa === event.target.value);
+    const selEmpresa = optEmpresa.find(
+      (opcion) => opcion.empresa === event.target.value
+    );
     setImgEmpresa(selEmpresa.src);
     setEmpresa(selEmpresa.empresa);
   };
@@ -84,156 +96,187 @@ export default function CotizadorVista() {
   };
 
   const { total, igv, totalFinal } = calcularTotales();
-  
+
   return (
     <div className="cotizadorBox">
       <div className="flex2 quotboxdata">
         <section className="clientDataBox gapp2 ">
-          
-            <section className="datosinputbox">
-              <h1 className="cBlack">Datos Cliente</h1>
-              <p className="cGray">Ingresa los datos del cliente a cotizar:</p>
-              <div className="flexbox gapp4 padd1">
-                <div className="flexbox gapp4 wd33">
-                  <div className="wd1">
-                    <p>Ruc</p>
-                    <input
-                      type="text"
-                      id="rucInputData"
-                      placeholder="2012345678X"
-                      value={ruc}
-                      maxLength={12}
-                      onChange={(e) => setRuc(e.target.value)}
-                      className="inputboxitm"
-                    />
-                  </div>
-                  {ruc.length > 5 && (
-                    <div className="wd1">
-                      <p>Nombre</p>
-                      <input
-                        type="text"
-                        className="inputboxitm"
-                        
-                        placeholder="Nombre del cliente"
-                      />
-                    </div>
-                  )}
-                </div>
-
-                <div className="wd33">
-                  <p>Empresa</p>
-                  <select
-                    className="padd2"
-                    name="empresa"
-                    id="empresa"
-                    value={empresa}
-                    onChange={handlechangeselectempresa}
-                  >
-                    {optEmpresa.map((opcion, index) => (
-                      <option key={index} value={opcion.empresa}>
-                        {opcion.empresa}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              {/* ---------------- */}
-              <div className="flexbox gapp4 padd1">
-                <div className="flexColumn">
-                  <p>Producto</p>
+          <section className="datosinputbox">
+            <h1 className="cBlack">Datos Cliente</h1>
+            <p className="cGray">Ingresa los datos del cliente a cotizar:</p>
+            <div className="flexbox gapp4 padd1">
+              <div className="flexbox gapp4 wd33">
+                <div className="wd1">
+                  <p>Ruc</p>
                   <input
                     type="text"
-                    id="NombreProdCat"
-                    placeholder="Producto"
-                    className="inputboxitm wd"
-                  />
-                </div>
-
-                <div>
-                  <p>Cantidad</p>
-                  <input
-                    type="number"
-                    id="cantProdCat"
-                    placeholder="Cantidad"
+                    id="rucInputData"
+                    placeholder="2012345678X"
+                    value={ruc}
+                    maxLength={12}
+                    onChange={(e) => setRuc(e.target.value)}
                     className="inputboxitm"
                   />
                 </div>
-
-                <div>
-                  <p>Precio</p>
-                  <input
-                    type="number"
-                    id="PrecioProdCat"
-                    placeholder="Precio"
-                    className="inputboxitm"
-                  />
-                </div>
+                {ruc.length > 5 && (
+                  <div className="wd1">
+                    <p>Nombre</p>
+                    <input
+                      type="text"
+                      className="inputboxitm"
+                      placeholder="Nombre del cliente"
+                    />
+                  </div>
+                )}
               </div>
-            </section>
-            <section className="imglogobox">
-              <img
-                className="pnglogo "
-                src={imgEmpresa}
-                alt=""
-                draggable="false"
-              />
-            </section>
-          
+
+              <div className="wd33">
+                <p>Empresa</p>
+                <select
+                  className="padd2"
+                  name="empresa"
+                  id="empresa"
+                  value={empresa}
+                  onChange={handlechangeselectempresa}
+                >
+                  {optEmpresa.map((opcion, index) => (
+                    <option key={index} value={opcion.empresa}>
+                      {opcion.empresa}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            {/* ---------------- */}
+            <div className="flexbox gapp4 padd1">
+              <div className="flexColumn">
+                <p>Producto</p>
+                <input
+                  type="text"
+                  id="NombreProdCat"
+                  placeholder="Producto"
+                  className="inputboxitm wd"
+                />
+              </div>
+
+              <div>
+                <p>Cantidad</p>
+                <input
+                  type="number"
+                  id="cantProdCat"
+                  placeholder="Cantidad"
+                  className="inputboxitm"
+                />
+              </div>
+
+              <div>
+                <p>Precio</p>
+                <input
+                  type="number"
+                  id="PrecioProdCat"
+                  placeholder="Precio"
+                  className="inputboxitm"
+                />
+              </div>
+            </div>
+          </section>
+          <section className="imglogobox">
+            <img
+              className="pnglogo "
+              src={imgEmpresa}
+              alt=""
+              draggable="false"
+            />
+          </section>
         </section>
 
         {/* ------------------------------ */}
 
         <section>
-        <section className="ptop bgWhite">
-          <button className="btnSuccess padd1 wd3" onClick={agregarProducto}>AGREGAR</button>
-        </section>
+          <section className="ptop bgWhite">
+            <button className="btnSuccess padd1 wd3" onClick={agregarProducto}>
+              AGREGAR
+            </button>
+          </section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
           <div>
             <table className="wd">
-              <thead className="bgGray padd3">
-                <tr className="padd3">
+              <thead className="bgGray">
+                <tr>
                   <th className="flexcenter">
                     <input type="checkbox" />
                   </th>
-                  <th>N° ITEM</th>
-                  <th>DESCRIPCION</th>
-                  <th>CANTIDAD</th>
-                  <th>PRECIO</th>
-                  <th>SUBTOTAL</th>
-                  <th>ACCIONES</th>
+                  <th>N° Item</th>
+                  <th>Descripcion</th>
+                  <th>Cantidad</th>
+                  <th>Precio</th>
+                  <th>Subtotal</th>
+                  <th>Acciones</th>
                 </tr>
               </thead>
+
               <tbody>
-              {productos.map((producto, index) => (
-              <tr key={index}>
-                <td> <input type="checkbox" name="" id=""/> </td>
-                <td>{index+1}</td>
-                <td>{producto.nombre}</td>
-                <td>{producto.cantidad}</td>
-                <td>{producto.precio.toFixed(3)}</td>
-                <td>{producto.subtotal}</td>
-                <td className="flexcenter gapp2">
-                  <p className=" btnWarning" onClick={() => editarProducto(producto.id)}> <ion-icon name="create-outline"></ion-icon></p>
-                  <p className=" btnDanger" onClick={() => eliminarProducto(producto.id)}> <ion-icon name="trash-outline"></ion-icon></p>
-                </td>
-              </tr>
-            ))}
-            </tbody>
-              <tfoot>
-                <tr>
-                  <td colSpan="4">Sub-Total</td>
-                  <td id="SubTotalview">{moneda} {total}</td>
-                </tr>
-                <tr>
-                  <td colSpan="4">I.G.V</td>
-                  <td id="igvImpuesto">{moneda} {igv}</td>
-                </tr>
-                <tr>
-                  <td colSpan="4">Total</td>
-                  <td id="totalFinal">{moneda} {totalFinal}</td>
-                </tr>
-              </tfoot>
+
+                {productos.map((producto, index) => (
+                  <tr key={index}>
+                    <td>
+                      
+                      <input type="checkbox" name="" id="" />
+                    </td>
+                    <td>{index + 1}</td>
+                    <td>{producto.nombre}</td>
+                    <td>{producto.cantidad}</td>
+                    <td>{producto.precio.toFixed(3)}</td>
+                    <td>{producto.subtotal}</td>
+                    <td className="flexcenter gapp2">
+                      <p
+                        className=" btnWarning"
+                        onClick={() => editarProducto(producto.id)}
+                      >
+                        
+                        <ion-icon name="create-outline"></ion-icon>
+                      </p>
+                      <p
+                        className=" btnDanger"
+                        onClick={() => eliminarProducto(producto.id)}
+                      >
+                        
+                        <ion-icon name="trash-outline"></ion-icon>
+                      </p>
+                    </td>
+                  </tr>
+                ))}
+
+              </tbody>
+
+
             </table>
+            { productos.length === 0 ?
+                <section className="wd flexcenter bgGray padd3">
+                  <div> Agrega un producto a la cotizacion </div>{" "}
+                </section> : null}
+
+
+                <section className="flexColumn gapp2">
+                <div className="flexbox">
+                  <p colSpan="4">Sub-Total</p>
+                  <p id="SubTotalview">
+                    {moneda} {total}
+                  </p>
+                </div>
+                <div className="flexbox">
+                  <p colSpan="4">I.G.V</p>
+                  <p id="igvImpuesto">
+                    {moneda} {igv}
+                  </p>
+                </div>
+                <div className="flexbox">
+                  <p colSpan="4">Total</p>
+                  <p id="totalFinal">
+                    {moneda} {totalFinal}
+                  </p>
+                </div>
+              </section>
           </div>
         </section>
       </div>
@@ -256,18 +299,18 @@ export default function CotizadorVista() {
             />
           </div>
           <div>
-                  <p>Moneda</p>
-                  <select
-                    name="moneda"
-                    id="moneda"
-                    onChange={handlechangeselectmoneda}
-                    className="padd2"
-                    value={moneda}
-                  >
-                    <option value="$.">Dolar</option>
-                    <option value="S/.">Soles</option>
-                  </select>
-                </div>
+            <p>Moneda</p>
+            <select
+              name="moneda"
+              id="moneda"
+              onChange={handlechangeselectmoneda}
+              className="padd2"
+              value={moneda}
+            >
+              <option value="$.">Dolar</option>
+              <option value="S/.">Soles</option>
+            </select>
+          </div>
           <div>
             <h3>Forma de pago</h3>
             <select name="forma_pago" id="forma_pago" className="wd padd2">
@@ -281,18 +324,18 @@ export default function CotizadorVista() {
           </div>
         </section>
 
-        <div>
+        <section className="padd2 ">
+          <div className="montoTotalbx"><div className="flex1">MONTO TOTAL A PAGAR:</div><div>{moneda} {totalFinal}</div>
+          </div></section>
 
-        </div>
-
-        <div>
+        <div className="padd2">
           <h3 className="cBlack">Observaciones</h3>
           <textarea className="wd" placeholder="Observaciones..." />
           <button className="btnSuccess" type="submit">
             GUARDAR DATOS
           </button>
 
-          <p>este es un texto de prueba</p>
+          <p>este es un texto de prueba {productos.length}</p>
         </div>
       </div>
     </div>
