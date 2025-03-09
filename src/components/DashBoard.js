@@ -95,19 +95,21 @@ export default class Dashboard extends Component {
             <h1 className="cGray fs16 ptop">Mis Cotizaciones</h1>
             <div className="bgWhite">
               <table className="cGray flexcolumn gapp4">
-                <th className="flexbox gapp8">
-                  <td>
-                    <input type="checkbox" name="select" id="selectable" />
-                  </td>
-                  <td>Cliente</td>
-                  <td>Fecha</td>
-                  <td>Estado</td>
-                  <td>Creador</td>
-                  <td>Acciones</td>
-                </th>
+                <thead>
+                <tr className="flexbox gapp8">
+                  <th>
+                    <input type="checkbox" name="select"/>
+                  </th>
+                  <th>Cliente</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th>Creador</th>
+                  <th>Acciones</th>
+                </tr></thead>
+                <tbody>
                 <tr className="flexbox gapp4">
                   <td>
-                    <input type="checkbox" name="select" id="selectable" />
+                    <input type="checkbox" name="select" />
                   </td>
 
                   <td>Cliente1</td>
@@ -120,7 +122,7 @@ export default class Dashboard extends Component {
                     </Link>
                   </td>
 
-                </tr>
+                </tr></tbody>
               </table>
             </div>
           </section>

@@ -28,7 +28,7 @@ export default class Navigation extends Component {
         <div className="flexcenter flex2 searchBoxnav">
           <div className="searchBox cPointer">
             <ion-icon name="search-outline"></ion-icon>
-            <input type="text" placeholder="Buscar..." />
+            <input type="text" placeholder="Buscar..." id="buscador"/>
           </div>
           <div className="flexcenter cPointer">
             <ion-icon name="add-circle-outline"></ion-icon>

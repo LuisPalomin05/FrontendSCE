@@ -18,11 +18,15 @@
 }
 
 .clientDataBox{
-    height: 22%;
+    height: 25%;
     display: flex;
 }
 
+.datosinputbox{
+    width: 80%;
+}
+
 .pnglogo{
-    width: 100%;
-    height: 100%;
+    width: 98%;
+    height: 98%;
 }

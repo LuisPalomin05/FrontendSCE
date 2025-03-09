@@ -44,7 +44,6 @@ const ComprasCrear = () => {
                   </section>
                 </div>
               </div>
-
               <div className="flexcolumn flex1 gapp2">
                 <section>
                   <div>
@@ -85,9 +84,7 @@ const ComprasCrear = () => {
                 </select>
               </section>
             </div>
-
             <br />
-
             <section className="flexbox gapp8">
               <button type="submit" className="btnSuccess">
                 Guardar

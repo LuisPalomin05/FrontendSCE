@@ -16,19 +16,22 @@ export default class CotizadorPanel extends Component {
             </div>
             <ul className="liItemCashbox">
               <li >
-                <Link to={"/cotizador/Soles"} className="flexbox liItemCash">
+                <Link to={"/cotizador/soles"} className="flexbox liItemCash">
                 <div className="flexbox"><p className="pleft">S/.</p>
                 <p>Soles</p></div>
                 <ion-icon name="chevron-forward"></ion-icon>
                 </Link>
               </li>
 
-              <li className="flexbox liItemCash">
+              <li>
+                <Link to={"/cotizador/dolares"} className="flexbox liItemCash">
               <div className="flexbox"><p className="pleft">$.</p>
                 <p>Dólares</p>
                 </div>
                 <ion-icon name="chevron-forward"></ion-icon>
+                </Link>
               </li>
+              
             </ul>
           </div>
 

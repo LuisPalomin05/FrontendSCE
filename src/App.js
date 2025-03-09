@@ -69,6 +69,10 @@ const App = () => {
                   element={<Configuracion />}
                 />
                 <Route path="/cotizador/*" element={<Cotizador />} />
+
+
+
+
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
