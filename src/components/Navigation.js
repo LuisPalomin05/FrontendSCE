@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Routes, Route } from "react-router-dom";
 
 export default class Navigation extends Component {
   toggleDiv = (selector) => {
@@ -13,16 +14,26 @@ export default class Navigation extends Component {
       nombre: "Luis Alfredo",
       fotoperfil: "enlace",
       empresa: "Torque-G46",
-      fuentes: "TitutloWeb",
+      // fuentes: "TitutloWeb",
     },
   };
 
   render() {
-    const { nombre, empresa, fuentes } = this.state.datos;
+    const { nombre, empresa } = this.state.datos;
     return (
       <div className="navigationBox">
         <div className="flex1 tittleboxnav">
-          <p>{fuentes}</p>
+          {/* <p>{fuentes}</p> */}
+          <Routes>
+            <Route path="dashboard" element={<p>Dashboard</p>} />
+            <Route path="ventas" element={<p>Ventas</p>} />
+            <Route path="compras" element={<p>Compras</p>} />
+            <Route path="documentos" element={<p>Documentos</p>} />
+            <Route path="pedidos" element={<p>Pedidos</p>} />
+            <Route path="/sce/configuracion" element={<p>Configuracion</p>} />
+            <Route path="/cotizador/*" element={<p className="cBlack padd1">Cotizar Cliente</p>} />
+          </Routes>
+
         </div>
 
         <div className="flexcenter flex2 searchBoxnav">

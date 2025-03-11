@@ -40,3 +40,10 @@
     font-weight: bold;
     
 }
+
+.checkcenter {
+    display: grid;
+    place-items: center;
+  }
+  
+

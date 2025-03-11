@@ -180,7 +180,7 @@ export default function CotizadorVista() {
               </div>
             </div>
           </section>
-          <section className="imglogobox">
+          <section className="bordergray imglogobox">
             <img
               className="pnglogo "
               src={imgEmpresa}
@@ -200,10 +200,10 @@ export default function CotizadorVista() {
           </section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
           <div>
-            <table className="wd">
+            <table className="wd padd1">
               <thead className="bgGray">
                 <tr>
-                  <th className="flexcenter">
+                  <th className="padd2 ">
                     <input type="checkbox" />
                   </th>
                   <th>N° Item</th>
@@ -215,68 +215,67 @@ export default function CotizadorVista() {
                 </tr>
               </thead>
 
-              <tbody>
-
+              <tbody >
                 {productos.map((producto, index) => (
                   <tr key={index}>
                     <td>
-                      
                       <input type="checkbox" name="" id="" />
                     </td>
                     <td>{index + 1}</td>
                     <td>{producto.nombre}</td>
                     <td>{producto.cantidad}</td>
                     <td>{producto.precio.toFixed(3)}</td>
-                    <td>{producto.subtotal}</td>
+                    <td>{producto.subtotal.toFixed(3)}</td>
                     <td className="flexcenter gapp2">
                       <p
                         className=" btnWarning"
                         onClick={() => editarProducto(producto.id)}
                       >
-                        
                         <ion-icon name="create-outline"></ion-icon>
                       </p>
                       <p
                         className=" btnDanger"
                         onClick={() => eliminarProducto(producto.id)}
                       >
-                        
                         <ion-icon name="trash-outline"></ion-icon>
                       </p>
                     </td>
                   </tr>
                 ))}
-
               </tbody>
-
-
             </table>
-            { productos.length === 0 ?
-                <section className="wd flexcenter bgGray padd3">
-                  <div> Agrega un producto a la cotizacion </div>{" "}
-                </section> : null}
-
-
-                <section className="flexColumn gapp2">
-                <div className="flexbox">
-                  <p colSpan="4">Sub-Total</p>
-                  <p id="SubTotalview">
-                    {moneda} {total}
-                  </p>
-                </div>
-                <div className="flexbox">
-                  <p colSpan="4">I.G.V</p>
-                  <p id="igvImpuesto">
-                    {moneda} {igv}
-                  </p>
-                </div>
-                <div className="flexbox">
-                  <p colSpan="4">Total</p>
-                  <p id="totalFinal">
-                    {moneda} {totalFinal}
-                  </p>
-                </div>
+            {productos.length === 0 ? (
+              <section className="wd flexcenter bgGray padd3">
+                <div> Agrega un producto a la cotizacion </div>{" "}
               </section>
+            ) : null}
+
+            <section className="flexColumn w33 bgGray ptop roundborder martop">
+              <div className="flexbox padd2 bordergray bgWhite">
+                <p colSpan="4" className="wd1">
+                  Sub-Total
+                </p>
+                <p id="SubTotalview">
+                  {moneda} {total}
+                </p>
+              </div>
+              <div className="flexbox padd2 bordergray bgWhite">
+                <p colSpan="4" className="wd1">
+                  I.G.V
+                </p>
+                <p id="igvImpuesto">
+                  {moneda} {igv}
+                </p>
+              </div>
+              <div className="flexbox padd2 bordergray bgWhite">
+                <p colSpan="4" className="wd1">
+                  Total
+                </p>
+                <p id="totalFinal">
+                  {moneda} {totalFinal}
+                </p>
+              </div>
+            </section>
           </div>
         </section>
       </div>
@@ -325,16 +324,29 @@ export default function CotizadorVista() {
         </section>
 
         <section className="padd2 ">
-          <div className="montoTotalbx"><div className="flex1">MONTO TOTAL A PAGAR:</div><div>{moneda} {totalFinal}</div>
-          </div></section>
+          <div className="montoTotalbx">
+            <div className="flex1">CANTIDAD DE PRODUCTOS:</div>
+            <div>
+            {productos.length}
+            </div>
+          </div>
+        </section>
+        <section className="padd2 ">
+          <div className="montoTotalbx">
+            <div className="flex1">MONTO TOTAL A PAGAR:</div>
+            <div>
+              {moneda} {totalFinal}
+            </div>
+          </div>
+        </section>
+
 
         <div className="padd2">
           <h3 className="cBlack">Observaciones</h3>
-          <textarea className="wd" placeholder="Observaciones..." />
+          <textarea className="wd padd1" placeholder="Observaciones..." rows="5" />
           <button className="btnSuccess" type="submit">
             GUARDAR DATOS
           </button>
-
           <p>este es un texto de prueba {productos.length}</p>
         </div>
       </div>

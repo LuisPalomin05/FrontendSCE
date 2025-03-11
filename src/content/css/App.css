@@ -80,9 +80,9 @@ grid-area: sections;
   background-color: #433c98;
 }
 
-/* .footer {
-  grid-area: footer;
-} */
+.martop{
+  margin: 5px 0;
+}
 
 
 .flexbox {
@@ -357,10 +357,22 @@ input[type="checkbox"] {
   background: #d2d1d1;
 }
 
+.bgwhite{
+  background: white;
+}
+
 .textcenter{
   text-align: center;
 }
 
 .bottombordergray{
   border-bottom: 1px solid #dedede;
+}
+
+.bordergray{
+  border: 1px solid #dedede;
+}
+
+.roundborder{
+  border-radius: 5px;
 }
