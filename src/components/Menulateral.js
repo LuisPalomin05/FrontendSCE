@@ -50,7 +50,7 @@ const Menulateral = () => {
               </svg>
             </Link>
           </div>
-          <div className="hoverback">
+          <div className="hoverback cPointer">
             <ion-icon class="ioniconwhite" name="list"></ion-icon>
           </div>
           

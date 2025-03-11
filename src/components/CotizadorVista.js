@@ -199,8 +199,8 @@ export default function CotizadorVista() {
             </button>
           </section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
-          <div>
-            <table className="wd padd1">
+          <div className="padd1 bordergray">
+            <table className="wd padd1 ">
               <thead className="bgGray">
                 <tr>
                   <th className="padd2 ">
@@ -250,7 +250,7 @@ export default function CotizadorVista() {
               </section>
             ) : null}
 
-            <section className="flexColumn w33 bgGray ptop roundborder martop">
+            <section className="flexColumn w33 bgGray ptop roundborder martop ">
               <div className="flexbox padd2 bordergray bgWhite">
                 <p colSpan="4" className="wd1">
                   Sub-Total
@@ -285,7 +285,7 @@ export default function CotizadorVista() {
           <ion-icon name="caret-forward-outline"></ion-icon>
           <h1>HERRAMIENTAS</h1>
         </div>
-        <section className="flexbox padd2 gapp4 jcAround">
+        <section className="flexbox padd2 gapp4 jcAround martop">
           <div>
             <h3 className="cBlack">Fecha Emisión</h3>
             <input
@@ -347,7 +347,6 @@ export default function CotizadorVista() {
           <button className="btnSuccess" type="submit">
             GUARDAR DATOS
           </button>
-          <p>este es un texto de prueba {productos.length}</p>
         </div>
       </div>
     </div>
