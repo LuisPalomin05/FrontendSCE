@@ -25,17 +25,6 @@ a, Link{
 
 }
 
-.sidebar {
-  grid-area: sidebar;
-  /* background: #1b1b41; */
-  /* background: #1fcd50; */
-  background: #138f53;
-
-  display: grid; /* Sidebar se convierte en un grid */
-  grid-template-columns: 20% 78%; /* Dos columnas que ocupan el ancho de sidebar */
-  grid-template-rows: 1fr;
-  gap: 2px;
-}
 
 .main {
   grid-area: main;
@@ -383,4 +372,17 @@ input[type="checkbox"] {
 
 .justleft{
   justify-content: left;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  /* background: #1b1b41; */
+  /* background: #1fcd50; */
+  /* background: #138f53; */
+  background: #a0021b;
+
+  display: grid; /* Sidebar se convierte en un grid */
+  grid-template-columns: 20% 78%; /* Dos columnas que ocupan el ancho de sidebar */
+  grid-template-rows: 1fr;
+  gap: 2px;
 }
