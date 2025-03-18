@@ -98,7 +98,7 @@ export default function CotizadorVista() {
   const { total, igv, totalFinal } = calcularTotales();
 
   return (
-    <div className="cotizadorBox">
+    <div className="cotizadorBox gapp4">
       <div className="flex2 quotboxdata">
         <section className="clientDataBox gapp2 ">
           <section className="datosinputbox">
@@ -190,14 +190,7 @@ export default function CotizadorVista() {
           </section>
         </section>
 
-        {/* ------------------------------ */}
-
         <section>
-          <section className="ptop bgWhite">
-            <button className="btnSuccess padd1 wd3" onClick={agregarProducto}>
-              AGREGAR
-            </button>
-          </section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
           <div className="padd1 bordergray">
             <table className="wd padd1 ">
@@ -215,7 +208,7 @@ export default function CotizadorVista() {
                 </tr>
               </thead>
 
-              <tbody >
+              <tbody>
                 {productos.map((producto, index) => (
                   <tr key={index}>
                     <td>
@@ -278,8 +271,68 @@ export default function CotizadorVista() {
             </section>
           </div>
         </section>
+
+        <section className="bgwhite padd3">
+          <div className="flexbox gapp2">
+            <div className="imglogobox">
+              {" "}
+              <img
+                className="pnglogo "
+                src={imgEmpresa}
+                alt=""
+                draggable="false"
+              />
+            </div>
+            <div>
+              <h4 className="cBlack">PERNOS Y TUERCAS TORQUE-G46</h4>
+              <p>Jr. Holanda 2050 - Cercado de Lima</p>
+              <p>Correo: ventas@torqueg46.com.pe</p>
+              <p>Telefono: 977 492 484</p>
+            </div>
+            <div>
+              <div>RUC. 20601395801</div>
+              <div>Cotizacion/Pedido</div>
+              <div> IDCotizzacion</div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <div className="flexbox">
+                <p>RUC:</p> <p>20170717261</p>
+              </div>
+              <div className="flexbox">
+                <p>Razon Social:</p> <p>NombreEmpresa</p>
+              </div>
+              <div className="flexbox">
+                <p>Direccion:</p> <p>direccionubicacion</p>
+              </div>
+            </div>
+            <div>
+              <div className="flexbox">
+                <p>Forma de Pago:</p>
+                <p>metodo</p>
+              </div>
+              <div className="flexbox">
+                <p>Tipo de Moneda:</p>
+                <p>mimoneda</p>
+              </div>
+              <div className="flexbox">
+                <p>Fecha de Emision</p>
+                <p> {fechaEmision} </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>productos</div>
+            <div>tabla productos</div>
+          </div>
+          <div>
+            <div>observaciones</div>
+          </div>
+          <div></div>
+        </section>
       </div>
-      {/* !---- */}
+
       <div className="flex1 toolsboxside bgWhite">
         <div className="flexbox padd2 bottombordergray ">
           <ion-icon name="caret-forward-outline"></ion-icon>
@@ -323,12 +376,19 @@ export default function CotizadorVista() {
           </div>
         </section>
 
+        <section className="flexbox ptop bgWhite gapp4 padd2">
+          <button className="btnSuccess padd1" onClick={agregarProducto}>
+            AGREGAR
+          </button>
+          <button className="btnSuccess" onClick={""}>
+            PREVISUALIZAR
+          </button>
+        </section>
+
         <section className="padd2 ">
           <div className="montoTotalbx">
             <div className="flex1">CANTIDAD DE PRODUCTOS:</div>
-            <div>
-            {productos.length}
-            </div>
+            <div>{productos.length}</div>
           </div>
         </section>
         <section className="padd2 ">
@@ -340,10 +400,13 @@ export default function CotizadorVista() {
           </div>
         </section>
 
-
         <div className="padd2">
           <h3 className="cBlack">Observaciones</h3>
-          <textarea className="wd padd1" placeholder="Observaciones..." rows="5" />
+          <textarea
+            className="wd padd1"
+            placeholder="Observaciones..."
+            rows="5"
+          />
           <button className="btnSuccess" type="submit">
             GUARDAR DATOS
           </button>
