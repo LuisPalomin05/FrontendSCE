@@ -9,22 +9,40 @@ export default function CotizadorVista() {
 
   const [fechaEmision, setFechaEmision] = useState(fechaActual);
   const [productos, setProductos] = useState([]);
-  const [moneda, setMoneda] = useState("S/.");
+  // const [moneda, setMoneda] = useState("S/.");
+  const [credits, setCredits] = useState("Contado");
   const [ruc, setRuc] = useState("");
+
+const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{modela:"Soles", simbolo:"S/."}];
+
 
   const optEmpresa = [
     {
       empresa: "Torque-G46",
+      RUC_EMPRESA: "20601395801",
+      direccion: "Jr. Holanda 2050 - Cercado de Lima",
+      correo: "ventas@torqueg46.com.pe",
+      titulocotizacion:"PERNOS Y TUERCAS TORQUE-G46 S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/bitmapTorque.png",
     },
     {
       empresa: "Irontools",
+      RUC_EMPRESA: "20548129576",
+      direccion: "Urb. Santa Cruz Mz A lt 12 - Callao",
+      correo: "ventas@irontools.com.pe",
+      titulocotizacion:"IRONTOOLS S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
     },
   ];
 
+  const [moneda, setMoneda] = useState(MonedaTipo[0].simbolo);
+
   const [empresa, setEmpresa] = useState(optEmpresa[0].empresa);
   const [imgEmpresa, setImgEmpresa] = useState(optEmpresa[0].src);
+  const [titulocotizacion, setTituloCotizacion] = useState(optEmpresa[0].titulocotizacion);
+  const [RUC_EMPRESA, setRUC_EMPRESA] = useState(optEmpresa[0].RUC_EMPRESA);
+  const [direccion, setDireccion] = useState(optEmpresa[0].direccion);
+  const [correo, setCorreo] = useState(optEmpresa[0].correo);
 
   const agregarProducto = () => {
     const nombreProdCat = document.getElementById("NombreProdCat").value;
@@ -83,12 +101,21 @@ export default function CotizadorVista() {
     setMoneda(event.target.value);
   };
 
+  const handlechangeselectcredits = (event) => {
+    setCredits(event.target.value);
+  };
+
+
   const handlechangeselectempresa = (event) => {
     const selEmpresa = optEmpresa.find(
       (opcion) => opcion.empresa === event.target.value
     );
     setImgEmpresa(selEmpresa.src);
     setEmpresa(selEmpresa.empresa);
+    setTituloCotizacion(selEmpresa.titulocotizacion);
+    setRUC_EMPRESA(selEmpresa.RUC_EMPRESA);
+    setDireccion(selEmpresa.direccion );
+    setCorreo(selEmpresa.correo);
   };
 
   const handleFechaChange = (event) => {
@@ -272,8 +299,8 @@ export default function CotizadorVista() {
           </div>
         </section>
 
-        <section className="bgwhite padd3">
-          <div className="flexbox gapp2">
+        <section className="bgwhite padd10">
+          <div className="flexbox gapp2 jcAround">
             <div className="imglogobox">
               {" "}
               <img
@@ -284,24 +311,25 @@ export default function CotizadorVista() {
               />
             </div>
             <div>
-              <h4 className="cBlack">PERNOS Y TUERCAS TORQUE-G46</h4>
-              <p>Jr. Holanda 2050 - Cercado de Lima</p>
-              <p>Correo: ventas@torqueg46.com.pe</p>
+              <h4 className="cBlack">{titulocotizacion}</h4>
+              <p>{direccion}</p>
+              <p>Correo: {correo}</p>
               <p>Telefono: 977 492 484</p>
             </div>
-            <div>
-              <div>RUC. 20601395801</div>
+            <div className="bordergray">
+              <div>RUC. {RUC_EMPRESA}</div>
               <div>Cotizacion/Pedido</div>
               <div> IDCotizzacion</div>
             </div>
           </div>
           <div>
             <div>
-              <div className="flexbox">
-                <p>RUC:</p> <p>20170717261</p>
-              </div>
+
               <div className="flexbox">
                 <p>Razon Social:</p> <p>NombreEmpresa</p>
+              </div>
+              <div className="flexbox">
+                <p>RUC:</p> <p>20170717261</p>
               </div>
               <div className="flexbox">
                 <p>Direccion:</p> <p>direccionubicacion</p>
@@ -310,15 +338,15 @@ export default function CotizadorVista() {
             <div>
               <div className="flexbox">
                 <p>Forma de Pago:</p>
-                <p>metodo</p>
+                <p>{credits}</p>
               </div>
               <div className="flexbox">
                 <p>Tipo de Moneda:</p>
-                <p>mimoneda</p>
+                <p> ({moneda})</p>
               </div>
               <div className="flexbox">
-                <p>Fecha de Emision</p>
-                <p> {fechaEmision} </p>
+                <p>Fecha de Emision: </p>
+                <p> { fechaEmision} </p>
               </div>
             </div>
           </div>
@@ -365,13 +393,14 @@ export default function CotizadorVista() {
           </div>
           <div>
             <h3>Forma de pago</h3>
-            <select name="forma_pago" id="forma_pago" className="wd padd2">
-              <option value="contado">Contado</option>
-              <option value="credito">Credito</option>
-              <option value="credito_7">Credito 7 Días</option>
-              <option value="credito_15">Credito 15 Días</option>
-              <option value="credito_30">Credito 30 Días</option>
-              <option value="credito_90">Credito 90 Dias</option>
+            <select name="forma_pago" id="forma_pago" className="wd padd2"
+             onChange={handlechangeselectcredits} value={credits}>
+              <option value=" Contado">Contado</option>
+              <option value=" Credito">Credito</option>
+              <option value=" Credito 7 Días ">Credito 7 Días</option>
+              <option value=" Credito 15 Días ">Credito 15 Días</option>
+              <option value=" Credito 30 Días ">Credito 30 Días</option>
+              <option value=" Credito 90 Dias ">Credito 90 Dias</option>
             </select>
           </div>
         </section>

@@ -119,6 +119,10 @@ grid-area: sections;
   padding: 5px;
 }
 
+.padd10{
+  padding: 15px;
+}
+
 .cwhite{
   color: white;
 }
@@ -378,11 +382,19 @@ input[type="checkbox"] {
   grid-area: sidebar;
   /* background: #1b1b41; */
   /* background: #1fcd50; */
-  /* background: #138f53; */
-  background: #a0021b;
+  background: #138f53;
+  /* background: #a0021b; */
 
-  display: grid; /* Sidebar se convierte en un grid */
-  grid-template-columns: 20% 78%; /* Dos columnas que ocupan el ancho de sidebar */
+  display: grid; 
+  grid-template-columns: 20% 78%; 
   grid-template-rows: 1fr;
   gap: 2px;
+}
+
+
+
+/* colores torque */
+
+.tituloempresa{
+  color: rgb(110, 132, 231);
 }
