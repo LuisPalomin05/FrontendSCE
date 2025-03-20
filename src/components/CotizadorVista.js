@@ -13,7 +13,7 @@ export default function CotizadorVista() {
   const [credits, setCredits] = useState("Contado");
   const [ruc, setRuc] = useState("");
 
-const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{modela:"Soles", simbolo:"S/."}];
+const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/."}];
 
 
   const optEmpresa = [
@@ -35,7 +35,8 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{modela:"Soles", simbolo:"S/
     },
   ];
 
-  const [moneda, setMoneda] = useState(MonedaTipo[0].simbolo);
+  const [simbolo, setSimbolo] = useState(MonedaTipo[0].simbolo);
+  const [moneda, setMoneda] = useState(MonedaTipo[0].moneda);
 
   const [empresa, setEmpresa] = useState(optEmpresa[0].empresa);
   const [imgEmpresa, setImgEmpresa] = useState(optEmpresa[0].src);
@@ -98,7 +99,11 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{modela:"Soles", simbolo:"S/
   };
 
   const handlechangeselectmoneda = (event) => {
-    setMoneda(event.target.value);
+    const selMoneda= MonedaTipo.find(
+      (opcion) => opcion.moneda === event.target.value
+    );
+    setMoneda(selMoneda.moneda);
+    setSimbolo(selMoneda.simbolo);
   };
 
   const handlechangeselectcredits = (event) => {
@@ -207,7 +212,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{modela:"Soles", simbolo:"S/
               </div>
             </div>
           </section>
-          <section className="bordergray imglogobox">
+          <section className="imglogobox">
             <img
               className="pnglogo "
               src={imgEmpresa}
@@ -310,43 +315,43 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{modela:"Soles", simbolo:"S/
                 draggable="false"
               />
             </div>
-            <div>
+            <div className="textcenter">
               <h4 className="cBlack">{titulocotizacion}</h4>
               <p>{direccion}</p>
               <p>Correo: {correo}</p>
               <p>Telefono: 977 492 484</p>
             </div>
-            <div className="bordergray">
-              <div>RUC. {RUC_EMPRESA}</div>
-              <div>Cotizacion/Pedido</div>
-              <div> IDCotizzacion</div>
+            <div className="bordergray textcenter roundborder">
+              <h4 className="cBlack textcenter ptop">{RUC_EMPRESA}</h4>
+              <div className="bgGray padd3">COTIZACION</div>
+              <div className="ptop"> IDCotizzacion</div>
             </div>
           </div>
           <div>
             <div>
 
               <div className="flexbox">
-                <p>Razon Social:</p> <p>NombreEmpresa</p>
+                <h5 className="cBlack ">Razon Social:</h5> <p className="pleft">NombreEmpresa</p>
               </div>
               <div className="flexbox">
-                <p>RUC:</p> <p>20170717261</p>
+                <h5 className="cBlack ">RUC:</h5> <p className="pleft">20170717261</p>
               </div>
               <div className="flexbox">
-                <p>Direccion:</p> <p>direccionubicacion</p>
+                <h5 className="cBlack ">Direccion:</h5> <p className="pleft">direccionubicacion</p>
               </div>
             </div>
             <div>
               <div className="flexbox">
-                <p>Forma de Pago:</p>
-                <p>{credits}</p>
+                <h5 className="cBlack">Forma de Pago:</h5>
+                <p className="pleft">{credits}</p>
               </div>
               <div className="flexbox">
-                <p>Tipo de Moneda:</p>
-                <p> ({moneda})</p>
+                <h5 className="cBlack">Tipo de Moneda:</h5>
+                <p className="pleft"> {moneda}  ({simbolo})</p>
               </div>
               <div className="flexbox">
-                <p>Fecha de Emision: </p>
-                <p> { fechaEmision} </p>
+                <h5 className="cBlack">Fecha de Emision: </h5>
+                <p className="pleft"> { fechaEmision} </p>
               </div>
             </div>
           </div>
