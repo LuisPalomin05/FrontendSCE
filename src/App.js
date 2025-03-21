@@ -29,7 +29,6 @@ import {
   Pedidos,
   Cotizador,
 } from "./components/Componentes";
-// import Cotizador from "./components/LeftSide";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -37,7 +36,6 @@ const App = () => {
   return (
     <Router>
       {isAuthenticated ? (
-        // Layout completo para usuarios autenticados
         <div className="layout">
           <div className="sidebar">
             <div className="menuicons">
