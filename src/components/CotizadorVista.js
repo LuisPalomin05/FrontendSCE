@@ -13,8 +13,6 @@ export default function CotizadorVista() {
   const [credits, setCredits] = useState("Contado");
   const [ruc, setRuc] = useState("");
 
-const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/."}];
-
 
   const optEmpresa = [
     {
@@ -34,6 +32,9 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
     },
   ];
+
+  const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/."}];
+
 
   const [simbolo, setSimbolo] = useState(MonedaTipo[0].simbolo);
   const [moneda, setMoneda] = useState(MonedaTipo[0].moneda);
@@ -281,7 +282,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
                   Sub-Total
                 </p>
                 <p id="SubTotalview">
-                  {moneda} {total}
+                {simbolo} {total}
                 </p>
               </div>
               <div className="flexbox padd2 bordergray bgWhite">
@@ -289,7 +290,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
                   I.G.V
                 </p>
                 <p id="igvImpuesto">
-                  {moneda} {igv}
+                {simbolo} {igv}
                 </p>
               </div>
               <div className="flexbox padd2 bordergray bgWhite">
@@ -297,7 +298,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
                   Total
                 </p>
                 <p id="totalFinal">
-                  {moneda} {totalFinal}
+                {simbolo} {totalFinal}
                 </p>
               </div>
             </section>
@@ -392,8 +393,8 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
               className="padd2"
               value={moneda}
             >
-              <option value="$.">Dolar</option>
-              <option value="S/.">Soles</option>
+              <option value="Dolares">Dolar</option>
+              <option value="Soles">Soles</option>
             </select>
           </div>
           <div>
@@ -429,7 +430,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
           <div className="montoTotalbx">
             <div className="flex1">MONTO TOTAL A PAGAR:</div>
             <div>
-              {moneda} {totalFinal}
+            {simbolo} {totalFinal}
             </div>
           </div>
         </section>
