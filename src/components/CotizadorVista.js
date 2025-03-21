@@ -21,7 +21,7 @@ export default function CotizadorVista() {
       direccion: "Jr. Holanda 2050 - Cercado de Lima",
       correo: "ventas@torqueg46.com.pe",
       titulocotizacion:"PERNOS Y TUERCAS TORQUE-G46 S.A.C",
-      src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/bitmapTorque.png",
+      src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/refs/heads/main/src/content/logos/TorqueFBICON.png",
     },
     {
       empresa: "Irontools",
