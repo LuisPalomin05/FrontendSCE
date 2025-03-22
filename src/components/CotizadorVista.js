@@ -13,10 +13,10 @@ export default function CotizadorVista() {
   const [credits, setCredits] = useState("Contado");
   const [ruc, setRuc] = useState("");
 
-  const MonedaTipo = [
-    { moneda: "Dolares", simbolo: "$." },
-    { moneda: "Soles", simbolo: "S/." },
-  ];
+  // const MonedaTipo = [
+  //   { moneda: "Dolares", simbolo: "$." },
+  //   { moneda: "Soles", simbolo: "S/." },
+  // ];
 
   const optEmpresa = [
     {
