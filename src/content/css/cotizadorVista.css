@@ -32,7 +32,9 @@
 }
 
 .montoTotalbx{
-    background-color: #138f53;
+    /* background-color: #138f53; */
+    background: #8b8a8a;
+    border: 1px solid #858282;
     display: flex;
     padding: 6px;
     border-radius: 5px;

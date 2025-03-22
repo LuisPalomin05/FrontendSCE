@@ -13,8 +13,10 @@ export default function CotizadorVista() {
   const [credits, setCredits] = useState("Contado");
   const [ruc, setRuc] = useState("");
 
-const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/."}];
-
+  const MonedaTipo = [
+    { moneda: "Dolares", simbolo: "$." },
+    { moneda: "Soles", simbolo: "S/." },
+  ];
 
   const optEmpresa = [
     {
@@ -22,7 +24,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
       RUC_EMPRESA: "20601395801",
       direccion: "Jr. Holanda 2050 - Cercado de Lima",
       correo: "ventas@torqueg46.com.pe",
-      titulocotizacion:"PERNOS Y TUERCAS TORQUE-G46 S.A.C",
+      titulocotizacion: "PERNOS Y TUERCAS TORQUE-G46 S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/bitmapTorque.png",
     },
     {
@@ -30,7 +32,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
       RUC_EMPRESA: "20548129576",
       direccion: "Urb. Santa Cruz Mz A lt 12 - Callao",
       correo: "ventas@irontools.com.pe",
-      titulocotizacion:"IRONTOOLS S.A.C",
+      titulocotizacion: "IRONTOOLS S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
     },
   ];
@@ -40,7 +42,9 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
 
   const [empresa, setEmpresa] = useState(optEmpresa[0].empresa);
   const [imgEmpresa, setImgEmpresa] = useState(optEmpresa[0].src);
-  const [titulocotizacion, setTituloCotizacion] = useState(optEmpresa[0].titulocotizacion);
+  const [titulocotizacion, setTituloCotizacion] = useState(
+    optEmpresa[0].titulocotizacion
+  );
   const [RUC_EMPRESA, setRUC_EMPRESA] = useState(optEmpresa[0].RUC_EMPRESA);
   const [direccion, setDireccion] = useState(optEmpresa[0].direccion);
   const [correo, setCorreo] = useState(optEmpresa[0].correo);
@@ -99,7 +103,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
   };
 
   const handlechangeselectmoneda = (event) => {
-    const selMoneda= MonedaTipo.find(
+    const selMoneda = MonedaTipo.find(
       (opcion) => opcion.moneda === event.target.value
     );
     setMoneda(selMoneda.moneda);
@@ -110,7 +114,6 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
     setCredits(event.target.value);
   };
 
-
   const handlechangeselectempresa = (event) => {
     const selEmpresa = optEmpresa.find(
       (opcion) => opcion.empresa === event.target.value
@@ -119,7 +122,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
     setEmpresa(selEmpresa.empresa);
     setTituloCotizacion(selEmpresa.titulocotizacion);
     setRUC_EMPRESA(selEmpresa.RUC_EMPRESA);
-    setDireccion(selEmpresa.direccion );
+    setDireccion(selEmpresa.direccion);
     setCorreo(selEmpresa.correo);
   };
 
@@ -179,7 +182,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
                 </select>
               </div>
             </div>
-            {/* ---------------- */}
+
             <div className="flexbox gapp4 padd1">
               <div className="flexColumn">
                 <p>Producto</p>
@@ -222,7 +225,7 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
           </section>
         </section>
 
-        <section>
+        {/* <section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
           <div className="padd1 bordergray">
             <table className="wd padd1 ">
@@ -302,10 +305,10 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
               </div>
             </section>
           </div>
-        </section>
+        </section> */}
 
         <section className="bgwhite padd10">
-          <div className="flexbox gapp2 jcAround">
+          {/* <div className="flexalign gapp2 jcAround ">
             <div className="imglogobox">
               {" "}
               <img
@@ -327,40 +330,109 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
               <div className="ptop"> IDCotizzacion</div>
             </div>
           </div>
-          <div>
+          <div className="flexbox jcBetween gapp4 padd10">
             <div>
-
               <div className="flexbox">
-                <h5 className="cBlack ">Razon Social:</h5> <p className="pleft">NombreEmpresa</p>
+                <h5 className="cBlack ">Razon Social:</h5>{" "}
+                <p className="pleft">NombreEmpresa</p>
               </div>
               <div className="flexbox">
-                <h5 className="cBlack ">RUC:</h5> <p className="pleft">20170717261</p>
+                <h5 className="cBlack ">RUC:</h5>{" "}
+                <p className="pleft">20170717261</p>
               </div>
               <div className="flexbox">
-                <h5 className="cBlack ">Direccion:</h5> <p className="pleft">direccionubicacion</p>
+                <h5 className="cBlack ">Direccion:</h5>{" "}
+                <p className="pleft">direccionubicacion</p>
               </div>
             </div>
             <div>
+              <div className="flexbox">
+                <h5 className="cBlack">Fecha : </h5>
+                <p className="pleft"> {fechaEmision} </p>
+              </div>
               <div className="flexbox">
                 <h5 className="cBlack">Forma de Pago:</h5>
                 <p className="pleft">{credits}</p>
               </div>
               <div className="flexbox">
                 <h5 className="cBlack">Tipo de Moneda:</h5>
-                <p className="pleft"> {moneda}  ({simbolo})</p>
+                <p className="pleft">
+                  {" "}
+                  {moneda} ({simbolo})
+                </p>
               </div>
-              <div className="flexbox">
-                <h5 className="cBlack">Fecha de Emision: </h5>
-                <p className="pleft"> { fechaEmision} </p>
+            </div>
+          </div> */}
+          <div>
+            {/* <div>productos</div> */}
+            <div className="padd1 bordergray">
+              <table className="wd padd1 ">
+                <thead className="bgGray">
+                  <tr>
+                    <th>N° Item</th>
+                    <th>Descripcion</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {productos.map((producto, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{producto.nombre}</td>
+                      <td>{producto.cantidad}</td>
+                      <td>{producto.precio.toFixed(3)}</td>
+                      <td>{producto.subtotal.toFixed(3)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {productos.length === 0 ? (
+                <section className="wd flexcenter bgGray padd3">
+                  <div> Agrega un producto a la cotizacion </div>{" "}
+                </section>
+              ) : null}
+
+              <div className="flexbox jcBetween gapp4 bordergray padd1">
+                <section className="wdst bordergray padd2 roundborder">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequatur fuga aperiam numquam consectetur expedita porro.
+                  Accusamus pariatur asperiores ad et!
+                </section>
+                <section className="flexColumn w33 bgGray ptop roundborder martop ">
+                  <div className=" flexbox padd2 bordergray bgWhite">
+                    <p colSpan="4" className="wd1">
+                      Sub-Total
+                    </p>
+                    <p id="SubTotalview">
+                      {moneda} {total}
+                    </p>
+                  </div>
+                  <div className="flexbox padd2 bordergray bgWhite">
+                    <p colSpan="4" className="wd1">
+                      I.G.V
+                    </p>
+                    <p id="igvImpuesto">
+                      {moneda} {igv}
+                    </p>
+                  </div>
+                  <div className="flexbox padd2 bordergray bgWhite">
+                    <p colSpan="4" className="wd1">
+                      Total
+                    </p>
+                    <p id="totalFinal">
+                      {moneda} {totalFinal}
+                    </p>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
           <div>
-            <div>productos</div>
-            <div>tabla productos</div>
-          </div>
-          <div>
             <div>observaciones</div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit amet ipsum cum! Sed velit minus commodi laborum pariatur sapiente reiciendis.</p>
           </div>
           <div></div>
         </section>
@@ -398,8 +470,13 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
           </div>
           <div>
             <h3>Forma de pago</h3>
-            <select name="forma_pago" id="forma_pago" className="wd padd2"
-             onChange={handlechangeselectcredits} value={credits}>
+            <select
+              name="forma_pago"
+              id="forma_pago"
+              className="wd padd2"
+              onChange={handlechangeselectcredits}
+              value={credits}
+            >
               <option value=" Contado">Contado</option>
               <option value=" Credito">Credito</option>
               <option value=" Credito 7 Días ">Credito 7 Días</option>
@@ -420,13 +497,13 @@ const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/
         </section>
 
         <section className="padd2 ">
-          <div className="montoTotalbx">
+          <div className="montoTotalbx bgGray">
             <div className="flex1">CANTIDAD DE PRODUCTOS:</div>
             <div>{productos.length}</div>
           </div>
         </section>
         <section className="padd2 ">
-          <div className="montoTotalbx">
+          <div className="montoTotalbx bgGray">
             <div className="flex1">MONTO TOTAL A PAGAR:</div>
             <div>
               {moneda} {totalFinal}
