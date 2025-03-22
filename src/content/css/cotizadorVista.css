@@ -7,6 +7,7 @@
 .imglogobox{
     width: 20%;
     height: 100%;
+    
 }
 .quotboxdata{
     height: 100%;
@@ -27,8 +28,8 @@
 }
 
 .pnglogo{
-    width: 98%;
-    height: 98%;
+    width: 90%;
+    aspect-ratio: 1/1;
 }
 
 .montoTotalbx{

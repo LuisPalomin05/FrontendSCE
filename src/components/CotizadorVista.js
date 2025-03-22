@@ -24,8 +24,8 @@ export default function CotizadorVista() {
       RUC_EMPRESA: "20601395801",
       direccion: "Jr. Holanda 2050 - Cercado de Lima",
       correo: "ventas@torqueg46.com.pe",
-      titulocotizacion: "PERNOS Y TUERCAS TORQUE-G46 S.A.C",
-      src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/bitmapTorque.png",
+      titulocotizacion:"PERNOS Y TUERCAS TORQUE-G46 S.A.C",
+      src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/refs/heads/main/src/content/logos/TorqueFBICON.png",
     },
     {
       empresa: "Irontools",
@@ -36,6 +36,9 @@ export default function CotizadorVista() {
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
     },
   ];
+
+  const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/."}];
+
 
   const [simbolo, setSimbolo] = useState(MonedaTipo[0].simbolo);
   const [moneda, setMoneda] = useState(MonedaTipo[0].moneda);
@@ -284,7 +287,7 @@ export default function CotizadorVista() {
                   Sub-Total
                 </p>
                 <p id="SubTotalview">
-                  {moneda} {total}
+                {simbolo} {total}
                 </p>
               </div>
               <div className="flexbox padd2 bordergray bgWhite">
@@ -292,7 +295,7 @@ export default function CotizadorVista() {
                   I.G.V
                 </p>
                 <p id="igvImpuesto">
-                  {moneda} {igv}
+                {simbolo} {igv}
                 </p>
               </div>
               <div className="flexbox padd2 bordergray bgWhite">
@@ -300,7 +303,7 @@ export default function CotizadorVista() {
                   Total
                 </p>
                 <p id="totalFinal">
-                  {moneda} {totalFinal}
+                {simbolo} {totalFinal}
                 </p>
               </div>
             </section>
@@ -464,8 +467,8 @@ export default function CotizadorVista() {
               className="padd2"
               value={moneda}
             >
-              <option value="$.">Dolar</option>
-              <option value="S/.">Soles</option>
+              <option value="Dolares">Dolar</option>
+              <option value="Soles">Soles</option>
             </select>
           </div>
           <div>
@@ -506,7 +509,7 @@ export default function CotizadorVista() {
           <div className="montoTotalbx bgGray">
             <div className="flex1">MONTO TOTAL A PAGAR:</div>
             <div>
-              {moneda} {totalFinal}
+            {simbolo} {totalFinal}
             </div>
           </div>
         </section>
