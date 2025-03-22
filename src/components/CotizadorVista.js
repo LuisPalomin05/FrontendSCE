@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "../content/css/cotizadorVista.css";
+import { NumeroLiteral } from "../utils/NumeroLiteral";
+
+import { downloadToimg as ScreenShot} from "../utils/imgDescarga";
 
 export default function CotizadorVista() {
   const hoy = new Date();
@@ -24,7 +27,7 @@ export default function CotizadorVista() {
       RUC_EMPRESA: "20601395801",
       direccion: "Jr. Holanda 2050 - Cercado de Lima",
       correo: "ventas@torqueg46.com.pe",
-      titulocotizacion:"PERNOS Y TUERCAS TORQUE-G46 S.A.C",
+      titulocotizacion: "PERNOS Y TUERCAS TORQUE-G46 S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/refs/heads/main/src/content/logos/TorqueFBICON.png",
     },
     {
@@ -37,8 +40,10 @@ export default function CotizadorVista() {
     },
   ];
 
-  const MonedaTipo =[{moneda:"Dolares", simbolo:"$."},{moneda:"Soles", simbolo:"S/."}];
-
+  const MonedaTipo = [
+    { moneda: "Dolares", simbolo: "$." },
+    { moneda: "Soles", simbolo: "S/." },
+  ];
 
   const [simbolo, setSimbolo] = useState(MonedaTipo[0].simbolo);
   const [moneda, setMoneda] = useState(MonedaTipo[0].moneda);
@@ -51,6 +56,8 @@ export default function CotizadorVista() {
   const [RUC_EMPRESA, setRUC_EMPRESA] = useState(optEmpresa[0].RUC_EMPRESA);
   const [direccion, setDireccion] = useState(optEmpresa[0].direccion);
   const [correo, setCorreo] = useState(optEmpresa[0].correo);
+
+  const [observaciones, setObservaciones] = useState("");
 
   const agregarProducto = () => {
     const nombreProdCat = document.getElementById("NombreProdCat").value;
@@ -133,6 +140,9 @@ export default function CotizadorVista() {
     setFechaEmision(event.target.value);
   };
 
+  const handleAgregaObservacion= (event) =>{
+    setObservaciones(event.target.value);
+  }
   const { total, igv, totalFinal } = calcularTotales();
 
   return (
@@ -310,8 +320,8 @@ export default function CotizadorVista() {
           </div>
         </section> */}
 
-        <section className="bgwhite padd10">
-          {/* <div className="flexalign gapp2 jcAround ">
+        <section className="bgwhite padd10" id="ScreenCotizacion">
+          <div className="flexalign gapp2 jcAround ">
             <div className="imglogobox">
               {" "}
               <img
@@ -365,7 +375,7 @@ export default function CotizadorVista() {
                 </p>
               </div>
             </div>
-          </div> */}
+          </div>
           <div>
             {/* <div>productos</div> */}
             <div className="padd1 bordergray">
@@ -400,9 +410,10 @@ export default function CotizadorVista() {
 
               <div className="flexbox jcBetween gapp4 bordergray padd1">
                 <section className="wdst bordergray padd2 roundborder">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur fuga aperiam numquam consectetur expedita porro.
-                  Accusamus pariatur asperiores ad et!
+                  <br/>
+                  <section>
+                    {NumeroLiteral(totalFinal, moneda.toUpperCase())}
+                  </section>
                 </section>
                 <section className="flexColumn w33 bgGray ptop roundborder martop ">
                   <div className=" flexbox padd2 bordergray bgWhite">
@@ -410,7 +421,7 @@ export default function CotizadorVista() {
                       Sub-Total
                     </p>
                     <p id="SubTotalview">
-                      {moneda} {total}
+                      {simbolo} {total}
                     </p>
                   </div>
                   <div className="flexbox padd2 bordergray bgWhite">
@@ -418,7 +429,7 @@ export default function CotizadorVista() {
                       I.G.V
                     </p>
                     <p id="igvImpuesto">
-                      {moneda} {igv}
+                      {simbolo} {igv}
                     </p>
                   </div>
                   <div className="flexbox padd2 bordergray bgWhite">
@@ -426,7 +437,7 @@ export default function CotizadorVista() {
                       Total
                     </p>
                     <p id="totalFinal">
-                      {moneda} {totalFinal}
+                      {simbolo} {totalFinal}
                     </p>
                   </div>
                 </section>
@@ -434,8 +445,10 @@ export default function CotizadorVista() {
             </div>
           </div>
           <div>
-            <div>observaciones</div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit amet ipsum cum! Sed velit minus commodi laborum pariatur sapiente reiciendis.</p>
+            <h4 className="cBlack">Observaciones :</h4>
+            <p className="parraf">
+              {observaciones}
+            </p>
           </div>
           <div></div>
         </section>
@@ -494,7 +507,7 @@ export default function CotizadorVista() {
           <button className="btnSuccess padd1" onClick={agregarProducto}>
             AGREGAR
           </button>
-          <button className="btnSuccess" onClick={""}>
+          <button className="btnSuccess" onClick={() => ScreenShot("ScreenCotizacion")}>
             PREVISUALIZAR
           </button>
         </section>
@@ -509,7 +522,7 @@ export default function CotizadorVista() {
           <div className="montoTotalbx bgGray">
             <div className="flex1">MONTO TOTAL A PAGAR:</div>
             <div>
-            {simbolo} {totalFinal}
+              {simbolo} {totalFinal}
             </div>
           </div>
         </section>
@@ -520,6 +533,7 @@ export default function CotizadorVista() {
             className="wd padd1"
             placeholder="Observaciones..."
             rows="5"
+            onChange={handleAgregaObservacion}
           />
           <button className="btnSuccess" type="submit">
             GUARDAR DATOS
