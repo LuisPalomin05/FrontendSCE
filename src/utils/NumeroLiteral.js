@@ -77,10 +77,10 @@ export function NumeroLiteral(numero, denominacion) {
     let palabras = convertirMillones(parteEntera);
 
     if (parteDecimal > 0) {
-        palabras += " CON " + convertirCentenas(parteDecimal) + " CENTAVOS";
+        palabras += " CON " + convertirCentenas(parteDecimal) + " CENTAVOS DE";
     }
 
-    return (<h6 className="cBlack">
-        <strong>SON:</strong> {palabras.trim()} {denominacion}  
+    return (<h6 >
+        <strong >SON:</strong> <div className="textonum">{palabras.trim()} {denominacion}</div>
     </h6>);
 }

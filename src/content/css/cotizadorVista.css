@@ -19,7 +19,7 @@
 }
 
 .clientDataBox{
-    height: 25%;
+
     display: flex;
 }
 
@@ -53,4 +53,21 @@
     width: 100%;
     word-wrap: break-word; /* Permite que las palabras largas se corten y pasen a la siguiente línea */
     white-space: normal; /* Asegura que el texto se acomode en múltiples líneas */
+}
+
+.bxcotizador{
+    padding: 5px 15px;
+
+}
+
+.nitem{
+    width: 30px;
+    padding: 4px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.textonum{
+    font-size: 12px;
+    padding: 1px;
 }

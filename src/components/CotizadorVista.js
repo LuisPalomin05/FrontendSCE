@@ -237,8 +237,15 @@ export default function CotizadorVista() {
             />
           </section>
         </section>
-
-        {/* <section>
+        <section className="flexbox ptop bgWhite gapp4 padd2">
+          <button className="btnInfo  flexalign gapp4" onClick={agregarProducto}>
+          <ion-icon name="bag-add-outline"></ion-icon> AGREGAR
+          </button>
+          <button className="btnWarning flexbox gapp4" onClick={() => ScreenShot("ScreenCotizacion")}>
+          <ion-icon className="padd1" name="cloud-download-outline"></ion-icon> DESCARGAR
+          </button>
+        </section>
+        <section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
           <div className="padd1 bordergray">
             <table className="wd padd1 ">
@@ -318,10 +325,10 @@ export default function CotizadorVista() {
               </div>
             </section>
           </div>
-        </section> */}
-
+        </section>
+<br/>
         <section className="bgwhite padd10" id="ScreenCotizacion">
-          <div className="flexalign gapp2 jcAround ">
+          <div className="flexalign gapp2 jcAround padd1">
             <div className="imglogobox">
               {" "}
               <img
@@ -337,13 +344,13 @@ export default function CotizadorVista() {
               <p>Correo: {correo}</p>
               <p>Telefono: 977 492 484</p>
             </div>
-            <div className="bordergray textcenter roundborder">
-              <h4 className="cBlack textcenter ptop">{RUC_EMPRESA}</h4>
-              <div className="bgGray padd3">COTIZACION</div>
-              <div className="ptop"> IDCotizzacion</div>
+            <div className="bordergray textcenter roundborder ">
+              <h4 className="bxcotizador cBlack">{RUC_EMPRESA}</h4>
+              <div className="bxcotizador bgGray">COTIZACION</div>
+              <div className="bxcotizador"> IDCotizzacion</div>
             </div>
           </div>
-          <div className="flexbox jcBetween gapp4 padd10">
+          <div className="flexbox jcBetween gapp4 padd3">
             <div>
               <div className="flexbox">
                 <h5 className="cBlack ">Razon Social:</h5>{" "}
@@ -381,9 +388,9 @@ export default function CotizadorVista() {
             <div className="padd1 bordergray">
               <table className="wd padd1 ">
                 <thead className="bgGray">
-                  <tr>
-                    <th>N° Item</th>
-                    <th>Descripcion</th>
+                  <tr >
+                    <th className="nitem">N°</th>
+                    <th >Descripcion</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Subtotal</th>
@@ -393,7 +400,7 @@ export default function CotizadorVista() {
                 <tbody>
                   {productos.map((producto, index) => (
                     <tr key={index}>
-                      <td>{index + 1}</td>
+                      <td className="textcenter">{index + 1}</td>
                       <td>{producto.nombre}</td>
                       <td>{producto.cantidad}</td>
                       <td>{producto.precio.toFixed(3)}</td>
@@ -407,11 +414,12 @@ export default function CotizadorVista() {
                   <div> Agrega un producto a la cotizacion </div>{" "}
                 </section>
               ) : null}
-
+<div className="padd3"></div>
               <div className="flexbox jcBetween gapp4 bordergray padd1">
+                <br/>
                 <section className="wdst bordergray padd2 roundborder">
-                  <br/>
-                  <section>
+                  {/* <br/> */}
+                  <section className="cBlack">
                     {NumeroLiteral(totalFinal, moneda.toUpperCase())}
                   </section>
                 </section>
@@ -445,7 +453,7 @@ export default function CotizadorVista() {
             </div>
           </div>
           <div>
-            <h4 className="cBlack">Observaciones :</h4>
+            <h4 className="cBlack padd2">Observaciones :</h4>
             <p className="parraf">
               {observaciones}
             </p>
@@ -503,14 +511,7 @@ export default function CotizadorVista() {
           </div>
         </section>
 
-        <section className="flexbox ptop bgWhite gapp4 padd2">
-          <button className="btnSuccess padd1" onClick={agregarProducto}>
-            AGREGAR
-          </button>
-          <button className="btnSuccess" onClick={() => ScreenShot("ScreenCotizacion")}>
-            PREVISUALIZAR
-          </button>
-        </section>
+
 
         <section className="padd2 ">
           <div className="montoTotalbx bgGray">

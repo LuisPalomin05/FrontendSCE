@@ -36,6 +36,8 @@ a, Link{
 .navigations{
   grid-area: navigation;
   border-bottom: 1px solid #dedede;
+  display: flex;
+  align-items: center;
 }
 
 .cPointer{
@@ -254,6 +256,23 @@ grid-area: sections;
   background: #a0021b;
   border: 1px solid #a0021b;
 }
+
+.btnInfo{
+  background: #135b8f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #135b8f;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+
+
 
 .btnbox:hover{
   border: 1px solid #4b4b4b8c;
