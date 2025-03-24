@@ -30,6 +30,10 @@ import {
   Cotizador,
 } from "./components/Componentes";
 
+import NoteList from "./components/NoteList";
+import CreateUser from "./components/CreateUser";
+import CreateNote from "./components/CreateNote";
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
@@ -67,10 +71,12 @@ const App = () => {
                   element={<Configuracion />}
                 />
                 <Route path="/cotizador/*" element={<Cotizador />} />
+                <Route path="/lista" element={<NoteList />} />
+                <Route path="/create" element={<CreateNote />} />
+                <Route path="/edit/:id" element={<CreateNote />} />
+                <Route path="/user" element={<CreateUser />} />
 
-
-
-
+                
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>

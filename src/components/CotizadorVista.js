@@ -14,7 +14,8 @@ export default function CotizadorVista() {
   const [productos, setProductos] = useState([]);
   // const [moneda, setMoneda] = useState("S/.");
   const [credits, setCredits] = useState("Contado");
-  const [ruc, setRuc] = useState("");
+  const [rucCliente, setRuc] = useState("");
+  const [ncotizacion, setNcotizacion] = useState("");
 
   // const MonedaTipo = [
   //   { moneda: "Dolares", simbolo: "$." },
@@ -56,7 +57,7 @@ export default function CotizadorVista() {
   const [RUC_EMPRESA, setRUC_EMPRESA] = useState(optEmpresa[0].RUC_EMPRESA);
   const [direccion, setDireccion] = useState(optEmpresa[0].direccion);
   const [correo, setCorreo] = useState(optEmpresa[0].correo);
-
+  const [nameClient, setnameClient] = useState("");
   const [observaciones, setObservaciones] = useState("");
 
   const agregarProducto = () => {
@@ -112,6 +113,10 @@ export default function CotizadorVista() {
     };
   };
 
+  const handlechangenumerocotizacion = (event) => {
+    setNcotizacion(event.target.value);
+  };
+
   const handlechangeselectmoneda = (event) => {
     const selMoneda = MonedaTipo.find(
       (opcion) => opcion.moneda === event.target.value
@@ -124,6 +129,13 @@ export default function CotizadorVista() {
     setCredits(event.target.value);
   };
 
+const handlechangeclientname = (event) => {
+    setnameClient(event.target.value);
+  };
+
+  const handlechangeclientruc = (event) => {
+    setRuc(event.target.value);
+  };
   const handlechangeselectempresa = (event) => {
     const selEmpresa = optEmpresa.find(
       (opcion) => opcion.empresa === event.target.value
@@ -160,19 +172,21 @@ export default function CotizadorVista() {
                     type="text"
                     id="rucInputData"
                     placeholder="2012345678X"
-                    value={ruc}
+                    value={rucCliente}
                     maxLength={12}
-                    onChange={(e) => setRuc(e.target.value)}
+                    onChange={handlechangeclientruc}
                     className="inputboxitm"
                   />
                 </div>
-                {ruc.length > 5 && (
+                {rucCliente.length > 5 && (
                   <div className="wd1">
                     <p>Nombre</p>
                     <input
                       type="text"
                       className="inputboxitm"
                       placeholder="Nombre del cliente"
+
+                      onChange={handlechangeclientname}
                     />
                   </div>
                 )}
@@ -254,7 +268,7 @@ export default function CotizadorVista() {
                   <th className="padd2 ">
                     <input type="checkbox" />
                   </th>
-                  <th>N° Item</th>
+                  <th>N°</th>
                   <th>Descripcion</th>
                   <th>Cantidad</th>
                   <th>Precio</th>
@@ -271,9 +285,9 @@ export default function CotizadorVista() {
                     </td>
                     <td>{index + 1}</td>
                     <td>{producto.nombre}</td>
-                    <td>{producto.cantidad}</td>
-                    <td>{producto.precio.toFixed(3)}</td>
-                    <td>{producto.subtotal.toFixed(3)}</td>
+                    <td className="textcenter">{producto.cantidad}</td>
+                    <td className="textcenter">{producto.precio.toFixed(3)}</td>
+                    <td className="textright">{producto.subtotal.toFixed(3)}</td>
                     <td className="flexcenter gapp2">
                       <p
                         className=" btnWarning"
@@ -347,21 +361,21 @@ export default function CotizadorVista() {
             <div className="bordergray textcenter roundborder ">
               <h4 className="bxcotizador cBlack">{RUC_EMPRESA}</h4>
               <div className="bxcotizador bgGray">COTIZACION</div>
-              <div className="bxcotizador"> IDCotizzacion</div>
+              <div className="bxcotizador"> ID {ncotizacion}</div>
             </div>
           </div>
           <div className="flexbox jcBetween gapp4 padd3">
             <div>
               <div className="flexbox">
-                <h5 className="cBlack ">Razon Social:</h5>{" "}
-                <p className="pleft">NombreEmpresa</p>
+                <h5 className="cBlack ">Razon Social:</h5>
+                <p className="pleft"> {nameClient} </p>
               </div>
               <div className="flexbox">
-                <h5 className="cBlack ">RUC:</h5>{" "}
-                <p className="pleft">20170717261</p>
+                <h5 className="cBlack ">RUC:</h5>
+                <p className="pleft"> {rucCliente} </p>
               </div>
               <div className="flexbox">
-                <h5 className="cBlack ">Direccion:</h5>{" "}
+                <h5 className="cBlack ">Direccion:</h5>
                 <p className="pleft">direccionubicacion</p>
               </div>
             </div>
@@ -511,6 +525,18 @@ export default function CotizadorVista() {
           </div>
         </section>
 
+<section  className=" padd2 gapp4 jcAround martop">
+  <h3>
+    N° de Cotizacion
+  </h3>
+  <input
+    type="text"
+    className="padd1"
+    placeholder="ID Cotizacion"
+    value={ncotizacion}
+    onChange={handlechangenumerocotizacion}
+  />
+</section>
 
 
         <section className="padd2 ">

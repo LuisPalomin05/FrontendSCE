@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CardBoxCash from "./CardBox";
 import { Link } from "react-router-dom";
+import TableComponents from "../utils/tableComponent";
 
 
 export default class Dashboard extends Component {
@@ -78,20 +79,20 @@ export default class Dashboard extends Component {
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </Link>
 
-            <Link to={"/compras"} className="RectboxCash">
-              <p>Compras</p>
+            <Link to={"/create"} className="RectboxCash">
+              <p>Compras crear</p>
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </Link>
-            <Link to={"/documentos"} className="RectboxCash">
-              <p>Documentos</p>
+            <Link to={"/lista"} className="RectboxCash">
+              <p>Documentos lista</p>
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </Link>
-            <Link to={"/pedidos"} className="RectboxCash">
-              <p>Pedidos</p>
+            <Link to={"/user"} className="RectboxCash">
+              <p>Pedidos user</p>
               <ion-icon name="chevron-forward-outline"></ion-icon>
             </Link>
           </section>
-          <section>
+          {/* <section>
             <h1 className="cGray fs16 ptop">Mis Cotizaciones</h1>
             <div className="bgWhite">
               <table className="cGray flexcolumn gapp4">
@@ -125,7 +126,21 @@ export default class Dashboard extends Component {
                 </tr></tbody>
               </table>
             </div>
-          </section>
+          </section> */}
+
+<section>
+<TableComponents 
+    arrayheaders={["Nombre", "Edad", "Ciudad", "Pais"]}
+    arrayelements={[
+        { name: "Luis", age: 25, city: "Lima" , country: "Perú"},
+        { name: "Ana", age: 30, city: "Madrid" , country: "España"},
+        { name: "Carlos", age: 28, city: "México" , country: "México"},
+    ]}
+    arraykeys={["name", "age", "city", "country"]}
+/>
+
+
+</section>
         </div>
       </div>
     );

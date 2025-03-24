@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-export default class CreateUser extends Component {
+export default class NoteList extends Component {
   render() {
     return (
-      <div>CreateUser</div>
+      <div>Note List</div>
     )
   }
 }

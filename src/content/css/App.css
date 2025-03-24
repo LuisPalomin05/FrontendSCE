@@ -417,3 +417,7 @@ input[type="checkbox"] {
 .tituloempresa{
   color: rgb(110, 132, 231);
 }
+
+.textright{
+  text-align: right;
+}
