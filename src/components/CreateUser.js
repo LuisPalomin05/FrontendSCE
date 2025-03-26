@@ -1,18 +1,13 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react'
+import axios from 'axios';
 
 export default class CreateUser extends Component {
-  componentDidMount() {
- axios
-      .get("http://localhost:4000/api/users")
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  async componentDidMount(){
+    const res = await axios.get('http://localhost:4000/user');
+  console.log(res);
   }
-
+  
+  
   render() {
     return <div>
       
