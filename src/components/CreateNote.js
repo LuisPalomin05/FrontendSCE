@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 export default class CreateNote extends Component {
   render() {
     return (
-      <div>CreateNote</div>
+      <div>CreateNote
+        
+      </div>
     )
   }
 }
