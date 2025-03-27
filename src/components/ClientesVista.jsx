@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Clientes() {
-    const [idcliente, setIdCliente] = useState("");
-  const [rucCliente, setRucCliente] = useState("");
-  const [nombreCliente, setNombreCliente] = useState("");
 
-  // useEffect(() => {
-  //     async function fetchDataList() {
-  //         const res = await axios.get("https://backendapi-6thn.onrender.com/api/clientes");
-  //         setCliente(res.data);
-  //     }
-  //     fetchDataList();
-  // }, []);
+export default function Clientes() {
+  //   const [idcliente, setIdCliente] = useState("");
+  // const [rucCliente, setRucCliente] = useState("");
+  // const [nombreCliente, setNombreCliente] = useState("");
 
   return (
     <div className="padd2">
@@ -33,12 +25,12 @@ export default function Clientes() {
           <p className=" titleboxCompras">10 resultados - 50 listados</p>
         </div>
         <div className="flexbox optionmenubox">
-          <Link to={"crear"} className="flexcenter createButtonBox">
+          <Link to={"/clientes/create"} className="flexcenter createButtonBox">
             <div className="flexcenter">
               <ion-icon name="add-outline"></ion-icon>
             </div>
             <div className="flexcenter">
-              <p>Registrar Compra</p>
+              <p>Registrar Cliente</p>
             </div>
           </Link>
           <select name="empresas" id="empresas">
@@ -64,6 +56,17 @@ export default function Clientes() {
                     </tr>
                 
                 </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <input type="checkbox" name="" id="" />
+
+                    </td>
+                    <td>1</td>
+                    <td>Empresa 1</td>
+                    <td>123456789</td>
+                  </tr>
+                </tbody>
             </table>
         </div>
       </section>

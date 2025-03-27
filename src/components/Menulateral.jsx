@@ -1,6 +1,8 @@
 // import React, { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
+import 'ionicons/dist/ionicons.js';
+
 
 const Menulateral = () => {
   return (
@@ -77,11 +79,11 @@ const Menulateral = () => {
             </Link>
 
             <Link to={"/clientes"} className="hoverback">
-            <ion-icon class="ioniconwhite" name="people-outline"></ion-icon>
+            <ion-icon class="ioniconwhite" name="ticket-outline"></ion-icon>
             </Link>
 
             <Link to={"/proveedores"} className="hoverback">
-            <ion-icon class="ioniconwhite" name="people-circle-outline"></ion-icon>
+            <ion-icon class="ioniconwhite" name="ticket-outline"></ion-icon>
             </Link>
 
         </div>

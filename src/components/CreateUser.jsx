@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 
 const httpURL = "https://backendapi-6thn.onrender.com/";
-const localHost ="http://localhost:5000/";
 
 export default class CreateUser extends Component {
   state = {

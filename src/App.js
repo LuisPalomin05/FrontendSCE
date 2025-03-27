@@ -36,6 +36,7 @@ import CreateNote from "./components/CreateNote";
 
 import Clientes from "./components/ClientesVista";
 import Proveedores from "./components/ProveedorVista";
+import ClientesCrear from "./components/ClientesCrear";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -80,6 +81,8 @@ const App = () => {
                 <Route path="/user" element={<CreateUser />} />
 
                 <Route path="/clientes" element={<Clientes/>} />
+                <Route path="/clientes/*" element={<ClientesCrear/>} />
+
                 <Route path="/proveedores" element={<Proveedores/>} />
 
                 <Route path="*" element={<Navigate to="/" />} />

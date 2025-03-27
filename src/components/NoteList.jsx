@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { format } from "timeago.js";
+// import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 
 const httpURL = "https://backendapi-6thn.onrender.com/";
-const localHost ="http://localhost:5000/";
 export default class NoteList extends Component {
   state = {
     notes: [],
@@ -32,7 +31,7 @@ export default class NoteList extends Component {
             <h1>{note.title}</h1>
             <p>{note.content}</p>
             <p>{note.author}</p>
-            <p>{format(note.date)}</p>
+            <p>{note.date}</p>
             <div className="flexbox gapp4">
               <Link className="btnInfo" to={"/edit/"+note._id}>EDIT</Link>
               <button
