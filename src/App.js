@@ -34,6 +34,9 @@ import NoteList from "./components/NoteList";
 import CreateUser from "./components/CreateUser";
 import CreateNote from "./components/CreateNote";
 
+import Clientes from "./components/ClientesVista";
+import Proveedores from "./components/ProveedorVista";
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
@@ -75,6 +78,9 @@ const App = () => {
                 <Route path="/create" element={<CreateNote />} />
                 <Route path="/edit/:id" element={<CreateNote />} />
                 <Route path="/user" element={<CreateUser />} />
+
+                <Route path="/clientes" element={<Clientes/>} />
+                <Route path="/proveedores" element={<Proveedores/>} />
 
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
