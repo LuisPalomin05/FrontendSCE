@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 import "../content/css/cotizadorVista.css";
 import { NumeroLiteral } from "../utils/NumeroLiteral";
-
+import DatePicker from "react-datepicker";
 import { downloadToimg as ScreenShot} from "../utils/imgDescarga";
 
 export default function CotizadorVista() {
-  const hoy = new Date();
-  const fechaActual = `${hoy.getFullYear()}-${String(
-    hoy.getMonth() + 1
-  ).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
+  // const hoy = new Date();
+  // const fechaActual = `${hoy.getFullYear()}-${String(
+  //   hoy.getMonth() + 1
+  // ).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
 
-  const [fechaEmision, setFechaEmision] = useState(fechaActual);
+  const [date, setDate] = useState(new Date());
+  const [fechaEmision, setFechaEmision] = useState(date.toLocaleDateString());
   const [productos, setProductos] = useState([]);
-  // const [moneda, setMoneda] = useState("S/.");
   const [credits, setCredits] = useState("Contado");
   const [rucCliente, setRuc] = useState("");
   const [ncotizacion, setNcotizacion] = useState("");
 
-  // const MonedaTipo = [
-  //   { moneda: "Dolares", simbolo: "$." },
-  //   { moneda: "Soles", simbolo: "S/." },
-  // ];
+  
+
 
   const optEmpresa = [
     {
@@ -148,9 +146,9 @@ const handlechangeclientname = (event) => {
     setCorreo(selEmpresa.correo);
   };
 
-  const handleFechaChange = (event) => {
-    setFechaEmision(event.target.value);
-  };
+  // const handleFechaChange = (event) => {
+  //   setFechaEmision(event.target.value);
+  // };
 
   const handleAgregaObservacion= (event) =>{
     setObservaciones(event.target.value);
@@ -484,14 +482,15 @@ const handlechangeclientname = (event) => {
         <section className="flexbox padd2 gapp4 jcAround martop">
           <div>
             <h3 className="cBlack">Fecha Emisión</h3>
-            <input
+            {/* <input
               type="date"
               className="padd1"
               name="fecha_emision"
               id="fecha_emision"
               value={fechaEmision}
               onChange={handleFechaChange}
-            />
+            /> */}
+            <DatePicker  className="padd1" selected={date} onChange={setDate}/>
           </div>
           <div>
             <p>Moneda</p>
