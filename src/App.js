@@ -75,7 +75,10 @@ const App = () => {
                 <Route path="/create" element={<CreateNote />} />
                 <Route path="/edit/:id" element={<CreateNote />} />
                 <Route path="/user" element={<CreateUser />} />
-                
+
+                <Route path="/cliente" element={<Navigate to="/" />} />
+                <Route path="/proveedor" element={<Navigate to="/" />} />
+
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
