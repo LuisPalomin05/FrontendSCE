@@ -62,50 +62,50 @@ export default function ClientesCrear() {
     navigate("/clientes");
   }
   return (
-    <div>
+    <div className="padd3">
       <h1>{editing ? "Editar Cliente" : "Crear Cliente"}</h1>
-      <div className="padd3">
-        <form onSubmit={onSubmitForm}>
-          <div>
-            <p>RUC :</p>
-            <input
-              type="text"
-              name="ruc"
-              value={ruc}
-              maxLength={12}
-              minLength={12}
-              id="ruc"
-              onChange={(e) => setRuc(e.target.value)}
-            />
-          </div>
-          <div>
-            <p>NOMBRE CLIENTE :</p>
-            <input
-              type="text"
-              name="cliente"
-              value={cliente}
-              id="cliente"
-              onChange={(e) => setCliente(e.target.value)}
-            />
-          </div>
+      <div>
+        <form className="flexcolumn padd3  gapp4" onSubmit={onSubmitForm}>
+          <section className="flexbox gapp4">
+            <div>
+              <p>RUC :</p>
+              <input
+                type="text"
+                name="ruc"
+                className="inputbox"
+                placeholder="RUC: 20123456789"
+                value={ruc}
+                maxLength={12}
+                minLength={11}
+                id="ruc"
+                required
+                onChange={(e) => setRuc(e.target.value)}
+              />
+            </div>
+            <div>
+              <p>NOMBRE CLIENTE :</p>
+              <input
+                type="text"
+                className="inputbox"
+                placeholder="Cliente"
+                name="cliente"
+                value={cliente}
+                id="cliente"
+                onChange={(e) => setCliente(e.target.value)}
+              />
+            </div>
+          </section>
+
           <div>
             <p>DIRECCION :</p>
             <input
               type="text"
               name="direccion"
+              className="inputboxitm w33"
+              placeholder="Direccion"
               value={direccion}
               id="direccion"
               onChange={(e) => setDireccion(e.target.value)}
-            />
-          </div>
-          <div>
-            <p>TELEFONO :</p>
-            <input
-              type="text"
-              name="telefono"
-              value={telefono}
-              id="telefono"
-              onChange={(e) => setTelefono(e.target.value)}
             />
           </div>
 
@@ -113,6 +113,8 @@ export default function ClientesCrear() {
             <p>EMAIL :</p>
             <input
               type="text"
+              className="inputboxitm w33"
+              placeholder="Email"
               name="email"
               value={email}
               id="email"
@@ -120,22 +122,39 @@ export default function ClientesCrear() {
             />
           </div>
 
-          <div>
-            <p>ATENCION : </p>
-            <input
-              type="text"
-              name="atencion"
-              value={atencion}
-              id="atencion"
-              onChange={(e) => setAtencion(e.target.value)}
-            />
-          </div>
+          <section className="flexbox gapp4">
+            <div>
+              <p>TELEFONO :</p>
+              <input
+                type="text"
+                className="inputboxitm"
+                placeholder="Telefono"
+                name="telefono"
+                value={telefono}
+                id="telefono"
+                onChange={(e) => setTelefono(e.target.value)}
+              />
+            </div>
 
+            <div>
+              <p>ATENCION : </p>
+              <input
+                type="text"
+                name="atencion"
+                className="inputboxitm"
+                placeholder="nombre de contacto"
+                value={atencion}
+                id="atencion"
+                onChange={(e) => setAtencion(e.target.value)}
+              />
+            </div>
+          </section>
           <div>
             <p>EMPRESA :</p>
             <select
               name="empresa"
               id="empresa"
+              className="inputboxitm w33"
               value={empresa}
               onChange={(e) => setEmpresa(e.target.value)}
             >
@@ -155,7 +174,9 @@ export default function ClientesCrear() {
                 Eliminar
               </button>
             ) : (
-              <Link className="btnSuccess martop" to={'/clientes'}>Cancelar</Link>
+              <Link className="btnSuccess martop" to={"/clientes"}>
+                Cancelar
+              </Link>
             )}{" "}
           </div>
         </form>
