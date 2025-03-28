@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../content/css/cotizadorVista.css";
 import { NumeroLiteral } from "../utils/NumeroLiteral";
 import { downloadToimg as ScreenShot} from "../utils/imgDescarga";
+import { IonIcon } from "@ionic/react";
+import {caretForwardOutline , bagAddOutline, cloudDownloadOutline, createOutline, trashOutline } from "ionicons/icons";
 
 export default function CotizadorVista() {
   const hoy = new Date();
@@ -249,12 +251,13 @@ const handlechangeclientname = (event) => {
           </section>
         </section>
         <section className="flexbox ptop bgWhite gapp4 padd2">
-          <button className="btnInfo  flexalign gapp4" onClick={agregarProducto}>
-          <ion-icon name="bag-add-outline"></ion-icon> AGREGAR
-          </button>
-          <button className="btnWarning flexbox gapp4" onClick={() => ScreenShot("ScreenCotizacion")}>
-          <ion-icon className="padd1" name="cloud-download-outline"></ion-icon> DESCARGAR
-          </button>
+        <button className="btnInfo flexalign gapp4" onClick={agregarProducto}>
+  <IonIcon icon={bagAddOutline} /> AGREGAR
+</button>
+
+<button className="btnWarning flexbox gapp4" onClick={() => ScreenShot("ScreenCotizacion")}>
+  <IonIcon className="padd1" icon={cloudDownloadOutline} /> DESCARGAR
+</button>
         </section>
         <section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
@@ -286,19 +289,13 @@ const handlechangeclientname = (event) => {
                     <td className="textcenter">{producto.precio.toFixed(3)}</td>
                     <td className="textright">{producto.subtotal.toFixed(3)}</td>
                     <td className="flexcenter gapp2">
-                      <p
-                        className=" btnWarning"
-                        onClick={() => editarProducto(producto.id)}
-                      >
-                        <ion-icon name="create-outline"></ion-icon>
-                      </p>
-                      <p
-                        className=" btnDanger"
-                        onClick={() => eliminarProducto(producto.id)}
-                      >
-                        <ion-icon name="trash-outline"></ion-icon>
-                      </p>
-                    </td>
+  <p className="btnWarning" onClick={() => editarProducto(producto.id)}>
+    <IonIcon icon={createOutline} />
+  </p>
+  <p className="btnDanger" onClick={() => eliminarProducto(producto.id)}>
+    <IonIcon icon={trashOutline} />
+  </p>
+</td>
                   </tr>
                 ))}
               </tbody>
@@ -475,8 +472,7 @@ const handlechangeclientname = (event) => {
 
       <div className="flex1 toolsboxside bgWhite">
         <div className="flexbox padd2 bottombordergray ">
-          <ion-icon name="caret-forward-outline"></ion-icon>
-          <h1>HERRAMIENTAS</h1>
+        <IonIcon icon={caretForwardOutline} />          <h1>HERRAMIENTAS</h1>
         </div>
         <section className="flexbox padd2 gapp4 jcAround martop">
           <div>

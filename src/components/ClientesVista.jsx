@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { IonIcon } from "@ionic/react";
+import { podiumOutline, listOutline, refreshOutline,addOutline } from "ionicons/icons";
 
 const localhost = "http://localhost:5000/";
 export default function Clientes() {
@@ -10,8 +12,6 @@ export default function Clientes() {
     async function fetchData() {
       const res = await axios.get(localhost + "api/clientes");
       setClientes(res.data);
-
-
     }
     fetchData();
   }, []);
@@ -21,13 +21,13 @@ export default function Clientes() {
       <section className="flexbox topListCompras">
         <div className="flexbox boxbottontop">
           <div className="flexcenter bottonitem">
-            <ion-icon name="podium-outline"></ion-icon>
+            <IonIcon icon={podiumOutline}></IonIcon>
           </div>
           <div className="flexcenter bottonitem">
-            <ion-icon name="list-outline"></ion-icon>
+            <IonIcon className="ioniconwhite" icon={listOutline} />
           </div>
           <div className="flexcenter bottonitem">
-            <ion-icon name="refresh-outline"></ion-icon>
+            <IonIcon icon={refreshOutline}></IonIcon>
           </div>
         </div>
         <div>
@@ -36,7 +36,7 @@ export default function Clientes() {
         <div className="flexbox optionmenubox">
           <Link to={"/clientes/create"} className="flexcenter createButtonBox">
             <div className="flexcenter">
-              <ion-icon name="add-outline"></ion-icon>
+              <IonIcon icon={addOutline}></IonIcon>
             </div>
             <div className="flexcenter">
               <p>Registrar Cliente</p>
@@ -71,21 +71,21 @@ export default function Clientes() {
                   <td>
                     <input type="checkbox" name="" id="" />
                   </td>
-                  <td>
-                    {index + 1}
-                  </td>
+                  <td>{index + 1}</td>
                   <td>{cliente.cliente}</td>
 
                   <td>{cliente.ruc}</td>
+                  <td>{cliente._id}</td>
                   <td>
-                    {cliente._id}
-                  </td>
-                  <td>
-                  <Link className="btnWarning" to={`/clientes/editar/${cliente._id}`}>editar</Link>
+                    <Link
+                      className="btnWarning"
+                      to={`/clientes/editar/${cliente._id}`}
+                    >
+                      editar
+                    </Link>
                   </td>
                 </tr>
               ))}
-              
             </tbody>
           </table>
         </div>

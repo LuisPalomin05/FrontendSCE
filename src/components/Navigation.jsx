@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import { Routes, Route } from "react-router-dom";
+import { IonIcon } from "@ionic/react";
+import {
+  searchOutline,
+  addCircleOutline,
+  notificationsOutline,
+  alertCircleOutline,
+} from "ionicons/icons";
 
 export default class Navigation extends Component {
   toggleDiv = (selector) => {
@@ -25,37 +32,39 @@ export default class Navigation extends Component {
         <div className="flex1 tittleboxnav">
           {/* <p>{fuentes}</p> */}
           <Routes>
-            <Route path="dashboard" element={<p>Dashboard</p>} />
-            <Route path="ventas" element={<p>Ventas</p>} />
-            <Route path="compras" element={<p>Compras</p>} />
-            <Route path="documentos" element={<p>Documentos</p>} />
-            <Route path="pedidos" element={<p>Pedidos</p>} />
-            <Route path="/sce/configuracion" element={<p>Configuracion</p>} />
-            <Route path="/cotizador/*" element={<p className="cBlack padd1">Cotizar Cliente</p>} />
+            <Route path="/dashboard" element={<p>Dashboard</p>} />
+            <Route path="/ventas" element={<p>Ventas</p>} />
+            <Route path="/compras" element={<p>Compras</p>} />
+            <Route path="/documentos" element={<p>Documentos</p>} />
+            <Route path="/pedidos" element={<p>Pedidos</p>} />
+            <Route path="/sce/configuracion" element={<p>Configuración</p>} />
+            <Route
+              path="/cotizador/*"
+              element={<p className="cBlack padd1">Cotizar Cliente</p>}
+            />
           </Routes>
-
         </div>
 
         <div className="flexcenter flex2 searchBoxnav">
           <div className="searchBox cPointer">
-            <ion-icon name="search-outline"></ion-icon>
-            <input type="text" placeholder="Buscar..." id="buscador"/>
+            <IonIcon icon={searchOutline} />
+            <input type="text" placeholder="Buscar..." id="buscador" />
           </div>
           <div className="flexcenter cPointer">
-            <ion-icon name="add-circle-outline"></ion-icon>
+            <IonIcon icon={addCircleOutline} />
           </div>
         </div>
 
         <div className="profileboxnav">
           <div className="cPointer">
-            <ion-icon name="notifications-outline"></ion-icon>
+            <IonIcon icon={notificationsOutline} />
           </div>
           <div className="cPointer">
-            <ion-icon name="alert-circle-outline"></ion-icon>
+            <IonIcon icon={alertCircleOutline} />
           </div>
 
           <div className="profilecard">
-            <div className=" roudedProfileimg">
+            <div className="roundedProfileimg">
               <img src="" alt="" />
             </div>
             <div className="profilename">
@@ -64,16 +73,6 @@ export default class Navigation extends Component {
             </div>
           </div>
         </div>
-
-        {/* <div className="flexbox flex1">
-          <ion-icon class="" name="attach"></ion-icon>
-          <ion-icon class="" name="notifications"></ion-icon>
-          <ion-icon
-            onClick={() => this.toggleDiv(".profileCard")}
-            class=""
-            name="person"
-          ></ion-icon>
-        </div> */}
       </div>
     );
   }

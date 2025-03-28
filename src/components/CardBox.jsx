@@ -1,13 +1,15 @@
 import React from "react";
 import "../content/css/CardBoxCash.css";
+import { IonIcon } from "@ionic/react";
+import { cashOutline } from "ionicons/icons";
 
-const CardBoxCash = ({ tipo, icono, monto, empresa }) => {
+const CardBoxCash = ({ tipo, monto, empresa }) => {
   return (
     <div >
       <div className="cotheader">
         <p>{tipo}</p>
         <div className="bordericon">
-          <ion-icon name={icono}></ion-icon>
+          <IonIcon icon={cashOutline}></IonIcon>
         </div>
       </div>
       <div className="cotmonto">{monto}</div>

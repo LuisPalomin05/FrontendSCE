@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+
 import { ComprasCrear, ComprasLista } from "./Componentes"
 import "../content/css/ComprasStylo.css";
 import { Routes, Route,Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
-export default class Compras extends Component {
-  render() {
+export default function Compras() {
+  
     return (
       <div className="ComprasBox">
       {/* <p>ventas</p> */}
@@ -50,5 +50,5 @@ export default class Compras extends Component {
       </section>
     </div>
     )
-  }
+  
 }
