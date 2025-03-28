@@ -18,14 +18,14 @@ export default function CreateNote() {
   const [date, setDate] = useState(new Date());
   const [editing, setEditing] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => {    console.log("ID recibido:", id);
+
     async function fetchData() {
       const res = await axios.get(httpURL+"api/users");
       setUsers(res.data.map((user) => user.username));
       setUserSelected(res.data[0]?.username || "");
 
       if (id) {
-        console.log("exec");
         const noteRes = await axios.get(httpURL+"api/notes/" + id);
         setTitle(noteRes.data.title);
         setContent(noteRes.data.content);

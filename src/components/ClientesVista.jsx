@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-
+const localhost = "http://localhost:5000/";
 export default function Clientes() {
-  //   const [idcliente, setIdCliente] = useState("");
-  // const [rucCliente, setRucCliente] = useState("");
-  // const [nombreCliente, setNombreCliente] = useState("");
+  const [Clientes, setClientes] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await axios.get(localhost + "api/clientes");
+      setClientes(res.data);
+
+
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="padd2">
@@ -43,31 +52,42 @@ export default function Clientes() {
       <section>
         <p>Listado de Clientes</p>
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            <input type="checkbox" name="" id="" />
-                        </th>
-                        <th>N°</th>
-                        <th>NOMBRE</th>
-                        <th>R.U.C</th>
-                        
-                    </tr>
-                
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <input type="checkbox" name="" id="" />
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <input type="checkbox" name="" id="" />
+                </th>
+                <th>N°</th>
+                <th>NOMBRE</th>
+                <th>R.U.C</th>
+                <th>IdDATA</th>
+                <th>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Clientes.map((cliente, index) => (
+                <tr key={index}>
+                  <td>
+                    <input type="checkbox" name="" id="" />
+                  </td>
+                  <td>
+                    {index + 1}
+                  </td>
+                  <td>{cliente.cliente}</td>
 
-                    </td>
-                    <td>1</td>
-                    <td>Empresa 1</td>
-                    <td>123456789</td>
-                  </tr>
-                </tbody>
-            </table>
+                  <td>{cliente.ruc}</td>
+                  <td>
+                    {cliente._id}
+                  </td>
+                  <td>
+                  <Link className="btnWarning" to={`/clientes/editar/${cliente._id}`}>editar</Link>
+                  </td>
+                </tr>
+              ))}
+              
+            </tbody>
+          </table>
         </div>
       </section>
     </div>

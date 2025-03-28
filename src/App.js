@@ -61,7 +61,6 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/sce/configuracion" element={<Configuracion />} />
                 <Route path="/pedidos/" element={<Pedidos />} />
                 <Route path="/compras/*" element={<Compras />} />
                 <Route path="/documentos" element={<Documentos />} />
@@ -80,10 +79,12 @@ const App = () => {
                 <Route path="/edit/:id" element={<CreateNote />} />
                 <Route path="/user" element={<CreateUser />} />
 
-                <Route path="/clientes" element={<Clientes/>} />
-                <Route path="/clientes/*" element={<ClientesCrear/>} />
+                <Route path="/clientes" element={<Clientes />} />
+                <Route path="/clientes/create" element={<ClientesCrear />} />
 
-                <Route path="/proveedores" element={<Proveedores/>} />
+                <Route path="/clientes/editar/:id" element={<ClientesCrear />} />
+
+                <Route path="/proveedores" element={<Proveedores />} />
 
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
