@@ -1,13 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import "../content/css/VentasStylo.css";
 import { VentasCrear, VentasLista } from "./Componentes";
 import { Link, Routes, Route } from "react-router-dom";
 
-export default class Ventas extends Component {
-  render() {
+const Ventas = () => {
     return (
       <div className="VentasBox">
-        {/* <p>ventas</p> */}
         <section className="flexbox topListVentas">
           <div className="flexbox boxbottontop">
             <div className="flexcenter bottonitem">
@@ -50,5 +48,7 @@ export default class Ventas extends Component {
         </section>
       </div>
     );
-  }
-}
+  
+  };
+
+  export default Ventas;

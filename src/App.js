@@ -7,14 +7,13 @@ import {
   Navigate,
 } from "react-router-dom";
 
-// importar estilos css
 import "./content/css/App.css";
 import "./content/css/SignIn.css";
 import "./content/css/Navigation.css";
 import "./content/css/SideBar.css";
 import "./content/css/CotizadorPanel.css";
 import "./content/css/Dashboard.css";
-//importar los componentes
+
 import {
   Menulateral,
   Dashboard,
@@ -59,35 +58,27 @@ const App = () => {
             </div>
             <div className="sections">
               <Routes>
-                {/* Dashboard */}
                 <Route path="/" element={<Dashboard />} />
 
-                {/* Pedidos y Compras */}
                 <Route path="/pedidos" element={<Pedidos />} />
                 <Route path="/compras/*" element={<Compras />} />
 
-                {/* Documentos y Ventas */}
                 <Route path="/documentos" element={<Documentos />} />
                 <Route path="/ventas/*" element={<Ventas />} />
 
-                {/* Configuración */}
                 <Route
                   path="/sce/configuracion/*"
                   element={<Configuracion />}
                 />
 
-                {/* Cotizador */}
                 <Route path="/cotizador/*" element={<Cotizador />} />
 
-                {/* Notas */}
                 <Route path="/lista" element={<NoteList />} />
                 <Route path="/create" element={<CreateNote />} />
                 <Route path="/edit/:id" element={<CreateNote />} />
 
-                {/* Usuarios */}
                 <Route path="/user" element={<CreateUser />} />
 
-                {/* Clientes */}
                 <Route path="/clientes" element={<Clientes />} />
                 <Route path="/clientes/create" element={<ClientesCrear />} />
                 <Route
@@ -95,10 +86,8 @@ const App = () => {
                   element={<ClientesCrear />}
                 />
 
-                {/* Proveedores */}
                 <Route path="/proveedores" element={<Proveedores />} />
 
-                {/* Redirección para rutas no encontradas */}
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
