@@ -347,6 +347,14 @@ grid-area: sections;
   width: 10%;
 }
 
+.hg10{
+  height: 10%;
+
+}
+.hg{
+  height: 100%;
+}
+
 input[type="checkbox"] {
 
   accent-color: #138f53; /* Cambia el color del checkbox */
@@ -420,4 +428,8 @@ input[type="checkbox"] {
 
 .textright{
   text-align: right;
+}
+
+.formatTable{
+  border-spacing: 8px; 
 }

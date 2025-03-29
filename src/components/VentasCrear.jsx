@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
+const localhost = "http://localhost:5000/api/ventas";
+
 const VentasCrear = () => {
 
   const navigate = useNavigate();
@@ -17,11 +20,13 @@ const VentasCrear = () => {
   const [total, setTotal] = useState("");
   const [moneda, setMoneda] = useState("Soles");
 
-  // useEffect(() => {
-  //   async function fetchData() {
-
-  //   }
-  // }, []);
+  useEffect(() => {
+    async function fetchData() {
+      // const res = await axios.get(localhost)
+      // console.log(res)
+    }
+    fetchData();
+  }, []);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -35,7 +40,13 @@ const VentasCrear = () => {
       total,
       moneda,
     };
-await axios.post("https://backendapi-6thn.onrender.com/api/ventas", newVenta);
+    try {
+      const res = await axios.post(localhost,newVenta);
+      console.log(res);
+    } catch (error) {
+      console.log(error)
+    }
+
 
 navigate("/ventas");
   };
@@ -132,6 +143,7 @@ navigate("/ventas");
                   className="inputbox"
                   type="text"
                   name="numeroSerie"
+                  
                   value={nfactura}
                   onChange={(e)=> setnFactura(e.target.value)}
                   placeholder="Número de Serie"

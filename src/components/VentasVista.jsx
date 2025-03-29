@@ -16,7 +16,7 @@ useEffect(() => {
     setVentas(res.data);
   }
   fetchData();
-}, [])
+}, [ventas])
 
 
 
@@ -57,8 +57,9 @@ useEffect(() => {
       </section>
 
       <section>
+        <Routes>
       <Route path="/" element={<VentasLista ventasList={ventas} />} />
-      <Route path="crear" element={<VentasCrear />} />
+      <Route path="crear"  element={<VentasCrear />} /> </Routes>
       </section>
     </div>
   );

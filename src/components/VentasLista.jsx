@@ -1,31 +1,47 @@
 import React from "react";
 
-const VentasLista = ({ ventasList }) => {  // Desestructurar correctamente
+const VentasLista = ({ ventasList }) => {
+  // Desestructurar correctamente
   return (
     <div>
       <section>
         <h1 className="cGray fs16 ptop">Ventas</h1>
         <div className="bgWhite">
-          <table className="cGray flexcolumn gapp4">
+          <table className="formatTable">
             <thead>
-              <tr className="flexalign padd2 gapp4">
+              <tr>
                 <td>
                   <input type="checkbox" name="select" id="selectable" />
                 </td>
-                <td>Cliente</td>
-                <td>Fecha</td>
-                <td>Estado</td>
+                <td>CLIENTE</td>
+                <td>RUC</td>
+                <td>N° FACTURA</td>
+                <td>MONTO TOTAL</td>
+                <td>MONEDA</td>
+                <td>F. EMISION</td>
+                <td>F. VENCIMIENTO</td>
+                <td>EMPRESA</td>
+                
               </tr>
             </thead>
             <tbody>
               {ventasList.map((venta, index) => (
-                <tr key={index} className="flexalign padd2 gapp2">
+                <tr key={index} >
                   <td>
-                    <input type="checkbox" name="select" id={`selectable-${index}`} />
+                    <input
+                      type="checkbox"
+                      name="select"
+                      id={`selectable-${index}`}
+                    />
                   </td>
-                  <td>{venta.cliente}</td>
-                  <td>{venta.fecha}</td>
-                  <td>{venta.estado}</td>
+                  <td> {venta.cliente} </td>
+                  <td> {venta.ruc}</td>
+                  <td> {venta.nfactura} </td>
+                  <td> {venta.total}</td>
+                  <td> {venta.moneda} </td>
+                  <td> {venta.emision}</td>
+                  <td> {venta.vencimiento}</td>
+                  <td> {venta.empresa}</td>
                 </tr>
               ))}
             </tbody>
