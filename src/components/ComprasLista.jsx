@@ -1,16 +1,16 @@
 import React from "react";
 
-const ComprasCrear = () => {
+const ComprasLista = () => {
   return (
-    <div>
+    <div className="padd2">
       <section>
-        <h1 className="cGray fs16 ptop">Compras</h1>
+        <h1 className="cGray fs16 ptop">Lista de Compras</h1>
         <div className="bgWhite">
-          <table className="flexcolumn cGray gapp4">
+          <table className="cGray">
             <thead>
               <tr>
                 <th>
-                  <input type="checkbox" name="select" id="check"/>
+                  <input type="checkbox" id="check"/>
                 </th>
                 <th>Cliente</th>
                 <th>Fecha</th>
@@ -20,7 +20,7 @@ const ComprasCrear = () => {
             <tbody>
               <tr>
                 <td>
-                  <input type="checkbox" name="select" />
+                  <input type="checkbox" />
                 </td>
                 <td>Cliente1</td>
                 <td>12/12/2021</td>
@@ -34,4 +34,4 @@ const ComprasCrear = () => {
   );
 };
 
-export default ComprasCrear;
+export default ComprasLista;

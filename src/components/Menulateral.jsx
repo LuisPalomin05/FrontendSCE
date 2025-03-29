@@ -1,7 +1,18 @@
 // import React, { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
-import 'ionicons/dist/ionicons.js';
+import { IonIcon } from "@ionic/react";
+import {
+  listOutline,
+  homeOutline,
+  bagAddOutline,
+  bagRemoveOutline,
+  documentTextOutline,
+  ticketOutline,
+  accessibilityOutline,
+  cogOutline
+} from "ionicons/icons";
+
 
 
 const Menulateral = () => {
@@ -53,47 +64,43 @@ const Menulateral = () => {
             </Link>
           </div>
           <div className="hoverback cPointer">
-            <ion-icon class="ioniconwhite" name="list"></ion-icon>
+        <IonIcon className="ioniconwhite" icon={listOutline} />
+      </div>
+
+      <Link to="/dashboard" className="hoverback">
+        <IonIcon className="ioniconwhite" icon={homeOutline} />
+      </Link>
+
+      <Link to="/ventas" className="hoverback">
+        <IonIcon className="ioniconwhite" icon={bagAddOutline} />
+      </Link>
+
+      <Link to="/compras" className="hoverback">
+        <IonIcon className="ioniconwhite" icon={bagRemoveOutline} />
+      </Link>
+
+      <Link to="/documentos" className="hoverback">
+        <IonIcon className="ioniconwhite" icon={documentTextOutline} />
+      </Link>
+
+      <Link to="/pedidos" className="hoverback">
+        <IonIcon className="ioniconwhite" icon={ticketOutline} />
+      </Link>
+
+      <Link to="/clientes" className="hoverback">
+        <IonIcon className="ioniconwhite" icon={accessibilityOutline} />
+      </Link>
+
+      <Link to="/proveedores" className="hoverback">
+        <IonIcon className="ioniconwhite" icon={ticketOutline} />
+      </Link>
+
+        </div>
+        <Link to="/sce/configuracion">
+          <div className="hoverback">
+            <IonIcon className="ioniconwhite" icon={cogOutline} />
           </div>
-          
-            <Link to={"/dashboard"} className="hoverback">
-              <ion-icon class="ioniconwhite" name="home"></ion-icon>
-            </Link>
-          
-           
-            <Link to={"/ventas"} className="hoverback">
-            <ion-icon class="ioniconwhite" name="bag-add-outline"></ion-icon>
-            </Link>
-          
-          
-            <Link to={"/compras"} className="hoverback">
-            <ion-icon class="ioniconwhite" name="bag-remove-outline"></ion-icon>
-            </Link>
-          
-            <Link to={"/documentos"} className="hoverback">
-            <ion-icon class="ioniconwhite" name="document-text-outline"></ion-icon>
-            </Link>
-
-            <Link to={"/pedidos"} className="hoverback">
-            <ion-icon class="ioniconwhite" name="ticket-outline"></ion-icon>
-            </Link>
-
-            <Link to={"/clientes"} className="hoverback">
-            <ion-icon class="ioniconwhite" name="ticket-outline"></ion-icon>
-            </Link>
-
-            <Link to={"/proveedores"} className="hoverback">
-            <ion-icon class="ioniconwhite" name="ticket-outline"></ion-icon>
-            </Link>
-
-        </div>
-        <div className="">
-          <Link to={"/sce/configuracion"}>
-            <div className="hoverback">
-              <ion-icon class="ioniconwhite" name="cog"></ion-icon>
-            </div>
-          </Link>
-        </div>
+        </Link>
       </div>
 
     </div>

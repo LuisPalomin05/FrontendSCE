@@ -5,108 +5,117 @@ const ComprasCrear = () => {
   return (
     <div className="padd2">
       <section className="marbot">
-        <h1>Registar Nueva Venta</h1>
+        <h1>Registrar Nueva Compra</h1>
         <p className="cGray">
-          ingresa los datos a registrar o arrastra un xml al area indicada
+          Ingresa los datos a registrar o arrastra un XML al área indicada.
         </p>
       </section>
-      <section>
-        <section>
-          <form>
-            <section className="flexbox gapp2">
-              <div className="flexbox flex2 gapp4">
-                <div className="flexcolumn gapp4">
-                  <section>
-                    <p>Cliente</p>
-                    <input
-                      className="inputbox"
-                      type="text"
-                      placeholder="Cliente"
-                    />
-                  </section>
-                  <section>
-                    <p>RUC</p>
-                    <input
-                      className="inputbox"
-                      type="text"
-                      placeholder="RUC:20123456789"
-                    />
-                  </section>
-                </div>
-                <div className="flexcolumn gapp4">
-                  <section>
-                    <p>Fecha Emision</p>
-                    <input className="inputboxitm" type="date" />
-                  </section>
-                  <section>
-                    <p>Fecha Vencimiento</p>
-                    <input className="inputboxitm" type="date" />
-                  </section>
-                </div>
-              </div>
-              <div className="flexcolumn flex1 gapp2">
-                <section>
-                  <div>
-                    <p>Empresas</p>
-                    <select className="inputboxitm">
-                      <option>TORQUE-G46</option>
-                      <option>IRONTOOLS</option>
-                    </select>
-                  </div>
-                  {/* <div>
-                  <p>20601395801</p>
-                </div> */}
-                </section>
-                <section>
-                  <p>Numero de Serie</p>
-                  <input
-                    className="inputbox"
-                    type="text"
-                    placeholder="Numero de Serie"
-                  />
-                </section>
-              </div>
-            </section>
-            <div className="flexbox gapp2">
-              <section className="fl">
-                <p>Importe total</p>
+
+      <form>
+        <section className="flexbox gapp2">
+          <div className="flexbox flex2 gapp4">
+            <div className="flexcolumn gapp4">
+              <section>
+                <label htmlFor="cliente">Cliente</label>
                 <input
                   className="inputbox"
-                  type="number"
-                  placeholder="Importe total"
+                  type="text"
+                  id="cliente"
+                  name="cliente"
+                  placeholder="Cliente"
                 />
               </section>
               <section>
-                <p>Moneda</p>
-                <select className="inputbox">
-                  <option>Soles</option>
-                  <option>Dolares</option>
-                </select>
+                <label htmlFor="ruc">RUC</label>
+                <input
+                  className="inputbox"
+                  type="text"
+                  id="ruc"
+                  name="ruc"
+                  placeholder="RUC: 20123456789"
+                />
               </section>
             </div>
-            <br />
-            <section className="flexbox gapp8">
-              <button type="submit" className="btnSuccess">
-                Guardar
-              </button>
-              <button type="reset" className="btnWarning">
-                Limpiar
-              </button>
-              <Link to={"/ventas"} className="btnDanger">
-                Cancelar
-              </Link>
-            </section>
-          </form>
-        </section>
-        <br />
-        <section>
-          <p>xml</p>
-          <div>
-            <div className="flexbox padd1 xmldropbox">
-              <p>Arrastra el archivo xml</p>
+
+            <div className="flexcolumn gapp4">
+              <section>
+                <label htmlFor="fecha-emision">Fecha Emisión</label>
+                <input
+                  className="inputboxitm"
+                  type="date"
+                  id="fecha-emision"
+                  name="fecha_emision"
+                />
+              </section>
+              <section>
+                <label htmlFor="fecha-vencimiento">Fecha Vencimiento</label>
+                <input
+                  className="inputboxitm"
+                  type="date"
+                  id="fecha-vencimiento"
+                  name="fecha_vencimiento"
+                />
+              </section>
             </div>
           </div>
+
+          <div className="flexcolumn flex1 gapp2">
+            <section>
+              <label htmlFor="empresa">Empresas</label>
+              <select className="inputboxitm" id="empresa" name="empresa">
+                <option>TORQUE-G46</option>
+                <option>IRONTOOLS</option>
+              </select>
+            </section>
+            <section>
+              <label htmlFor="numero-serie">Número de Serie</label>
+              <input
+                className="inputbox"
+                type="text"
+                id="numero-serie"
+                name="numero_serie"
+                placeholder="Número de Serie"
+              />
+            </section>
+          </div>
         </section>
+
+        <div className="flexbox gapp2">
+          <section>
+            <label htmlFor="importe-total">Importe Total</label>
+            <input
+              className="inputbox"
+              type="number"
+              id="importe-total"
+              name="importe_total"
+              placeholder="Importe total"
+            />
+          </section>
+          <section>
+            <label htmlFor="moneda">Moneda</label>
+            <select className="inputbox" id="moneda" name="moneda">
+              <option>Soles</option>
+              <option>Dólares</option>
+            </select>
+          </section>
+        </div>
+
+        <br />
+
+        <section className="flexbox gapp8">
+          <button type="submit" className="btnSuccess">Guardar</button>
+          <button type="reset" className="btnWarning">Limpiar</button>
+          <Link to={"/compras"} className="btnDanger">Cancelar</Link>
+        </section>
+      </form>
+
+      <br />
+
+      <section>
+        <p>XML</p>
+        <div className="flexbox padd1 xmldropbox">
+          <p>Arrastra el archivo XML</p>
+        </div>
       </section>
     </div>
   );
