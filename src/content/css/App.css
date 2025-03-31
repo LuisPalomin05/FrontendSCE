@@ -6,6 +6,9 @@
   background: #f5f5f5;
 }
 
+.boldtext{
+  font-weight: bold;
+}
 a, Link{
   text-decoration: none;
   color: black;
@@ -351,6 +354,16 @@ grid-area: sections;
   height: 10%;
 
 }
+.hg30{
+  height: 30%;
+
+}
+.wd70{
+  width: 70%;
+}
+.wd30{
+  width: 30%;
+}
 .hg{
   height: 100%;
 }
@@ -418,7 +431,9 @@ input[type="checkbox"] {
   gap: 2px;
 }
 
-
+.cGreentext{
+  color: #138f53;
+}
 
 /* colores torque */
 
@@ -432,4 +447,29 @@ input[type="checkbox"] {
 
 .formatTable{
   border-spacing: 8px; 
+}
+
+.aligncntent{
+  align-content: space-around;
+}
+
+.yflow{
+overflow-y: auto;
+}
+
+.hg50{
+  height: 60%;
+}
+
+.table-container {
+  max-height: 300px; 
+  overflow-y: auto;
+  /* border: 1px solid #ccc;  */
+  padding: 2px;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  
 }

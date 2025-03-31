@@ -1,29 +1,20 @@
-import React, { useState } from "react";
-import "../content/css/cotizadorVista.css";
-import { NumeroLiteral } from "../utils/NumeroLiteral";
-import { downloadToimg as ScreenShot} from "../utils/imgDescarga";
+import React, { useState, useEffect } from "react";
+import "../../content/css/cotizadorVista.css";
+import { NumeroLiteral } from "../../utils/NumeroLiteral";
+import { downloadToimg as ScreenShot } from "../../utils/imgDescarga";
 import { IonIcon } from "@ionic/react";
-import {caretForwardOutline , bagAddOutline, cloudDownloadOutline, createOutline, trashOutline } from "ionicons/icons";
+import {
+  caretForwardOutline,
+  bagAddOutline,
+  cloudDownloadOutline,
+  createOutline,
+  trashOutline,
+} from "ionicons/icons";
 
 export default function CotizadorVista() {
-  const hoy = new Date();
-  const fechaActual = `${hoy.getFullYear()}-${String(
-    hoy.getMonth() + 1
-  ).padStart(2, "0")}-${String(hoy.getDate()).padStart(2, "0")}`;
-
-
-  const [fechaEmision, setFechaEmision] = useState(fechaActual);
-  const [productos, setProductos] = useState([]);
-  const [credits, setCredits] = useState("Contado");
-  const [rucCliente, setRuc] = useState("");
-  const [ncotizacion, setNcotizacion] = useState("");
-
-  
-
-
   const optEmpresa = [
     {
-      empresa: "Torque-G46",
+      razonSocial: "Torque-G46",
       RUC_EMPRESA: "20601395801",
       direccion: "Jr. Holanda 2050 - Cercado de Lima",
       correo: "ventas@torqueg46.com.pe",
@@ -31,7 +22,7 @@ export default function CotizadorVista() {
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/refs/heads/main/src/content/logos/TorqueFBICON.png",
     },
     {
-      empresa: "Irontools",
+      razonSocial: "Irontools",
       RUC_EMPRESA: "20548129576",
       direccion: "Urb. Santa Cruz Mz A lt 12 - Callao",
       correo: "ventas@irontools.com.pe",
@@ -45,45 +36,45 @@ export default function CotizadorVista() {
     { moneda: "Soles", simbolo: "S/." },
   ];
 
-  const [simbolo, setSimbolo] = useState(MonedaTipo[0].simbolo);
-  const [moneda, setMoneda] = useState(MonedaTipo[0].moneda);
-
-  const [empresa, setEmpresa] = useState(optEmpresa[0].empresa);
-  const [imgEmpresa, setImgEmpresa] = useState(optEmpresa[0].src);
-  const [titulocotizacion, setTituloCotizacion] = useState(
-    optEmpresa[0].titulocotizacion
+  const [ruc, setRuc] = useState("");
+  const [cliente, setCliente] = useState("");
+  const [empresa, setEmpresa] = useState("");
+  const [emision, setEmision] = useState(
+    new Date().toISOString().split("T")[0]
   );
-  const [RUC_EMPRESA, setRUC_EMPRESA] = useState(optEmpresa[0].RUC_EMPRESA);
-  const [direccion, setDireccion] = useState(optEmpresa[0].direccion);
-  const [correo, setCorreo] = useState(optEmpresa[0].correo);
-  const [nameClient, setnameClient] = useState("");
+  const [moneda, setMoneda] = useState("");
+  const [formaPago, setFormaPago] = useState("");
+  const [nCotizacion, setNcotizacion] = useState("");
+  const [productos, setProductos] = useState([]);
+  const [totalPago, setTotalPago] = useState(0);
   const [observaciones, setObservaciones] = useState("");
+  const [estado, setEstado] = useState("");
+  const [autor, setAutor] = useState("luis");
+
+
+  // valores de tabla y adicionales.
+  const [pProductoTb, setpProductoTb] = useState("");
+  const [pCantidadTb, setpCantidadTb] = useState(0);
+  const [pPrecioTb, setpPrecioTb] = useState(0);
+  const [simbolo, setSimbolo] = useState("");
+  const [imgEmpresa, setImgEmpresa] = useState(optEmpresa[0].src);
 
   const agregarProducto = () => {
-    const nombreProdCat = document.getElementById("NombreProdCat").value;
-    const cantProdCat = parseInt(
-      document.getElementById("cantProdCat").value,
-      10
-    );
-    const precioProdCat = parseFloat(
-      document.getElementById("PrecioProdCat").value
-    );
-
-    if (!nombreProdCat || isNaN(cantProdCat) || isNaN(precioProdCat)) return;
+    if (!pProductoTb || isNaN(pCantidadTb) || isNaN(pPrecioTb)) return;
 
     const nuevoProducto = {
       id: productos.length + 1,
-      nombre: nombreProdCat,
-      cantidad: cantProdCat,
-      precio: precioProdCat,
-      subtotal: cantProdCat * precioProdCat,
+      nombre: pProductoTb,
+      cantidad: pCantidadTb,
+      precio: pPrecioTb,
+      subtotal: pCantidadTb * pPrecioTb,
     };
 
     setProductos([...productos, nuevoProducto]);
 
-    document.getElementById("NombreProdCat").value = "";
-    document.getElementById("cantProdCat").value = "";
-    document.getElementById("PrecioProdCat").value = "";
+    setpProductoTb("");
+    setpCantidadTb(0);
+    setpPrecioTb(0);
   };
 
   const eliminarProducto = (id) => {
@@ -93,9 +84,9 @@ export default function CotizadorVista() {
   const editarProducto = (id) => {
     const producto = productos.find((producto) => producto.id === id);
     if (producto) {
-      document.getElementById("NombreProdCat").value = producto.nombre;
-      document.getElementById("cantProdCat").value = producto.cantidad;
-      document.getElementById("PrecioProdCat").value = producto.precio;
+      setpProductoTb(producto.nombre);
+      setpCantidadTb(producto.cantidad);
+      setpPrecioTb(producto.precio);
       eliminarProducto(id);
     }
   };
@@ -112,50 +103,11 @@ export default function CotizadorVista() {
     };
   };
 
-  const handlechangenumerocotizacion = (event) => {
-    setNcotizacion(event.target.value);
-  };
-
-  const handlechangeselectmoneda = (event) => {
-    const selMoneda = MonedaTipo.find(
-      (opcion) => opcion.moneda === event.target.value
-    );
-    setMoneda(selMoneda.moneda);
-    setSimbolo(selMoneda.simbolo);
-  };
-
-  const handlechangeselectcredits = (event) => {
-    setCredits(event.target.value);
-  };
-
-const handlechangeclientname = (event) => {
-    setnameClient(event.target.value);
-  };
-
-  const handlechangeclientruc = (event) => {
-    setRuc(event.target.value);
-  };
-  const handlechangeselectempresa = (event) => {
-    const selEmpresa = optEmpresa.find(
-      (opcion) => opcion.empresa === event.target.value
-    );
-    setImgEmpresa(selEmpresa.src);
-    setEmpresa(selEmpresa.empresa);
-    setTituloCotizacion(selEmpresa.titulocotizacion);
-    setRUC_EMPRESA(selEmpresa.RUC_EMPRESA);
-    setDireccion(selEmpresa.direccion);
-    setCorreo(selEmpresa.correo);
-  };
-
-  const handleFechaChange = (event) => {
-    setFechaEmision(event.target.value);
-  };
-
-  const handleAgregaObservacion= (event) =>{
-    setObservaciones(event.target.value);
-  }
   const { total, igv, totalFinal } = calcularTotales();
 
+  useEffect(() => {
+    setTotalPago(totalFinal);
+  }, [totalFinal]);
   return (
     <div className="cotizadorBox gapp4">
       <div className="flex2 quotboxdata">
@@ -171,21 +123,23 @@ const handlechangeclientname = (event) => {
                     type="text"
                     id="rucInputData"
                     placeholder="2012345678X"
-                    value={rucCliente}
+                    value={ruc}
                     maxLength={12}
-                    onChange={handlechangeclientruc}
+                    onChange={(e) => setRuc(e.target.value)}
                     className="inputboxitm"
                   />
                 </div>
-                {rucCliente.length > 5 && (
+                {ruc.length > 5 && (
                   <div className="wd1">
                     <p>Nombre</p>
                     <input
                       type="text"
                       className="inputboxitm"
                       placeholder="Nombre del cliente"
-
-                      onChange={handlechangeclientname}
+                      value={cliente}
+                      onChange={(e) => {
+                        setCliente(e.target.value);
+                      }}
                     />
                   </div>
                 )}
@@ -197,14 +151,17 @@ const handlechangeclientname = (event) => {
                   className="padd2"
                   name="empresa"
                   id="empresa"
-                  value={empresa}
-                  onChange={handlechangeselectempresa}
+                  value={empresa.razonSocial}
+                  onChange={(e) => {
+                    setEmpresa(e.target.value);
+                  }}
                 >
-                  {optEmpresa.map((opcion, index) => (
-                    <option key={index} value={opcion.empresa}>
-                      {opcion.empresa}
+                  {optEmpresa.map((opcion, index) => 
+                    <option key={index} value={opcion}>
+                      {opcion.razonSocial}
                     </option>
-                  ))}
+                   
+                  )}
                 </select>
               </div>
             </div>
@@ -214,9 +171,12 @@ const handlechangeclientname = (event) => {
                 <p>Producto</p>
                 <input
                   type="text"
-                  id="NombreProdCat"
                   placeholder="Producto"
+                  value={pProductoTb}
                   className="inputboxitm wd"
+                  onChange={(e) => {
+                    setpProductoTb(e.target.value);
+                  }}
                 />
               </div>
 
@@ -224,9 +184,12 @@ const handlechangeclientname = (event) => {
                 <p>Cantidad</p>
                 <input
                   type="number"
-                  id="cantProdCat"
                   placeholder="Cantidad"
                   className="inputboxitm"
+                  value={pCantidadTb}
+                  onChange={(e) =>
+                    setpCantidadTb(parseFloat(e.target.value) || 0)
+                  }
                 />
               </div>
 
@@ -234,9 +197,12 @@ const handlechangeclientname = (event) => {
                 <p>Precio</p>
                 <input
                   type="number"
-                  id="PrecioProdCat"
                   placeholder="Precio"
                   className="inputboxitm"
+                  value={pPrecioTb}
+                  onChange={(e) => {
+                    setpPrecioTb(parseFloat(e.target.value) || 0);
+                  }}
                 />
               </div>
             </div>
@@ -251,13 +217,19 @@ const handlechangeclientname = (event) => {
           </section>
         </section>
         <section className="flexbox ptop bgWhite gapp4 padd2">
-        <button className="btnInfo flexalign gapp4" onClick={agregarProducto}>
-  <IonIcon icon={bagAddOutline} /> AGREGAR
-</button>
+          <button className="btnInfo flexalign gapp4" onClick={agregarProducto}>
+            <IonIcon icon={bagAddOutline} /> AGREGAR
+          </button>
 
-<button className="btnWarning flexbox gapp4" onClick={() => ScreenShot("ScreenCotizacion")}>
-  <IonIcon className="padd1" icon={cloudDownloadOutline} /> DESCARGAR
-</button>
+          <button
+            className="btnWarning flexbox gapp4"
+            onClick={() => ScreenShot("ScreenCotizacion")}
+          >
+            <IonIcon className="padd1" icon={cloudDownloadOutline} /> DESCARGAR
+          </button>
+          <button className="btnDanger flexbox gapp4">
+            <IonIcon className="padd1" icon={trashOutline} /> Limpiar
+          </button>
         </section>
         <section>
           <p>Ingresa los datos de los productos que deseas cotizar</p>
@@ -286,16 +258,26 @@ const handlechangeclientname = (event) => {
                     <td>{index + 1}</td>
                     <td>{producto.nombre}</td>
                     <td className="textcenter">{producto.cantidad}</td>
-                    <td className="textcenter">{producto.precio.toFixed(3)}</td>
-                    <td className="textright">{producto.subtotal.toFixed(3)}</td>
+                    <td className="textcenter">
+                      {Number(producto.precio).toFixed(3)}
+                    </td>
+                    <td className="textright">
+                      {producto.subtotal.toFixed(3)}
+                    </td>
                     <td className="flexcenter gapp2">
-  <p className="btnWarning" onClick={() => editarProducto(producto.id)}>
-    <IonIcon icon={createOutline} />
-  </p>
-  <p className="btnDanger" onClick={() => eliminarProducto(producto.id)}>
-    <IonIcon icon={trashOutline} />
-  </p>
-</td>
+                      <p
+                        className="btnWarning"
+                        onClick={() => editarProducto(producto.id)}
+                      >
+                        <IonIcon icon={createOutline} />
+                      </p>
+                      <p
+                        className="btnDanger"
+                        onClick={() => eliminarProducto(producto.id)}
+                      >
+                        <IonIcon icon={trashOutline} />
+                      </p>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -312,7 +294,7 @@ const handlechangeclientname = (event) => {
                   Sub-Total
                 </p>
                 <p id="SubTotalview">
-                {simbolo} {total}
+                  {simbolo} {total}
                 </p>
               </div>
               <div className="flexbox padd2 bordergray bgWhite">
@@ -320,7 +302,7 @@ const handlechangeclientname = (event) => {
                   I.G.V
                 </p>
                 <p id="igvImpuesto">
-                {simbolo} {igv}
+                  {simbolo} {igv}
                 </p>
               </div>
               <div className="flexbox padd2 bordergray bgWhite">
@@ -328,17 +310,16 @@ const handlechangeclientname = (event) => {
                   Total
                 </p>
                 <p id="totalFinal">
-                {simbolo} {totalFinal}
+                  {simbolo} {totalFinal}
                 </p>
               </div>
             </section>
           </div>
         </section>
-<br/>
+        <br />
         <section className="bgwhite padd10" id="ScreenCotizacion">
           <div className="flexalign gapp2 jcAround padd1">
             <div className="imglogobox">
-              {" "}
               <img
                 className="pnglogo "
                 src={imgEmpresa}
@@ -347,26 +328,27 @@ const handlechangeclientname = (event) => {
               />
             </div>
             <div className="textcenter">
-              <h4 className="cBlack">{titulocotizacion}</h4>
-              <p>{direccion}</p>
-              <p>Correo: {correo}</p>
+              <h4 className="cBlack">{empresa.titulocotizacion}</h4>
+              
+              <p>{empresa.direccion}</p>
+              <p>Correo: {empresa.correo}</p>
               <p>Telefono: 977 492 484</p>
             </div>
             <div className="bordergray textcenter roundborder ">
-              <h4 className="bxcotizador cBlack">{RUC_EMPRESA}</h4>
+              <h4 className="bxcotizador cBlack">{empresa.RUC_EMPRESA}</h4>
               <div className="bxcotizador bgGray">COTIZACION</div>
-              <div className="bxcotizador"> ID {ncotizacion}</div>
+              <div className="bxcotizador"> ID {nCotizacion}</div>
             </div>
           </div>
           <div className="flexbox jcBetween gapp4 padd3">
             <div>
               <div className="flexbox">
                 <h5 className="cBlack ">Razon Social:</h5>
-                <p className="pleft"> {nameClient} </p>
+                <p className="pleft"> {cliente} </p>
               </div>
               <div className="flexbox">
                 <h5 className="cBlack ">RUC:</h5>
-                <p className="pleft"> {rucCliente} </p>
+                <p className="pleft"> {ruc} </p>
               </div>
               <div className="flexbox">
                 <h5 className="cBlack ">Direccion:</h5>
@@ -376,11 +358,11 @@ const handlechangeclientname = (event) => {
             <div>
               <div className="flexbox">
                 <h5 className="cBlack">Fecha : </h5>
-                <p className="pleft"> {fechaEmision} </p>
+                <p className="pleft"> {emision} </p>
               </div>
               <div className="flexbox">
                 <h5 className="cBlack">Forma de Pago:</h5>
-                <p className="pleft">{credits}</p>
+                <p className="pleft">{formaPago}</p>
               </div>
               <div className="flexbox">
                 <h5 className="cBlack">Tipo de Moneda:</h5>
@@ -396,9 +378,9 @@ const handlechangeclientname = (event) => {
             <div className="padd1 bordergray">
               <table className="wd padd1 ">
                 <thead className="bgGray">
-                  <tr >
+                  <tr>
                     <th className="nitem">N°</th>
-                    <th >Descripcion</th>
+                    <th>Descripcion</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th>Subtotal</th>
@@ -422,11 +404,10 @@ const handlechangeclientname = (event) => {
                   <div> Agrega un producto a la cotizacion </div>{" "}
                 </section>
               ) : null}
-<div className="padd3"></div>
+              <div className="padd3"></div>
               <div className="flexbox jcBetween gapp4 bordergray padd1">
-                <br/>
+                <br />
                 <section className="wdst bordergray padd2 roundborder">
-                  {/* <br/> */}
                   <section className="cBlack">
                     {NumeroLiteral(totalFinal, moneda.toUpperCase())}
                   </section>
@@ -462,9 +443,7 @@ const handlechangeclientname = (event) => {
           </div>
           <div>
             <h4 className="cBlack padd2">Observaciones :</h4>
-            <p className="parraf">
-              {observaciones}
-            </p>
+            <p className="parraf">{observaciones}</p>
           </div>
           <div></div>
         </section>
@@ -472,7 +451,7 @@ const handlechangeclientname = (event) => {
 
       <div className="flex1 toolsboxside bgWhite">
         <div className="flexbox padd2 bottombordergray ">
-        <IonIcon icon={caretForwardOutline} />          <h1>HERRAMIENTAS</h1>
+          <IonIcon icon={caretForwardOutline} /> <h1>HERRAMIENTAS</h1>
         </div>
         <section className="flexbox padd2 gapp4 jcAround martop">
           <div>
@@ -482,22 +461,28 @@ const handlechangeclientname = (event) => {
               className="padd1"
               name="fecha_emision"
               id="fecha_emision"
-              value={fechaEmision}
-              onChange={handleFechaChange}
+              value={emision}
+              onChange={(e) => {
+                setEmision(e.target.value);
+              }}
             />
-            {/* <DatePicker  className="padd1" selected={date} onChange={setDate}/> */}
           </div>
           <div>
             <p>Moneda</p>
             <select
               name="moneda"
               id="moneda"
-              onChange={handlechangeselectmoneda}
+              onChange={(e) => {
+                setMoneda(e.target.value);
+                setSimbolo(e.target.simbolo);
+              }}
               className="padd2"
-              value={moneda}
             >
-              <option value="Dolares">Dolar</option>
-              <option value="Soles">Soles</option>
+              {MonedaTipo.map((moned, index) => (
+                <option value={moned.simbolo} key={index}>
+                  {moned.moneda}
+                </option>
+              ))}
             </select>
           </div>
           <div>
@@ -506,32 +491,34 @@ const handlechangeclientname = (event) => {
               name="forma_pago"
               id="forma_pago"
               className="wd padd2"
-              onChange={handlechangeselectcredits}
-              value={credits}
+              onChange={(e) => {
+                setFormaPago(e.target.value);
+              }}
+              value={formaPago}
             >
               <option value=" Contado">Contado</option>
               <option value=" Credito">Credito</option>
               <option value=" Credito 7 Días ">Credito 7 Días</option>
               <option value=" Credito 15 Días ">Credito 15 Días</option>
               <option value=" Credito 30 Días ">Credito 30 Días</option>
+              <option value=" Credito 60 Días ">Credito 60 Días</option>
               <option value=" Credito 90 Dias ">Credito 90 Dias</option>
             </select>
           </div>
         </section>
 
-<section  className=" padd2 gapp4 jcAround martop">
-  <h3>
-    N° de Cotizacion
-  </h3>
-  <input
-    type="text"
-    className="padd1"
-    placeholder="ID Cotizacion"
-    value={ncotizacion}
-    onChange={handlechangenumerocotizacion}
-  />
-</section>
-
+        <section className=" padd2 gapp4 jcAround martop">
+          <h3>N° de Cotizacion</h3>
+          <input
+            type="text"
+            className="padd1"
+            placeholder="ID Cotizacion"
+            value={nCotizacion}
+            onChange={(e) => {
+              setNcotizacion(e.target.value);
+            }}
+          />
+        </section>
 
         <section className="padd2 ">
           <div className="montoTotalbx bgGray">
@@ -543,7 +530,7 @@ const handlechangeclientname = (event) => {
           <div className="montoTotalbx bgGray">
             <div className="flex1">MONTO TOTAL A PAGAR:</div>
             <div>
-              {simbolo} {totalFinal}
+              {simbolo} {totalPago}
             </div>
           </div>
         </section>
@@ -554,11 +541,24 @@ const handlechangeclientname = (event) => {
             className="wd padd1"
             placeholder="Observaciones..."
             rows="5"
-            onChange={handleAgregaObservacion}
+            onChange={(e) => {
+              setObservaciones(e.target.value);
+            }}
           />
-          <button className="btnSuccess" type="submit">
-            GUARDAR DATOS
-          </button>
+          <div className="flexbox gapp4">
+            <button className="btnSuccess" type="submit">
+              GUARDAR DATOS
+            </button>
+            <button
+              className="btnWarning"
+              type="submit"
+              onClick={() => {
+                setEstado("Pedido");
+              }}
+            >
+              Pasar a Pedido
+            </button>
+          </div>
         </div>
       </div>
     </div>

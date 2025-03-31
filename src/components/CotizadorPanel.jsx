@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
-import { pricetags, chevronForward } from "ionicons/icons";
+import { pricetags, chevronForward,cartOutline } from "ionicons/icons";
 
 const CotizadorPanel = () => {
   return (
@@ -58,9 +58,20 @@ const CotizadorPanel = () => {
                 <p className="pleft">$.</p>
                 <p>Dólares</p>
               </div>
-              <IonIcon icon={chevronForward} />
+              
             </li>
           </ul>
+
+        </div>
+
+        <div>
+          <Link to={"/cotizacion/crear/"} className="flexalign liItemCash padd3 gapp4 cwhite  roundborder">
+          <div className="flexbox gapp2">
+          <IonIcon className="boldtext" icon={cartOutline}/>
+          <p>Crear Cotizacion</p>
+          </div>
+          <IonIcon icon={chevronForward} />
+          </Link>
         </div>
       </div>
     </div>

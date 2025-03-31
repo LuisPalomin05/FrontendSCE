@@ -1,5 +1,7 @@
-import "../content/css/VentasStylo.css";
-import { VentasCrear, VentasLista } from "./Componentes";
+import "../../content/css/VentasStylo.css";
+import  VentasCrear  from "./VentasCrear";
+import   VentasLista  from "./VentasLista";
+
 import { Link, Routes, Route } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import { podiumOutline, listOutline, refreshOutline, addOutline } from "ionicons/icons";

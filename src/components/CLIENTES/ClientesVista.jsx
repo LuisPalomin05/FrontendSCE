@@ -52,8 +52,8 @@ export default function Clientes() {
       <section>
         <p>Listado de Clientes</p>
         <div>
-          <table>
-            <thead>
+          <table className="formatTable">
+            <thead className="cGray">
               <tr>
                 <th>
                   <input type="checkbox" name="" id="" />
@@ -65,7 +65,7 @@ export default function Clientes() {
                 <th>ACCIONES</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="cBlack">
               {Clientes.map((cliente, index) => (
                 <tr key={index}>
                   <td>

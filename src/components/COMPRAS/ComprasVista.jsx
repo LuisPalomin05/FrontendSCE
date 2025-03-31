@@ -1,5 +1,7 @@
-import { ComprasCrear, ComprasLista } from "./Componentes";
-import "../content/css/ComprasStylo.css";
+import ComprasCrear from "./ComprasCrear";
+import ComprasLista from "./ComprasLista";
+
+import "../../content/css/ComprasStylo.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import { podiumOutline, listOutline, refreshOutline, addOutline } from "ionicons/icons";

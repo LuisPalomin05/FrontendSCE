@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../content/css/Cuenta.css";
+import "../../content/css/Cuenta.css";
 
 const Cuenta = () => {
   return (

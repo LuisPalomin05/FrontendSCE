@@ -33,10 +33,10 @@ import NoteList from "./components/NoteList";
 import CreateUser from "./components/CreateUser";
 import CreateNote from "./components/CreateNote";
 
-import Clientes from "./components/ClientesVista";
-import Proveedores from "./components/ProveedorVista";
-import ClientesCrear from "./components/ClientesCrear";
-
+import Clientes from "./components/CLIENTES/ClientesVista";
+import Proveedores from "./components/PROVEEDORES/ProveedorVista";
+import ClientesCrear from "./components/CLIENTES/ClientesCrear";
+import CotizacionCreate from "./components/COTIZADOR/CotizacionCreate";
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
@@ -87,7 +87,7 @@ const App = () => {
                 />
 
                 <Route path="/proveedores" element={<Proveedores />} />
-
+                <Route path="/cotizacion/crear" element={<CotizacionCreate/>}/>
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
