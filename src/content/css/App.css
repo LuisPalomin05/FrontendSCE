@@ -473,3 +473,37 @@ overflow-y: auto;
   border-collapse: collapse;
   
 }
+
+
+.icon-container {
+  position: relative; /* Necesario para posicionar el tooltip */
+  display: inline-block;
+  cursor: pointer; /* Para indicar que se puede interactuar */
+}
+
+/* Estilo del tooltip usando ::after (o ::before) */
+.icon-container:hover::after {
+  content: attr(data-tooltip); /* Toma el texto de data-tooltip */
+  position: absolute;
+  bottom: 100%; /* Aparece arriba del ícono */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* Estilos del tooltip */
+  background-color: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+
+  /* Suavizar la aparición */
+  opacity: 1;
+  transition: opacity 0.2s;
+  pointer-events: none; /* Para que no interfiera con el cursor */
+}
+
+.icon-container::after {
+  /* Por defecto, tooltip invisible */
+  opacity: 0;
+}

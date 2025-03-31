@@ -10,10 +10,9 @@ import {
   documentTextOutline,
   ticketOutline,
   accessibilityOutline,
-  cogOutline
+  cogOutline,
 } from "ionicons/icons";
-
-
+import { Tooltip } from "react-tooltip";
 
 const Menulateral = () => {
   return (
@@ -64,37 +63,48 @@ const Menulateral = () => {
             </Link>
           </div>
           <div className="hoverback cPointer">
-        <IonIcon className="ioniconwhite" icon={listOutline} />
-      </div>
+            <IonIcon className="ioniconwhite" icon={listOutline} />
+          </div>
 
-      <Link to="/dashboard" className="hoverback">
-        <IonIcon className="ioniconwhite" icon={homeOutline} />
-      </Link>
+          <Link
+            to="/dashboard"
+            className="hoverback"
+            data-tooltip-id="home-tooltip"
+            data-tooltip-content="Inicio"
+          >
+            <IonIcon className="ioniconwhite" icon={homeOutline} />
+            <Tooltip id="home-tooltip" />
+          </Link>
 
-      <Link to="/ventas" className="hoverback">
-        <IonIcon className="ioniconwhite" icon={bagAddOutline} />
-      </Link>
+          <Link
+            to="/ventas"
+            data-tooltip-id="sell-tooltip"
+            data-tooltip-content="Ventas"
+            className="hoverback"
+          >
+            <IonIcon className="ioniconwhite" icon={bagAddOutline} />
+            <Tooltip id="sell-tooltip" />
+          </Link>
 
-      <Link to="/compras" className="hoverback">
-        <IonIcon className="ioniconwhite" icon={bagRemoveOutline} />
-      </Link>
+          <Link to="/compras" className="hoverback">
+            <IonIcon className="ioniconwhite" icon={bagRemoveOutline} />
+          </Link>
 
-      <Link to="/documentos" className="hoverback">
-        <IonIcon className="ioniconwhite" icon={documentTextOutline} />
-      </Link>
+          <Link to="/documentos" className="hoverback">
+            <IonIcon className="ioniconwhite" icon={documentTextOutline} />
+          </Link>
 
-      <Link to="/pedidos" className="hoverback">
-        <IonIcon className="ioniconwhite" icon={ticketOutline} />
-      </Link>
+          <Link to="/pedidos" className="hoverback">
+            <IonIcon className="ioniconwhite" icon={ticketOutline} />
+          </Link>
 
-      <Link to="/clientes" className="hoverback">
-        <IonIcon className="ioniconwhite" icon={accessibilityOutline} />
-      </Link>
+          <Link to="/clientes" className="hoverback">
+            <IonIcon className="ioniconwhite" icon={accessibilityOutline} />
+          </Link>
 
-      <Link to="/proveedores" className="hoverback">
-        <IonIcon className="ioniconwhite" icon={ticketOutline} />
-      </Link>
-
+          <Link to="/proveedores" className="hoverback">
+            <IonIcon className="ioniconwhite" icon={ticketOutline} />
+          </Link>
         </div>
         <Link to="/sce/configuracion">
           <div className="hoverback">
@@ -102,7 +112,6 @@ const Menulateral = () => {
           </div>
         </Link>
       </div>
-
     </div>
   );
 };

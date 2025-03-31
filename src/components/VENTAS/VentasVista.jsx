@@ -1,27 +1,33 @@
 import "../../content/css/VentasStylo.css";
-import  VentasCrear  from "./VentasCrear";
-import   VentasLista  from "./VentasLista";
+// import  VentasCrear  from "./VentasCrear";
+// import   VentasLista  from "./VentasLista";
 
 import { Link, Routes, Route } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
-import { podiumOutline, listOutline, refreshOutline, addOutline } from "ionicons/icons";
+import {
+  podiumOutline,
+  listOutline,
+  refreshOutline,
+  addOutline,
+} from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { lazy, Suspense } from "react";
+const VentasLista = lazy(() => import("./VentasLista"));
+const VentasCrear = lazy(() => import("./VentasCrear"));
 
 const Ventas = () => {
-  const [ventas, setVentas] = useState([]);	
+  const [ventas, setVentas] = useState([]);
 
-useEffect(() => {
-  async function fetchData() {
-    const res = await axios.get("https://backendapi-6thn.onrender.com/api/ventas");
-    setVentas(res.data);
-  }
-  fetchData();
-}, [ventas])
-
-
-
+  useEffect(() => {
+    async function fetchData() {
+      const res = await axios.get(
+        "https://backendapi-6thn.onrender.com/api/ventas"
+      );
+      setVentas(res.data);
+    }
+    fetchData();
+  }, [ventas]);
 
   return (
     <div className="VentasBox">
@@ -59,9 +65,12 @@ useEffect(() => {
       </section>
 
       <section>
-        <Routes>
-      <Route path="/" element={<VentasLista ventasList={ventas} />} />
-      <Route path="crear"  element={<VentasCrear />} /> </Routes>
+        <Suspense fallback={<div>Cargando...</div>}>
+          <Routes>
+            <Route path="/" element={<VentasLista ventasList={ventas} />} />
+            <Route path="crear" element={<VentasCrear />} />
+          </Routes>
+        </Suspense>
       </section>
     </div>
   );
