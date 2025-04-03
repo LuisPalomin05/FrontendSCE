@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import { podiumOutline, listOutline, refreshOutline,addOutline } from "ionicons/icons";
 
-const localhost = "http://localhost:5000/";
+const localhost = "https://backendapi-6thn.onrender.com/api/clientes";
+
 export default function Clientes() {
   const [Clientes, setClientes] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await axios.get(localhost + "api/clientes");
+      const res = await axios.get(localhost);
       setClientes(res.data);
     }
     fetchData();

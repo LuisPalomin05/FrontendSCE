@@ -62,9 +62,9 @@ const Menulateral = () => {
               </svg>
             </Link>
           </div>
-          <div className="hoverback cPointer">
+          {/* <div className="hoverback cPointer">
             <IonIcon className="ioniconwhite" icon={listOutline} />
-          </div>
+          </div> */}
 
           <Link
             to="/dashboard"
@@ -86,30 +86,48 @@ const Menulateral = () => {
             <Tooltip id="sell-tooltip" />
           </Link>
 
-          <Link to="/compras" className="hoverback">
+          <Link to="/compras" data-tooltip-id="buy-tooltip"
+            data-tooltip-content="Compras" className="hoverback">
             <IonIcon className="ioniconwhite" icon={bagRemoveOutline} />
+            <Tooltip id="buy-tooltip" />
+
           </Link>
 
-          <Link to="/documentos" className="hoverback">
+          <Link to="/documentos" data-tooltip-id="docs-tooltip"
+            data-tooltip-content="Documentos" className="hoverback">
             <IonIcon className="ioniconwhite" icon={documentTextOutline} />
+            <Tooltip id="docs-tooltip" />
+
           </Link>
 
-          <Link to="/pedidos" className="hoverback">
+          <Link to="/pedidos" data-tooltip-id="box-tooltip"
+            data-tooltip-content="Pedidos" className="hoverback">
             <IonIcon className="ioniconwhite" icon={ticketOutline} />
+            <Tooltip id="box-tooltip" />
+
           </Link>
 
-          <Link to="/clientes" className="hoverback">
+          <Link to="/clientes" data-tooltip-id="clients-tooltip"
+            data-tooltip-content="Clientes" className="hoverback">
             <IonIcon className="ioniconwhite" icon={accessibilityOutline} />
+            <Tooltip id="clients-tooltip" />
+
           </Link>
 
-          <Link to="/proveedores" className="hoverback">
+          <Link to="/proveedores" data-tooltip-id="provs-tooltip"
+            data-tooltip-content="Proveedores" className="hoverback">
             <IonIcon className="ioniconwhite" icon={ticketOutline} />
+            <Tooltip id="provs-tooltip" />
+
           </Link>
         </div>
-        <Link to="/sce/configuracion">
+        <Link to="/sce/configuracion" data-tooltip-id="provs-tooltip"
+            data-tooltip-content="Configuracion">
           <div className="hoverback">
             <IonIcon className="ioniconwhite" icon={cogOutline} />
           </div>
+          <Tooltip id="tool-tooltip" />
+
         </Link>
       </div>
     </div>

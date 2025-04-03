@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const localhost = "http://localhost:5000/api/compras";
+// const localhost = "http://localhost:5000/api/compras";
+const localhost = "https://backendapi-6thn.onrender.com/api/compras";
 
 
 
@@ -16,7 +17,7 @@ const ComprasCrear = () => {
   const [ruc, setRuc] = useState("");
   const [cliente, setCliente] = useState("");
   const [emision, setEmision] = useState("");
-  const [vencimiento, setVencimiento] = useState("");
+  // const [vencimiento, setVencimiento] = useState("");
   const [empresa, setEmpresa] = useState("TORQUE-G46");
   const [nfactura, setnFactura] = useState("");
   const [total, setTotal] = useState("");
@@ -29,7 +30,6 @@ const ComprasCrear = () => {
       ruc,
       cliente,
       emision,
-      vencimiento,
       empresa,
       nfactura,
       total,
@@ -90,7 +90,7 @@ const ComprasCrear = () => {
                   name="fecha_emision"
                 />
               </section>
-              <section className="flexcolumn">
+              {/* <section className="flexcolumn">
                 <label htmlFor="fecha-vencimiento">Fecha Vencimiento</label>
                 <input
                   className="inputboxitm"
@@ -98,7 +98,7 @@ const ComprasCrear = () => {
                   id="fecha-vencimiento"
                   name="fecha_vencimiento"
                 />
-              </section>
+              </section> */}
             </div>
           </div>
 

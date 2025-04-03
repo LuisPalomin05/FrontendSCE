@@ -37,8 +37,8 @@ const VentasLista = ({ ventasList }) => {
                   <td> {venta.cliente} </td>
                   <td> {venta.ruc}</td>
                   <td> {venta.nfactura} </td>
-                  <td> {venta.total}</td>
-                  <td> {venta.moneda} </td>
+                  <td> {venta.moneda === "Dolares" ?"$. " : "S/. " } {venta.total}</td>
+                  <td>  {venta.moneda} </td>
                   <td> {venta.emision}</td>
                   <td> {venta.vencimiento}</td>
                   <td> {venta.empresa}</td>

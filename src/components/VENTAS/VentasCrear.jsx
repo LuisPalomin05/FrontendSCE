@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-const localhost = "http://localhost:5000/api/ventas";
+const localhost = "https://backendapi-6thn.onrender.com/api/ventas";
 
 const VentasCrear = () => {
 
@@ -145,7 +145,7 @@ navigate("/ventas");
                   name="numeroSerie"
                   
                   value={nfactura}
-                  onChange={(e)=> setnFactura(e.target.value)}
+                  onChange={(e)=> setnFactura(e.target.value.toUpperCase())}
                   placeholder="Número de Serie"
                 />
               </section>
