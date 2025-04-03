@@ -14,29 +14,19 @@ import "./content/css/SideBar.css";
 import "./content/css/CotizadorPanel.css";
 import "./content/css/Dashboard.css";
 
-import {
-  Menulateral,
-  Dashboard,
-  SignIn,
-  SignUp,
-  Navigation,
-  Configuracion,
-  CotizadorPanel,
-  Compras,
-  Ventas,
-  Documentos,
-  Pedidos,
-  Cotizador,
-} from "./components/Componentes";
+import Dashboard from ".components/PANEL/DashBoard";
+import PedidosVista from "./components/PEDIDOS/Pedidos";
+import ComprasVista from "./components/COMPRAS/Compras";
+import DocumentosVista from "./components/DOCUMENTOS/Documentos";
+import VentasVista from "./components/VENTAS/Ventas";
+import Configuracion from "./components/CONFIGURACION/Configuracion";
+import CotizadorVista from "./components/COTIZADOR/Cotizador";
+import { SignIn, SignUp } from "./components/REGISTRO/SignIn";
+import ClientesVista from "./components/CLIENTES/ClientesVista";
+import ProveedoresVista from "./components/PROVEEDORES/ProveedoresVista";
 
-import NoteList from "./components/NoteList";
-import CreateUser from "./components/CreateUser";
-import CreateNote from "./components/CreateNote";
+import Navigation from "./components/Navigation";
 
-import Clientes from "./components/CLIENTES/ClientesVista";
-import Proveedores from "./components/PROVEEDORES/ProveedorVista";
-import ClientesCrear from "./components/CLIENTES/ClientesCrear";
-import CotizacionCreate from "./components/COTIZADOR/CotizacionCreate";
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
@@ -58,37 +48,35 @@ const App = () => {
             </div>
             <div className="sections">
               <Routes>
+                <Route path="*" element={<Navigate to="/" />} />
                 <Route path="/" element={<Dashboard />} />
 
-                <Route path="/pedidos" element={<Pedidos />} />
-                <Route path="/compras/*" element={<Compras />} />
+                <Route path="/pedidos" element={<PedidosVista />} />
+                <Route path="/compras/*" element={<ComprasVista />} />
 
-                <Route path="/documentos" element={<Documentos />} />
-                <Route path="/ventas/*" element={<Ventas />} />
+                <Route path="/documentos" element={<DocumentosVista />} />
+                <Route path="/ventas/*" element={<VentasVista />} />
 
                 <Route
                   path="/sce/configuracion/*"
                   element={<Configuracion />}
                 />
 
-                <Route path="/cotizador/*" element={<Cotizador />} />
+                <Route path="/cotizador/*" element={<CotizadorVista />} />
 
-                <Route path="/lista" element={<NoteList />} />
+                {/* <Route path="/lista" element={<NoteList />} />
                 <Route path="/create" element={<CreateNote />} />
                 <Route path="/edit/:id" element={<CreateNote />} />
 
-                <Route path="/user" element={<CreateUser />} />
+                <Route path="/user" element={<CreateUser />} /> */}
 
-                <Route path="/clientes" element={<Clientes />} />
-                <Route path="/clientes/create" element={<ClientesCrear />} />
+                <Route path="/clientes" element={<ClientesVista />} />
+
+                <Route path="/proveedores" element={<ProveedoresVista />} />
                 <Route
-                  path="/clientes/editar/:id"
-                  element={<ClientesCrear />}
+                  path="/cotizacion/crear"
+                  element={<CotizacionCreate />}
                 />
-
-                <Route path="/proveedores" element={<Proveedores />} />
-                <Route path="/cotizacion/crear" element={<CotizacionCreate/>}/>
-                <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
           </div>

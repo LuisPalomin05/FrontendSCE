@@ -6,7 +6,7 @@ import { podiumOutline, listOutline, refreshOutline,addOutline } from "ionicons/
 
 const localhost = "https://backendapi-6thn.onrender.com/api/clientes";
 
-export default function Clientes() {
+export default function ClientesVista() {
   const [Clientes, setClientes] = useState([]);
 
   useEffect(() => {

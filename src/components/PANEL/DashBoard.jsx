@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CardBoxCash from "./CardBox";
+import CardBoxCash from "../CardBox";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import {
