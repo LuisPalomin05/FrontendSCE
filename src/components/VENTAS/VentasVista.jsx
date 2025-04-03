@@ -7,9 +7,8 @@ import {
   refreshOutline,
   addOutline,
 } from "ionicons/icons";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,lazy, Suspense } from "react";
 import axios from "axios";
-import { lazy, Suspense } from "react";
 const VentasLista = lazy(() => import("./VentasLista"));
 const VentasCrear = lazy(() => import("./VentasCrear"));
 

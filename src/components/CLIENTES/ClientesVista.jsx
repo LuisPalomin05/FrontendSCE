@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,lazy, Suspense } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import { podiumOutline, listOutline, refreshOutline,addOutline } from "ionicons/icons";
+
+const ClientesLista = lazy(() => import("./ClientesLista"));
+const ClientesCrear = lazy(() => import("./ClientesCrear"));
 
 const localhost = "https://backendapi-6thn.onrender.com/api/clientes";
 
@@ -90,6 +93,16 @@ export default function ClientesVista() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section>
+<Suspense fallback={<div>Loading...</div>}>
+<Routes>
+<Route path="/" element={<ClientesLista clientesList={Clientes} />} />
+<Route path="crear" element={<ClientesCrear />} />
+<Route path="editar/:id" element={<ClientesCrear />} />
+</Routes>
+</Suspense>
       </section>
     </div>
   );

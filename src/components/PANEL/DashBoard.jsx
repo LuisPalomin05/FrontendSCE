@@ -80,18 +80,18 @@ export default class Dashboard extends Component {
               <IonIcon icon={chevronForwardOutline} />
             </Link>
 
-            <Link to="/create" className="RectboxCash">
-              <p>Compras crear</p>
+            <Link to="/compras" className="RectboxCash">
+              <p>Compras</p>
               <IonIcon icon={chevronForwardOutline} />
             </Link>
 
-            <Link to="/lista" className="RectboxCash">
-              <p>Documentos lista</p>
+            <Link to="/documentos" className="RectboxCash">
+              <p>Documentos</p>
               <IonIcon icon={chevronForwardOutline} />
             </Link>
 
-            <Link to="/user" className="RectboxCash">
-              <p>Pedidos user</p>
+            <Link to="/pedidos" className="RectboxCash">
+              <p>Pedidos</p>
               <IonIcon icon={chevronForwardOutline} />
             </Link>
           </section>
