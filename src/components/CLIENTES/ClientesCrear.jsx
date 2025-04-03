@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-const localhost = "http://localhost:5000/";
+const localhost = "https://backendapi-6thn.onrender.com/api/clientes/";
 
 export default function ClientesCrear() {
   const { id } = useParams();
@@ -22,8 +22,7 @@ export default function ClientesCrear() {
     console.log("ID recibido:", id);
     async function fetchData() {
       if (id) {
-        const res = await axios.get(
-          "https://backendapi-6thn.onrender.com/api/clientes/" + id
+        const res = await axios.get(localhost + id
         );
         setRuc(res.data.ruc);
         setCliente(res.data.cliente);
@@ -50,15 +49,15 @@ export default function ClientesCrear() {
     };
     // const res = await axios.post("https://backendapi-6thn.onrender.com/api/clientes", newCliente);
     if (editing) {
-      await axios.put(localhost + "api/clientes/" + id, newCliente);
+      await axios.put(localhost + id, newCliente);
     } else {
-      await axios.post(localhost + "api/clientes/", newCliente);
+      await axios.post(localhost , newCliente);
     }
     navigate("/clientes");
   };
 
   async function deleteitem() {
-    await axios.delete(localhost + "api/clientes/" + id);
+    await axios.delete(localhost + id);
     navigate("/clientes");
   }
   return (
