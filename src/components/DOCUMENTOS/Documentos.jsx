@@ -1,5 +1,5 @@
 import React from "react";
-import "../content/css/Documentos.css";
+import "../../content/css/Documentos.css";
 // import { Link } from "react-router-dom";
 
 const Documentos = () => {

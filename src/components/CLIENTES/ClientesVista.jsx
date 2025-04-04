@@ -1,16 +1,23 @@
-import React, { useEffect, useState,lazy, Suspense } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import "../../content/css/Clientes.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
-import { podiumOutline, listOutline, refreshOutline,addOutline } from "ionicons/icons";
+import {
+  podiumOutline,
+  listOutline,
+  refreshOutline,
+  addOutline,
+} from "ionicons/icons";
 
-const ClientesLista = lazy(() => import("./ClientesLista"));
+const ClientesLista = lazy(() => import("./ClienteLista"));
 const ClientesCrear = lazy(() => import("./ClientesCrear"));
 
 const localhost = "https://backendapi-6thn.onrender.com/api/clientes";
 
 export default function ClientesVista() {
-  const [Clientes, setClientes] = useState([]);
+  const [clientes, setClientes] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -53,7 +60,7 @@ export default function ClientesVista() {
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <p>Listado de Clientes</p>
         <div>
           <table className="formatTable">
@@ -93,16 +100,16 @@ export default function ClientesVista() {
             </tbody>
           </table>
         </div>
-      </section>
+      </section> */}
 
       <section>
-<Suspense fallback={<div>Loading...</div>}>
-<Routes>
-<Route path="/" element={<ClientesLista clientesList={Clientes} />} />
-<Route path="crear" element={<ClientesCrear />} />
-<Route path="editar/:id" element={<ClientesCrear />} />
-</Routes>
-</Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<ClientesLista clienteLista={clientes} />}/>
+            <Route path="crear" element={<ClientesCrear />} />
+            <Route path="editar/:id" element={<ClientesCrear />} />
+          </Routes>
+        </Suspense>
       </section>
     </div>
   );

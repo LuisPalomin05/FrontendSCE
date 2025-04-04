@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React,{useEffect,useState, useParams} from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -10,7 +10,7 @@ const localhost = "https://backendapi-6thn.onrender.com/api/compras";
 
 const ComprasCrear = () => {
 
-
+  const { id } = useParams();
   const navigate = useNavigate();
 
 
@@ -23,10 +23,11 @@ const ComprasCrear = () => {
   const [total, setTotal] = useState("");
   const [moneda, setMoneda] = useState("Soles");
 
+  const [editing, setEditing] = useState(false);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    const newVenta = {
+    const newCompra = {
       ruc,
       cliente,
       emision,
@@ -35,11 +36,10 @@ const ComprasCrear = () => {
       total,
       moneda,
     };
-    try {
-      const res = await axios.post(localhost,newVenta);
-      console.log(res);
-    } catch (error) {
-      console.log(error)
+    if(editing) {
+      await axios.put(localhost + id, newCompra);
+    }else{
+      axios.post(localhost, newCompra)
     }
     navigate("/compras")
   }
@@ -48,8 +48,8 @@ const ComprasCrear = () => {
   return (
     <div className="padd2">
       <section className="marbot">
-        <h1>Registrar Nueva Compra</h1>
-        <p className="cGray">
+      <h1>{editing ? "Editar Compra" : "Registrar Nueva Compra"}</h1>
+      <p className="cGray">
           Ingresa los datos a registrar o arrastra un XML al área indicada.
         </p>
       </section>
@@ -65,6 +65,8 @@ const ComprasCrear = () => {
                   type="text"
                   id="cliente"
                   name="cliente"
+
+                  onChange={(e) => setCliente(e.target.value)}
                   placeholder="Cliente"
                 />
               </section>
@@ -75,6 +77,7 @@ const ComprasCrear = () => {
                   type="text"
                   id="ruc"
                   name="ruc"
+                  onChange={(e) => setRuc(e.target.value)}
                   placeholder="RUC: 20123456789"
                 />
               </section>
@@ -87,6 +90,8 @@ const ComprasCrear = () => {
                   className="inputboxitm"
                   type="date"
                   id="fecha-emision"
+
+                  onChange={(e) => setEmision(e.target.value)}
                   name="fecha_emision"
                 />
               </section>
@@ -105,11 +110,11 @@ const ComprasCrear = () => {
           <div className="flexcolumn flex1 gapp2">
             <section className="flexcolumn">
               <label htmlFor="empresa">Empresas</label>
-              <select className="inputboxitm" id="empresa" name="empresa">
+              <select className="inputboxitm" onChange={(e)=> setEmpresa(e.target.value)} id="empresa" name="empresa">
                 <option>TORQUE-G46</option>
                 <option>IRONTOOLS</option>
               </select>
-            </section>
+            </section> 
             <section className="flexcolumn">
               <label htmlFor="numero-serie">Número de Serie</label>
               <input
@@ -117,6 +122,7 @@ const ComprasCrear = () => {
                 type="text"
                 id="numero-serie"
                 name="numero_serie"
+                onChange={(e) => setnFactura(e.target.value)}
                 placeholder="Número de Serie"
               />
             </section>
@@ -131,12 +137,13 @@ const ComprasCrear = () => {
               type="number"
               id="importe-total"
               name="importe_total"
+              onChange={(e) => setTotal(e.target.value)}
               placeholder="Importe total"
             />
           </section>
           <section className="flexcolumn">
             <label htmlFor="moneda">Moneda</label>
-            <select className="inputbox" id="moneda" name="moneda">
+            <select onChange={(e)=> setMoneda(e.target.value)} className="inputbox" id="moneda" name="moneda">
               <option>Soles</option>
               <option>Dólares</option>
             </select>

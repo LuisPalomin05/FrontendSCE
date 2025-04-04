@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
-import { pricetags, chevronForward,cartOutline } from "ionicons/icons";
+import { chevronForward, cartOutline } from "ionicons/icons";
 
 const CotizadorPanel = () => {
   return (
@@ -12,7 +12,7 @@ const CotizadorPanel = () => {
         </div>
 
         {/* Empresa TORQUE-G46 */}
-        <div className="EmpresaItembox">
+        {/* <div className="EmpresaItembox">
           <div className="flexbox tagnamebox">
             <IonIcon icon={pricetags} />
             <p>TORQUE-G46</p>
@@ -37,10 +37,10 @@ const CotizadorPanel = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Empresa IRONTOOLS */}
-        <div className="EmpresaItembox">
+        {/* <div className="EmpresaItembox">
           <div className="flexbox tagnamebox">
             <IonIcon icon={pricetags} />
             <p>IRONTOOLS</p>
@@ -62,15 +62,15 @@ const CotizadorPanel = () => {
             </li>
           </ul>
 
-        </div>
+        </div> */}
 
         <div>
-          <Link to={"/cotizacion/crear/"} className="flexalign liItemCash padd3 gapp4 cwhite  roundborder">
-          <div className="flexbox gapp2">
-          <IonIcon className="boldtext" icon={cartOutline}/>
-          <p>Crear Cotizacion</p>
-          </div>
-          <IonIcon icon={chevronForward} />
+          <Link  to={"/cotizacion/crear/"}  className="flexalign liItemCash padd3 gapp4 cwhite  roundborder" >
+            <div className="flexbox gapp2 hg10">
+              <IonIcon className="boldtext" icon={cartOutline} />
+              <p>Crear Cotizacion</p>
+            </div>
+            <IonIcon icon={chevronForward} />
           </Link>
         </div>
       </div>

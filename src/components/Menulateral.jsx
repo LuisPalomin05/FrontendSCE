@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import {
-  listOutline,
+  // listOutline,
   homeOutline,
   bagAddOutline,
   bagRemoveOutline,

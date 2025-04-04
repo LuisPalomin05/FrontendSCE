@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import CardBoxCash from "../CardBox";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
@@ -10,8 +10,8 @@ import {
   addOutline,
 } from "ionicons/icons";
 
-export default class Dashboard extends Component {
-  render() {
+  const Dashboard = () => {
+  
     return (
       <div className="DashBoardBox">
         <div className="flexbox barTopmenu">
@@ -136,5 +136,7 @@ export default class Dashboard extends Component {
         </div>
       </div>
     );
-  }
+  
 }
+
+export default Dashboard;

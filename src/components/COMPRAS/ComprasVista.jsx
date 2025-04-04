@@ -1,12 +1,30 @@
-import ComprasCrear from "./ComprasCrear";
-import ComprasLista from "./ComprasLista";
+import React, { useEffect, useState, lazy, Suspense } from "react";
+import axios from "axios";
 
 import "../../content/css/ComprasStylo.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import { podiumOutline, listOutline, refreshOutline, addOutline } from "ionicons/icons";
 
+const ComprasLista = lazy(() => import("./ComprasLista"));
+const ComprasCrear = lazy(() => import("./ComprasCrear"));
+
 export default function Compras() {
+
+
+  const [compras, setCompras] = useState([]);
+  
+  useEffect(() => {
+    async function fetchData() {
+      const res = await axios.get(
+        "https://backendapi-6thn.onrender.com/api/compras"
+      );
+      setCompras(res.data);
+    }
+    fetchData();
+  }, [compras]);
+
+
   return (
     <div className="ComprasBox">
       <section className="flexbox topListCompras">
@@ -39,11 +57,15 @@ export default function Compras() {
           </select>
         </div>
       </section>
-
-      <Routes>
-        <Route path="/" element={<ComprasLista />} />
+<section>
+<Suspense fallback={<div>Cargando...</div>}>
+<Routes>
+        <Route path="/" element={<ComprasLista comprasList={compras}/>} />
         <Route path="crear" element={<ComprasCrear />} />
       </Routes>
+</Suspense>
+</section>
+
     </div>
   );
 }

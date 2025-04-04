@@ -19,7 +19,7 @@ export default function ClientesCrear() {
   const [editing, setEditing] = useState(false);
 
   useEffect(() => {
-    console.log("ID recibido:", id);
+
     async function fetchData() {
       if (id) {
         const res = await axios.get(localhost + id
@@ -36,6 +36,8 @@ export default function ClientesCrear() {
     }
     fetchData();
   }, [id]);
+
+  
   const onSubmitForm = async (e) => {
     e.preventDefault();
     const newCliente = {

@@ -3,7 +3,7 @@ import React from "react";
 const VentasLista = ({ ventasList }) => {
   // Desestructurar correctamente
   return (
-    <div>
+    <div className="padd2">
       <section>
         <h1 className="cGray fs16 ptop">Ventas</h1>
         <div className="bgWhite">
@@ -21,12 +21,11 @@ const VentasLista = ({ ventasList }) => {
                 <td>F. EMISION</td>
                 <td>F. VENCIMIENTO</td>
                 <td>EMPRESA</td>
-                
               </tr>
             </thead>
             <tbody>
               {ventasList.map((venta, index) => (
-                <tr key={index} >
+                <tr key={index}>
                   <td>
                     <input
                       type="checkbox"
@@ -37,8 +36,11 @@ const VentasLista = ({ ventasList }) => {
                   <td> {venta.cliente} </td>
                   <td> {venta.ruc}</td>
                   <td> {venta.nfactura} </td>
-                  <td> {venta.moneda === "Dolares" ?"$. " : "S/. " } {venta.total}</td>
-                  <td>  {venta.moneda} </td>
+                  <td>
+                    {" "}
+                    {venta.moneda === "Dolares" ? "$. " : "S/. "} {venta.total}
+                  </td>
+                  <td> {venta.moneda} </td>
                   <td> {venta.emision}</td>
                   <td> {venta.vencimiento}</td>
                   <td> {venta.empresa}</td>

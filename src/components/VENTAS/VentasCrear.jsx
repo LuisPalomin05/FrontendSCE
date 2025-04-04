@@ -1,15 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
-const localhost = "https://backendapi-6thn.onrender.com/api/ventas";
+const localhost = "https://backendapi-6thn.onrender.com/api/ventas/";
 
 const VentasCrear = () => {
-
+  const { id } = useParams();
   const navigate = useNavigate();
-
 
   const [ruc, setRuc] = useState("");
   const [cliente, setCliente] = useState("");
@@ -20,13 +18,29 @@ const VentasCrear = () => {
   const [total, setTotal] = useState("");
   const [moneda, setMoneda] = useState("Soles");
 
+  const [editing, setEditing] = useState(false);
+
   useEffect(() => {
     async function fetchData() {
       // const res = await axios.get(localhost)
       // console.log(res)
+
+      if (id) {
+        const res = await axios.get(localhost + id);
+        setRuc(res.data.ruc);
+        setCliente(res.data.cliente);
+        setEmision(res.data.emision);
+        setVencimiento(res.data.vencimiento);
+        setEmpresa(res.data.empresa);
+        setnFactura(res.data.nfactura);
+        setTotal(res.data.total);
+        setMoneda(res.data.moneda);
+
+        setEditing(true);
+      }
     }
     fetchData();
-  }, []);
+  }, [id]);
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -40,15 +54,13 @@ const VentasCrear = () => {
       total,
       moneda,
     };
-    try {
-      const res = await axios.post(localhost,newVenta);
-      console.log(res);
-    } catch (error) {
-      console.log(error)
+    if (editing) {
+      await axios.put(localhost + id, newVenta);
+    } else {
+      await axios.post(localhost, newVenta);
     }
 
-
-navigate("/ventas");
+    navigate("/ventas");
   };
 
   // Función para manejar archivos XML
@@ -62,17 +74,24 @@ navigate("/ventas");
     }
   };
 
+  async function deleteVenta() {
+    await axios.delete(localhost + id);
+    navigate("/ventas");
+  }
+
   return (
     <div className="padd2">
       <section className="marbot">
-        <h1>Registrar Nueva Venta</h1>
+        {/* <h1>Registrar Nueva Venta</h1> */}
+        <h1>{editing ? "Editar Venta" : "Registrar Nueva Venta"}</h1>
+
         <p className="cGray">
           Ingresa los datos a registrar o arrastra un XML al área indicada
         </p>
       </section>
 
       <section>
-        <form onSubmit={onSubmitForm} >
+        <form onSubmit={onSubmitForm}>
           <section className="flexbox gapp2">
             <div className="flexbox flex2 gapp4">
               <div className="flexcolumn gapp4">
@@ -83,7 +102,7 @@ navigate("/ventas");
                     type="text"
                     name="cliente"
                     value={cliente}
-                    onChange={(e)=> setCliente(e.target.value)}
+                    onChange={(e) => setCliente(e.target.value)}
                     placeholder="Cliente"
                   />
                 </section>
@@ -94,7 +113,7 @@ navigate("/ventas");
                     type="text"
                     name="ruc"
                     value={ruc}
-                    onChange={(e)=> setRuc(e.target.value)}
+                    onChange={(e) => setRuc(e.target.value)}
                     placeholder="RUC: 20123456789"
                   />
                 </section>
@@ -108,7 +127,7 @@ navigate("/ventas");
                     type="date"
                     name="fechaEmision"
                     value={emision}
-                    onChange={(e)=> setEmision(e.target.value)}
+                    onChange={(e) => setEmision(e.target.value)}
                   />
                 </section>
                 <section>
@@ -118,7 +137,7 @@ navigate("/ventas");
                     type="date"
                     name="fechaVencimiento"
                     value={vencimiento}
-                    onChange={(e)=> setVencimiento(e.target.value)}
+                    onChange={(e) => setVencimiento(e.target.value)}
                   />
                 </section>
               </div>
@@ -131,7 +150,7 @@ navigate("/ventas");
                   className="inputboxitm"
                   name="empresa"
                   value={empresa}
-                  onChange={(e)=> setEmpresa(e.target.value)}
+                  onChange={(e) => setEmpresa(e.target.value)}
                 >
                   <option value="TORQUE-G46">TORQUE-G46</option>
                   <option value="IRONTOOLS">IRONTOOLS</option>
@@ -143,9 +162,8 @@ navigate("/ventas");
                   className="inputbox"
                   type="text"
                   name="numeroSerie"
-                  
                   value={nfactura}
-                  onChange={(e)=> setnFactura(e.target.value.toUpperCase())}
+                  onChange={(e) => setnFactura(e.target.value.toUpperCase())}
                   placeholder="Número de Serie"
                 />
               </section>
@@ -160,7 +178,7 @@ navigate("/ventas");
                 type="number"
                 name="importeTotal"
                 value={total}
-                onChange={(e)=> setTotal(e.target.value)}
+                onChange={(e) => setTotal(e.target.value)}
                 placeholder="Importe total"
               />
             </section>
@@ -170,7 +188,7 @@ navigate("/ventas");
                 className="inputbox"
                 name="moneda"
                 value={moneda}
-                onChange={(e)=> setMoneda(e.target.value)}
+                onChange={(e) => setMoneda(e.target.value)}
               >
                 <option value="Soles">Soles</option>
                 <option value="Dolares">Dólares</option>
@@ -182,11 +200,11 @@ navigate("/ventas");
 
           <section className="flexbox gapp8">
             <button type="submit" className="btnSuccess">
-              Guardar
+              {" "}
+              Guardar{" "}
             </button>
-            <button type="reset" className="btnWarning" onClick={(e) => e.preventDefault()}> 
-              Limpiar
-            </button>
+            {/* <button type="reset" className="btnWarning" onClick={(e) => e.preventDefault()}> Limpiar</button> */}
+
             <Link to="/ventas" className="btnDanger">
               Cancelar
             </Link>

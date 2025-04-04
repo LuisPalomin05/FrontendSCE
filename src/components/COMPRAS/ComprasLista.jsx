@@ -1,6 +1,7 @@
 import React from "react";
 
-const ComprasLista = () => {
+const ComprasLista = ({ comprasList }) => {
+  
   return (
     <div className="padd2">
       <section>
@@ -10,7 +11,7 @@ const ComprasLista = () => {
             <thead>
               <tr>
                 <th>
-                  <input type="checkbox" id="check"/>
+                  <input type="checkbox" id="check" />
                 </th>
                 <th>Cliente</th>
                 <th>Fecha</th>
@@ -18,14 +19,15 @@ const ComprasLista = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>Cliente1</td>
-                <td>12/12/2021</td>
-                <td>Enviado</td>
-              </tr>
+              {comprasList.map((compra, index) => (
+                <tr key={index}>
+                  <td>
+                    <input type="checkbox" id={`check-${index}`} />
+                  </td>
+                  <td>{compra.cliente}</td>
+                  <td>{compra.fecha}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

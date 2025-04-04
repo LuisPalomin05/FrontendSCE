@@ -1,5 +1,5 @@
 import React from "react";
-import "../content/css/PedidosVista.css";
+import "../../content/css/Pedidos.css";
 
 const PedidosVista = () => {
   return (

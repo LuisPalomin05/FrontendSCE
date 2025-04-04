@@ -13,7 +13,7 @@ import {
 import { downloadToimg as ScreenShot } from "../../utils/imgDescarga";
 import generatePDF from "./generatePDF";
 
-const localhost = "http://localhost:5000/api/cotizacion";
+const localhost = "https://backendapi-6thn.onrender.com/api/cotizacion";
 
 const CotizacionCreate = () => {
   const navigate = useNavigate();

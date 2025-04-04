@@ -14,17 +14,20 @@ import "./content/css/SideBar.css";
 import "./content/css/CotizadorPanel.css";
 import "./content/css/Dashboard.css";
 
-import Dashboard from ".components/PANEL/DashBoard";
-import PedidosVista from "./components/PEDIDOS/Pedidos";
-import ComprasVista from "./components/COMPRAS/Compras";
+import Dashboard from "./components/PANEL/DashBoard";
+import PedidosVista from "./components/PEDIDOS/PedidosVista";
+import ComprasVista from "./components/COMPRAS/ComprasVista";
 import DocumentosVista from "./components/DOCUMENTOS/Documentos";
-import VentasVista from "./components/VENTAS/Ventas";
+import VentasVista from "./components/VENTAS/VentasVista";
 import Configuracion from "./components/CONFIGURACION/Configuracion";
-import CotizadorVista from "./components/COTIZADOR/Cotizador";
-import { SignIn, SignUp } from "./components/REGISTRO/SignIn";
+import CotizacionCreate from "./components/COTIZADOR/CotizacionCreate";
+import SignIn from "./components/REGISTRO/SignIn";
+import SignUp from "./components/REGISTRO/SignUp";
 import ClientesVista from "./components/CLIENTES/ClientesVista";
-import ProveedoresVista from "./components/PROVEEDORES/ProveedoresVista";
+import ProveedorVista from "./components/PROVEEDORES/ProveedorVista";
 
+import Menulateral from "./components/Menulateral";
+import CotizadorPanel from "./components/CotizadorPanel";
 import Navigation from "./components/Navigation";
 
 const App = () => {
@@ -62,7 +65,7 @@ const App = () => {
                   element={<Configuracion />}
                 />
 
-                <Route path="/cotizador/*" element={<CotizadorVista />} />
+                {/* <Route path="/cotizador/*" element={<CotizadorVista />} /> */}
 
                 {/* <Route path="/lista" element={<NoteList />} />
                 <Route path="/create" element={<CreateNote />} />
@@ -72,7 +75,7 @@ const App = () => {
 
                 <Route path="/clientes" element={<ClientesVista />} />
 
-                <Route path="/proveedores" element={<ProveedoresVista />} />
+                <Route path="/proveedores" element={<ProveedorVista />} />
                 <Route
                   path="/cotizacion/crear"
                   element={<CotizacionCreate />}

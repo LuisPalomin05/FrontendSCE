@@ -1,5 +1,5 @@
 import React from "react";
-export default function Proveedor() {
+ function ProveedorVista() {
 
     return (
         <div>
@@ -7,3 +7,5 @@ export default function Proveedor() {
         </div>
     );
     }
+
+    export default ProveedorVista;
