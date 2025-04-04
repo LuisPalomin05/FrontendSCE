@@ -21,9 +21,10 @@ const VentasVista = () => {
         "https://backendapi-6thn.onrender.com/api/ventas"
       );
       setVentas(res.data);
+
     }
     fetchData();
-  }, [ventas]);
+  }, []);
 
   return (
     <div className="VentasBox">
@@ -61,7 +62,7 @@ const VentasVista = () => {
       </section>
 
       <section>
-        <Suspense fallback={<div>Cargando...</div>}>
+        <Suspense fallback={<div className="shimmer-loader">Cargando...</div>}>
           <Routes>
             <Route path="/" element={<VentasLista ventasList={ventas} />} />
             <Route path="/crear" element={<VentasCrear />} />

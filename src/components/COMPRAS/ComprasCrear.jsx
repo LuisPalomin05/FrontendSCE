@@ -1,5 +1,5 @@
-import React,{useEffect,useState, useParams} from "react";
-import { Link } from "react-router-dom";
+import React,{useEffect,useState} from "react";
+import { Link ,useParams} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -59,7 +59,7 @@ const ComprasCrear = () => {
           <div className="flexbox flex2 gapp4">
             <div className="flexcolumn gapp4">
               <section className="flexcolumn">
-                <label htmlFor="cliente">Cliente</label>
+                <p htmlFor="cliente">Cliente</p>
                 <input
                   className="inputbox"
                   type="text"
@@ -71,7 +71,7 @@ const ComprasCrear = () => {
                 />
               </section>
               <section className="flexcolumn">
-                <label htmlFor="ruc">RUC</label>
+                <p htmlFor="ruc">RUC</p>
                 <input
                   className="inputbox"
                   type="text"
@@ -85,7 +85,7 @@ const ComprasCrear = () => {
 
             <div className="flexcolumn gapp4">
               <section className="flexcolumn">
-                <label htmlFor="fecha-emision">Fecha Emisión</label>
+                <p htmlFor="fecha-emision">Fecha Emisión</p>
                 <input
                   className="inputboxitm"
                   type="date"
@@ -96,7 +96,7 @@ const ComprasCrear = () => {
                 />
               </section>
               {/* <section className="flexcolumn">
-                <label htmlFor="fecha-vencimiento">Fecha Vencimiento</label>
+                <p htmlFor="fecha-vencimiento">Fecha Vencimiento</p>
                 <input
                   className="inputboxitm"
                   type="date"
@@ -109,14 +109,14 @@ const ComprasCrear = () => {
 
           <div className="flexcolumn flex1 gapp2">
             <section className="flexcolumn">
-              <label htmlFor="empresa">Empresas</label>
+              <p htmlFor="empresa">Empresas</p>
               <select className="inputboxitm" onChange={(e)=> setEmpresa(e.target.value)} id="empresa" name="empresa">
                 <option>TORQUE-G46</option>
                 <option>IRONTOOLS</option>
               </select>
             </section> 
             <section className="flexcolumn">
-              <label htmlFor="numero-serie">Número de Serie</label>
+              <p htmlFor="numero-serie">Número de Serie</p>
               <input
                 className="inputbox"
                 type="text"
@@ -131,7 +131,7 @@ const ComprasCrear = () => {
 
         <div className="flexbox gapp4">
           <section className="flexcolumn">
-            <label htmlFor="importe-total">Importe Total</label>
+            <p htmlFor="importe-total">Importe Total</p>
             <input
               className="inputbox"
               type="number"
@@ -142,7 +142,7 @@ const ComprasCrear = () => {
             />
           </section>
           <section className="flexcolumn">
-            <label htmlFor="moneda">Moneda</label>
+            <p htmlFor="moneda">Moneda</p>
             <select onChange={(e)=> setMoneda(e.target.value)} className="inputbox" id="moneda" name="moneda">
               <option>Soles</option>
               <option>Dólares</option>

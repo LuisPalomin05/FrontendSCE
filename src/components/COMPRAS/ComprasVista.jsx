@@ -1,19 +1,23 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 import "../../content/css/ComprasStylo.css";
 import { Routes, Route, Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
-import { podiumOutline, listOutline, refreshOutline, addOutline } from "ionicons/icons";
+import {
+  podiumOutline,
+  listOutline,
+  refreshOutline,
+  addOutline,
+} from "ionicons/icons";
 
 const ComprasLista = lazy(() => import("./ComprasLista"));
 const ComprasCrear = lazy(() => import("./ComprasCrear"));
 
 export default function Compras() {
-
-
   const [compras, setCompras] = useState([]);
-  
+
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get(
@@ -22,8 +26,7 @@ export default function Compras() {
       setCompras(res.data);
     }
     fetchData();
-  }, [compras]);
-
+  }, []);
 
   return (
     <div className="ComprasBox">
@@ -57,15 +60,15 @@ export default function Compras() {
           </select>
         </div>
       </section>
-<section>
-<Suspense fallback={<div>Cargando...</div>}>
-<Routes>
-        <Route path="/" element={<ComprasLista comprasList={compras}/>} />
-        <Route path="crear" element={<ComprasCrear />} />
-      </Routes>
-</Suspense>
-</section>
-
+      <section>
+        <Suspense fallback={<div>Cargando...</div>}>
+          <Routes>
+            <Route path="/" element={<ComprasLista comprasList={compras} />} />
+            <Route path="/crear" element={<ComprasCrear />} />
+            <Route path="/editar/:id" element={<ComprasCrear />} />
+          </Routes>
+        </Suspense>
+      </section>
     </div>
   );
 }

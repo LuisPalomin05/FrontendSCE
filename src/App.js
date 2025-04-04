@@ -73,11 +73,11 @@ const App = () => {
 
                 <Route path="/user" element={<CreateUser />} /> */}
 
-                <Route path="/clientes" element={<ClientesVista />} />
+                <Route path="/clientes/*" element={<ClientesVista />} />
 
                 <Route path="/proveedores" element={<ProveedorVista />} />
                 <Route
-                  path="/cotizacion/crear"
+                  path="/cotizacion/*"
                   element={<CotizacionCreate />}
                 />
               </Routes>
