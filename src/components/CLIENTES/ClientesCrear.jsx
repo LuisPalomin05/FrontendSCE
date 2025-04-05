@@ -55,13 +55,14 @@ export default function ClientesCrear() {
     } else {
       await axios.post(localhost , newCliente);
     }
-    navigate("/clientes");
+    navigate("/clientes", { state: { reload: true } });
   };
 
-  async function deleteitem() {
+   const deleteitem = async(e) => {
     await axios.delete(localhost + id);
-    navigate("/clientes");
+    navigate("/clientes", { state: { reload: true } });
   }
+
   return (
     <div className="padd3">
       <h1>{editing ? "Editar Cliente" : "Crear Cliente"}</h1>

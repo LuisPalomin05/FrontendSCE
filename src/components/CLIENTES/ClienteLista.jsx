@@ -17,7 +17,6 @@ const ClienteLista =({clienteLista})=>{
                     <th>N°</th>
                     <th>NOMBRE</th>
                     <th>R.U.C</th>
-                    <th>IdDATA</th>
                     <th>ACCIONES</th>
                   </tr>
                 </thead>
@@ -31,7 +30,6 @@ const ClienteLista =({clienteLista})=>{
                       <td>{cliente.cliente}</td>
     
                       <td>{cliente.ruc}</td>
-                      <td>{cliente._id}</td>
                       <td>
                         <Link
                           className="btnWarning"

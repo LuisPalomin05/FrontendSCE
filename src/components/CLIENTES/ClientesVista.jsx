@@ -1,5 +1,5 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,useLocation  } from "react-router-dom";
 import "../../content/css/Clientes.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -18,14 +18,18 @@ const localhost = "https://backendapi-6thn.onrender.com/api/clientes";
 
 export default function ClientesVista() {
   const [clientes, setClientes] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get(localhost);
       setClientes(res.data);
+
     }
-    fetchData();
-  }, []);
+    if (location.state?.reload) {
+      fetchData(); 
+    }
+  }, [location.state]);
 
   return (
     <div className="padd2">
@@ -60,50 +64,8 @@ export default function ClientesVista() {
         </div>
       </section>
 
-      {/* <section>
-        <p>Listado de Clientes</p>
-        <div>
-          <table className="formatTable">
-            <thead className="cGray">
-              <tr>
-                <th>
-                  <input type="checkbox" name="" id="" />
-                </th>
-                <th>N°</th>
-                <th>NOMBRE</th>
-                <th>R.U.C</th>
-                <th>IdDATA</th>
-                <th>ACCIONES</th>
-              </tr>
-            </thead>
-            <tbody className="cBlack">
-              {Clientes.map((cliente, index) => (
-                <tr key={index}>
-                  <td>
-                    <input type="checkbox" name="" id="" />
-                  </td>
-                  <td>{index + 1}</td>
-                  <td>{cliente.cliente}</td>
-
-                  <td>{cliente.ruc}</td>
-                  <td>{cliente._id}</td>
-                  <td>
-                    <Link
-                      className="btnWarning"
-                      to={`/clientes/editar/${cliente._id}`}
-                    >
-                      editar
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section> */}
-
       <section>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense className="shimmer-loader" fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<ClientesLista clienteLista={clientes} />}/>
             <Route path="/crear" element={<ClientesCrear />} />
