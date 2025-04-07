@@ -200,12 +200,19 @@ const VentasCrear = () => {
 
           <section className="flexbox gapp8">
             <button type="submit" className="btnSuccess">
-              {" "}
-              Guardar{" "}
+              Guardar
             </button>
             {/* <button type="reset" className="btnWarning" onClick={(e) => e.preventDefault()}> Limpiar</button> */}
-
-            <Link to="/ventas" className="btnDanger">
+            {editing && (
+              <button
+                type="button"
+                className="btnDanger"
+                onClick={deleteVenta}
+              >
+                Eliminar
+              </button>
+            )}
+            <Link to="/ventas" className="btnWarning">
               Cancelar
             </Link>
           </section>

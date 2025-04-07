@@ -51,7 +51,6 @@ export default function CotizadorVista() {
   const [estado, setEstado] = useState("");
   const [autor, setAutor] = useState("luis");
 
-
   // valores de tabla y adicionales.
   const [pProductoTb, setpProductoTb] = useState("");
   const [pCantidadTb, setpCantidadTb] = useState(0);
@@ -156,12 +155,11 @@ export default function CotizadorVista() {
                     setEmpresa(e.target.value);
                   }}
                 >
-                  {optEmpresa.map((opcion, index) => 
+                  {optEmpresa.map((opcion, index) => (
                     <option key={index} value={opcion}>
                       {opcion.razonSocial}
                     </option>
-                   
-                  )}
+                  ))}
                 </select>
               </div>
             </div>
@@ -329,7 +327,7 @@ export default function CotizadorVista() {
             </div>
             <div className="textcenter">
               <h4 className="cBlack">{empresa.titulocotizacion}</h4>
-              
+
               <p>{empresa.direccion}</p>
               <p>Correo: {empresa.correo}</p>
               <p>Telefono: 977 492 484</p>

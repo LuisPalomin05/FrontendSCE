@@ -98,7 +98,7 @@ const generatePDF = ({
     const totalFinal = total + igv;
 
     doc.text(
-      `Subtotal: ${simbolo} ${total.toFixed(2)}`,
+      `Subtotal   : ${simbolo} ${total.toFixed(2)}`,
       140,
       doc.lastAutoTable.finalY + 10
     );
@@ -109,7 +109,7 @@ const generatePDF = ({
     );
     doc.setFont("helvetica", "bold");
     doc.text(
-      `Total: ${simbolo} ${totalFinal.toFixed(2)}`,
+      `Total  : ${simbolo} ${totalFinal.toFixed(2)}`,
       140,
       doc.lastAutoTable.finalY + 22
     );

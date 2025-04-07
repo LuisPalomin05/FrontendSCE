@@ -32,16 +32,19 @@ export default class Navigation extends Component {
         <div className="flex1 tittleboxnav">
           {/* <p>{fuentes}</p> */}
           <Routes>
+            <Route path="/" element={<p>Dashboard</p>} />
+
             <Route path="/dashboard" element={<p>Dashboard</p>} />
-            <Route path="/ventas" element={<p>Ventas</p>} />
-            <Route path="/compras" element={<p>Compras</p>} />
-            <Route path="/documentos" element={<p>Documentos</p>} />
-            <Route path="/pedidos" element={<p>Pedidos</p>} />
-            <Route path="/sce/configuracion" element={<p>Configuración</p>} />
+            <Route path="/ventas/*" element={<p>Ventas</p>} />
+            <Route path="/compras/*" element={<p>Compras</p>} />
+            <Route path="/documentos/*" element={<p>Documentos</p>} />
+            <Route path="/pedidos/*" element={<p>Pedidos</p>} />
+            <Route path="/sce/configuracion/*" element={<p>Configuración</p>} />
             <Route
-              path="/cotizador/*"
+              path="/cotizacion/*"
               element={<p className="cBlack padd1">Cotizar Cliente</p>}
             />
+            <Route path="/clientes/*" element={<p>Dashboard</p>} />
           </Routes>
         </div>
 

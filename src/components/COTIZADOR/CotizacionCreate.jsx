@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { IonIcon } from "@ionic/react";
 import axios from "axios";
 import {
@@ -25,7 +24,8 @@ const CotizacionCreate = () => {
       correo: "ventas@torqueg46.com.pe",
       titulocotizacion: "PERNOS Y TUERCAS TORQUE-G46 S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/refs/heads/main/src/content/logos/TorqueFBICON.png",
-      telefono:"+51 977 492 484"},
+      telefono: "+51 977 492 484",
+    },
     {
       razonSocial: "Irontools",
       RUC_EMPRESA: "20548129576",
@@ -33,24 +33,23 @@ const CotizacionCreate = () => {
       correo: "ventas@irontools.com.pe",
       titulocotizacion: "IRONTOOLS S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
-      telefono:"+51 977 492 484"},
+      telefono: "+51 977 492 484",
+    },
   ];
-
-  const [empresaSeleccionada, setEmpresaSeleccionada] = useState(optEmpresa[0]);
 
   const handleEmpresaChange = (e) => {
     const empresaNombre = e.target.value;
     setEmpresa(empresaNombre);
-
     const empresaEncontrada = optEmpresa.find(
       (emp) => emp.razonSocial === empresaNombre
     );
     setEmpresaSeleccionada(empresaEncontrada);
   };
 
+  const [empresaSeleccionada, setEmpresaSeleccionada] = useState(optEmpresa[0]);
   const [ruc, setRuc] = useState("");
   const [cliente, setCliente] = useState("");
-  const [empresa, setEmpresa] = useState("");
+  const [empresa, setEmpresa] = useState(optEmpresa[0].razonSocial);
   const [emision, setEmision] = useState(
     new Date().toISOString().split("T")[0]
   );
@@ -58,17 +57,39 @@ const CotizacionCreate = () => {
   const [formaPago, setFormaPago] = useState("Contado");
   const [nCotizacion, setNcotizacion] = useState("");
   const [productos, setProductos] = useState([]);
-  const [totalPago, setTotalPago] = useState(0);
+  const [totalPago, setTotalPago] = useState();
   const [observaciones, setObservaciones] = useState("");
   const [estado, setEstado] = useState("");
   const [autor, setAutor] = useState("luis");
 
-const [imagenSrc,setImgSrc]= useState("");
-const [titulo,setTitulo]=useState("");
-const [direccion,setDireccion]= useState("")
-const [correo, setCorreo] = useState("");
-const [telefono, setTelefono] = useState("");
-const [nRucEmisor, setRucEmisor] = useState("")
+  const [producto, setProducto] = useState("");
+  const [cantidad, setCantidad] = useState();
+  const [precio, setPrecio] = useState();
+  const [telefono, setTelefono] = useState("");
+  const [titulo, setTitulo] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [imagenSrc, setImgSrc] = useState("");
+  const [nRucEmisor, setRucEmisor] = useState("");
+
+  const handleAddProduct = () => {
+    if (producto && cantidad > 0 && precio > 0) {
+      const nuevoProducto = {
+        descripcion: producto,
+        cantidad: cantidad,
+        precio: precio,
+        subtotal: cantidad * precio,
+      };
+
+      setProductos([...productos, nuevoProducto]);
+      setTotalPago(totalPago + nuevoProducto.subtotal); // Actualiza el total
+      setProducto(""); // Limpia los campos
+      setCantidad("");
+      setPrecio("");
+    } else {
+      alert("Por favor, ingresa todos los datos del producto correctamente.");
+    }
+  };
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -88,8 +109,8 @@ const [nRucEmisor, setRucEmisor] = useState("")
     };
 
     try {
-      const res = await axios.post(localhost, newVenta);
-      console.log(res.data);
+      await axios.post(localhost, newVenta);
+      // console.log(res.data);
     } catch (error) {
       console.error("Error al enviar la cotización:", error);
     }
@@ -104,27 +125,20 @@ const [nRucEmisor, setRucEmisor] = useState("")
   };
 
   const cotizacion = {
-    ruc: ruc,
+    ruc,
     cliente: cliente,
     empresa: titulo,
-    direccion:direccion,
-    numeroRuc:nRucEmisor,
+    direccion: direccion,
+    numeroRuc: nRucEmisor,
     emision: emision,
     correo: correo,
     telefono: telefono,
     moneda: moneda,
     formaPago: formaPago,
     numeroCotizacion: nCotizacion,
-    productos: [
-      { descripcion: "Martillo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", cantidad: 2, precio: 10 },
-      { descripcion: "Destornillador", cantidad: 3, precio: 5 },
-      { descripcion: "Clavos (Caja)", cantidad: 1, precio: 8 },
-      { descripcion: "Martillo", cantidad: 2, precio: 10 },
-      { descripcion: "Destornillador", cantidad: 3, precio: 5 },
-      { descripcion: "Clavos (Caja)", cantidad: 1, precio: 8 },
-    ],
+    productos: productos,
     observaciones: observaciones,
-      resource: imagenSrc
+    resource: imagenSrc,
   };
 
   useEffect(() => {
@@ -134,14 +148,14 @@ const [nRucEmisor, setRucEmisor] = useState("")
       setDireccion(empresaSeleccionada.direccion);
       setCorreo(empresaSeleccionada.correo);
       setTelefono(empresaSeleccionada.telefono);
-      setRucEmisor(empresaSeleccionada.RUC_EMPRESA)
+      setRucEmisor(empresaSeleccionada.RUC_EMPRESA);
     }
   }, [empresaSeleccionada]);
 
-  const setter=()=>{
-    setAutor('luis');
-    setEstado('pedido')
-  }
+  const setter = () => {
+    setAutor("luis");
+    setEstado("pedido");
+  };
 
   return (
     <div className="flexbox padd2 hg">
@@ -208,6 +222,8 @@ const [nRucEmisor, setRucEmisor] = useState("")
                 type="text"
                 placeholder="Producto"
                 className="inputboxitm wd"
+                value={producto}
+                onChange={(e) => setProducto(e.target.value)}
               />
             </div>
 
@@ -217,6 +233,8 @@ const [nRucEmisor, setRucEmisor] = useState("")
                 type="number"
                 placeholder="Cantidad"
                 className="inputboxitm"
+                value={cantidad}
+                onChange={(e) => setCantidad(Number(e.target.value))}
               />
             </div>
 
@@ -226,11 +244,16 @@ const [nRucEmisor, setRucEmisor] = useState("")
                 type="number"
                 placeholder="Precio"
                 className="inputboxitm"
+                value={precio}
+                onChange={(e) => setPrecio(Number(e.target.value))}
               />
             </div>
           </section>
           <section className="flexbox ptop bgWhite gapp4 padd2">
-            <button className="btnInfo flexalign gapp4">
+            <button
+              className="btnInfo flexalign gapp4"
+              onClick={handleAddProduct}
+            >
               <IonIcon icon={bagAddOutline} /> AGREGAR
             </button>
 
@@ -274,26 +297,62 @@ const [nRucEmisor, setRucEmisor] = useState("")
             </thead>
 
             <tbody>
-              {/* Aquí van las filas de productos */}
-              <tr className="bgWhite padd2">
-                <td className="textcenter">
-                  <input type="checkbox" name="" id="" />
+              {productos.map((prod, index) => (
+                <tr key={index} className="bgWhite padd2">
+                  <td className="textcenter">
+                    <input type="checkbox" />
+                  </td>
+                  <td className="textcenter">{index + 1}</td>
+
+                  <td>{prod.descripcion}</td>
+                  <td className="textcenter">{prod.cantidad}</td>
+                  <td className="textcenter">{prod.precio}</td>
+                  <td className="textright">{prod.subtotal}</td>
+                  <td className="flexcenter gapp2">
+                    <p className="btnWarning">
+                      <IonIcon icon={createOutline} />
+                    </p>
+                    <p className="btnDanger">
+                      <IonIcon icon={trashOutline} />
+                    </p>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot className="martop">
+              <tr>
+                <td colSpan="4" className="textcenter">
+                  SubTotal
                 </td>
-                <td className="textcenter">1</td>
-                <td>prod</td>
-                <td className="textcenter">22</td>
-                <td className="textcenter">1.21</td>
-                <td className="textright">50</td>
-                <td className="flexcenter gapp2">
-                  <p className="btnWarning">
-                    <IonIcon icon={createOutline} />
-                  </p>
-                  <p className="btnDanger">
-                    <IonIcon icon={trashOutline} />
-                  </p>
+                <td className="">
+                  {productos
+                    .reduce((acc, prod) => acc + prod.subtotal, 0)
+                    .toFixed(2)}
                 </td>
               </tr>
-            </tbody>
+              <tr>
+                <td colSpan="4" className="textcenter">
+                  IGV 18%
+                </td>
+                <td className="">
+                  {(
+                    productos.reduce((acc, prod) => acc + prod.subtotal, 0) *
+                    0.18
+                  ).toFixed(2)}
+                </td>
+              </tr>
+              <tr>
+                <td colSpan="4" className="textcenter">
+                  TOTAL
+                </td>
+                <td className="">
+                  {(
+                    productos.reduce((acc, prod) => acc + prod.subtotal, 0) *
+                    1.18
+                  ).toFixed(2)}
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>
@@ -361,15 +420,20 @@ const [nRucEmisor, setRucEmisor] = useState("")
         </section>
 
         <section className="padd2 ">
-          <div className="montoTotalbx bgGray">
+          <div className="flexbox jcAround montoTotalbx bgGray padd2">
             <div className="flex1">CANTIDAD DE PRODUCTOS:</div>
-            <div>0000</div>
+            <div>{productos.length}</div>
           </div>
         </section>
         <section className="padd2 ">
-          <div className="montoTotalbx bgGray">
+          <div className="flexbox jcAround montoTotalbx bgGray padd2">
             <div className="flex1">MONTO TOTAL A PAGAR:</div>
-            <div>$ 55</div>
+            <div>
+              {productos
+                .reduce((acc, prod) => acc + prod.subtotal, 0)
+                .toFixed(2)}
+                
+            </div>
           </div>
         </section>
 
@@ -379,7 +443,7 @@ const [nRucEmisor, setRucEmisor] = useState("")
             className="wd padd1"
             placeholder="Observaciones..."
             rows="5"
-            onChange={(e)=>setObservaciones(e.target.value)}
+            onChange={(e) => setObservaciones(e.target.value)}
           />
           <div className="flexbox gapp4">
             <button className="btnSuccess" type="submit">

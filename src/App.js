@@ -28,7 +28,7 @@ import ProveedorVista from "./components/PROVEEDORES/ProveedorVista";
 
 import Menulateral from "./components/Menulateral";
 import CotizadorPanel from "./components/CotizadorPanel";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/NAV/Navigation";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
