@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ComprasLista = ({ comprasList }) => {
+    const navigate = useNavigate();
   
   return (
     <div className="padd2">
@@ -21,6 +23,7 @@ const ComprasLista = ({ comprasList }) => {
                 <th>MONEDA</th>
                 <th>FECHA</th>
                 <th>EMPRESA</th>
+                <td>ACCIONES</td>
               </tr>
             </thead>
             <tbody>
@@ -35,8 +38,20 @@ const ComprasLista = ({ comprasList }) => {
                   <td>{compra.nfactura}</td>
                   <td>{compra.moneda === "Dolares" ? "$. " : "S/. "}{compra.total}</td>
                   <td>{compra.moneda}</td>
-                  <td>{compra.fecha}</td>
+                  <td>{compra.emision}</td>
                   <td>{compra.empresa}</td>
+                  <td>
+                  <button
+                      className="btnWarning"
+                      onClick={() =>
+                        navigate(`/compras/editar/${compra._id}`, {
+                          state: { reload: true },
+                        })
+                      }
+                    >
+                      Editar
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

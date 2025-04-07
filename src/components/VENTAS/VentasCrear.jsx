@@ -112,6 +112,8 @@ const VentasCrear = () => {
                     className="inputbox"
                     type="text"
                     name="ruc"
+                    maxLength={11}
+                    minLength={11}
                     value={ruc}
                     onChange={(e) => setRuc(e.target.value)}
                     placeholder="RUC: 20123456789"

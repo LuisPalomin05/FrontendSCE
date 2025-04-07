@@ -32,16 +32,16 @@ export default function ClientesVista() {
   }, [location.state]);
 
   return (
-    <div className="padd2">
+    <div className="">
       <section className="flexbox topListCompras">
         <div className="flexbox boxbottontop">
-          <div className="flexcenter bottonitem">
+          <div className="texcenter bottonitem">
             <IonIcon icon={podiumOutline}></IonIcon>
           </div>
-          <div className="flexcenter bottonitem">
-            <IonIcon className="ioniconwhite" icon={listOutline} />
+          <div className="texcenter bottonitem">
+            <IonIcon icon={listOutline} />
           </div>
-          <div className="flexcenter bottonitem">
+          <div className="texcenter bottonitem">
             <IonIcon icon={refreshOutline}></IonIcon>
           </div>
         </div>
@@ -49,11 +49,11 @@ export default function ClientesVista() {
           <p className=" titleboxCompras">10 resultados - 50 listados</p>
         </div>
         <div className="flexbox optionmenubox">
-          <Link to={"/clientes/crear"} className="flexcenter createButtonBox">
+          <Link to={"/crear"} className="flexcenter createButtonBox">
             <div className="flexcenter">
               <IonIcon icon={addOutline}></IonIcon>
             </div>
-            <div className="flexcenter">
+            <div>
               <p>Registrar Cliente</p>
             </div>
           </Link>

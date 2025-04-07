@@ -16,13 +16,13 @@ import {
       <div className="DashBoardBox">
         <div className="flexbox barTopmenu">
           <div className="flexbox boxbottontop">
-            <div className="flexcenter bottonitem">
+            <div className="texcenter bottonitem">
               <IonIcon icon={podiumOutline}></IonIcon>
             </div>
-            <div className="flexcenter bottonitem">
+            <div className="texcenter bottonitem">
               <IonIcon icon={listOutline} />
             </div>
-            <div className="flexcenter bottonitem">
+            <div className="texcenter bottonitem">
               <IonIcon icon={refreshOutline}></IonIcon>
             </div>
           </div>

@@ -32,13 +32,13 @@ export default function Compras() {
     <div className="ComprasBox">
       <section className="flexbox topListCompras">
         <div className="flexbox boxbottontop">
-          <div className="flexcenter bottonitem">
+          <div className="texcenter bottonitem">
             <IonIcon icon={podiumOutline} />
           </div>
-          <div className="flexcenter bottonitem">
+          <div className="texcenter bottonitem">
             <IonIcon icon={listOutline} />
           </div>
-          <div className="flexcenter bottonitem">
+          <div className="texcenter bottonitem">
             <IonIcon icon={refreshOutline} />
           </div>
         </div>

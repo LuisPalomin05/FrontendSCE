@@ -71,12 +71,26 @@ grid-area: sections;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  color: #fdfdfd;
 }
 
 .hoverback:hover{
   /* background-color: #433c98; */
   background-color: #087440;
 }
+
+.hoverbackSelected{
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #7d7d7d;
+}
+
 
 .martop{
   margin: 5px 0;
@@ -182,6 +196,19 @@ grid-area: sections;
 
 .fs20{
   font-size: 20px;
+}
+
+.fs20{
+  font-size: 20px;
+}
+.fs22{
+  font-size: 22px;
+}
+.fs24{
+  font-size: 24px;
+}
+.fs26{
+  font-size: 26px;
 }
 .bgWhite{
   background: #ffffff;

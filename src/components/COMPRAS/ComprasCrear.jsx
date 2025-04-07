@@ -25,6 +25,28 @@ const ComprasCrear = () => {
 
   const [editing, setEditing] = useState(false);
 
+  useEffect(() => {
+    async function fetchData() {
+      if (id) {
+        const res = await axios.get(localhost + "/" + id);
+        setRuc(res.data.ruc);
+        setCliente(res.data.cliente);
+        setEmision(res.data.emision);
+        // setVencimiento(res.data.vencimiento);
+        setEmpresa(res.data.empresa);
+        setnFactura(res.data.nfactura);
+        setTotal(res.data.total);
+        setMoneda(res.data.moneda);
+        setEditing(true);
+      }
+    }
+    fetchData();
+  }, [id]);
+
+
+
+
+
   const onSubmitForm = async (e) => {
     e.preventDefault();
     const newCompra = {
@@ -44,6 +66,10 @@ const ComprasCrear = () => {
     navigate("/compras")
   }
 
+  const deleteCompra = async () => {
+    await axios.delete(localhost + id);
+    navigate("/compras")
+  }
 
   return (
     <div className="padd2">
@@ -65,7 +91,7 @@ const ComprasCrear = () => {
                   type="text"
                   id="cliente"
                   name="cliente"
-
+                  value={cliente}
                   onChange={(e) => setCliente(e.target.value)}
                   placeholder="Cliente"
                 />
@@ -77,6 +103,9 @@ const ComprasCrear = () => {
                   type="text"
                   id="ruc"
                   name="ruc"
+                  maxLength={11}
+                  minLength={11}
+                  value={ruc}
                   onChange={(e) => setRuc(e.target.value)}
                   placeholder="RUC: 20123456789"
                 />
@@ -90,7 +119,7 @@ const ComprasCrear = () => {
                   className="inputboxitm"
                   type="date"
                   id="fecha-emision"
-
+value={emision}
                   onChange={(e) => setEmision(e.target.value)}
                   name="fecha_emision"
                 />
@@ -110,7 +139,7 @@ const ComprasCrear = () => {
           <div className="flexcolumn flex1 gapp2">
             <section className="flexcolumn">
               <p htmlFor="empresa">Empresas</p>
-              <select className="inputboxitm" onChange={(e)=> setEmpresa(e.target.value)} id="empresa" name="empresa">
+              <select className="inputboxitm" value={empresa} onChange={(e)=> setEmpresa(e.target.value)} id="empresa" name="empresa">
                 <option>TORQUE-G46</option>
                 <option>IRONTOOLS</option>
               </select>
@@ -122,6 +151,7 @@ const ComprasCrear = () => {
                 type="text"
                 id="numero-serie"
                 name="numero_serie"
+                value={nfactura}
                 onChange={(e) => setnFactura(e.target.value)}
                 placeholder="Número de Serie"
               />
@@ -137,13 +167,14 @@ const ComprasCrear = () => {
               type="number"
               id="importe-total"
               name="importe_total"
+              value={total}
               onChange={(e) => setTotal(e.target.value)}
               placeholder="Importe total"
             />
           </section>
           <section className="flexcolumn">
             <p htmlFor="moneda">Moneda</p>
-            <select onChange={(e)=> setMoneda(e.target.value)} className="inputbox" id="moneda" name="moneda">
+            <select value={moneda} onChange={(e)=> setMoneda(e.target.value)} className="inputbox" id="moneda" name="moneda">
               <option>Soles</option>
               <option>Dólares</option>
             </select>
@@ -154,8 +185,16 @@ const ComprasCrear = () => {
 
         <section className="flexbox gapp8">
           <button type="submit" className="btnSuccess">Guardar</button>
-          <button type="reset" className="btnWarning">Limpiar</button>
-          <Link to={"/compras"} className="btnDanger">Cancelar</Link>
+          {editing && (
+              <button
+                type="button"
+                className="btnDanger"
+                onClick={deleteCompra}
+              >
+                Eliminar
+              </button>
+            )}
+            <Link to={"/compras"} className="btnWarning">Cancelar</Link>
         </section>
       </form>
 

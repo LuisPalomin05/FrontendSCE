@@ -39,6 +39,8 @@ export default class Navigation extends Component {
             <Route path="/compras/*" element={<p>Compras</p>} />
             <Route path="/documentos/*" element={<p>Documentos</p>} />
             <Route path="/pedidos/*" element={<p>Pedidos</p>} />
+            <Route path="/proveedores/*" element={<p>Proveedores</p>} />
+
             <Route path="/sce/configuracion/*" element={<p>Configuración</p>} />
             <Route
               path="/cotizacion/*"
