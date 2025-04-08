@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-
+const bcpimg = require('../../content/imagen/bcplogo.png')
 const generatePDF = ({
   ruc,
   cliente,
@@ -77,7 +77,7 @@ const generatePDF = ({
     doc.text(`CLIENTE: ${cliente}`, 15, 44);
     doc.text(`RUC: ${ruc}`, 15, 49);
     doc.text(`MONEDA                : ${moneda}`, 135, 44);
-    doc.text(`CONDICIONES : ${formaPago}`, 135, 49);
+    doc.text(`CONDICIONES       : ${formaPago}`, 135, 49);
     doc.text(`F. EMISION            : ${emision}`, 135, 54);
 
     const columns = [
@@ -117,36 +117,42 @@ const generatePDF = ({
     const totalFinal = total + igv;
 
     doc.roundedRect(14, doc.lastAutoTable.finalY + 6, 182, 18, 1, 1); // (x, y, ancho, alto)
+    doc.roundedRect(154, doc.lastAutoTable.finalY + 6.5, 40, 17, 1, 1); // (x, y, ancho, alto)
+    doc.line(100, doc.lastAutoTable.finalY + 6, 100, doc.lastAutoTable.finalY + 24); // línea de división
+    
+    doc.addImage(bcpimg, 'PNG', 102, doc.lastAutoTable.finalY + 6, 9, 6);
 
+
+    const inchpath = 157;
     doc.text(
       `Subtotal      :`,
-      140,
+      inchpath,
       doc.lastAutoTable.finalY + 10
     );
     doc.text(
       `${simbolo} ${total.toFixed(2)}`,
-      160,
+      inchpath +18,
       doc.lastAutoTable.finalY + 10
     );
     doc.text(
       `IGV (18%)  :`,
-      140,
+      inchpath,
       doc.lastAutoTable.finalY + 16
     );
     doc.text(
       `${simbolo} ${igv.toFixed(2)}`,
-      160,
+      inchpath + 18,
       doc.lastAutoTable.finalY + 16
     );
     doc.setFont("helvetica", "bold");
     doc.text(
       `Total          :`,
-      140,
+      inchpath,
       doc.lastAutoTable.finalY + 22
     );
     doc.text(
       `${simbolo} ${totalFinal.toFixed(2)}`,
-      160,
+      inchpath + 18,
       doc.lastAutoTable.finalY + 22
     );
 
