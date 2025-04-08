@@ -9,7 +9,7 @@ import {
   createOutline,
   trashOutline,
 } from "ionicons/icons";
-import { downloadToimg as ScreenShot } from "../../utils/imgDescarga";
+// import { downloadToimg as ScreenShot } from "../../utils/imgDescarga";
 import generatePDF from "./generatePDF";
 
 const localhost = "https://backendapi-6thn.onrender.com/api/cotizacion";
@@ -175,7 +175,7 @@ const CotizacionCreate = () => {
                     type="text"
                     id="rucInputData"
                     placeholder="2012345678X"
-                    maxLength={12}
+                    maxLength={11}
                     required
                     className="inputboxitm"
                     value={ruc}
@@ -257,12 +257,12 @@ const CotizacionCreate = () => {
               <IonIcon icon={bagAddOutline} /> AGREGAR
             </button>
 
-            <button
+            {/* <button
               className="btnWarning flexbox gapp4"
               onClick={() => ScreenShot("ScreenCotizacion")}
             >
               <IonIcon className="padd1" icon={cloudDownloadOutline} /> IMAGEN
-            </button>
+            </button> */}
             <button
               className="btnWarning flexbox gapp4"
               onClick={() => generatePDF(cotizacion)}

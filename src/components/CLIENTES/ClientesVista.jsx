@@ -32,8 +32,8 @@ export default function ClientesVista() {
   }, [location.state]);
 
   return (
-    <div className="">
-      <section className="flexbox topListCompras">
+    <div className="padd4">
+      <section className="flexbox topListCompras padd2">
         <div className="flexbox boxbottontop">
           <div className="texcenter bottonitem">
             <IonIcon icon={podiumOutline}></IonIcon>
@@ -64,7 +64,7 @@ export default function ClientesVista() {
         </div>
       </section>
 
-      <section>
+      <section className="padd2">
         <Suspense className="shimmer-loader" fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<ClientesLista clienteLista={clientes} />}/>

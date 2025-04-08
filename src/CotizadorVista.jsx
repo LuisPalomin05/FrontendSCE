@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../content/css/cotizadorVista.css";
-import { NumeroLiteral } from "../../utils/NumeroLiteral";
-import { downloadToimg as ScreenShot } from "../../utils/imgDescarga";
+import { NumeroLiteral } from "./utils/NumeroLiteral";
+import { downloadToimg as ScreenShot } from "./utils/imgDescarga";
 import { IonIcon } from "@ionic/react";
 import {
   caretForwardOutline,

@@ -32,7 +32,7 @@ const generatePDF = ({
   const img = new Image();
   img.src = resource;
   img.onload = () => {
-    doc.addImage(img, "PNG", 10, 5, 35, 35);
+    doc.addImage(img, "PNG", 14, 5, 35, 35);
 
     doc.setFont("helvetica", "bold");
     doc.setTextColor(56, 56, 56);
@@ -45,25 +45,40 @@ const generatePDF = ({
     doc.text(`Correo: ${correo}`, center, 25);
     doc.text(`Telefono: ${telefono}`, center, 30);
 
-  
+    // Dibuja el rectángulo redondeado
+    doc.setDrawColor("#d3d3d3"); // Color del borde
+    doc.setLineWidth(0.2); // Grosor del borde
+    doc.roundedRect(150, 10, 46, 21, 3, 3); // x, y, width, height, rx, ry
+
+    // Línea horizontal encima de "N° COTIZACION"
+    doc.line(150, 17, 196, 17); // línea de división superior
+
+    // Línea horizontal debajo de "N° COTIZACION"
+    doc.line(150, 24, 196, 24); // línea de división inferior
+
+    // Texto dentro del recuadro
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(13);
-    doc.text(`${numeroRuc}`, 162, 15);
+    doc.setFontSize(12);
+    doc.text(`RUC : ${numeroRuc}`, 154, 15); // parte superior
+
     doc.setFontSize(12);
     doc.setFont("helvetica", "bold");
-    doc.text(`N° COTIZACION`, 160, 20);
-    doc.setFont("helvetica", "normal");
-    doc.text(`${numeroCotizacion}`, 160, 25);
-
-    doc.setFontSize(10);
+    doc.text(`N° COTIZACION`, 158, 22); // centrado entre las líneas
 
     doc.setFont("helvetica", "normal");
-    doc.text(`CLIENTE: ${cliente}`, 15, 45);
-    doc.text(`RUC: ${ruc}`, 15, 50);
-    doc.text(`MONEDA                : ${moneda}`, 135, 45);
-    doc.text(`FORMA DE PAGO : ${formaPago}`, 135, 50);
-    doc.text(`F. EMISION            : ${emision}`, 135, 55);
+    doc.text(`${numeroCotizacion}`, 162, 29); // parte inferior
 
+    doc.setDrawColor("#d3d3d3"); // Color del borde
+    doc.setLineWidth(0.2); // Grosor del borde
+    doc.roundedRect(14, 40, 182, 18, 1, 1); // (x, y, ancho, alto)
+    doc.setFontSize(8);
+
+    doc.setFont("helvetica", "normal");
+    doc.text(`CLIENTE: ${cliente}`, 15, 44);
+    doc.text(`RUC: ${ruc}`, 15, 49);
+    doc.text(`MONEDA                : ${moneda}`, 135, 44);
+    doc.text(`CONDICIONES : ${formaPago}`, 135, 49);
+    doc.text(`F. EMISION            : ${emision}`, 135, 54);
 
     const columns = [
       "N°",
@@ -84,8 +99,12 @@ const generatePDF = ({
       startY: 60,
       head: [columns],
       body: rows,
+      columnStyles: {
+        1: { cellWidth: 100 }, // Índice 2 = tercera columna ("Descripción")
+        // El resto puede ser automático o también puedes definirlos si quieres
+      },
       theme: "striped",
-      styles: { fontSize: 10, cellPadding: 3 },
+      styles: { fontSize: 8, cellPadding: 2 },
       headStyles: { fillColor: [44, 62, 80], textColor: 255 },
       alternateRowStyles: { fillColor: [240, 240, 240] },
     });
@@ -97,28 +116,45 @@ const generatePDF = ({
     const igv = total * 0.18;
     const totalFinal = total + igv;
 
+    doc.roundedRect(14, doc.lastAutoTable.finalY + 6, 182, 18, 1, 1); // (x, y, ancho, alto)
+
     doc.text(
-      `Subtotal   : ${simbolo} ${total.toFixed(2)}`,
+      `Subtotal      :`,
       140,
       doc.lastAutoTable.finalY + 10
     );
     doc.text(
-      `IGV (18%): ${simbolo} ${igv.toFixed(2)}`,
+      `${simbolo} ${total.toFixed(2)}`,
+      160,
+      doc.lastAutoTable.finalY + 10
+    );
+    doc.text(
+      `IGV (18%)  :`,
       140,
+      doc.lastAutoTable.finalY + 16
+    );
+    doc.text(
+      `${simbolo} ${igv.toFixed(2)}`,
+      160,
       doc.lastAutoTable.finalY + 16
     );
     doc.setFont("helvetica", "bold");
     doc.text(
-      `Total  : ${simbolo} ${totalFinal.toFixed(2)}`,
+      `Total          :`,
       140,
+      doc.lastAutoTable.finalY + 22
+    );
+    doc.text(
+      `${simbolo} ${totalFinal.toFixed(2)}`,
+      160,
       doc.lastAutoTable.finalY + 22
     );
 
     doc.setFontSize(10);
-    doc.setFont("helvetica", "italic");
-    doc.text("Observaciones:", 14, doc.lastAutoTable.finalY + 30);
+    doc.setFont("helvetica", "bolditalic");
+    doc.text("Observaciones:", 16, doc.lastAutoTable.finalY + 10);
     doc.setFont("helvetica", "normal");
-    doc.text(observaciones, 14, doc.lastAutoTable.finalY + 36, {
+    doc.text(observaciones, 16, doc.lastAutoTable.finalY + 15, {
       maxWidth: 180,
     });
 
