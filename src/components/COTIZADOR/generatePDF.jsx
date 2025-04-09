@@ -117,13 +117,18 @@ const generatePDF = ({
     const totalFinal = total + igv;
 
     doc.roundedRect(14, doc.lastAutoTable.finalY + 6, 182, 18, 1, 1); // (x, y, ancho, alto)
-    doc.roundedRect(154, doc.lastAutoTable.finalY + 6.5, 40, 17, 1, 1); // (x, y, ancho, alto)
+    doc.roundedRect(155.5, doc.lastAutoTable.finalY + 6.5, 40, 17, 1, 1); // (x, y, ancho, alto)
     doc.line(100, doc.lastAutoTable.finalY + 6, 100, doc.lastAutoTable.finalY + 24); // línea de división
     
-    doc.addImage(bcpimg, 'PNG', 102, doc.lastAutoTable.finalY + 6, 9, 6);
+    doc.addImage(bcpimg, 'PNG', 102, doc.lastAutoTable.finalY + 12, 9, 6);
 
 
-    const inchpath = 157;
+    const inchpath = 160;
+    doc.setFontSize(6);
+    doc.text(`C.C SOLES:`, 114, doc.lastAutoTable.finalY + 9.2);
+    doc.text(`C.C DOLARES:`, 114, doc.lastAutoTable.finalY + 16);
+
+    doc.setFontSize(8);
     doc.text(
       `Subtotal      :`,
       inchpath,
