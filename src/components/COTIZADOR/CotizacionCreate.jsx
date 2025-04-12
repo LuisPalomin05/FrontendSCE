@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, } from "react";
 import { useNavigate } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import axios from "axios";
-import {
-  caretForwardOutline,
-  bagAddOutline,
-  cloudDownloadOutline,
-  createOutline,
-  trashOutline,
-} from "ionicons/icons";
+import {caretForwardOutline,  bagAddOutline, cloudDownloadOutline, createOutline, trashOutline,} from "ionicons/icons";
 // import { downloadToimg as ScreenShot } from "../../utils/imgDescarga";
 import generatePDF from "./generatePDF";
 
@@ -25,6 +19,8 @@ const CotizacionCreate = () => {
       titulocotizacion: "PERNOS Y TUERCAS TORQUE-G46 S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/refs/heads/main/src/content/logos/TorqueFBICON.png",
       telefono: "+51 977 492 484",
+      cuentaDolares: ["192-2354415-1-78","002-192002354415178-32"],
+      cuentaSoles: ["192-2355918-0-49","002-192-002355918049-34"]
     },
     {
       razonSocial: "Irontools",
@@ -34,6 +30,9 @@ const CotizacionCreate = () => {
       titulocotizacion: "IRONTOOLS S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
       telefono: "+51 977 492 484",
+      cuentaDolares: ["192-1972978-178","002-19200197297817831"],
+      cuentaSoles: ["192-1999964-054","002-19200199996405433"],
+
     },
   ];
 
@@ -50,9 +49,10 @@ const CotizacionCreate = () => {
   const [ruc, setRuc] = useState("");
   const [cliente, setCliente] = useState("");
   const [empresa, setEmpresa] = useState(optEmpresa[0].razonSocial);
-  const [emision, setEmision] = useState(
-    new Date().toISOString().split("T")[0]
-  );
+  const [emision, setEmision] = useState(new Date().toISOString().split("T")[0]);
+
+  const [nroCuenta, setNroCuenta] = useState("");
+  const [nroCuentaCCI, setNroCuentaCCI] = useState("");
   const [moneda, setMoneda] = useState("SOLES");
   const [formaPago, setFormaPago] = useState("Contado");
   const [nCotizacion, setNcotizacion] = useState("");
@@ -63,8 +63,8 @@ const CotizacionCreate = () => {
   const [autor, setAutor] = useState("luis");
 
   const [producto, setProducto] = useState("");
-  const [cantidad, setCantidad] = useState();
-  const [precio, setPrecio] = useState();
+  var [cantidad, setCantidad] = useState('');
+  var [precio, setPrecio] = useState('');
   const [telefono, setTelefono] = useState("");
   const [titulo, setTitulo] = useState("");
   const [direccion, setDireccion] = useState("");
@@ -72,18 +72,19 @@ const CotizacionCreate = () => {
   const [imagenSrc, setImgSrc] = useState("");
   const [nRucEmisor, setRucEmisor] = useState("");
 
+
   const handleAddProduct = () => {
-    if (producto && cantidad > 0 && precio > 0) {
+    if (producto && parseFloat(cantidad) > 0 && parseFloat(precio) > 0) {
       const nuevoProducto = {
         descripcion: producto,
-        cantidad: cantidad,
-        precio: precio,
-        subtotal: cantidad * precio,
+        cantidad: parseFloat(cantidad),
+        precio: parseFloat(precio),
+        subtotal: parseFloat(cantidad) * parseFloat(precio),
       };
 
       setProductos([...productos, nuevoProducto]);
-      setTotalPago(totalPago + nuevoProducto.subtotal); // Actualiza el total
-      setProducto(""); // Limpia los campos
+      setTotalPago(totalPago + nuevoProducto.subtotal); 
+      setProducto(""); 
       setCantidad("");
       setPrecio("");
     } else {
@@ -126,19 +127,21 @@ const CotizacionCreate = () => {
 
   const cotizacion = {
     ruc,
-    cliente: cliente,
+    cliente,
     empresa: titulo,
-    direccion: direccion,
+    direccion,
     numeroRuc: nRucEmisor,
-    emision: emision,
-    correo: correo,
-    telefono: telefono,
-    moneda: moneda,
-    formaPago: formaPago,
+    emision,
+    correo,
+    telefono,
+    moneda,
+    formaPago,
     numeroCotizacion: nCotizacion,
     productos: productos,
-    observaciones: observaciones,
+    observaciones,
     resource: imagenSrc,
+    nroCuenta,
+    nroCuentaCCI,
   };
 
   useEffect(() => {
@@ -149,6 +152,15 @@ const CotizacionCreate = () => {
       setCorreo(empresaSeleccionada.correo);
       setTelefono(empresaSeleccionada.telefono);
       setRucEmisor(empresaSeleccionada.RUC_EMPRESA);
+
+      if (moneda === "SOLES") {
+        setNroCuenta(empresaSeleccionada.cuentaSoles[0]);
+        setNroCuentaCCI(empresaSeleccionada.cuentaSoles[1]);
+      } else {
+        setNroCuenta(empresaSeleccionada.cuentaDolares[0]);
+        setNroCuentaCCI(empresaSeleccionada.cuentaDolares[1]);
+      }
+
     }
   }, [empresaSeleccionada]);
 
@@ -229,23 +241,23 @@ const CotizacionCreate = () => {
 
             <div>
               <p>Cantidad</p>
-              <input
+              <input step="0.001"
                 type="number"
                 placeholder="Cantidad"
                 className="inputboxitm"
-                value={cantidad}
-                onChange={(e) => setCantidad(Number(e.target.value))}
+                value={cantidad === null ? "" : cantidad}
+                onChange={(e) => setCantidad(e.target.value)}
               />
             </div>
 
             <div>
               <p>Precio</p>
-              <input
+              <input step="0.001"
                 type="number"
                 placeholder="Precio"
                 className="inputboxitm"
-                value={precio}
-                onChange={(e) => setPrecio(Number(e.target.value))}
+                value={precio === null ? "" : precio}
+                onChange={(e) => setPrecio(e.target.value)}
               />
             </div>
           </section>
@@ -268,7 +280,8 @@ const CotizacionCreate = () => {
               onClick={() => generatePDF(cotizacion)}
             >
               <IonIcon className="padd1" icon={cloudDownloadOutline} />
-              DOCUMENTO PDF
+              CREAR PDF
+
             </button>
             <button className="btnDanger flexbox gapp4" onClick={onReset}>
               <IonIcon className="padd1" icon={trashOutline} /> Limpiar

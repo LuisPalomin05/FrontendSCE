@@ -1,6 +1,9 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
-const bcpimg = require('../../content/imagen/bcplogo.png')
+import {NumeroLiteral} from "../../utils/NumeroLiteral";
+
+const bcpimg = require("../../content/imagen/bcplogoRs.jpg");
+
 const generatePDF = ({
   ruc,
   cliente,
@@ -16,6 +19,9 @@ const generatePDF = ({
   productos,
   observaciones,
   resource,
+  nroCuenta,
+  nroCuentaCCI,
+  
 }) => {
   var simbolo = "";
 
@@ -116,53 +122,38 @@ const generatePDF = ({
     const igv = total * 0.18;
     const totalFinal = total + igv;
 
-    doc.roundedRect(14, doc.lastAutoTable.finalY + 6, 182, 18, 1, 1); // (x, y, ancho, alto)
-    doc.roundedRect(154, doc.lastAutoTable.finalY + 6.5, 40, 17, 1, 1); // (x, y, ancho, alto)
-    doc.line(100, doc.lastAutoTable.finalY + 6, 100, doc.lastAutoTable.finalY + 24); // línea de división
+    doc.roundedRect(14, doc.lastAutoTable.finalY + 6, 182, 20, 1, 1); // (x, y, ancho, alto)
+    doc.roundedRect(154.8, doc.lastAutoTable.finalY + 7, 40, 18, 1, 1); // (x, y, ancho, alto)
+    doc.line(100, doc.lastAutoTable.finalY + 6, 100,doc.lastAutoTable.finalY + 26); // línea de división
+
+    doc.setFontSize(7);
+    doc.text('CUENTA CORRIENTA ' + moneda + ' :', 102, doc.lastAutoTable.finalY + 11);
+    doc.setFontSize(7);
+
+    doc.text(`N° : ${nroCuenta}`, 114, doc.lastAutoTable.finalY + 17);
+    doc.text(`CCI : ${nroCuentaCCI}`, 114, doc.lastAutoTable.finalY + 22);
     
-    doc.addImage(bcpimg, 'PNG', 102, doc.lastAutoTable.finalY + 6, 9, 6);
+    doc.addImage(bcpimg, "PNG", 102, doc.lastAutoTable.finalY + 16, 9, 5);
+    doc.line(153, doc.lastAutoTable.finalY + 6, 153,doc.lastAutoTable.finalY + 26); // línea de división
 
-
+    doc.setFontSize(8);
     const inchpath = 157;
-    doc.text(
-      `Subtotal      :`,
-      inchpath,
-      doc.lastAutoTable.finalY + 10
-    );
-    doc.text(
-      `${simbolo} ${total.toFixed(2)}`,
-      inchpath +18,
-      doc.lastAutoTable.finalY + 10
-    );
-    doc.text(
-      `IGV (18%)  :`,
-      inchpath,
-      doc.lastAutoTable.finalY + 16
-    );
-    doc.text(
-      `${simbolo} ${igv.toFixed(2)}`,
-      inchpath + 18,
-      doc.lastAutoTable.finalY + 16
-    );
+    doc.text(`Subtotal      :`, inchpath, doc.lastAutoTable.finalY + 11);
+    doc.text(`${simbolo} ${total.toFixed(2)}`, inchpath + 17.5, doc.lastAutoTable.finalY + 11);
+    doc.text(`IGV (18%)  :`, inchpath, doc.lastAutoTable.finalY + 16.5);
+    doc.text(`${simbolo} ${igv.toFixed(2)}`,inchpath + 17.5, doc.lastAutoTable.finalY + 16.5);
     doc.setFont("helvetica", "bold");
-    doc.text(
-      `Total          :`,
-      inchpath,
-      doc.lastAutoTable.finalY + 22
-    );
-    doc.text(
-      `${simbolo} ${totalFinal.toFixed(2)}`,
-      inchpath + 18,
-      doc.lastAutoTable.finalY + 22
-    );
+    doc.text(`Total          :`, inchpath, doc.lastAutoTable.finalY + 22.5);
+    doc.text(`${simbolo} ${totalFinal.toFixed(2)}`, inchpath + 17.5, doc.lastAutoTable.finalY + 22.5);
 
-    doc.setFontSize(10);
+    doc.setFontSize(8);
     doc.setFont("helvetica", "bolditalic");
     doc.text("Observaciones:", 16, doc.lastAutoTable.finalY + 10);
+    doc.setFontSize(6);
     doc.setFont("helvetica", "normal");
-    doc.text(observaciones, 16, doc.lastAutoTable.finalY + 15, {
-      maxWidth: 180,
-    });
+    doc.text(NumeroLiteral(totalFinal.toFixed(2),moneda), 16, doc.lastAutoTable.finalY + 13.5, {maxWidth: 80,});
+
+    doc.text(observaciones, 16, doc.lastAutoTable.finalY + 20, {maxWidth: 80,});
 
     doc.setFontSize(10);
     doc.setFont("helvetica", "italic");

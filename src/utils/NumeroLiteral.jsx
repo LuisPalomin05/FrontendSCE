@@ -1,8 +1,6 @@
 export function NumeroLiteral(numero, denominacion) {
     if (Number(numero) === 0) {
-        return (<h6 className="cBlack">
-            <strong>SON:</strong> CERO {denominacion}
-        </h6>);
+        return ('');
     }
 
     const unidades = ["", "UNO", "DOS", "TRES", "CUATRO", "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE"];
@@ -80,7 +78,8 @@ export function NumeroLiteral(numero, denominacion) {
         palabras += " CON " + convertirCentenas(parteDecimal) + " CENTAVOS DE";
     }
 
-    return (<h6 >
-        <strong >SON:</strong> <div className="textonum">{palabras.trim()} {denominacion}</div>
-    </h6>);
+    var frase = palabras.trim().toUpperCase() + " " + denominacion.toUpperCase();
+    return (
+        frase
+    );
 }
