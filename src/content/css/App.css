@@ -264,10 +264,25 @@ grid-area: sections;
   transition: 0.3s;
 }
 
+.colorWarning{
+  background: #f5a623;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px;
+}
+.colorDanger{
+  background: #d0021b;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px;
+}
+
 .btnWarning:hover{
   background: #d98e1f;
   border: 1px solid #d98e1f;
 }
+
+
 
 .btnDanger{
   background: #d0021b;
@@ -301,7 +316,13 @@ grid-area: sections;
 }
 
 
+.margin3{
+  margin: 3px;
+}
 
+.columna50 {
+  width: 50%; /* o 300px, lo que prefieras */
+}
 
 
 .btnbox:hover{
@@ -525,4 +546,19 @@ overflow-y: auto;
   100% {
     background-position: 800px 0;
   }
+}
+
+
+.borderleftgray{
+  border-left: 1px solid #dedede;
+}
+
+.borderGray{
+  border: 1px solid #dedede;
+}
+
+.borderVertical{
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+
 }

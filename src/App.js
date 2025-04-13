@@ -60,40 +60,20 @@ const App = () => {
                 <Route path="/documentos" element={<DocumentosVista />} />
                 <Route path="/ventas/*" element={<VentasVista />} />
 
-                <Route
-                  path="/sce/configuracion/*"
-                  element={<Configuracion />}
-                />
-
-                {/* <Route path="/cotizador/*" element={<CotizadorVista />} /> */}
-
-                {/* <Route path="/lista" element={<NoteList />} />
-                <Route path="/create" element={<CreateNote />} />
-                <Route path="/edit/:id" element={<CreateNote />} />
-
-                <Route path="/user" element={<CreateUser />} /> */}
+                <Route path="/sce/configuracion/*" element={<Configuracion />} />
 
                 <Route path="/clientes/*" element={<ClientesVista />} />
 
                 <Route path="/proveedores" element={<ProveedorVista />} />
-                <Route
-                  path="/cotizacion/*"
-                  element={<CotizacionCreate />}
-                />
+                <Route path="/cotizacion/*" element={<CotizacionCreate />} />
               </Routes>
             </div>
           </div>
         </div>
       ) : (
         <Routes>
-          <Route
-            path="/signin"
-            element={<SignIn setAuth={setIsAuthenticated} />}
-          />
-          <Route
-            path="/signup"
-            element={<SignUp setAuth={setIsAuthenticated} />}
-          />
+          <Route path="/signin" element={<SignIn setAuth={setIsAuthenticated} />} />
+          <Route path="/signup" element={<SignUp setAuth={setIsAuthenticated} />} />
           <Route path="*" element={<Navigate to="/signin" />} />
         </Routes>
       )}

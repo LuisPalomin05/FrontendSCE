@@ -1,8 +1,15 @@
-import React, { useState, useEffect, } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import axios from "axios";
-import {caretForwardOutline,  bagAddOutline, cloudDownloadOutline, createOutline, trashOutline,} from "ionicons/icons";
+import {
+  caretForwardOutline,
+  bagAddOutline,
+  cloudDownloadOutline,
+  createOutline,
+  trashOutline,
+  caretBackOutline,
+} from "ionicons/icons";
 // import { downloadToimg as ScreenShot } from "../../utils/imgDescarga";
 import generatePDF from "./generatePDF";
 
@@ -10,6 +17,9 @@ const localhost = "https://backendapi-6thn.onrender.com/api/cotizacion";
 
 const CotizacionCreate = () => {
   const navigate = useNavigate();
+  const input1Ref = useRef(null);
+  const input2Ref = useRef(null);
+
   const optEmpresa = [
     {
       razonSocial: "Torque-G46",
@@ -19,8 +29,8 @@ const CotizacionCreate = () => {
       titulocotizacion: "PERNOS Y TUERCAS TORQUE-G46 S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/refs/heads/main/src/content/logos/TorqueFBICON.png",
       telefono: "+51 977 492 484",
-      cuentaDolares: ["192-2354415-1-78","002-192002354415178-32"],
-      cuentaSoles: ["192-2355918-0-49","002-192-002355918049-34"]
+      cuentaDolares: ["192-2354415-1-78", "002-192002354415178-32"],
+      cuentaSoles: ["192-2355918-0-49", "002-192-002355918049-34"],
     },
     {
       razonSocial: "Irontools",
@@ -30,9 +40,8 @@ const CotizacionCreate = () => {
       titulocotizacion: "IRONTOOLS S.A.C",
       src: "https://raw.githubusercontent.com/LuisPalomin05/FrontendSCE/10799e22045a0ff79009c2e05866d62326a031a8/src/content/logos/IRONTOOLSICON.png",
       telefono: "+51 977 492 484",
-      cuentaDolares: ["192-1972978-178","002-19200197297817831"],
-      cuentaSoles: ["192-1999964-054","002-19200199996405433"],
-
+      cuentaDolares: ["192-1972978-178", "002-19200197297817831"],
+      cuentaSoles: ["192-1999964-054", "002-19200199996405433"],
     },
   ];
 
@@ -49,7 +58,9 @@ const CotizacionCreate = () => {
   const [ruc, setRuc] = useState("");
   const [cliente, setCliente] = useState("");
   const [empresa, setEmpresa] = useState(optEmpresa[0].razonSocial);
-  const [emision, setEmision] = useState(new Date().toISOString().split("T")[0]);
+  const [emision, setEmision] = useState(
+    new Date().toISOString().split("T")[0]
+  );
 
   const [nroCuenta, setNroCuenta] = useState("");
   const [nroCuentaCCI, setNroCuentaCCI] = useState("");
@@ -63,15 +74,14 @@ const CotizacionCreate = () => {
   const [autor, setAutor] = useState("luis");
 
   const [producto, setProducto] = useState("");
-  var [cantidad, setCantidad] = useState('');
-  var [precio, setPrecio] = useState('');
+  var [cantidad, setCantidad] = useState("");
+  var [precio, setPrecio] = useState("");
   const [telefono, setTelefono] = useState("");
   const [titulo, setTitulo] = useState("");
   const [direccion, setDireccion] = useState("");
   const [correo, setCorreo] = useState("");
   const [imagenSrc, setImgSrc] = useState("");
   const [nRucEmisor, setRucEmisor] = useState("");
-
 
   const handleAddProduct = () => {
     if (producto && parseFloat(cantidad) > 0 && parseFloat(precio) > 0) {
@@ -83,8 +93,8 @@ const CotizacionCreate = () => {
       };
 
       setProductos([...productos, nuevoProducto]);
-      setTotalPago(totalPago + nuevoProducto.subtotal); 
-      setProducto(""); 
+      setTotalPago(totalPago + nuevoProducto.subtotal);
+      setProducto("");
       setCantidad("");
       setPrecio("");
     } else {
@@ -160,7 +170,6 @@ const CotizacionCreate = () => {
         setNroCuenta(empresaSeleccionada.cuentaDolares[0]);
         setNroCuentaCCI(empresaSeleccionada.cuentaDolares[1]);
       }
-
     }
   }, [empresaSeleccionada]);
 
@@ -241,7 +250,8 @@ const CotizacionCreate = () => {
 
             <div>
               <p>Cantidad</p>
-              <input step="0.001"
+              <input
+                step="0.001"
                 type="number"
                 placeholder="Cantidad"
                 className="inputboxitm"
@@ -252,7 +262,8 @@ const CotizacionCreate = () => {
 
             <div>
               <p>Precio</p>
-              <input step="0.001"
+              <input
+                step="0.001"
                 type="number"
                 placeholder="Precio"
                 className="inputboxitm"
@@ -281,7 +292,6 @@ const CotizacionCreate = () => {
             >
               <IonIcon className="padd1" icon={cloudDownloadOutline} />
               CREAR PDF
-
             </button>
             <button className="btnDanger flexbox gapp4" onClick={onReset}>
               <IonIcon className="padd1" icon={trashOutline} /> Limpiar
@@ -290,8 +300,9 @@ const CotizacionCreate = () => {
         </div>
 
         {/* tabla para productos */}
-        <div className="table-container" id="ScreenCotizacion">
-          <div className="ptop">
+        <div className="table-container padd1" id="ScreenCotizacion">
+          <div className="ptop flexbox">
+            <IonIcon className="cGreentext" icon={caretForwardOutline} />{" "}
             <p>Ingresa los datos de los productos que deseas cotizar</p>
           </div>
           <table className="wd padd1">
@@ -311,67 +322,43 @@ const CotizacionCreate = () => {
 
             <tbody>
               {productos.map((prod, index) => (
-                <tr key={index} className="bgWhite padd2">
+                <tr key={index} className="bgWhite padd2 borderVertical">
                   <td className="textcenter">
                     <input type="checkbox" />
                   </td>
                   <td className="textcenter">{index + 1}</td>
 
-                  <td>{prod.descripcion}</td>
+                  <td className="columna50">{prod.descripcion}</td>
                   <td className="textcenter">{prod.cantidad}</td>
                   <td className="textcenter">{prod.precio}</td>
                   <td className="textright">{prod.subtotal}</td>
-                  <td className="flexcenter gapp2">
-                    <p className="btnWarning">
+                  <td className="flexcenter gapp4 wcolor margin3">
+                    <p className="colorWarning padd1">
                       <IonIcon icon={createOutline} />
                     </p>
-                    <p className="btnDanger">
+                    <p className="colorDanger padd1">
                       <IonIcon icon={trashOutline} />
                     </p>
                   </td>
                 </tr>
               ))}
             </tbody>
-            <tfoot className="martop">
-              <tr>
-                <td colSpan="4" className="textcenter">
-                  SubTotal
-                </td>
-                <td className="">
-                  {productos
-                    .reduce((acc, prod) => acc + prod.subtotal, 0)
-                    .toFixed(2)}
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="4" className="textcenter">
-                  IGV 18%
-                </td>
-                <td className="">
-                  {(
-                    productos.reduce((acc, prod) => acc + prod.subtotal, 0) *
-                    0.18
-                  ).toFixed(2)}
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="4" className="textcenter">
-                  TOTAL
-                </td>
-                <td className="">
-                  {(
-                    productos.reduce((acc, prod) => acc + prod.subtotal, 0) *
-                    1.18
-                  ).toFixed(2)}
-                </td>
-              </tr>
-            </tfoot>
           </table>
+          {productos.length === 0 && (
+            <div className="flexcenter aligncntent gapp4 padd3 bgWhite  martop textcenter shimmer-loader">
+              <IonIcon className="cGreentext" icon={caretForwardOutline} />
+              <p className="cBlack ">No hay productos agregados</p>
+              <IonIcon className="cGreentext " icon={caretBackOutline} />
+            </div>
+          )}
         </div>
       </div>
 
       {/* HERRAMIENTAS */}
-      <form onSubmit={onSubmitForm} className="wd30 flex1 toolsboxside">
+      <form
+        onSubmit={onSubmitForm}
+        className="wd30 flex1 toolsboxside borderleftgray"
+      >
         <div className="flexbox padd2 bottombordergray ">
           <IonIcon className="cGreentext" icon={caretForwardOutline} />{" "}
           <h1 className="cGreentext">HERRAMIENTAS</h1>
@@ -432,26 +419,59 @@ const CotizacionCreate = () => {
           </div>
         </section>
 
-        <section className="padd2 ">
-          <div className="flexbox jcAround montoTotalbx bgGray padd2">
-            <div className="flex1">CANTIDAD DE PRODUCTOS:</div>
-            <div>{productos.length}</div>
+        <section className="martop">
+          <div className="flexbox  borderVertical padd2">
+            <IonIcon className="cGreentext" icon={caretForwardOutline} />
+            <h1 className="cGreentext">CONTABLE</h1>
           </div>
+          {/* <section className="padd2 ">
+            <div className="flexbox bgWhite borderVertical">
+              <div className="flex1">CANT. PRODUCTOS:</div>
+              <div>{productos.length}</div>
+            </div>
+          </section> */}
+          <section className="flexbox  jcAround">
+            <div className=" flex1 padd2">SUBTOTAL :</div>
+            <div className="bgWhite flex1 padd2">
+              {productos
+                .reduce((acc, prod) => acc + prod.subtotal, 0)
+                .toFixed(2)}
+            </div>
+          </section>
+          <section className="flexbox jcAround borderVertical">
+            <div className=" flex1 padd2">IGV 18% :</div>
+            <div className="bgWhite flex1 padd2">
+              {(
+                productos.reduce((acc, prod) => acc + prod.subtotal, 0) * 0.18
+              ).toFixed(2)}
+            </div>
+          </section>
+          <section className="flexbox jcAround bottombordergray">
+            <div className=" flex1 padd2 boldtext">TOTAL A PAGAR:</div>
+            <div className="bgWhite flex1 padd2 boldtext">
+              {(
+                productos.reduce((acc, prod) => acc + prod.subtotal, 0) * 1.18
+              ).toFixed(2)}
+            </div>
+          </section>
         </section>
-        <section className="padd2 ">
+
+        {/* <section className="padd2 ">
           <div className="flexbox jcAround montoTotalbx bgGray padd2">
             <div className="flex1">MONTO TOTAL A PAGAR:</div>
             <div>
               {productos
                 .reduce((acc, prod) => acc + prod.subtotal, 0)
                 .toFixed(2)}
-                
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <div className="padd2">
-          <h3 className="cBlack">Observaciones</h3>
+        <div className="martop">
+          <div className="flexbox borderVertical padd2">
+            <IonIcon className="cGreentext" icon={caretForwardOutline} />
+            <h3 className="cGreentext ">OBSERVACIONES</h3>
+          </div>
           <textarea
             className="wd padd1"
             placeholder="Observaciones..."
@@ -463,8 +483,7 @@ const CotizacionCreate = () => {
               GUARDAR DATOS
             </button>
             <button className="btnWarning" type="submit" onClick={setter}>
-              Pasar a Pedido
-            </button>
+PASAR PEDIDO            </button>
           </div>
         </div>
       </form>

@@ -91,7 +91,7 @@ const generatePDF = ({
       "Descripción",
       "Cantidad",
       "Precio Unit.",
-      "Subtotal",
+      "Importe",
     ];
     const rows = productos.map((producto, index) => [
       index + 1,
@@ -157,7 +157,7 @@ const generatePDF = ({
 
     doc.setFontSize(10);
     doc.setFont("helvetica", "italic");
-    doc.text("Gracias por su preferencia.", 14, doc.lastAutoTable.finalY + 50);
+    doc.text("Gracias por su preferencia.", 14, 285);
 
     doc.save(`cotizacion_${numeroCotizacion}.pdf`);
   };
