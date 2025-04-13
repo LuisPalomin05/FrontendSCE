@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import axios from "axios";
@@ -17,8 +17,6 @@ const localhost = "https://backendapi-6thn.onrender.com/api/cotizacion";
 
 const CotizacionCreate = () => {
   const navigate = useNavigate();
-  const input1Ref = useRef(null);
-  const input2Ref = useRef(null);
 
   const optEmpresa = [
     {
@@ -163,15 +161,17 @@ const CotizacionCreate = () => {
       setTelefono(empresaSeleccionada.telefono);
       setRucEmisor(empresaSeleccionada.RUC_EMPRESA);
 
-      if (moneda === "SOLES") {
-        setNroCuenta(empresaSeleccionada.cuentaSoles[0]);
-        setNroCuentaCCI(empresaSeleccionada.cuentaSoles[1]);
-      } else {
-        setNroCuenta(empresaSeleccionada.cuentaDolares[0]);
-        setNroCuentaCCI(empresaSeleccionada.cuentaDolares[1]);
-      }
+
     }
   }, [empresaSeleccionada]);
+
+  if (moneda === "SOLES") {
+    setNroCuenta(empresaSeleccionada.cuentaSoles[0]);
+    setNroCuentaCCI(empresaSeleccionada.cuentaSoles[1]);
+  } else {
+    setNroCuenta(empresaSeleccionada.cuentaDolares[0]);
+    setNroCuentaCCI(empresaSeleccionada.cuentaDolares[1]);
+  }
 
   const setter = () => {
     setAutor("luis");
