@@ -49,7 +49,7 @@ export default function ClientesVista() {
           <p className=" titleboxCompras">10 resultados - 50 listados</p>
         </div>
         <div className="flexbox optionmenubox">
-          <Link to={"/crear"} className="flexcenter createButtonBox">
+          <Link to={"crear"} className="flexcenter createButtonBox">
             <div className="flexcenter">
               <IonIcon icon={addOutline}></IonIcon>
             </div>
@@ -68,7 +68,7 @@ export default function ClientesVista() {
         <Suspense className="shimmer-loader" fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<ClientesLista clienteLista={clientes} />}/>
-            <Route path="/crear" element={<ClientesCrear />} />
+            <Route path="/crear/" element={<ClientesCrear />} />
             <Route path="/editar/:id" element={<ClientesCrear />} />
           </Routes>
         </Suspense>

@@ -66,7 +66,7 @@ const CotizacionCreate = () => {
   const [formaPago, setFormaPago] = useState("Contado");
   const [nCotizacion, setNcotizacion] = useState("");
   const [productos, setProductos] = useState([]);
-  const [totalPago, setTotalPago] = useState();
+  const [totalPago, setTotalPago] = useState(0);
   const [observaciones, setObservaciones] = useState("");
   const [estado, setEstado] = useState("");
   const [autor, setAutor] = useState("luis");
@@ -131,6 +131,8 @@ const CotizacionCreate = () => {
     setRuc("");
     setCliente("");
     setNcotizacion("");
+    setProductos([]);
+    setTotalPago(0);
   };
 
   const cotizacion = {
@@ -160,18 +162,20 @@ const CotizacionCreate = () => {
       setCorreo(empresaSeleccionada.correo);
       setTelefono(empresaSeleccionada.telefono);
       setRucEmisor(empresaSeleccionada.RUC_EMPRESA);
-
-
     }
   }, [empresaSeleccionada]);
 
-  if (moneda === "SOLES") {
-    setNroCuenta(empresaSeleccionada.cuentaSoles[0]);
-    setNroCuentaCCI(empresaSeleccionada.cuentaSoles[1]);
-  } else {
-    setNroCuenta(empresaSeleccionada.cuentaDolares[0]);
-    setNroCuentaCCI(empresaSeleccionada.cuentaDolares[1]);
-  }
+  useEffect(() => {
+    if (empresaSeleccionada) {
+      if (moneda === "SOLES" && empresaSeleccionada.cuentaSoles) {
+        setNroCuenta(empresaSeleccionada.cuentaSoles[0]);
+        setNroCuentaCCI(empresaSeleccionada.cuentaSoles[1]);
+      } else if (empresaSeleccionada.cuentaDolares) {
+        setNroCuenta(empresaSeleccionada.cuentaDolares[0]);
+        setNroCuentaCCI(empresaSeleccionada.cuentaDolares[1]);
+      }
+    }
+  }, [moneda, empresaSeleccionada]);
 
   const setter = () => {
     setAutor("luis");
@@ -424,12 +428,6 @@ const CotizacionCreate = () => {
             <IonIcon className="cGreentext" icon={caretForwardOutline} />
             <h1 className="cGreentext">CONTABLE</h1>
           </div>
-          {/* <section className="padd2 ">
-            <div className="flexbox bgWhite borderVertical">
-              <div className="flex1">CANT. PRODUCTOS:</div>
-              <div>{productos.length}</div>
-            </div>
-          </section> */}
           <section className="flexbox  jcAround">
             <div className=" flex1 padd2">SUBTOTAL :</div>
             <div className="bgWhite flex1 padd2">
@@ -456,17 +454,6 @@ const CotizacionCreate = () => {
           </section>
         </section>
 
-        {/* <section className="padd2 ">
-          <div className="flexbox jcAround montoTotalbx bgGray padd2">
-            <div className="flex1">MONTO TOTAL A PAGAR:</div>
-            <div>
-              {productos
-                .reduce((acc, prod) => acc + prod.subtotal, 0)
-                .toFixed(2)}
-            </div>
-          </div>
-        </section> */}
-
         <div className="martop">
           <div className="flexbox borderVertical padd2">
             <IonIcon className="cGreentext" icon={caretForwardOutline} />
@@ -482,7 +469,7 @@ const CotizacionCreate = () => {
             <button className="btnSuccess" type="submit">
               GUARDAR DATOS
             </button>
-            <button className="btnWarning" type="submit" onClick={setter}>
+            <button className="btnWarning" onClick={setter}>
 PASAR PEDIDO            </button>
           </div>
         </div>

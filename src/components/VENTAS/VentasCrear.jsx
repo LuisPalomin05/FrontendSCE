@@ -22,25 +22,32 @@ const VentasCrear = () => {
 
   useEffect(() => {
     async function fetchData() {
-      // const res = await axios.get(localhost)
-      // console.log(res)
-
       if (id) {
-        const res = await axios.get(localhost + id);
-        setRuc(res.data.ruc);
-        setCliente(res.data.cliente);
-        setEmision(res.data.emision);
-        setVencimiento(res.data.vencimiento);
-        setEmpresa(res.data.empresa);
-        setnFactura(res.data.nfactura);
-        setTotal(res.data.total);
-        setMoneda(res.data.moneda);
-
-        setEditing(true);
+        try {
+          const res = await axios.get(localhost + id);
+          setRuc(res.data.ruc);
+          setCliente(res.data.cliente);
+          setEmision(res.data.emision);
+          setVencimiento(res.data.vencimiento);
+          setEmpresa(res.data.empresa);
+          setnFactura(res.data.nfactura);
+          setTotal(res.data.total);
+          setMoneda(res.data.moneda);
+          setEditing(true);
+        } catch (error) {
+          if (error.response && error.response.status === 404) {
+            // Redirige a /error si es un 404
+            navigate("/error/");
+          } else {
+            // Redirige a ventas u otro error general
+            navigate("/ventas");
+          }
+        }
       }
     }
     fetchData();
-  }, [id]);
+  }, [id, navigate]);
+  
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
