@@ -41,7 +41,7 @@ const VentasVista = () => {
           </div>
         </div>
         <div>
-          <p className="titleboxVentas">10 resultados - 50 listados</p>
+          <p className="titleboxVentas"> {ventas.length} - 50 listados</p>
         </div>
         <div className="flexbox optionmenubox">
           <div>

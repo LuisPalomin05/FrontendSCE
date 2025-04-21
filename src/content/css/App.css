@@ -496,6 +496,24 @@ input[type="checkbox"] {
   text-align: right;
 }
 
+.table-container {
+  max-height: 300px; 
+  overflow-y: auto;
+  padding: 2px;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+.contentTable{
+  max-height: 300px; 
+  overflow-y: auto;
+  padding: 2px;
+}
+
 .formatTable{
   border-spacing: 8px; 
 }
@@ -512,18 +530,7 @@ overflow-y: auto;
   height: 60%;
 }
 
-.table-container {
-  max-height: 300px; 
-  overflow-y: auto;
-  /* border: 1px solid #ccc;  */
-  padding: 2px;
-}
 
-.table-container table {
-  width: 100%;
-  border-collapse: collapse;
-  
-}
 
 /* ShimmerLoader.css */
 .shimmer-loader {
@@ -554,6 +561,9 @@ overflow-y: auto;
 
 .borderleftgray{
   border-left: 1px solid #dedede;
+}
+.borderrigthgray{
+  border-right: 1px solid #dedede;
 }
 
 .borderGray{

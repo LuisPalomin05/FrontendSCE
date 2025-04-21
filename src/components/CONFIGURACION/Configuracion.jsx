@@ -14,7 +14,7 @@ import "../../content/css/Configuracion.css";
 const Configuracion = () => {
   return (
     <div className="ConfiguracionBox">
-      <section className="configbox">
+      <section className="configbox borderrigthgray">
         <ul>
           <li className="listconfig">
             <Link className="configLink" to="/sce/configuracion/cuenta">
@@ -49,7 +49,7 @@ const Configuracion = () => {
         </ul>
       </section>
 
-      <section className="configboxInfo">
+      <section className="configboxInfo ">
         <Routes>
           <Route path="cuenta" element={<Cuenta />} />
           <Route path="personalizacion" element={<Personalizacion />} />

@@ -25,8 +25,8 @@ const CotizacionCreate = () => {
         console.log("Cargando cotización con ID:", id);
         const formatearFecha = (fechaISO) => {
           const fecha = new Date(fechaISO);
-          const dia = String(fecha.getDate()).padStart(2, '0');
-          const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+          const dia = String(fecha.getDate()).padStart(2, "0");
+          const mes = String(fecha.getMonth() + 1).padStart(2, "0");
           const anio = fecha.getFullYear();
           return `${anio}-${mes}-${dia}`;
         };
@@ -220,6 +220,17 @@ const CotizacionCreate = () => {
     setEstado("pedido");
   };
 
+  async function ondeleteCotizacion() {
+    if (id) {
+      try {
+        await axios.delete(localhost + "/" + id);
+        navigate("/Dashboard");
+      } catch (error) {
+        console.error("Error al eliminar la cotización:", error);
+      }
+    }
+  }
+
   return (
     <div className="flexbox padd2 hg">
       <div className="flexColumn wd70 gapp4">
@@ -228,7 +239,7 @@ const CotizacionCreate = () => {
           <h1 className="cGreentext flex1">
             {editing ? "EDITAR COTIZACION" : "CREAR COTIZACION"}
           </h1>
-          <h6 className="cGray">{editing && "ID: "+ id}</h6>
+          <h6 className="cGray">{editing && "ID: " + id}</h6>
         </section>
 
         <div className="flexColumn aligncntent hg30 bgWhite ptop gapp4 bottombordergray">
@@ -338,9 +349,21 @@ const CotizacionCreate = () => {
               <IonIcon className="padd1" icon={cloudDownloadOutline} />
               CREAR PDF
             </button>
-            <button className="btnDanger flexbox gapp4" onClick={onReset}>
-              <IonIcon className="padd1" icon={trashOutline} /> Limpiar
-            </button>
+
+            {editing ? (
+              <button
+                className="btnDanger flexbox gapp4"
+                onClick={ondeleteCotizacion}
+              >
+                <IonIcon className="padd1" icon={trashOutline} />
+                Eliminar Cotizacion
+              </button>
+            ) : (
+              <button className="btnDanger flexbox gapp4" onClick={onReset}>
+                <IonIcon className="padd1" icon={trashOutline} />
+                Limpiar
+              </button>
+            )}
           </section>
         </div>
 
@@ -392,7 +415,11 @@ const CotizacionCreate = () => {
           {productos.length === 0 && (
             <div className="flexcenter aligncntent gapp4 padd3 bgWhite  martop textcenter shimmer-loader">
               <IonIcon className="cGreentext" icon={caretForwardOutline} />
-              <p className="cBlack ">No hay productos agregados</p>
+              <p className="cBlack ">
+                {editing
+                  ? "Estamos cargando la informacion"
+                  : "No hay productos agregados"}
+              </p>
               <IonIcon className="cGreentext " icon={caretBackOutline} />
             </div>
           )}

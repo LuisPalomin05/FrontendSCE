@@ -65,7 +65,7 @@ export default function ClientesVista() {
       </section>
 
       <section className="padd2">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="shimmer-loader">Loading...</div>}>
           <Routes>
             <Route path="/" element={<ClientesLista clienteLista={clientes} />}/>
             <Route path="/crear/" element={<ClientesCrear />} />

@@ -114,7 +114,7 @@ const CotizacionesLista = lazy(() => import("./ListaCotizacion"));
           <section>
             <h1 className="cGray fs16 ptop">Mis Cotizaciones</h1>
 
-            <Suspense fallback={<div className="shimmer-loader">Loading...</div>}>
+            <Suspense fallback={<div className="shimmer-loader">Cargando...</div>}>
               <CotizacionesLista cotizaciones={cotizaciones} />
             </Suspense>
 
