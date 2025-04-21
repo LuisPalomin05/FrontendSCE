@@ -27,6 +27,14 @@ jobs:
       - name: Instalar Firebase CLI
         run: npm install -g firebase-tools
 
+      - name: Authenticate with service account
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
+        run: |
+          echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > ${HOME}/gcloud.json
+          export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcloud.json"
+
+
       - name: Hacer deploy a Firebase Hosting
         run: firebase deploy --only hosting --project sce-appstore
         env:
