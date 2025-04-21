@@ -66,6 +66,9 @@ const App = () => {
 
                 <Route path="/proveedores" element={<ProveedorVista />} />
                 <Route path="/cotizacion/*" element={<CotizacionCreate />} />
+              
+                <Route path="/cotizacion/editar/:id" element={<CotizacionCreate />} />
+
               </Routes>
             </div>
           </div>

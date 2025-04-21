@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect, lazy, Suspense}  from "react";
+import axios from "axios";
 import CardBoxCash from "../CardBox";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
@@ -10,8 +11,23 @@ import {
   addOutline,
 } from "ionicons/icons";
 
+const CotizacionesLista = lazy(() => import("./ListaCotizacion"));
+
   const Dashboard = () => {
   
+    const [cotizaciones, setCotizaciones] = useState([]);
+
+    useEffect(() => {
+      async function fetchData() {
+        const res = await axios.get(
+          "https://backendapi-6thn.onrender.com/api/cotizacion"
+        );
+        setCotizaciones(res.data);
+      }
+      fetchData();
+    }, []);
+
+
     return (
       <div className="DashBoardBox">
         <div className="flexbox barTopmenu">
@@ -97,40 +113,12 @@ import {
           </section>
           <section>
             <h1 className="cGray fs16 ptop">Mis Cotizaciones</h1>
-            <div className="bgWhite">
-              <table className="formatTable">
-                <thead>
-                  <tr className="">
-                    <th>
-                      <input type="checkbox" name="select" />
-                    </th>
-                    <th>Cliente</th>
-                    <th>Fecha</th>
-                    <th>Estado</th>
-                    <th>Creador</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <input type="checkbox" name="select" />
-                    </td>
 
-                    <td>Cliente1</td>
-                    <td>12/12/2021</td>
-                    <td>Enviado</td>
-                    <td>Admin</td>
-                    <td>
-                      <Link to={"/cotizacion"} className="btnbox">
-                        Ver
-                      </Link>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
+            <Suspense fallback={<div className="shimmer-loader">Loading...</div>}>
+              <CotizacionesLista cotizaciones={cotizaciones} />
+            </Suspense>
+
+          </section> 
 
           <section></section>
         </div>

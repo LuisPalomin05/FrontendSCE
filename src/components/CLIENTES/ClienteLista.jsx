@@ -1,10 +1,10 @@
-
+import React from "react";
 import { Link } from "react-router-dom";
 
 const ClienteLista =({clienteLista})=>{
-  // if (!Array.isArray(clienteLista)) {
-  //   return <p>No hay clientes disponibles.</p>;  
-  // }
+  if (!Array.isArray(clienteLista)) {
+    return <p>No hay clientes disponibles.</p>;  
+  }
     return(<section>
             <p>Listado de Clientes</p>
             <div>

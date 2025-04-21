@@ -1,12 +1,9 @@
 import React,{useEffect,useState} from "react";
-import { Link ,useParams} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link ,useParams, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 // const localhost = "http://localhost:5000/api/compras";
 const localhost = "https://backendapi-6thn.onrender.com/api/compras";
-
-
 
 const ComprasCrear = () => {
 

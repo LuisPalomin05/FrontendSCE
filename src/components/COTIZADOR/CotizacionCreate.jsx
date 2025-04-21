@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import axios from "axios";
 import {
@@ -10,13 +10,48 @@ import {
   trashOutline,
   caretBackOutline,
 } from "ionicons/icons";
-// import { downloadToimg as ScreenShot } from "../../utils/imgDescarga";
 import generatePDF from "./generatePDF";
 
 const localhost = "https://backendapi-6thn.onrender.com/api/cotizacion";
 
 const CotizacionCreate = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [editing, setEditing] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (id) {
+        console.log("Cargando cotización con ID:", id);
+        const formatearFecha = (fechaISO) => {
+          const fecha = new Date(fechaISO);
+          const dia = String(fecha.getDate()).padStart(2, '0');
+          const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+          const anio = fecha.getFullYear();
+          return `${anio}-${mes}-${dia}`;
+        };
+        try {
+          const res = await axios.get(localhost + "/" + id);
+          setEditing(true);
+          setRuc(res.data.ruc);
+          setCliente(res.data.cliente);
+          setEmpresa(res.data.empresa);
+          setNcotizacion(res.data.numeroCotizacion);
+          setMoneda(res.data.moneda);
+          setFormaPago(res.data.formaPago);
+          setProductos(res.data.productos);
+          setObservaciones(res.data.observaciones);
+          setEmision(formatearFecha(res.data.emision));
+          console.log("Respuesta del servidor:", res.data);
+        } catch (err) {
+          console.error("Error al traer la cotización:", err);
+        }
+      } else {
+        setEditing(false);
+      }
+    }
+    fetchData();
+  }, [id]);
 
   const optEmpresa = [
     {
@@ -49,7 +84,9 @@ const CotizacionCreate = () => {
     const empresaEncontrada = optEmpresa.find(
       (emp) => emp.razonSocial === empresaNombre
     );
-    setEmpresaSeleccionada(empresaEncontrada);
+    if (empresaEncontrada) {
+      setEmpresaSeleccionada(empresaEncontrada);
+    }
   };
 
   const [empresaSeleccionada, setEmpresaSeleccionada] = useState(optEmpresa[0]);
@@ -65,6 +102,7 @@ const CotizacionCreate = () => {
   const [moneda, setMoneda] = useState("SOLES");
   const [formaPago, setFormaPago] = useState("Contado");
   const [nCotizacion, setNcotizacion] = useState("");
+
   const [productos, setProductos] = useState([]);
   const [totalPago, setTotalPago] = useState(0);
   const [observaciones, setObservaciones] = useState("");
@@ -187,7 +225,10 @@ const CotizacionCreate = () => {
       <div className="flexColumn wd70 gapp4">
         <section className="flexbox padd2 bottombordergray ">
           <IonIcon className="cGreentext" icon={caretForwardOutline} />{" "}
-          <h1 className="cGreentext">CREAR COTIZACION</h1>
+          <h1 className="cGreentext flex1">
+            {editing ? "EDITAR COTIZACION" : "CREAR COTIZACION"}
+          </h1>
+          <h6 className="cGray">{editing && "ID: "+ id}</h6>
         </section>
 
         <div className="flexColumn aligncntent hg30 bgWhite ptop gapp4 bottombordergray">
@@ -214,7 +255,7 @@ const CotizacionCreate = () => {
                     type="text"
                     className="inputboxitm"
                     placeholder="Nombre del cliente"
-                    value={cliente}
+                    value={cliente ?? ""}
                     required
                     onChange={(e) => setCliente(e.target.value)}
                   />
@@ -407,8 +448,9 @@ const CotizacionCreate = () => {
             <input
               type="text"
               className="wd padd1"
-              value={nCotizacion}
+              value={nCotizacion ?? ""}
               onChange={(e) => setNcotizacion(e.target.value)}
+              required
             />
           </div>
           <div className="flex1">
@@ -470,7 +512,8 @@ const CotizacionCreate = () => {
               GUARDAR DATOS
             </button>
             <button className="btnWarning" onClick={setter}>
-PASAR PEDIDO            </button>
+              PASAR PEDIDO{" "}
+            </button>
           </div>
         </div>
       </form>

@@ -96,6 +96,9 @@ grid-area: sections;
   margin: 5px 0;
 }
 
+.mt1{
+  margin-top: 1px;
+}
 
 .flexbox {
   display: flex;
