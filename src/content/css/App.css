@@ -177,6 +177,10 @@ grid-area: sections;
   gap: 8px;
 }
 
+.fs8{
+  font-size: 8px;
+}
+
 .fs10{
   font-size: 10px;
 }
@@ -407,7 +411,31 @@ grid-area: sections;
 }
 .hg30{
   height: 30%;
+}
+.hg35{
+  height: 30%;
 
+}
+.hg40{
+  height: 40%;
+}
+.hg50{
+  height: 50%;
+}
+.hg60{
+  height: 60%;
+}
+.hg70{
+  height: 70%;
+}
+.hg80{
+  height: 80%;
+}
+.hg90{
+  height: 90%;
+}
+.hg95{
+  height: 95%;
 }
 .wd70{
   width: 70%;

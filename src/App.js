@@ -41,7 +41,7 @@ const App = () => {
             <div className="menuicons">
               <Menulateral />
             </div>
-            <div className="contentpanel">
+            <div className="contentpanel ">
               <CotizadorPanel />
             </div>
           </div>

@@ -2,13 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ListaCotizacion = ({ cotizaciones }) => {
+
   const formatearFecha = (fechaISO) => {
     const fecha = new Date(fechaISO);
-    const dia = String(fecha.getDate()).padStart(2, "0");
-    const mes = String(fecha.getMonth() + 1).padStart(2, "0");
-    const anio = fecha.getFullYear();
-    return `${dia}/${mes}/${anio}`;
+    const dia = String(fecha.getUTCDate()).padStart(2, "0");
+    const mes = String(fecha.getUTCMonth() + 1).padStart(2, "0");
+    const anio = fecha.getUTCFullYear();
+    return `${anio}-${mes}-${dia}`;
   };
+  
+
+
 
   return (
     <section className="contentTable bgWhite roundborder">

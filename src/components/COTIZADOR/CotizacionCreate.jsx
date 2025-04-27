@@ -18,31 +18,28 @@ const CotizacionCreate = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [editing, setEditing] = useState(false);
-
+  const formatearFecha = (fechaISO) => {
+    const fecha = new Date(fechaISO);
+    const dia = String(fecha.getUTCDate()).padStart(2, "0");
+    const mes = String(fecha.getUTCMonth() + 1).padStart(2, "0");
+    const anio = fecha.getUTCFullYear();
+    return `${anio}-${mes}-${dia}`;
+  };
   useEffect(() => {
     async function fetchData() {
       if (id) {
-        console.log("Cargando cotización con ID:", id);
-        const formatearFecha = (fechaISO) => {
-          const fecha = new Date(fechaISO);
-          const dia = String(fecha.getDate()).padStart(2, "0");
-          const mes = String(fecha.getMonth() + 1).padStart(2, "0");
-          const anio = fecha.getFullYear();
-          return `${anio}-${mes}-${dia}`;
-        };
         try {
           const res = await axios.get(localhost + "/" + id);
           setEditing(true);
           setRuc(res.data.ruc);
           setCliente(res.data.cliente);
           setEmpresa(res.data.empresa);
-          setNcotizacion(res.data.numeroCotizacion);
+          setNcotizacion(res.data.nCotizacion);
           setMoneda(res.data.moneda);
           setFormaPago(res.data.formaPago);
           setProductos(res.data.productos);
           setObservaciones(res.data.observaciones);
           setEmision(formatearFecha(res.data.emision));
-          console.log("Respuesta del servidor:", res.data);
         } catch (err) {
           console.error("Error al traer la cotización:", err);
         }
@@ -89,12 +86,13 @@ const CotizacionCreate = () => {
     }
   };
 
+  const todaydata = new Date();
   const [empresaSeleccionada, setEmpresaSeleccionada] = useState(optEmpresa[0]);
   const [ruc, setRuc] = useState("");
   const [cliente, setCliente] = useState("");
   const [empresa, setEmpresa] = useState(optEmpresa[0].razonSocial);
   const [emision, setEmision] = useState(
-    new Date().toISOString().split("T")[0]
+    formatearFecha(todaydata)
   );
 
   const [nroCuenta, setNroCuenta] = useState("");
@@ -428,7 +426,7 @@ const CotizacionCreate = () => {
 
       {/* HERRAMIENTAS */}
       <form
-        onSubmit={onSubmitForm}
+        // onSubmit={onSubmitForm}
         className="wd30 flex1 toolsboxside borderleftgray"
       >
         <div className="flexbox padd2 bottombordergray ">
@@ -531,15 +529,15 @@ const CotizacionCreate = () => {
           <textarea
             className="wd padd1"
             placeholder="Observaciones..."
-            rows="5"
+            rows={5}
             onChange={(e) => setObservaciones(e.target.value)}
           />
           <div className="flexbox gapp4">
-            <button className="btnSuccess" type="submit">
+            <button className="btnSuccess" onClick={onSubmitForm}>
               GUARDAR DATOS
             </button>
             <button className="btnWarning" onClick={setter}>
-              PASAR PEDIDO{" "}
+              PASAR PEDIDO
             </button>
           </div>
         </div>
