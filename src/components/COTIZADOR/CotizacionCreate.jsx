@@ -22,9 +22,9 @@ const CotizacionCreate = () => {
 
   const formatearFecha = (fechaISO) => {
     const fecha = new Date(fechaISO);
-    const dia = String(fecha.getDate()).padStart(2, "0"); // <-- cambio aquí
-    const mes = String(fecha.getMonth() + 1).padStart(2, "0"); // <-- cambio aquí
-    const anio = fecha.getFullYear(); // <-- cambio aquí
+    const dia = String(fecha.getDate()).padStart(2, "0"); 
+    const mes = String(fecha.getMonth() + 1).padStart(2, "0"); 
+    const anio = fecha.getFullYear(); 
     return `${anio}-${mes}-${dia}`;
   };
 
@@ -49,6 +49,7 @@ const CotizacionCreate = () => {
           setMoneda(res.data.moneda);
           setFormaPago(res.data.formaPago);
           setProductos(res.data.productos);
+          setTotalPago(res.data.totalPago);
           setObservaciones(res.data.observaciones);
           setEmision(formatearFechaUTC(res.data.emision));
         } catch (err) {
@@ -134,12 +135,8 @@ const CotizacionCreate = () => {
         precio: parseFloat(precio),
         subtotal: parseFloat(cantidad) * parseFloat(precio),
       };
-      // se realizo reajuste para la suma desde backend
-      if (editing){
-        setProductos(productos)
-      }else{
+
       setProductos([...productos, nuevoProducto]);
-      }
       setTotalPago(totalPago + nuevoProducto.subtotal);
       setProducto("");
       setCantidad("");
@@ -170,7 +167,6 @@ const CotizacionCreate = () => {
           estado,
           autor,
         };
-        console.log("EDITANDO COTIZACION", totalPago);
         await axios.put(`${localhost}/${id}`, newVenta);
       } else {
         const newVenta = {
@@ -564,6 +560,7 @@ const CotizacionCreate = () => {
             className="wd padd1"
             placeholder="Observaciones..."
             rows={5}
+            value={observaciones}
             onChange={(e) => setObservaciones(e.target.value)}
           />
           <div className="flexbox gapp4">
