@@ -1,6 +1,3 @@
-/* .CotizadorPanel{
-    height: 100%;
-} */
 
 .CotizacionPanelbox{
     padding: 2px;
@@ -79,3 +76,23 @@
     100% { transform: rotate(360deg); }
   }
   
+  .itemresdata{
+    display: flex;
+    color: #727272;
+    cursor: pointer;
+  }
+
+    .itemresdata:hover{
+        background: #dedede45;
+    }
+
+    .itemarrow{
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1px;
+    }
+
+    .itemresdata:hover .itemarrow{
+        display: flex;
+    }

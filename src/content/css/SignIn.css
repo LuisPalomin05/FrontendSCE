@@ -32,6 +32,7 @@
   display: flex;
   position: fixed;
   align-items: center;
+  justify-content: center;
   bottom: 20px;
   right: 20px;
   height: 45px;
@@ -123,6 +124,7 @@ input:focus {
 .forminputs {
   width: 30%;
   height: 80%;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;

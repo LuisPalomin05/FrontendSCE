@@ -21,6 +21,7 @@
     "react-ionicons": "^4.2.1",
     "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.1",
+    "react-toastify": "^11.0.5",
     "react-tooltip": "^5.28.0",
     "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.4",

@@ -1,46 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { IonIcon } from "@ionic/react";
+import { cloudy } from "ionicons/icons";
 
 const SignIn = ({ setAuth }) => {
-
- 
-
-
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [mostrarDiv, setMostrarDiv] = useState(true); 
+  const [credentials, setCredentials] = useState({ ruc:"", email: "", password: "" });
+  const [mostrarDiv, setMostrarDiv] = useState(true);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-  
+
     if (
+      credentials.ruc === "20412345678" &&
       credentials.email === "pmpalominomedina@gmail.com" &&
       credentials.password === "password"
     ) {
-      setAuth(true); 
-      navigate("/Dashboard"); 
+      setAuth(true);
+      navigate("/Dashboard");
     } else {
       alert("Credenciales inválidas");
     }
-    
   };
 
-
-  
   useEffect(() => {
     const timer = setTimeout(() => {
-      setMostrarDiv(false); 
-    }, 3000); 
+      setMostrarDiv(false);
+    }, 3000);
 
-    
     return () => clearTimeout(timer);
   }, []);
 
-  // https://images.pexels.com/photos/418831/pexels-photo-418831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
   return (
     <form id="FormSignIn" onSubmit={handleLogin}>
       <div className="version">
-        <ion-icon name="cloudy"></ion-icon>
+        <IonIcon icon={cloudy} />
         <p>v.2.12.25</p>
       </div>
 
@@ -91,31 +85,41 @@ const SignIn = ({ setAuth }) => {
           <img className="imglogo" src="https://raw.githubusercontent.com/li2524/FrontendSCE/refs/heads/main/src/sce_tuerca.png" alt="" />
           <p>SCE</p>
         </div>
+
         <div className="forminputs">
+          <label htmlFor="password">RUC del Servicio</label>
+          <input
+            type="text"
+            placeholder="RUC servicio"
+            value={credentials.ruc}
+            onChange={(e) =>
+              setCredentials({ ...credentials, ruc: e.target.value })
+            }
+          />
+          <br />
           <label htmlFor="email">Ingresa tu Usuario</label>
-        <input
-          type="email"
-          placeholder="Correo"
-          value={credentials.email}
-          onChange={(e) =>
-            setCredentials({ ...credentials, email: e.target.value })
-          }
-        />
-        <br />
-        <label htmlFor="password">Ingresa tu contraseña</label>
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={credentials.password}
-          onChange={(e) =>
-            setCredentials({ ...credentials, password: e.target.value })
-          }
-        />
-        <br />
-        <button type="submit">INICIAR SESION</button>
-      
+          <input
+            type="email"
+            placeholder="Correo"
+            value={credentials.email}
+            onChange={(e) =>
+              setCredentials({ ...credentials, email: e.target.value })
+            }
+          />
+          <br />
+          <label htmlFor="password">Ingresa tu contraseña</label>
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={credentials.password}
+            onChange={(e) =>
+              setCredentials({ ...credentials, password: e.target.value })
+            }
+          />
+          <br />
+          <button type="submit">INICIAR SESION</button>
         </div>
-</div>
+      </div>
     </form>
   );
 };

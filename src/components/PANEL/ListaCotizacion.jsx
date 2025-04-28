@@ -27,7 +27,7 @@ const ListaCotizacion = ({ cotizaciones }) => {
             <th>R.U.C</th>
             <th>COTIZACION</th>
             <th>FECHA</th>
-            <th>IMPORTE TOTAL</th>
+            <th>IMPORTE</th>
             <th>MONEDA</th>
             <th>ACCIONES</th>
           </tr>

@@ -603,3 +603,20 @@ overflow-y: auto;
   border-bottom: 1px solid #dedede;
 
 }
+
+.btdaay{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #dedede;
+  gap: 2px;
+
+
+}
+
+.btdaay:hover{
+  background: #f4f4f49a;
+  border: 1px solid #a1a1a1;
+  cursor: pointer;
+}

@@ -1,20 +1,16 @@
-.iconMenuBox{
-    padding: 4px;
+.MenuTopBox {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
 }
 
-.MenuTopBox{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 4px;
-}
-
-.iconMenuBox{
-    /* background: #171737; */
-    /* background: #34bc6a; */
-    background: #34bc6a;
-    
-    height: 100%;
-    display: flex;
-    justify-content: center;
+.iconMenuBox {
+  /* background: #171737; */
+  /* background: #34bc6a; */
+  background: #34bc6a;
+  padding: 4px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }

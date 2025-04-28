@@ -18,16 +18,27 @@ const CotizacionCreate = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [editing, setEditing] = useState(false);
+  const [totalPago, setTotalPago] = useState(0);
+
   const formatearFecha = (fechaISO) => {
     const fecha = new Date(fechaISO);
-    const dia = String(fecha.getUTCDate()).padStart(2, "0");
-    const mes = String(fecha.getUTCMonth() + 1).padStart(2, "0");
-    const anio = fecha.getUTCFullYear();
+    const dia = String(fecha.getDate()).padStart(2, "0"); // <-- cambio aquí
+    const mes = String(fecha.getMonth() + 1).padStart(2, "0"); // <-- cambio aquí
+    const anio = fecha.getFullYear(); // <-- cambio aquí
     return `${anio}-${mes}-${dia}`;
   };
+
   useEffect(() => {
     async function fetchData() {
       if (id) {
+        const formatearFechaUTC = (fechaISO) => {
+          const fecha = new Date(fechaISO);
+          const dia = String(fecha.getUTCDate()).padStart(2, "0");
+          const mes = String(fecha.getUTCMonth() + 1).padStart(2, "0");
+          const anio = fecha.getUTCFullYear();
+          return `${anio}-${mes}-${dia}`;
+        };
+
         try {
           const res = await axios.get(localhost + "/" + id);
           setEditing(true);
@@ -39,7 +50,7 @@ const CotizacionCreate = () => {
           setFormaPago(res.data.formaPago);
           setProductos(res.data.productos);
           setObservaciones(res.data.observaciones);
-          setEmision(formatearFecha(res.data.emision));
+          setEmision(formatearFechaUTC(res.data.emision));
         } catch (err) {
           console.error("Error al traer la cotización:", err);
         }
@@ -91,9 +102,7 @@ const CotizacionCreate = () => {
   const [ruc, setRuc] = useState("");
   const [cliente, setCliente] = useState("");
   const [empresa, setEmpresa] = useState(optEmpresa[0].razonSocial);
-  const [emision, setEmision] = useState(
-    formatearFecha(todaydata)
-  );
+  const [emision, setEmision] = useState(formatearFecha(todaydata));
 
   const [nroCuenta, setNroCuenta] = useState("");
   const [nroCuentaCCI, setNroCuentaCCI] = useState("");
@@ -102,7 +111,6 @@ const CotizacionCreate = () => {
   const [nCotizacion, setNcotizacion] = useState("");
 
   const [productos, setProductos] = useState([]);
-  const [totalPago, setTotalPago] = useState(0);
   const [observaciones, setObservaciones] = useState("");
   const [estado, setEstado] = useState("");
   const [autor, setAutor] = useState("luis");
@@ -116,6 +124,7 @@ const CotizacionCreate = () => {
   const [correo, setCorreo] = useState("");
   const [imagenSrc, setImgSrc] = useState("");
   const [nRucEmisor, setRucEmisor] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleAddProduct = () => {
     if (producto && parseFloat(cantidad) > 0 && parseFloat(precio) > 0) {
@@ -125,8 +134,12 @@ const CotizacionCreate = () => {
         precio: parseFloat(precio),
         subtotal: parseFloat(cantidad) * parseFloat(precio),
       };
-
+      // se realizo reajuste para la suma desde backend
+      if (editing){
+        setProductos(productos)
+      }else{
       setProductos([...productos, nuevoProducto]);
+      }
       setTotalPago(totalPago + nuevoProducto.subtotal);
       setProducto("");
       setCantidad("");
@@ -138,29 +151,50 @@ const CotizacionCreate = () => {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    const newVenta = {
-      ruc,
-      cliente,
-      emision,
-      empresa,
-      moneda,
-      formaPago,
-      nCotizacion,
-      productos,
-      totalPago,
-      observaciones,
-      estado,
-      autor,
-    };
+    setLoading(true);
+
 
     try {
-      await axios.post(localhost, newVenta);
-      // console.log(res.data);
+      if (editing) {
+        const newVenta = {
+          ruc,
+          cliente,
+          emision,
+          empresa,
+          moneda,
+          formaPago,
+          nCotizacion,
+          productos,
+          totalPago,
+          observaciones,
+          estado,
+          autor,
+        };
+        console.log("EDITANDO COTIZACION", totalPago);
+        await axios.put(`${localhost}/${id}`, newVenta);
+      } else {
+        const newVenta = {
+          ruc,
+          cliente,
+          emision,
+          empresa,
+          moneda,
+          formaPago,
+          nCotizacion,
+          productos,
+          totalPago,
+          observaciones,
+          estado,
+          autor,
+        };
+        await axios.post(localhost, newVenta);
+      }
+      navigate("/dashboard");
     } catch (error) {
-      console.error("Error al enviar la cotización:", error);
+      console.error("Error al guardar la cotización:", error);
+    } finally {
+      setLoading(false);
     }
-
-    navigate("/ventas");
   };
 
   const onReset = () => {
@@ -426,7 +460,7 @@ const CotizacionCreate = () => {
 
       {/* HERRAMIENTAS */}
       <form
-        // onSubmit={onSubmitForm}
+        onSubmit={onSubmitForm}
         className="wd30 flex1 toolsboxside borderleftgray"
       >
         <div className="flexbox padd2 bottombordergray ">
@@ -533,8 +567,11 @@ const CotizacionCreate = () => {
             onChange={(e) => setObservaciones(e.target.value)}
           />
           <div className="flexbox gapp4">
-            <button className="btnSuccess" onClick={onSubmitForm}>
+            {/* <button className="btnSuccess" onClick={onSubmitForm}>
               GUARDAR DATOS
+            </button> */}
+            <button className="btnSuccess" type="submit" disabled={loading}>
+            {loading ? "Guardando..." : editing ? "Actualizar Cotización" : "Crear Cotización"}
             </button>
             <button className="btnWarning" onClick={setter}>
               PASAR PEDIDO
