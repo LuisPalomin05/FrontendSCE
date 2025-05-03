@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { IonIcon } from "@ionic/react";
 import { arrowRedoOutline, refreshOutline } from "ionicons/icons";
+import { Link } from "react-router-dom";
 
 const ItemRecent = () => {
   const [itemsdata, setItemsData] = useState([]);
@@ -56,9 +57,9 @@ const ItemRecent = () => {
                 <p className="boldtext cGreentext">{items.cliente}</p>
                 <p className="fs10">{items.ruc}</p>
               </div>
-              <div className="itemarrow">
+              <Link to={'cotizacion/editar/'+items._id} className="itemarrow">
                 <IonIcon icon={arrowRedoOutline} className="cGray" />
-              </div>
+              </Link>
             </div>
           ))
         ) : (

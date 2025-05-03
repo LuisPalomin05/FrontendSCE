@@ -64,7 +64,7 @@ const ComprasCrear = () => {
   }
 
   const deleteCompra = async () => {
-    await axios.delete(localhost + id);
+    await axios.delete(localhost+ "/" + id);
     navigate("/compras")
   }
 
@@ -82,7 +82,7 @@ const ComprasCrear = () => {
           <div className="flexbox flex2 gapp4">
             <div className="flexcolumn gapp4">
               <section className="flexcolumn">
-                <p htmlFor="cliente">Cliente</p>
+                <p>Cliente</p>
                 <input
                   className="inputbox"
                   type="text"
@@ -94,7 +94,7 @@ const ComprasCrear = () => {
                 />
               </section>
               <section className="flexcolumn">
-                <p htmlFor="ruc">RUC</p>
+                <p>RUC</p>
                 <input
                   className="inputbox"
                   type="text"
@@ -111,7 +111,7 @@ const ComprasCrear = () => {
 
             <div className="flexcolumn gapp4">
               <section className="flexcolumn">
-                <p htmlFor="fecha-emision">Fecha Emisión</p>
+                <p>Fecha Emisión</p>
                 <input
                   className="inputboxitm"
                   type="date"
@@ -135,14 +135,14 @@ value={emision}
 
           <div className="flexcolumn flex1 gapp2">
             <section className="flexcolumn">
-              <p htmlFor="empresa">Empresas</p>
+              <p>Empresas</p>
               <select className="inputboxitm" value={empresa} onChange={(e)=> setEmpresa(e.target.value)} id="empresa" name="empresa">
                 <option>TORQUE-G46</option>
                 <option>IRONTOOLS</option>
               </select>
             </section> 
             <section className="flexcolumn">
-              <p htmlFor="numero-serie">Número de Serie</p>
+              <p>Número de Serie</p>
               <input
                 className="inputbox"
                 type="text"
@@ -158,7 +158,7 @@ value={emision}
 
         <div className="flexbox gapp4">
           <section className="flexcolumn">
-            <p htmlFor="importe-total">Importe Total</p>
+            <p>Importe Total</p>
             <input
               className="inputbox"
               type="number"
@@ -170,7 +170,7 @@ value={emision}
             />
           </section>
           <section className="flexcolumn">
-            <p htmlFor="moneda">Moneda</p>
+            <p>Moneda</p>
             <select value={moneda} onChange={(e)=> setMoneda(e.target.value)} className="inputbox" id="moneda" name="moneda">
               <option>Soles</option>
               <option>Dólares</option>

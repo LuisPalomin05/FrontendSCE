@@ -17,15 +17,20 @@ const VentasVista = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await axios.get(
-        "https://backendapi-6thn.onrender.com/api/ventas"
-      );
-      setVentas(res.data);
-
+      try {
+        const res = await axios.get(
+          "https://backendapi-6thn.onrender.com/api/ventas"
+        );
+        setVentas(res.data);
+      } catch (error) {
+        console.error("Error fetching ventas data:", error);
+      }
     }
     fetchData();
   }, []);
 
+  
+  
   return (
     <div className="VentasBox">
       <section className="flexbox topListVentas">

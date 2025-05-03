@@ -197,6 +197,7 @@ const CotizacionCreate = () => {
     setRuc("");
     setCliente("");
     setNcotizacion("");
+    setObservaciones("");
     setProductos([]);
     setTotalPago(0);
   };

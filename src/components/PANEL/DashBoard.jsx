@@ -10,6 +10,7 @@ import {
   refreshOutline,
   addOutline,
 } from "ionicons/icons";
+import { useVentasIrontools, useComprasIrontools, useVentasTorque, useComprasTorque } from "../../utils/panelconsults";
 
 const CotizacionesLista = lazy(() => import("./ListaCotizacion"));
 
@@ -60,7 +61,7 @@ const CotizacionesLista = lazy(() => import("./ListaCotizacion"));
               <Link to={"/ventas"} className="CardboxCash">
                 <CardBoxCash
                   tipo="Ventas"
-                  monto="S/. 1500"
+                  monto={'S/. '+useVentasTorque()}
                   empresa="Torque-G46"
                 />
               </Link>
@@ -68,7 +69,7 @@ const CotizacionesLista = lazy(() => import("./ListaCotizacion"));
               <Link to={"/compras"} className="CardboxCash">
                 <CardBoxCash
                   tipo="Compras"
-                  monto="S/. 1500"
+                  monto={'$/. '+useComprasTorque()}
                   empresa="Torque-G46"
                 />
               </Link>
@@ -76,7 +77,7 @@ const CotizacionesLista = lazy(() => import("./ListaCotizacion"));
               <Link to={"/ventas"} className="CardboxCash">
                 <CardBoxCash
                   tipo="Ventas"
-                  monto="S/. 1500"
+                  monto={'S/. '+useVentasIrontools()}
                   empresa="Irontools"
                 />
               </Link>
@@ -84,7 +85,7 @@ const CotizacionesLista = lazy(() => import("./ListaCotizacion"));
               <Link to={"/compras"} className="CardboxCash">
                 <CardBoxCash
                   tipo="Compras"
-                  monto="S/. 1500"
+                  monto={'$/. '+useComprasIrontools()}
                   empresa="Irontools"
                 />
               </Link>
