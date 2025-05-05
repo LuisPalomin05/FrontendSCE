@@ -1,49 +1,10 @@
-.CardboxCash{
-    background: white;
-    padding: 8px;
-    border-radius: 8px;
-    width: 20%;
-    gap: 4px;
-    box-shadow: 0px 0px 1px 1px #4b4b4b8c;
-
-    /* border: 1px solid rgba(148, 139, 139, 0.776); */
-}
-
-.CardboxCash:hover{
-    cursor: pointer;
-    /* border-color: #4b4b4b; */
-    box-shadow: 0px 0px 3px 1px #4b4b4b8c;
-    }
-    
-
-.bordericon{
-    border: 2px solid #23bf55;
-    color: rgba(148, 139, 139, 0.776);
-    padding: 4px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
 
-}
-
-.cotheader{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-}
-
-.cotheader p{
-    font-weight: bold;
-}
-
-
-.cotmonto{
+.ventaGray{
     color: rgb(148, 139, 139);
-    font-size: 18px;
-    padding: 15px 4px;
-    font-weight: bold;
-
 }
+
+.ventablue{
+    color: #1e60d4;
+}
+

@@ -24,7 +24,7 @@ import { useEffect, useState } from "react";
 //         }
 //     }, [ventas]);
 
-//     return montoVentas; 
+//     return montoVentas;
 // };
 
 // const useTotalCompras = () => {
@@ -53,88 +53,132 @@ import { useEffect, useState } from "react";
 //     return montoCompras;
 // };
 
-const useVentas=() => {
-    const [ventas, setVentas] = useState([]);
-    useEffect(() => {
-        async function fetchVentas() {
-            try {
-                const res = await axios.get("https://backendapi-6thn.onrender.com/api/ventas");
-                setVentas(res.data);
-            } catch (error) {
-                console.error("Error fetching ventas data:", error);
-            }
-        }
-        fetchVentas();
-    }, []);
 
-    return ventas;
-}
 
-const useCompras=() => {
-    const [compras, setCompras] = useState([]);
-    useEffect(() => {
-        async function fetchCompras() {
-            try {
-                const res = await axios.get("https://backendapi-6thn.onrender.com/api/compras");
-                setCompras(res.data);
-            } catch (error) {
-                console.error("Error fetching compras data:", error);
-            }
-        }
-        fetchCompras();
-    }, []);
+const useVentas = () => {
+  const [ventas, setVentas] = useState([]);
+  useEffect(() => {
+    async function fetchVentas() {
+      try {
+        const res = await axios.get(
+          "https://backendapi-6thn.onrender.com/api/ventas"
+        );
+        setVentas(res.data);
+      } catch (error) {
+        console.error("Error fetching ventas data:", error);
+      }
+    }
+    fetchVentas();
+  }, []);
 
-    return compras;
+  return ventas;
+};
 
-}
+const useCompras = () => {
+  const [compras, setCompras] = useState([]);
+  useEffect(() => {
+    async function fetchCompras() {
+      try {
+        const res = await axios.get(
+          "https://backendapi-6thn.onrender.com/api/compras"
+        );
+        setCompras(res.data);
+      } catch (error) {
+        console.error("Error fetching compras data:", error);
+      }
+    }
+    fetchCompras();
+  }, []);
+
+  return compras;
+};
 
 const useVentasIrontools = () => {
-    const ventas = useVentas();
-    const ventasIrontools = ventas.filter(venta => venta.empresa === "IRONTOOLS");
-    const ventaSolesIrontools = ventasIrontools.filter(venta => venta.moneda === "Soles").reduce((acc, venta) => acc + venta.total, 0);
-    const ventaDolaresIrontools = ventasIrontools.filter(venta => venta.moneda === "Dolares").reduce((acc, venta) => acc + venta.total, 0);
+  const ventas = useVentas();
+  const ventasIrontools = ventas.filter(
+    (venta) => venta.empresa === "IRONTOOLS"
+  );
+  const ventaSolesIrontools = ventasIrontools
+    .filter((venta) => venta.moneda === "Soles")
+    .reduce((acc, venta) => acc + venta.total, 0);
+  const ventaDolaresIrontools = ventasIrontools
+    .filter((venta) => venta.moneda === "Dolares")
+    .reduce((acc, venta) => acc + venta.total, 0);
 
-    const totalVentasIrontools = ventasIrontools.reduce((acc, venta) => acc + venta.total, 0);
+  // const totalVentasIrontools = ventasIrontools.reduce((acc, venta) => acc + venta.total, 0);
 
-    return totalVentasIrontools;
-}
+  return {
+    ventaSolesIrontools,
+    ventaDolaresIrontools,
+  };
+};
 
 const useComprasIrontools = () => {
-    const compras = useCompras();
+  const compras = useCompras();
 
-    const comprasIrontools = compras.filter(compra => compra.empresa === "IRONTOOLS");
-    const compraSolesIrontools = comprasIrontools.filter(compra => compra.moneda === "Soles").reduce((acc, compra) => acc + compra.total, 0);
-    const compraDolaresIrontools = comprasIrontools.filter(compra => compra.moneda === "Dolares").reduce((acc, compra) => acc + compra.total, 0);
-    const totalComprasIrontools = comprasIrontools.reduce((acc, compra) => acc + compra.total, 0);
+  const comprasIrontools = compras.filter(
+    (compra) => compra.empresa === "IRONTOOLS"
+  );
+  const compraSolesIrontools = comprasIrontools
+    .filter((compra) => compra.moneda === "Soles")
+    .reduce((acc, compra) => acc + compra.total, 0);
+  const compraDolaresIrontools = comprasIrontools
+    .filter((compra) => compra.moneda === "Dolares")
+    .reduce((acc, compra) => acc + compra.total, 0);
 
-    return totalComprasIrontools;
-}
+  // const totalComprasIrontools = comprasIrontools.reduce((acc, compra) => acc + compra.total, 0);
+
+  return {
+    compraSolesIrontools,
+    compraDolaresIrontools,
+  };
+};
 
 const useVentasTorque = () => {
-    const ventas = useVentas();
+  const ventas = useVentas();
 
-    const ventasTorque = ventas.filter(venta => venta.empresa === "TORQUE-G46");
-    const ventaSolesTorque = ventasTorque.filter(venta => venta.moneda === "Soles").reduce((acc, venta) => acc + venta.total, 0);
-    const ventaDolaresTorque = ventasTorque.filter(venta => venta.moneda === "Dolares").reduce((acc, venta) => acc + venta.total, 0);
-    const totalVentasTorque = ventasTorque.reduce((acc, venta) => acc + venta.total, 0);
+  const ventasTorque = ventas.filter((venta) => venta.empresa === "TORQUE-G46");
+  const ventaSolesTorque = ventasTorque
+    .filter((venta) => venta.moneda === "Soles")
+    .reduce((acc, venta) => acc + venta.total, 0);
+  const ventaDolaresTorque = ventasTorque
+    .filter((venta) => venta.moneda === "Dolares")
+    .reduce((acc, venta) => acc + venta.total, 0);
 
-    return totalVentasTorque;
-}
+  // const totalVentasTorque = ventasTorque.reduce((acc, venta) => acc + venta.total, 0);
+
+  return {
+    ventaSolesTorque,
+    ventaDolaresTorque,
+  };
+};
 
 const useComprasTorque = () => {
-    const compras = useCompras();
+  const compras = useCompras();
 
-    const comprasTorque = compras.filter(compra => compra.empresa === "TORQUE-G46");
-    const compraSolesTorque = comprasTorque.filter(compra => compra.moneda === "Soles").reduce((acc, compra) => acc + compra.total, 0);
-    const compraDolaresTorque = comprasTorque.filter(compra => compra.moneda === "Dolares").reduce((acc, compra) => acc + compra.total, 0);
-    const totalComprasTorque = comprasTorque.reduce((acc, compra) => acc + compra.total, 0);
+  const comprasTorque = compras.filter(
+    (compra) => compra.empresa === "TORQUE-G46"
+  );
+  const compraSolesTorque = comprasTorque
+    .filter((compra) => compra.moneda === "Soles")
+    .reduce((acc, compra) => acc + compra.total, 0);
+  const compraDolaresTorque = comprasTorque
+    .filter((compra) => compra.moneda === "Dolares")
+    .reduce((acc, compra) => acc + compra.total, 0);
 
-    return totalComprasTorque;
-}
+  // const totalComprasTorque = comprasTorque.reduce((acc, compra) => acc + compra.total, 0);
 
+  return {
+    compraSolesTorque,
+    compraDolaresTorque,
+  };
+};
 
-
-
-
-
-export {  useVentas, useCompras, useVentasIrontools, useComprasIrontools, useVentasTorque, useComprasTorque };
+export {
+  useVentas,
+  useCompras,
+  useVentasIrontools,
+  useComprasIrontools,
+  useVentasTorque,
+  useComprasTorque,
+};
