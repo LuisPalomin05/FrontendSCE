@@ -48,7 +48,7 @@ const ListaCotizacion = ({ cotizaciones }) => {
 
               <td className="textcenter">
                 {cotizacion.moneda === "DOLARES" ? "$. " : "S/. "}
-                {cotizacion.totalPago * 1.18}
+                {(cotizacion.totalPago * 1.18).toFixed(3)}
               </td>
               <td className="textcenter">{cotizacion.moneda}</td>
               <td>
