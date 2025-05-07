@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { procesarXMLFactura } from "../../utils/lectorXMLFactura";
 
 const localhost = "https://backendapi-6thn.onrender.com/api/ventas/";
 
@@ -17,8 +18,22 @@ const VentasCrear = () => {
   const [nfactura, setnFactura] = useState("");
   const [total, setTotal] = useState("");
   const [moneda, setMoneda] = useState("Soles");
+  const [facturas, setFacturas] = useState([]);
 
   const [editing, setEditing] = useState(false);
+
+  const [formaPago, setFormaPago] = useState("");
+  const [fechaVencimiento, setFechaVencimiento] = useState("");
+  const [fechaEmision, setFechaEmision] = useState("");
+  const [rucEmisor, setRucEmisor] = useState("");
+  const [razonEmisor, setRazonEmisor] = useState("");
+  const [rucReceptor, setRucReceptor] = useState("");
+  const [razonReceptor, setRazonReceptor] = useState("");
+  const [tipoMoneda, setTipoMoneda] = useState("");
+  const [numeroFactura, setNumeroFactura] = useState("");
+  const [importeTotal, setImporteTotal] = useState("");
+  const [guiaRemision, setGuiaRemision] = useState("");
+  const [ordenCompra, setOrdenCompra] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -47,7 +62,6 @@ const VentasCrear = () => {
     }
     fetchData();
   }, [id, navigate]);
-  
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
@@ -70,15 +84,30 @@ const VentasCrear = () => {
     navigate("/ventas");
   };
 
-  // Función para manejar archivos XML
-  const handleFileDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    if (file && file.type === "text/xml") {
-      console.log("Archivo XML cargado:", file.name);
-    } else {
-      alert("Por favor, sube un archivo XML válido.");
+    const files = Array.from(e.dataTransfer.files);
+    const resultados = [];
+
+    for (const file of files) {
+      const text = await file.text();
+      const data = procesarXMLFactura(text);
+      resultados.push(data);
     }
+
+    setFacturas(resultados);
+    setFormaPago(resultados[0].formaPago);
+    setFechaVencimiento(resultados[0].fechaVencimiento);
+    setFechaEmision(resultados[0].fechaEmision);
+    setRucEmisor(resultados[0].rucEmisor);
+    setRazonEmisor(resultados[0].razonEmisor);
+    setRucReceptor(resultados[0].rucReceptor);
+    setRazonReceptor(resultados[0].razonReceptor);
+    setTipoMoneda(resultados[0].tipoMoneda);
+    setNumeroFactura(resultados[0].numeroFactura);
+    setImporteTotal(resultados[0].importeTotal);
+    setGuiaRemision(resultados[0].guiaRemision);
+    setOrdenCompra(resultados[0].ordenCompra);
   };
 
   async function deleteVenta() {
@@ -213,11 +242,7 @@ const VentasCrear = () => {
             </button>
             {/* <button type="reset" className="btnWarning" onClick={(e) => e.preventDefault()}> Limpiar</button> */}
             {editing && (
-              <button
-                type="button"
-                className="btnDanger"
-                onClick={deleteVenta}
-              >
+              <button type="button" className="btnDanger" onClick={deleteVenta}>
                 Eliminar
               </button>
             )}
@@ -234,7 +259,7 @@ const VentasCrear = () => {
           <div>
             <div
               className="flexbox padd1 xmldropbox"
-              onDrop={handleFileDrop}
+              onDrop={handleDrop}
               onDragOver={(e) => e.preventDefault()}
             >
               <p>Arrastra el archivo XML</p>
