@@ -34,7 +34,7 @@ const ListaCotizacion = ({ cotizaciones }) => {
         </thead>
         <tbody>
           {cotizaciones.map((cotizacion, index) => (
-            <tr key={index} className="padd2">
+            <tr key={index} className="padd2 ">
               <td>
                 <input type="checkbox" name="" id="" />
               </td>

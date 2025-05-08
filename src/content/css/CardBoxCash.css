@@ -1,3 +1,43 @@
+.cardTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cardCashIcon{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1.5px solid #1a832f;
+
+}
+.cardContent{
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.cardContent:hover{
+    border: 1px solid #1a832f;
+    box-shadow: 0 0 5px #1a832f;
+}
+
+
+.cardtextTitle{
+    font-size: 14px;
+    font-weight: 600;
+    color: #646664;
+}
+
+.ventaGreen{
+    color: #1a832f;
+} 
+
 
 
 .ventaGray{
@@ -8,3 +48,14 @@
     color: #1e60d4;
 }
 
+.bgOrange{
+    background-color: #eca515;
+}
+
+.bgVioleta{
+    background-color: #8b15ec;
+}
+
+.bgCian{
+    background-color: #159df2;
+}

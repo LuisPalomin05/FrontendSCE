@@ -396,7 +396,9 @@ grid-area: sections;
 .wd2{
   width: 25%;
 }
-
+.wd20{
+  width: 20%;
+}
 .wd3{
   width: 15%;
 }

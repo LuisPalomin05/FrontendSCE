@@ -64,9 +64,9 @@ const Dashboard = () => {
 
       <section className="">
         <h1 className="cGray fs16">CONTABILIDAD</h1>
-        <div className="flexcolumn">
-          <div className="flexbox gapp4 padd2">
-            <Link to={"/ventas"} className="CardboxCash">
+        <div className="flexcolumn wd1 ">
+          <div className="flexbox gapp4 padd2 wd">
+            <Link to={"/ventas"} className="flex1">
               <CardBoxCash
                 tipo="Ventas"
                 montoSoles={"S/. " + ventaTorque.ventaSolesTorque}
@@ -75,7 +75,7 @@ const Dashboard = () => {
               />
             </Link>
 
-            <Link to={"/ventas"} className="CardboxCash">
+            <Link to={"/ventas"} className="flex1">
               <CardBoxCash
                 tipo="Ventas"
                 montoSoles={"S/. " + ventaIrontools.ventaSolesIrontools}
@@ -86,7 +86,7 @@ const Dashboard = () => {
           </div>
 
           <div className=" flexbox gapp4 padd2">
-            <Link to={"/compras"} className="CardboxCash">
+            <Link to={"/compras"} className="flex1 CardboxCash">
               <CardBoxCash
                 tipo="Compras"
                 montoSoles={"S/. " + compraTorque.compraSolesTorque}
@@ -95,7 +95,7 @@ const Dashboard = () => {
               />
             </Link>
 
-            <Link to={"/compras"} className="CardboxCash">
+            <Link to={"/compras"} className="flex1 CardboxCash">
               <CardBoxCash
                 tipo="Compras"
                 montoSoles={"S/. " + compraIrontools.compraSolesIrontools}
@@ -129,7 +129,7 @@ const Dashboard = () => {
         </Link>
       </section>
       <section>
-        <h1 className="cGray fs16 ptop">Mis Cotizaciones</h1>
+        <h1 className="cGray fs16 ptop borderVertical">Mis Cotizaciones</h1>
 
         <Suspense fallback={<div className="shimmer-loader">Cargando...</div>}>
           <CotizacionesLista cotizaciones={cotizaciones} />

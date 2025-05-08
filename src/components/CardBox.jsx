@@ -16,17 +16,17 @@ const CardBoxCash = ({ tipo, montoSoles,montoDolar, empresa }) => {
   }
 
   return (
-    <div className="">
-      <div className="">
-        <p className="">{tipo}</p>
-        <div className="">
+    <div className="cardContent">
+      <div className="cardTitle padd2">
+        <p className="cardtextTitle">{tipo}</p>
+        <div className="ventaGreen cardCashIcon">
           {tipo === "Ventas" ? (<IonIcon icon={cashOutline}></IonIcon>) :
           (<IonIcon icon={basketOutline}></IonIcon>)}
           
         </div>
       </div>
-      <div className=""><p className={classtheme}>{montoSoles}</p> | <p className="cBlack">{montoDolar}</p> </div>
-      <div className="">{empresa}</div>
+      <div className="flexbox wd50 gapp4 martop"><p className={classtheme}>{montoSoles}</p> | <p className="cBlack">{montoDolar}</p> </div>
+      <div className="padd2">{empresa}</div>
     </div>
   );
 };

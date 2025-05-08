@@ -36,3 +36,10 @@ option{
     border-radius: 5px;
     color: #616161;
 }
+
+.xmldropbox:hover{
+    background-color: #f0f0f0;
+    cursor: crosshair;
+    
+    border: 2px solid #3176dc;
+}

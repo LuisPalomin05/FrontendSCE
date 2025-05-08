@@ -10,25 +10,15 @@ const VentasCrear = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [ruc, setRuc] = useState("");
-  const [cliente, setCliente] = useState("");
-  const [emision, setEmision] = useState("");
-  const [vencimiento, setVencimiento] = useState("");
-  const [empresa, setEmpresa] = useState("TORQUE-G46");
-  const [nfactura, setnFactura] = useState("");
-  const [total, setTotal] = useState("");
-  const [moneda, setMoneda] = useState("Soles");
-  const [facturas, setFacturas] = useState([]);
-
   const [editing, setEditing] = useState(false);
 
+  const [rucEmisor, setRucEmisor] = useState("2060139801");
+  const [razonEmisor, setRazonEmisor] = useState("TORQUE-G46");
+  const [rucReceptor, setRucReceptor] = useState("");
+  const [razonReceptor, setRazonReceptor] = useState("");
   const [formaPago, setFormaPago] = useState("");
   const [fechaVencimiento, setFechaVencimiento] = useState("");
   const [fechaEmision, setFechaEmision] = useState("");
-  const [rucEmisor, setRucEmisor] = useState("");
-  const [razonEmisor, setRazonEmisor] = useState("");
-  const [rucReceptor, setRucReceptor] = useState("");
-  const [razonReceptor, setRazonReceptor] = useState("");
   const [tipoMoneda, setTipoMoneda] = useState("");
   const [numeroFactura, setNumeroFactura] = useState("");
   const [importeTotal, setImporteTotal] = useState("");
@@ -40,14 +30,20 @@ const VentasCrear = () => {
       if (id) {
         try {
           const res = await axios.get(localhost + id);
-          setRuc(res.data.ruc);
-          setCliente(res.data.cliente);
-          setEmision(res.data.emision);
-          setVencimiento(res.data.vencimiento);
-          setEmpresa(res.data.empresa);
-          setnFactura(res.data.nfactura);
-          setTotal(res.data.total);
-          setMoneda(res.data.moneda);
+
+          setRucEmisor(res.data.rucEmisor);
+          setRazonEmisor(res.data.razonEmisor);
+          setRucReceptor(res.data.rucReceptor);
+          setRazonReceptor(res.data.razonReceptor);
+          setFormaPago(res.data.formaPago);
+          setFechaVencimiento(res.data.fechaVencimiento);
+          setFechaEmision(res.data.fechaEmision);
+          setTipoMoneda(res.data.tipoMoneda);
+          setNumeroFactura(res.data.numeroFactura);
+          setImporteTotal(res.data.importeTotal);
+          setGuiaRemision(res.data.guiaRemision);
+          setOrdenCompra(res.data.ordenCompra);
+
           setEditing(true);
         } catch (error) {
           if (error.response && error.response.status === 404) {
@@ -66,14 +62,18 @@ const VentasCrear = () => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     const newVenta = {
-      ruc,
-      cliente,
-      emision,
-      vencimiento,
-      empresa,
-      nfactura,
-      total,
-      moneda,
+      rucReceptor,
+      razonReceptor,
+      rucEmisor,
+      razonEmisor,
+      fechaEmision,
+      fechaVencimiento,
+      formaPago,
+      tipoMoneda,
+      numeroFactura,
+      importeTotal,
+      guiaRemision,
+      ordenCompra
     };
     if (editing) {
       await axios.put(localhost + id, newVenta);
@@ -95,7 +95,7 @@ const VentasCrear = () => {
       resultados.push(data);
     }
 
-    setFacturas(resultados);
+    // setFacturas(resultados[0]);
     setFormaPago(resultados[0].formaPago);
     setFechaVencimiento(resultados[0].fechaVencimiento);
     setFechaEmision(resultados[0].fechaEmision);
@@ -137,8 +137,8 @@ const VentasCrear = () => {
                     className="inputbox"
                     type="text"
                     name="cliente"
-                    value={cliente}
-                    onChange={(e) => setCliente(e.target.value)}
+                    value={razonReceptor}
+                    onChange={(e) => setRazonReceptor(e.target.value)}
                     placeholder="Cliente"
                   />
                 </section>
@@ -150,8 +150,8 @@ const VentasCrear = () => {
                     name="ruc"
                     maxLength={11}
                     minLength={11}
-                    value={ruc}
-                    onChange={(e) => setRuc(e.target.value)}
+                    value={rucReceptor}
+                    onChange={(e) => setRucReceptor(e.target.value)}
                     placeholder="RUC: 20123456789"
                   />
                 </section>
@@ -164,8 +164,8 @@ const VentasCrear = () => {
                     className="inputboxitm"
                     type="date"
                     name="fechaEmision"
-                    value={emision}
-                    onChange={(e) => setEmision(e.target.value)}
+                    value={fechaEmision}
+                    onChange={(e) => setFechaEmision(e.target.value)}
                   />
                 </section>
                 <section>
@@ -174,8 +174,8 @@ const VentasCrear = () => {
                     className="inputboxitm"
                     type="date"
                     name="fechaVencimiento"
-                    value={vencimiento}
-                    onChange={(e) => setVencimiento(e.target.value)}
+                    value={fechaVencimiento}
+                    onChange={(e) => setFechaVencimiento(e.target.value)}
                   />
                 </section>
               </div>
@@ -184,15 +184,22 @@ const VentasCrear = () => {
             <div className="flexcolumn flex1 gapp2">
               <section>
                 <p>Empresas</p>
+                <div className="flexbox gapp2">
                 <select
                   className="inputboxitm"
                   name="empresa"
-                  value={empresa}
-                  onChange={(e) => setEmpresa(e.target.value)}
+                  value={razonEmisor}
+                  onChange={(e) => {setRazonEmisor(e.target.value)
+                    setRucEmisor(e.target.value === "TORQUE-G46" ? "2060139801" : "20548129576")
+                  }
+                  }
                 >
                   <option value="TORQUE-G46">TORQUE-G46</option>
                   <option value="IRONTOOLS">IRONTOOLS</option>
                 </select>
+                                  
+                <input type="text" readOnly className="cGray" maxLength={11} value={rucEmisor}/>
+                </div>
               </section>
               <section>
                 <p>Número de Serie</p>
@@ -200,8 +207,8 @@ const VentasCrear = () => {
                   className="inputbox"
                   type="text"
                   name="numeroSerie"
-                  value={nfactura}
-                  onChange={(e) => setnFactura(e.target.value.toUpperCase())}
+                  value={numeroFactura}
+                  onChange={(e) => setNumeroFactura(e.target.value.toUpperCase())}
                   placeholder="Número de Serie"
                 />
               </section>
@@ -215,8 +222,8 @@ const VentasCrear = () => {
                 className="inputbox"
                 type="number"
                 name="importeTotal"
-                value={total}
-                onChange={(e) => setTotal(e.target.value)}
+                value={importeTotal}
+                onChange={(e) => setImporteTotal(e.target.value)}
                 placeholder="Importe total"
               />
             </section>
@@ -225,8 +232,8 @@ const VentasCrear = () => {
               <select
                 className="inputbox"
                 name="moneda"
-                value={moneda}
-                onChange={(e) => setMoneda(e.target.value)}
+                value={tipoMoneda}
+                onChange={(e) => setTipoMoneda(e.target.value)}
               >
                 <option value="Soles">Soles</option>
                 <option value="Dolares">Dólares</option>

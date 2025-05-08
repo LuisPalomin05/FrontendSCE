@@ -51,7 +51,17 @@ export function procesarXMLFactura(text) {
       razonReceptor = nameNode?.textContent.trim() || '';
     }
   
-    const tipoMoneda = getText('cbc:DocumentCurrencyCode');
+    var tipoMoneda = '';
+
+    if(getText('cbc:DocumentCurrencyCode') === 'PEN'){
+      tipoMoneda = 'Soles';
+
+    }else{
+      tipoMoneda = 'Dolares';
+
+    }
+
+
     const numeroFactura = getText('cbc:ID');
     const importeTotal = getText('cbc:PayableAmount');
   
