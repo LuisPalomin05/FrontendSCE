@@ -1,0 +1,21 @@
+.QuotContainer{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+}
+
+.TittleQuot{
+height: 5%;
+}
+.headQuot{
+height: 20%;
+}
+
+.tableQuot{
+flex: 1;
+}
+
+.footQuot{
+ height: 20%;
+}

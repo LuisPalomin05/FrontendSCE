@@ -1,41 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../content/css/nuevoCotizador.css";
+import { IonIcon } from "@ionic/react";
+import {
+  caretForwardOutline,
+  bagAddOutline,
+  cloudDownloadOutline,
+  createOutline,
+  trashOutline,
+  caretBackOutline,
+} from "ionicons/icons";
 
 const QuotCreate = () => {
   return (
     <div className="QuotContainer">
-      <div className="borderVertical padd2">
-        <p>Crear Cotizacion</p>
+      <div className="TittleQuot borderVertical padd2 flexbox">
+        <IonIcon className="cGreentext" icon={caretForwardOutline} />
+        <h1 className="cGreentext flex1">CREAR COTIZACION</h1>
       </div>
-      <section className="flexbox">
+      <section className="flexbox headQuot padd2">
         <div>
-          <div>
-            <div>
-              <label htmlFor="">NOM. CLIENTE</label>
-              <input type="text" name="" id="" />
+          <section className="flexbox gapp1">
+            <div className="flexRow">
+              <label htmlFor="">Nombre Cliente</label>
+              <input className=" inputbox" type="text" name="" id="" />
             </div>
-            <div>
-              <label htmlFor="">RUC CLIENTE</label>
-              <input type="text" name="" id="" />
+            <div className="flexRow">
+              <label htmlFor="">R.U.C Cliente</label>
+              <input className="inputbox" type="text" name="" id="" />
             </div>
-          </div>
-          <div>
-            <div>
+          </section>
+          <section className="flexbox gapp1">
+            <div className="flexRow">
               <label htmlFor="">NOM. EMPRESA</label>
-              <select name="" id="EMPRESA">
+              <select className="inputbox" name="" id="EMPRESA">
                 <option value="20548129576">IRONTOOLS</option>
                 <option value="20601395801">TORQUE-G46</option>
               </select>
             </div>
-            <div>
-              <label htmlFor="">RUC CLIENTE</label>
-              <input type="text" name="" id="" />
+            <div className="flexRow">
+              <label htmlFor="">RUC :</label>
+              <input className=" inputbox" type="text" name="" id="" />
             </div>
-          </div>
+          </section>
         </div>
         <div></div>
       </section>
-      <section className="flexbox borderVertical">
+      <section className="tableQuot  borderVertical">
         <table>
           <thead>
             <tr>
@@ -50,46 +61,55 @@ const QuotCreate = () => {
           </thead>
           <tbody>
             <tr>
-              <td>Producto 1</td>
-              <td>$100</td>
               <td>
-                <button>Eliminar</button>
+                <input type="checkbox" name="" id="" />
               </td>
-            </tr>
-            <tr>
-              <td>Producto 2</td>
-              <td>$200</td>
               <td>
-                <button>Eliminar</button>
+                <input className="inputbox" type="text" placeholder="producto" />
+              </td>
+              <td>
+                <input className="inputbox" type="number" placeholder="00" />
+              </td>
+              <td>
+                {" "}
+                {/*<p>$</p>*/} <input className="inputbox" type="number" placeholder="$ 00.0" />
+              </td>
+              <td>
+                <button className="inputbox">Eliminar</button>
               </td>
             </tr>
           </tbody>
         </table>
       </section>
-      <section className="flexbox">
-        <div>
-          <textarea name="" id=""></textarea>
+      <section className="footQuot flexbox padd2">
+        <div className="wd40 ">
+          <textarea
+            placeholder="Observaciones"
+            name=""
+            id=""
+            className="bordergray wd hg95"
+          ></textarea>
         </div>
         <div></div>
-        <div>
-            <div className="flexbox">
-                <div>
-                <label htmlFor="">SUBTOTAL</label>
-                <input type="text" name="" id="" />
-                </div>
-                <div>
-                <label htmlFor="">IGV</label>
-                <input type="text" name="" id="" />
-                </div>
-                <div>
-                <label htmlFor="">TOTAL</label>
-                <input type="text" name="" id="" />
-                </div>
+        <div className="w33">
+          <div className="flexRow gapp1 padd1">
+            <div className="flexalign jcBetween">
+              <label htmlFor="">SUBTOTAL :</label>
+              <input type="text" name="" id="" className="inputbox" />
             </div>
-            <div className="flexbox">
-                <button>Guardar</button>
-                <button>Enviar</button>
+            <div className="flexalign jcBetween">
+              <label  htmlFor="">IGV 18% :</label>
+              <input type="text" name="" id="" className="inputbox" />
             </div>
+            <div className="flexalign jcBetween">
+              <label htmlFor="">TOTAL :</label>
+              <input type="text" name="" id="" className="inputbox" />
+            </div>
+          </div>
+        </div>
+        <div className="wd26">
+          <button>Guardar</button>
+          <button>Enviar</button>
         </div>
       </section>
     </div>

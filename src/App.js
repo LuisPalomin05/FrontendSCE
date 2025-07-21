@@ -30,6 +30,8 @@ import Menulateral from "./components/Menulateral";
 import CotizadorPanel from "./components/CotizadorPanel";
 import Navigation from "./components/NAV/Navigation";
 
+import QuotCreate from "./components/COTIZADOR/QuotCreate";
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
@@ -64,9 +66,10 @@ const App = () => {
 
                 <Route path="/clientes/*" element={<ClientesVista />} />
 
-                <Route path="/proveedores" element={<ProveedorVista />} />
-                <Route path="/cotizacion/*" element={<CotizacionCreate />} />
-              
+                <Route path="/proveedores/*" element={<ProveedorVista />} />
+                <Route path="/cotizacion/crear" element={<CotizacionCreate />} />
+                <Route path="/cotizacion/version" element={<QuotCreate />} />
+
                 <Route path="/cotizacion/editar/:id" element={<CotizacionCreate />} />
 
               </Routes>

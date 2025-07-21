@@ -29,7 +29,7 @@ const Configuracion = () => {
             </Link>
           </li>
           <li className="listconfig">
-            <Link to="/sce/configuracion/unidadesMedida" className="configLink">
+            <Link to="/sce/configuracion/unidadesmedida" className="configLink">
               <p>Unidades de Medida</p>
               <IonIcon icon={chevronForwardOutline} />
             </Link>
@@ -41,7 +41,7 @@ const Configuracion = () => {
             </Link>
           </li>
           <li className="listconfig">
-            <Link to="/sce/configuracion/AcercaDe" className="configLink">
+            <Link to="/sce/configuracion/acercade" className="configLink">
               <p>Acerca De SCE</p>
               <IonIcon icon={chevronForwardOutline} />
             </Link>

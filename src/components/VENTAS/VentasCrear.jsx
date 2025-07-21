@@ -268,6 +268,7 @@ const VentasCrear = () => {
               className="flexbox padd1 xmldropbox"
               onDrop={handleDrop}
               onDragOver={(e) => e.preventDefault()}
+              
             >
               <p>Arrastra el archivo XML</p>
             </div>

@@ -15,7 +15,7 @@ const Seguridad = () => {
       </section>
 <br/>
       <section>
-        <button type="submit" class="btnSuccess wd3">
+        <button type="submit" className="btnSuccess wd3">
         Guardar
         </button>
       </section>

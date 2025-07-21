@@ -264,7 +264,7 @@ const CotizacionCreate = () => {
     <div className="flexbox padd2 hg">
       <div className="flexColumn wd70 gapp4">
         <section className="flexbox padd2 bottombordergray ">
-          <IonIcon className="cGreentext" icon={caretForwardOutline} />{" "}
+          <IonIcon className="cGreentext" icon={caretForwardOutline} />
           <h1 className="cGreentext flex1">
             {editing ? "EDITAR COTIZACION" : "CREAR COTIZACION"}
           </h1>
@@ -442,7 +442,7 @@ const CotizacionCreate = () => {
             </tbody>
           </table>
           {productos.length === 0 && (
-            <div className="flexcenter aligncntent gapp4 padd3 bgWhite  martop textcenter shimmer-loader">
+            <div className="flexcenter aligncntent gapp4 padd3 bgWhite  martop textcenter">
               <IonIcon className="cGreentext" icon={caretForwardOutline} />
               <p className="cBlack ">
                 {editing
@@ -470,7 +470,7 @@ const CotizacionCreate = () => {
             <select
               name="moneda"
               id="moneda"
-              className="padd2 wd"
+              className="padd2 wd bordergray"
               value={moneda}
               onChange={(e) => setMoneda(e.target.value)}
             >
@@ -483,7 +483,7 @@ const CotizacionCreate = () => {
             <select
               name="forma_pago"
               id="forma_pago"
-              className="wd padd2"
+              className="wd padd2 bordergray"
               value={formaPago}
               onChange={(e) => setFormaPago(e.target.value)}
             >
@@ -503,7 +503,7 @@ const CotizacionCreate = () => {
             <h3 className="cBlack">N° Cotizacion</h3>
             <input
               type="text"
-              className="wd padd1"
+              className="wd padd1 bordergray"
               value={nCotizacion ?? ""}
               onChange={(e) => setNcotizacion(e.target.value)}
               required
@@ -513,7 +513,7 @@ const CotizacionCreate = () => {
             <h3 className="cBlack">Fecha Emisión</h3>
             <input
               type="date"
-              className="wd padd1"
+              className="wd padd1 bordergray "
               name="emision"
               value={emision}
               onChange={(e) => setEmision(e.target.value)}
@@ -558,7 +558,7 @@ const CotizacionCreate = () => {
             <h3 className="cGreentext ">OBSERVACIONES</h3>
           </div>
           <textarea
-            className="wd padd1"
+            className="wd padd1 bordergray"
             placeholder="Observaciones..."
             rows={5}
             value={observaciones}

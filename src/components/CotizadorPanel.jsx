@@ -25,6 +25,16 @@ const CotizadorPanel = () => {
               </div>
               <IonIcon icon={chevronForward} />
             </Link>
+            <Link
+              to={"/cotizacion/version/"}
+              className="flexalign liItemCash cwhite  roundborder"
+            >
+              <div className="flexbox gapp2 hg10">
+                <IonIcon className="boldtext" icon={cartOutline} />
+                <p>Nuevo Cotizador</p>
+              </div>
+              <IonIcon icon={chevronForward} />
+            </Link>
           </div>
         </div>
       </div>

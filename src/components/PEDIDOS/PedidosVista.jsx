@@ -1,36 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../content/css/Pedidos.css";
+import { Link } from "react-router-dom";
+import { IonIcon } from "@ionic/react";
+import { cubeOutline } from "ionicons/icons";
 
 const PedidosVista = () => {
-  return (
-    <div className="PedidosBox">
-      <h1 className="cGray fs16 ptop">PedidosVista</h1>
+  const [Pedidos, setPedidos] = useState([]);
 
-      <section className="padd4 wd">
-        <div className="flexbox gapp2">
-          <div className="flex1">
-            <p>Pedido en curso:</p>
-            <div className="padd2">
-              Pedido en curso
-              <div>
-                <p>Nombre Empresa</p>
-                <p>RUC</p>
-              </div>
-              <div>
-                <p>estado</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex1">Proximo a trabajar</div>
-        </div>
-      </section>
-      <section className="padd2">
-        <div>
-          <p>Lista Entregados/Pendientes</p>
-          <div>datos de pedidos pendientes o entregados</div>
-        </div>
-      </section>
+  return (
+<div className="PedidosBox">
+
+<div className="timeline">
+  <div className="timeline-item">
+    <div className="timeline-icon">
+      <IonIcon icon={cubeOutline} />
     </div>
+    <div className="timeline-content">
+      <h3>Pedidos</h3>
+      <p>Lista de pedidos realizados</p>
+      <Link to="/pedidos/crear" className="btn btn-primary">
+        Crear Pedido
+      </Link>
+    </div>
+  </div>
+
+  {Pedidos.map((pedido) => (
+    <div key={pedido.id} className="timeline-item">
+      <div className="timeline-icon">
+        <IonIcon icon={cubeOutline} />
+      </div>
+      <div className="timeline-content">
+        <h3>{pedido.nombre}</h3>
+        <p>{pedido.descripcion}</p>
+        <Link to={`/pedidos/${pedido.id}`} className="btn btn-secondary">
+          Ver Detalles
+        </Link>
+      </div>
+    </div>
+  ))}
+</div>
+</div>
   );
 };
 

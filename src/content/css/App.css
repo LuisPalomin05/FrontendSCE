@@ -124,6 +124,7 @@ grid-area: sections;
 }
 
 .flexRow{
+  display: flex;
   flex-direction: column;
 }
 .wcolor {
@@ -388,6 +389,11 @@ grid-area: sections;
 }
 .wdst{
   width: 75%;
+
+}
+
+.wd40{
+  width: 40%;
 }
 .wd1{
   width: 50%;
@@ -398,6 +404,9 @@ grid-area: sections;
 }
 .wd20{
   width: 20%;
+}
+.wd26{
+  width: 26%;
 }
 .wd3{
   width: 15%;

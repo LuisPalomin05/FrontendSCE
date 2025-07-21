@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import axios from "axios";
-import CardBoxCash from "../CardBox";
+// import CardBoxCash from "../CardBox";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import {
@@ -18,6 +18,8 @@ import {
 } from "../../utils/panelconsults";
 
 const CotizacionesLista = lazy(() => import("./ListaCotizacion"));
+const CardBoxCash = lazy(() => import("../CardBox"));
+
 
 const Dashboard = () => {
   const [cotizaciones, setCotizaciones] = useState([]);
@@ -65,6 +67,7 @@ const Dashboard = () => {
       <section className="">
         <h1 className="cGray fs16">CONTABILIDAD</h1>
         <div className="flexcolumn wd1 ">
+          <Suspense fallback={<div className="shimmer-loader">Cargando...</div>}>
           <div className="flexbox gapp4 padd2 wd">
             <Link to={"/ventas"} className="flex1">
               <CardBoxCash
@@ -104,6 +107,7 @@ const Dashboard = () => {
               />
             </Link>
           </div>
+          </Suspense>
         </div>
       </section>
 
