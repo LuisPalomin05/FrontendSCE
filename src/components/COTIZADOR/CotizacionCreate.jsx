@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
+import { ToastContainer, toast } from "react-toastify";
+
 import axios from "axios";
 import {
   caretForwardOutline,
@@ -15,6 +17,8 @@ import generatePDF from "./generatePDF";
 const localhost = "https://backendapi-6thn.onrender.com/api/cotizacion";
 
 const CotizacionCreate = () => {
+  const notify =(mensaje) => toast(mensaje);
+
   const navigate = useNavigate();
   const { id } = useParams();
   const [editing, setEditing] = useState(false);
@@ -22,9 +26,9 @@ const CotizacionCreate = () => {
 
   const formatearFecha = (fechaISO) => {
     const fecha = new Date(fechaISO);
-    const dia = String(fecha.getDate()).padStart(2, "0"); 
-    const mes = String(fecha.getMonth() + 1).padStart(2, "0"); 
-    const anio = fecha.getFullYear(); 
+    const dia = String(fecha.getDate()).padStart(2, "0");
+    const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+    const anio = fecha.getFullYear();
     return `${anio}-${mes}-${dia}`;
   };
 
@@ -142,14 +146,13 @@ const CotizacionCreate = () => {
       setCantidad("");
       setPrecio("");
     } else {
-      alert("Por favor, ingresa todos los datos del producto correctamente.");
+      notify("Agrege elementos a la cotizacion")
     }
   };
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
     setLoading(true);
-
 
     try {
       if (editing) {
@@ -373,12 +376,16 @@ const CotizacionCreate = () => {
             </button> */}
             <button
               className="btnWarning flexbox gapp4"
-              onClick={() => generatePDF(cotizacion)}
+              onClick={() => {
+                productos.length === 0
+                  ? notify("Agrege elementos a la cotizacion")
+                  : generatePDF(cotizacion);
+              }}
             >
               <IonIcon className="padd1" icon={cloudDownloadOutline} />
               CREAR PDF
             </button>
-
+            <ToastContainer />
             {editing ? (
               <button
                 className="btnDanger flexbox gapp4"
@@ -569,7 +576,11 @@ const CotizacionCreate = () => {
               GUARDAR DATOS
             </button> */}
             <button className="btnSuccess" type="submit" disabled={loading}>
-            {loading ? "Guardando..." : editing ? "Actualizar Cotización" : "Crear Cotización"}
+              {loading
+                ? "Guardando..."
+                : editing
+                ? "Actualizar Cotización"
+                : "Crear Cotización"}
             </button>
             <button className="btnWarning" onClick={setter}>
               PASAR PEDIDO
