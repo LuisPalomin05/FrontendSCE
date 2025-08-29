@@ -47,13 +47,13 @@ const QuotCreate = () => {
         <div></div>
       </section>
       <section className="tableQuot  borderVertical">
-        <table>
+        <table >
           <thead>
             <tr>
               <th>
                 <input type="checkbox" name="" id="h" />
               </th>
-              <th>DESCRIPCION</th>
+              <th className="flex1">DESCRIPCION</th>
               <th>CANTIDAD</th>
               <th>PRECIO UNIT.</th>
               <th>ACCIONES</th>
@@ -65,7 +65,7 @@ const QuotCreate = () => {
                 <input type="checkbox" name="" id="" />
               </td>
               <td>
-                <input className="inputbox" type="text" placeholder="producto" />
+                <input className="inputbox flex1" type="text" placeholder="producto" />
               </td>
               <td>
                 <input className="inputbox" type="number" placeholder="00" />

@@ -17,7 +17,7 @@ import generatePDF from "./generatePDF";
 const localhost = "https://backendapi-6thn.onrender.com/api/cotizacion";
 
 const CotizacionCreate = () => {
-  const notify =(mensaje) => toast(mensaje);
+  const notify = (mensaje) => toast(mensaje);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -146,7 +146,7 @@ const CotizacionCreate = () => {
       setCantidad("");
       setPrecio("");
     } else {
-      notify("Agrege elementos a la cotizacion")
+      notify("Agrege elementos a la cotizacion");
     }
   };
 
@@ -324,7 +324,7 @@ const CotizacionCreate = () => {
               </div>
             </div>
           </section>
-          <section className="flexbox gapp4 padd1">
+          <section className="flexColumn gapp4 padd1">
             <div className="flexColumn">
               <p>Producto</p>
               <input
@@ -335,29 +335,30 @@ const CotizacionCreate = () => {
                 onChange={(e) => setProducto(e.target.value)}
               />
             </div>
+            <div className="flexbox gapp2">
+              <div>
+                <p>Cantidad</p>
+                <input
+                  step="0.001"
+                  type="number"
+                  placeholder="Cantidad"
+                  className="inputboxitm"
+                  value={cantidad === null ? "" : cantidad}
+                  onChange={(e) => setCantidad(e.target.value)}
+                />
+              </div>
 
-            <div>
-              <p>Cantidad</p>
-              <input
-                step="0.001"
-                type="number"
-                placeholder="Cantidad"
-                className="inputboxitm"
-                value={cantidad === null ? "" : cantidad}
-                onChange={(e) => setCantidad(e.target.value)}
-              />
-            </div>
-
-            <div>
-              <p>Precio</p>
-              <input
-                step="0.001"
-                type="number"
-                placeholder="Precio"
-                className="inputboxitm"
-                value={precio === null ? "" : precio}
-                onChange={(e) => setPrecio(e.target.value)}
-              />
+              <div>
+                <p>Precio</p>
+                <input
+                  step="0.001"
+                  type="number"
+                  placeholder="Precio"
+                  className="inputboxitm"
+                  value={precio === null ? "" : precio}
+                  onChange={(e) => setPrecio(e.target.value)}
+                />
+              </div>
             </div>
           </section>
           <section className="flexbox ptop bgWhite gapp4 padd2">
@@ -401,6 +402,54 @@ const CotizacionCreate = () => {
               </button>
             )}
           </section>
+        </div>
+
+        <div className="flexbox">
+          <div className="flexColumn">
+            <section>
+              <div>
+                <p>RUC CLIENTE</p>
+                <input type="text" />
+              </div>
+              <div>
+                <p>RAZON SOCIAL</p>
+                <input type="text" />
+              </div>
+              <div>
+                <p>EMPRESA</p>
+                <select name="" id="">
+                  <option value="empresa2">Empresa 2</option>
+                  <option value="empresa3">Empresa 3</option>
+                </select>
+              </div>
+            </section>
+            <section>
+              <div>
+                <p>DESCRIPCION DEL PRODUCTO</p>
+                <input type="text" />
+              </div>
+            </section>
+            <section>
+              <div>
+                <p>CANTIDAD</p>
+                <input type="number" />
+              </div>
+              <div>
+                <p>PRECIO</p>
+                <input type="number" />
+              </div>
+              <div>
+                <button>AGREGAR</button>
+              </div>
+            </section>
+            <section>
+              <button>GENERAR PDF</button>
+              <button>ELIMINAR</button>
+            </section>
+          </div>
+          <div>
+            <img src="" alt="" />
+          </div>
         </div>
 
         {/* tabla para productos */}
