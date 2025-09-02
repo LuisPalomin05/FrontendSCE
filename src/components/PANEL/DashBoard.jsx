@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import axios from "axios";
-// import CardBoxCash from "../CardBox";
+import ViewContable from "./Contabilidad";
 import { Link } from "react-router-dom";
 import { IonIcon } from "@ionic/react";
 import {
@@ -110,6 +110,8 @@ const Dashboard = () => {
           </Suspense>
         </div>
       </section>
+
+      <ViewContable/>
 
       <section className="menudashbox">
         <Link to="/ventas" className="RectboxCash">
