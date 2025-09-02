@@ -135,7 +135,7 @@ const Dashboard = () => {
         </Link>
       </section>
       <section>
-        <h1 className="cGray fs16 ptop borderVertical">Mis Cotizaciones</h1>
+        <h1 className="cGray fs16 ptop borderVertical"> Cotizaciones Recientes</h1>
 
         <Suspense fallback={<div className="shimmer-loader">Cargando...</div>}>
           <CotizacionesLista cotizaciones={cotizaciones} />
