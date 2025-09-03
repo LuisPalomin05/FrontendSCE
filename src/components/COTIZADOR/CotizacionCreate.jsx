@@ -402,9 +402,9 @@ const CotizacionCreate = () => {
               </button>
             )}
           </section>
-        </div>
+        </div> 
 
-        <div className="flexbox">
+        {/* <div className="flexbox">
           <div className="flexColumn">
             <section>
               <div>
@@ -450,7 +450,7 @@ const CotizacionCreate = () => {
           <div>
             <img src="" alt="" />
           </div>
-        </div>
+        </div> */}
 
         {/* tabla para productos */}
         <div className="table-container padd1" id="ScreenCotizacion">
