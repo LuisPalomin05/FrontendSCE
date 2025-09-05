@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    
 }
 
 .cardCashIcon{
@@ -13,20 +13,23 @@
     justify-content: center;
     border-radius: 50%;
     border: 1.5px solid #1a832f;
-
 }
 .cardContent{
     border: 1px solid #d3d3d3;
-    border-radius: 10px;
-    padding: 10px;
-
+    /* border-radius: 10px; */
+    padding: 5px;
+    width: 200px;
 }
 
-.cardContent:hover{
+/* .cardContent:hover{
     border: 1px solid #1a832f;
     box-shadow: 0 0 5px #1a832f;
-}
+} */
 
+.cardContent:hover{
+    border: 1px solid #cdcecd;
+    box-shadow: 0 0 5px #cdcecd;
+}
 
 .cardtextTitle{
     font-size: 14px;
@@ -48,14 +51,11 @@
     color: #1e60d4;
 }
 
-.bgOrange{
-    background-color: #eca515;
-}
 
-.bgVioleta{
-    background-color: #8b15ec;
-}
-
-.bgCian{
-    background-color: #159df2;
+/* Separa los montos con un | */
+.amounts p:not(:last-child)::after {
+  content: "|";
+  margin: 0 6px;
+  color: #999;
+  font-weight: bold;
 }

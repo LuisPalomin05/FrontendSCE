@@ -1,78 +1,100 @@
-.DashBoardBox{
-    padding: 5px;
-    gap: 2px;
+.DashBoardBox {
+  padding: 5px;
+  gap: 2px;
 }
 
-.CashDashboardPanel{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    padding: 5px;
-    justify-content: space-evenly;
+.CashDashboardPanel {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding: 5px;
+  justify-content: space-evenly;
 }
 
-
-
-.boxbottontop{
-    border: 1px solid #aaaaaa;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-around;
-   
+.createNewButton {
+  background: #3265c3;
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  color: white;
+  border: none;
 }
 
-.bottonitem{
-    padding: 4px;
-
-    color: #949292;
+.boxbottontop {
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
 }
 
-.bottonitem:hover{
-    color: #4b4b4b;
-    background: #ffffff89;
-    cursor: pointer;
+.bottonitem {
+  padding: 4px;
 
+  color: #949292;
 }
 
-.createButtonBox{
-    background: #006635;
-    border-radius: 5px;
-    padding: 4px;
-    color: white;
+.bottonitem:hover {
+  color: #4b4b4b;
+  background: #ffffff89;
+  cursor: pointer;
 }
 
-.createButtonBox:hover{
-    background: #087440;
-    border-radius: 2px solid #0fa45c;
-    cursor: pointer;
+.createButtonBox {
+  background: #006635;
+  border-radius: 5px;
+  padding: 4px;
+  color: white;
 }
 
-.barTopmenu{
-    gap: 5px;
-    padding: 2px;
+.createButtonBox:hover {
+  background: #087440;
+  border-radius: 2px solid #0fa45c;
+  cursor: pointer;
 }
 
-.RectboxCash{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 5px;
-    gap: 5px;
-    padding: 8px;
-    background: white;
-    width: 15%;
-    height: 40px;
+.barTopmenu {
+  gap: 5px;
+  padding: 2px;
 }
 
-.menudashbox{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    padding: 5px;
+.RectboxCash {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  gap: 5px;
+  padding: 8px;
+  background: white;
+  width: 15%;
+  height: 40px;
 }
 
+.menudashbox {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  padding: 5px;
+}
 
-.RectboxCash:hover{
-    box-shadow: 0px 0px 3px 1px #4b4b4b8c;
+.RectboxCash:hover {
+  box-shadow: 0px 0px 3px 1px #4b4b4b8c;
+}
+
+.cartilla {
+  padding: 5px;
+  border: 1px solid #d3d3d3;
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.cartilla:hover {
+  border: 1px solid #cdcecd;
+  border-bottom: none;
+cursor: pointer;
+  box-shadow: 0 0 5px #a4a4a4;
 }

@@ -3,7 +3,7 @@
   grid-template-areas: "sidebar main";
   grid-template-columns: 18% 82%; 
   height: 100vh;
-  background: #f5f5f5;
+  background: #ecebeb;
 }
 
 .boldtext{
@@ -510,11 +510,7 @@ input[type="checkbox"] {
 
 .sidebar {
   grid-area: sidebar;
-  /* background: #1b1b41; */
-  /* background: #1fcd50; */
   background: #138f53;
-  /* background: #a0021b; */
-
   display: grid; 
   grid-template-columns: 20% 78%; 
   grid-template-rows: 1fr;
